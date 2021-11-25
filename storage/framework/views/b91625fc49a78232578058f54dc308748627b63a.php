@@ -58,11 +58,7 @@
             <!---->
             <?php $__env->slot('texto2','¡Adquiere tus productos al mejor precio!'); ?>
             <!---->
-            <?php if (isset($__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2)): ?>
-<?php $component = $__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2; ?>
-<?php unset($__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
+            <?php echo $__env->renderComponent(); ?>
 
             <?php $__env->startComponent('plantilla.infoLDP'); ?>
             <?php $__env->slot('iconoInfo','fas fa-dollar-sign'); ?>
@@ -71,11 +67,7 @@
             <!---->
             <?php $__env->slot('texto2','Enterate de todas las promociones'); ?>
             <!---->
-            <?php if (isset($__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2)): ?>
-<?php $component = $__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2; ?>
-<?php unset($__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
+            <?php echo $__env->renderComponent(); ?>
 
             <?php $__env->startComponent('plantilla.infoLDP'); ?>
             <?php $__env->slot('iconoInfo','fas fa-search-dollar'); ?>
@@ -84,11 +76,7 @@
             <!---->
             <?php $__env->slot('texto2','Pregunte sobre los precios'); ?>
             <!---->
-            <?php if (isset($__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2)): ?>
-<?php $component = $__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2; ?>
-<?php unset($__componentOriginald992c349ff100ffdff3577f01a3aea825c303ca2); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
+            <?php echo $__env->renderComponent(); ?>
         </div>
     </section>
     <!--==================================================-->
@@ -134,11 +122,7 @@
     <!--FOOTER-->
     <!--========================================================== -->
     <?php $__env->startComponent('plantilla.footerSimple'); ?>
-    <?php if (isset($__componentOriginal8a93bf43105578ad36c4a0d035829f5a793aaa61)): ?>
-<?php $component = $__componentOriginal8a93bf43105578ad36c4a0d035829f5a793aaa61; ?>
-<?php unset($__componentOriginal8a93bf43105578ad36c4a0d035829f5a793aaa61); ?>
-<?php endif; ?>
-<?php echo $__env->renderComponent(); ?>
+    <?php echo $__env->renderComponent(); ?>
 </div>
 
 

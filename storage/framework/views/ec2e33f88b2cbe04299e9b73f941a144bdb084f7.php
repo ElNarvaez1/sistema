@@ -225,12 +225,12 @@ unset($__errorArgs, $__bag); ?>
                                         
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-auto">
-                                                <button title="guardar producto" type="submit" class="btn btn-primary btn-ms">
+                                                <button title="guardar producto" type="submit" class="btn btn-success btn-ms">
                                                     Guardar <i class="fas fa-save"></i></button>
                                             </div>
                                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href=<?php echo e(route('productos.index')); ?> class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href=<?php echo e(route('productos.index')); ?> class="btn btn-primary btn-ms">Regresar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                         <?php endif; ?>

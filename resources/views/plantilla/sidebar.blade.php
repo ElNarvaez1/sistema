@@ -49,7 +49,7 @@
              <li class="nav-item   {{ !Route::is('venta.index') ?: 'active' }}">
                  <a class="nav-link" href="{{ route('venta.index') }}">
                     <i class="fas fa-fw fa-cart-arrow-down"></i>
-                     <span>ventas</span>
+                     <span>Ventas</span>
                  </a>
              </li>
              {{-- @endcan --}}
@@ -72,6 +72,15 @@
             <hr class="sidebar-divider my-0">
                 <li class="nav-item  {{ request()->routeIs('productos.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('productos.index') }}">
+                        <i class="fas fa-boxes"></i>
+                        <span>Productos</span></a>
+                </li>
+            @endcan
+
+            @can('productos.index')
+            <hr class="sidebar-divider my-0">
+                <li class="nav-item  {{ request()->routeIs('inventario.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('inventario.index') }}">
                         <i class="fas fa-boxes"></i>
                         <span>Inventario</span></a>
                 </li>

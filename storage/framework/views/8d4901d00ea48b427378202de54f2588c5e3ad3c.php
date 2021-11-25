@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('titulo', 'Productos'); ?>
+<?php $__env->startSection('titulo', 'Inventario'); ?>
 <?php $__env->startSection('contenido'); ?>
 
     <!-- Page Wrapper -->
@@ -19,8 +19,8 @@
                 <div class="container-fluid rounded color">
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> PRODUCTOS <i class="fas fa-boxes"></i></h1>
-                    <p class="mb-4 text-dark">Registro de nuevos productos aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> INVENTARIO <i class="fas fa-boxes"></i></h1>
+                    <p class="mb-4 text-dark">Consulte todos los productos de su inventario aquí.</p>
 
 
                     
@@ -29,7 +29,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold">Agrega, edite y elimine productos</h6>
+                            <h6 class="m-0 font-weight-bold">Inventario del sistema</h6>
                         </div>
 
 
@@ -42,10 +42,7 @@
                                         
                                         <div class="col-md-3 mt-4">
                                             <div class="form-group">
-                                                <a title="agregar producto" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
-                                                    href="<?php echo e(route('productos.create')); ?>">
-                                                    Agregar producto <i class="fas fa-plus-circle"></i>
-                                                </a>
+
                                             </div>
                                         </div>
 
@@ -92,8 +89,21 @@
                             </div>
                             <?php if($productos->count()): ?>)
                             <div class="card-body ">
-
-                                                        
+                                <div class="container">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col col-lg-3">
+                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Suficientes.</h5>
+                                      </div>
+                                      <div class="col-lg-3">
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-warning">2</span> Pocas</h5>
+                                      </div>
+                                      <div class="col-lg-3">
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">3</span> Agotado.</h5>
+                                      </div>
+                                    </div>
+                                </div>
+                               
+                                
                                <div class="table-responsive">
                                     
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
@@ -107,7 +117,6 @@
                                                 <th scope="col">PRECIO COMPRA</th>
                                                 <th scope="col">PRECIO VENTA</th>
                                                 <th scope="col">EXISTENCIA</th>
-                                                <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
@@ -139,26 +148,6 @@
                                                                 <h5><td class="badge badge-warning"><?php echo e($producto->stock); ?></td></h5>
                                                             <?php endif; ?>
 
-                                                    
-                                                    <td>
-                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.edit')): ?>
-                                                        <a title="editar producto" href="<?php echo e(route('productos.edit', [$producto])); ?>"
-                                                            class="btn btn-outline-primary btn-circle">
-                                                            <i class="fa fa-edit"></i></a>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.destroy')): ?>
-                                                        <form action="<?php echo e(route('productos.destroy', [$producto])); ?>"
-                                                            method="post">
-                                                            <?php echo method_field("delete"); ?>
-                                                            <?php echo csrf_field(); ?>
-                                                            <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form> 
-                                                        <?php endif; ?>
-                                                    </td>
                                                 </tr>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                             <h3 class="text-black text-center"> ¡No hay registros!</h3>
@@ -167,7 +156,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('inventario.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="<?php echo e($productos->previousPageUrl()); ?>">Anterior</a></li>
@@ -188,7 +177,7 @@
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="<?php echo e(route('inventario.index')); ?>" class="btn btn-outline-primary" >regresar</a>
                                     </div>
                                 </div>
                                 
@@ -225,4 +214,4 @@
 
     <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/productos/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/inventario/index.blade.php ENDPATH**/ ?>

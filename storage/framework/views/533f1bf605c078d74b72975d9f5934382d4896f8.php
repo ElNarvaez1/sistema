@@ -49,7 +49,7 @@
              <li class="nav-item   <?php echo e(!Route::is('venta.index') ?: 'active'); ?>">
                  <a class="nav-link" href="<?php echo e(route('venta.index')); ?>">
                     <i class="fas fa-fw fa-cart-arrow-down"></i>
-                     <span>ventas</span>
+                     <span>Ventas</span>
                  </a>
              </li>
              
@@ -72,6 +72,15 @@
             <hr class="sidebar-divider my-0">
                 <li class="nav-item  <?php echo e(request()->routeIs('productos.index') ? 'active' : ''); ?>">
                     <a class="nav-link" href="<?php echo e(route('productos.index')); ?>">
+                        <i class="fas fa-boxes"></i>
+                        <span>Productos</span></a>
+                </li>
+            <?php endif; ?>
+
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
+            <hr class="sidebar-divider my-0">
+                <li class="nav-item  <?php echo e(request()->routeIs('inventario.index') ? 'active' : ''); ?>">
+                    <a class="nav-link" href="<?php echo e(route('inventario.index')); ?>">
                         <i class="fas fa-boxes"></i>
                         <span>Inventario</span></a>
                 </li>
