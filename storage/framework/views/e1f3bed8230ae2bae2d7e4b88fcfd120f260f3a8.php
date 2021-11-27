@@ -3,11 +3,11 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo e(url('/')); ?>">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <!-- <img src="https://i.ibb.co/2YBhLXC/Michelin-Logo.png" alt="Michelin"
-                        width="40" height="40" class="d-inline-block align-text-top"> -->
+                <div class="sidebar-brand-icon">
+                     <img src="https://wallpapercave.com/uwp/uwp1581891.jpeg" alt="Llantero"
+                        width="60" height="60" class="d-inline-block align-text-top"> 
                 </div>
-                <div class="sidebar-brand-text mx-3">Logo....</div>
+                <div class="sidebar-brand-text mx-3">LLantero</div>
             </a>
 
             <!-- Divider -->
@@ -68,26 +68,37 @@
 
 
 
-            
-
-            
-
-            
-
-            
-<!--
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission.index')): ?>
-                <hr class="sidebar-divider my-0">
-
-                <li class="nav-item <?php echo e(!Route::is('permission.index') ?: 'active'); ?>">
-                    <a class="nav-link" href="<?php echo e(route('permission.index')); ?>">
-                        <i class="fas fa-user-cog"></i>
-                        <span>Permisos</span>
-                    </a>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
+            <hr class="sidebar-divider my-0">
+                <li class="nav-item  <?php echo e(request()->routeIs('productos.index') ? 'active' : ''); ?>">
+                    <a class="nav-link" href="<?php echo e(route('productos.index')); ?>">
+                        <i class="fas fa-boxes"></i>
+                        <span>Inventario</span></a>
                 </li>
             <?php endif; ?>
-            -->
-<!--
+
+             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cart.cart')): ?>
+                <hr class="sidebar-divider my-0">
+                <li class="nav-item <?php echo e(!Route::is('cart.cart') ?: 'active'); ?>">
+                    <a class="nav-link" href="<?php echo e(url('/Cart/Carrito')); ?>">
+                        <i class="fas fa-store"></i>
+                        <span>Catálogo</span></a>
+                </li>
+            <?php endif; ?>
+
+            
+
+             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cita.create')): ?>
+                <hr class="sidebar-divider my-0">
+                <li class="nav-item <?php echo e(!Route::is('cita.create') ?: 'active'); ?>">
+                    <a class="nav-link" href="<?php echo e(route('cita.create')); ?>">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Agendar citas</span>
+                    </a>
+                </li>
+            <?php endif; ?> 
+        
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role.index')): ?>
                 <hr class="sidebar-divider my-0">
 
@@ -98,8 +109,8 @@
                     </a>
                 </li>
             <?php endif; ?>
-            -->
-<!--
+            
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user.index')): ?>
                 <hr class="sidebar-divider my-0">
 
@@ -110,11 +121,30 @@
                     </a>
                 </li>
             <?php endif; ?>
-            -->
-
-
-
             
+
+             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('pedido.index')): ?> 
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item   <?php echo e(!Route::is('pedido.index') ?: 'active'); ?>">
+                <a class="nav-link" href="<?php echo e(route('pedido.index')); ?>">
+                    <i class="fas fa-qrcode"></i>
+                    <span>Ver pedidos</span>
+                </a>
+            </li>
+            <?php endif; ?>
+
+
+             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cart.invoices')): ?>
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item   <?php echo e(!Route::is('cart.invoices') ?: 'active'); ?>">
+                <a class="nav-link" href="<?php echo e(route('cart.invoices')); ?>">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>Nota de pago</span>
+                </a>
+            </li>
+            <?php endif; ?>
 
             
 
