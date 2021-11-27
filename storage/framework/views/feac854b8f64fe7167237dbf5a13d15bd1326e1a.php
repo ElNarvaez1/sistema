@@ -22,15 +22,14 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold "> Venta de servicio</h6>
+                            <h6 class="m-0 font-weight-bold ">Registrar cambio de neumáticos</h6>
                         </div>
 
                       
                         
 
                         <div class="container">
-                            <div class="row">
-                               
+                            <div class="row">                               
                                     <div class="container">
                                         <div class="row justify-content-center">
                                             <div class="col-xl-6 col-lg-10 col-md-8">
@@ -46,35 +45,22 @@
                                                                             <?php echo csrf_field(); ?>
                                                                             <div class="row">
                                                                                 <div class="col-md-12" style="text-align: center">
-                                                                                    <label class="text-black">Cambio de neumaticos</label>
-                                                                                    <br><br>
+                                                                                    <label class="text-black"><FONT SIZE =4><b>Solo se registra el cambio de neumáticos para registros historicos.</b></FONT></label>
+                                                                                    <br>
                                                                                 </div>
                                                                                 <div class="col-md-12">
-                                                                                    <div class="text-center">
-                                                                                        <!--<label class="text-black">Agregue los datos del servicio</label>-->
-                                                                                        <!--<input type="file" accept="image/*" name="image"
-                                                                                        placeholder="Inserte una imagen" class="form-control text-upper">
-
-                                                                                    </div>
-                                                                                    <?php $__errorArgs = ['image'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                                    <div class="message-error">*<?php echo e($message); ?></div>
-                                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                                -->
-                                                                                </div>
-                                                                               
+                                                                                    <div class="text-center">                                                                                        
+                                                                                </div>                                                                               
                                                                             <div class="col-md-12 mt-4">
                                                                                     <div class="form-group">
-                                                                                        <label class="text-black h4">Agregue una descripción para el servicio</label>
+                                                                                    <label class="text-black"><FONT SIZE =3>Fecha en la que se esta realizando el servicio:</FONT></label>
+                                                                                        <input id="fecha" type="date" value="<?php echo date("Y-n-j"); ?>"> <!--el codigo en php es para obtener la fecha actual-->
+                                                                                        <label class="text-black"><FONT SIZE =3>Descripción sobre el cambio de neumáticos:</FONT></label>
                                                                                         <textarea class="form-control"
-                                                                                        value="<?php echo e(old('message')); ?>"    name="message"></textarea>
-                                                                                        <label class="text-black h4">Agregue el total del servicio</label>
+                                                                                        value="<?php echo e(old('message')); ?>"    name="message" placeholder="Descripción"></textarea>
+                                                                                        <br>
+                                                                                        <label class="text-black h5"><FONT SIZE =3>Total del servicio $:</FONT></label>
+                                                                                        <input id="number" type="number" value="0.00">
                                                                                     </div>
                                                                                     <?php $__errorArgs = ['message'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -85,41 +71,11 @@ $message = $__bag->first($__errorArgs[0]); ?>
                                                                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>
-                                                                                    
-                                                                                </div>
-                                            
-                                                                                
-                                                                                
-                                                                                <!--<div class="col-md-6" style="text-align: right">
-                                                                                    <div><label class="text-black h4">Valor de descuento:</label></div>
-                                                                                </div>
-                                                                                <?php ($porcentaje = ['10', '15', '20', '25', '30','35', '40', '45', '50']); ?>
-                                                                                <div class="col-md-6" style="text-align:right">
-                                                                                    <select name="descuento" value="<?php echo e(old('descuento')); ?>">
-                                                                                        <?php $__currentLoopData = $porcentaje; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                        <option selected><?php echo e($p); ?></option>
-                                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                                    </select>
-                                                                                </div>
-                                                                                <div class="col-md-6" style="text-align: right">
-                                                                                    <div><label class="text-black h4">Rin:</label></div>
-                                                                                </div>
-                                                                                <?php ($rines = ['13', '14', '15', '16', '17','18', '19', '20'
-                                                                                ,"22"]); ?>
-                                                                                <div class="col-md-6" style="text-align:right">
-                                                                                    <select name="rin" value="<?php echo e(old('rin')); ?>">
-                                                                                        <?php $__currentLoopData = $rines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rins): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                        <option selected><?php echo e($rins); ?></option>
-                                                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
--->
+unset($__errorArgs, $__bag); ?>                                                                                    
+                                                                                </div>          
                                                                            <br><br>
                                                                                 <div class="text-black h4" style="text-align: center;">
-                                                                                <button class="btn btn-primary btn-user btn-block" type="submit">Realizar venta del servicio<!--<i class="fas fa-paper-plane"></i>--> </button>
+                                                                                <button class="btn btn-outline-primary" type="submit">Registrar cambio de llanta<!--<i class="fas fa-paper-plane"></i>--> </button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
