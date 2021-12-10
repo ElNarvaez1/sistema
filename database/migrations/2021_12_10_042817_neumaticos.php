@@ -15,16 +15,14 @@ class Neumaticos extends Migration
     {
         
         //Rol
-        Schema::create('Rol_Empleado',function(Blueprint $table){
-            $table->string('idRol');
+        Schema::create('Rol_Empleados',function(Blueprint $table){
+            $table->id();
             $table->string('descripcion');
             $table->float('salario',6,2);
-
-            $table->primary('idRol');
         });
 
         //Empleado
-        Schema::create('Empleado', function (Blueprint $table) {
+        Schema::create('Empleados', function (Blueprint $table) {
             $table->string('idEmpleado');
             $table->string('nombre');
             $table->string('apellidoPaterno');
@@ -34,7 +32,7 @@ class Neumaticos extends Migration
             $table->string('correo')->unique();
             $table->integer('telefono');
             $table->longText('Foto')->nullable();
-            $table->string('idRol')->references('idRol')->on('Rol_Empleado');
+            $table->string('idRol')->references('id')->on('Rol_Empleados');
 
             $table->rememberToken();
             $table->timestamps();
@@ -42,7 +40,7 @@ class Neumaticos extends Migration
         });
 
         //Cambio
-        Schema::create('Cambio',function(Blueprint $table){
+        Schema::create('Cambios',function(Blueprint $table){
             $table->string('idCambio');
             $table->string('idEmpleado');
             $table->date('fecha');
@@ -53,7 +51,7 @@ class Neumaticos extends Migration
         });
 
         //Cliente
-        Schema::create('Cliente',function(Blueprint $table){
+        Schema::create('Clientes',function(Blueprint $table){
             $table->string('idCliente');
             $table->string('nombre');
             $table->string('apellidoPaterno');
@@ -64,10 +62,10 @@ class Neumaticos extends Migration
         });
 
         //Venta
-        Schema::create('Venta',function(Blueprint $table){
+        Schema::create('Ventas',function(Blueprint $table){
             $table->string('idVenta');
-            $table->string('idCliente')->refences('idCliente')->on('Cliente');
-            $table->string('idEmpleado')->references('idEmpleado')->on('Empleado');
+            $table->string('idCliente')->refences('idCliente')->on('Clientes');
+            $table->string('idEmpleado')->references('idEmpleado')->on('Empleados');
             $table->date('fecha');
             $table->float('totalVenta',10,2);
             $table->float('descuento',5,2)->default(0);
@@ -77,7 +75,7 @@ class Neumaticos extends Migration
 
         //---------------------------------------------------//
         //Marca_Bateria
-        Schema::create('Marca_Bateria',function(Blueprint $table){
+        Schema::create('Marca_Baterias',function(Blueprint $table){
             $table->string('idMarca');
             $table->string('nombre');
 
@@ -85,7 +83,7 @@ class Neumaticos extends Migration
         });
 
         //Rin_Llanta
-        Schema::create('Rin_Llanta',function(Blueprint $table){
+        Schema::create('Rin_Llantas',function(Blueprint $table){
             $table->string('idRin');
             $table->string('numero');
 
@@ -93,9 +91,9 @@ class Neumaticos extends Migration
         });
 
         //Bateria
-        Schema::create('Bateria',function(Blueprint $table){
+        Schema::create('Baterias',function(Blueprint $table){
             $table->string('idBateria');
-            $table->string('idMarca')->references('idMarca')->on('Marca_Bateria');
+            $table->string('idMarca')->references('idMarca')->on('Marca_Baterias');
             $table->string('tamanio');
             $table->string('modelo');
             $table->integer('voltaje');
@@ -104,9 +102,9 @@ class Neumaticos extends Migration
         });
 
         //Llanta
-        Schema::create('Llanta',function(Blueprint $table){
+        Schema::create('Llantas',function(Blueprint $table){
             $table->string('idLlanta');
-            $table->string('idRin')->references('idRin')->on('Rin_Llanta');
+            $table->string('idRin')->references('idRin')->on('Rin_Llantas');
             $table->float('cargaMaxima',6,2);//?????????????????????????????????????????????????????????????
             $table->float('velocidadMaxima');//?????????????????????????????????????????????????????????????
             $table->string('medida');//?????????????????????????????????????????????????????????????
@@ -116,7 +114,7 @@ class Neumaticos extends Migration
         //-----------------------------------------------------------//
 
         //Proveedor
-        Schema::create('Proveedor',function(Blueprint $table){
+        Schema::create('Proveedores',function(Blueprint $table){
             $table->string('idProveedor');
             $table->string('nombre');
             $table->string('apellidoPaterno');
@@ -130,9 +128,9 @@ class Neumaticos extends Migration
         });
 
         //Producto
-        Schema::create('Producto',function(Blueprint $table){
+        Schema::create('Productos',function(Blueprint $table){
             $table->string('idProducto');
-            $table->string('idProveedor')->referemces('idProveedor')->on('Proveedor');
+            $table->string('idProveedor')->referemces('idProveedor')->on('Proveedores');
             $table->string('nombre');
             $table->string('descripcion');
             $table->text('imagen');
@@ -144,9 +142,9 @@ class Neumaticos extends Migration
         });
 
         //detalleVenta
-        Schema::create('detalleVenta',function(Blueprint $table){
-            $table->string('idProducto')->references('idProducto')->on('Producto');
-            $table->string('idVenta')->references('idVenta')->on('Venta');
+        Schema::create('detalleVentas',function(Blueprint $table){
+            $table->string('idProducto')->references('idProducto')->on('Productos');
+            $table->string('idVenta')->references('idVenta')->on('Ventas');
             $table->integer('cantidad');
 
             $table->primary(['idProducto','idVenta']);
@@ -160,6 +158,17 @@ class Neumaticos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Empleado');
+        Schema::dropIfExists('Rol_Empleados');
+        Schema::dropIfExists('Empleados');
+        Schema::dropIfExists('Cambios');
+        Schema::dropIfExists('Clientes');
+        Schema::dropIfExists('Ventas');
+        Schema::dropIfExists('Marca_Baterias');
+        Schema::dropIfExists('Rin_Llantas');
+        Schema::dropIfExists('Baterias');
+        Schema::dropIfExists('Llantas');
+        Schema::dropIfExists('Proveedores');
+        Schema::dropIfExists('Productos');
+        Schema::dropIfExists('detalleVentas');
     }
 }

@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rol_Empleado;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,12 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
         $this->call(RoleSeeder::class);
-        $this->call(UserSeeder::class);
-        //$this->call(ProductoSeeder::class);
-        
-        User::factory(1)->create();
-        // $this->call(PedidoSeeder::class);
+
+
+        //$Rol1 = new Rol_Empleado();
+        //$Rol1->descripcion = "Supervisor";
+        //$Rol1->salario = 2000;
+
+        //$Rol2 = new Rol_Empleado();
+        //$Rol2->descripcion = "Empleado";
+        //$Rol2->salario = 1200;
+
+        //$Rol1->save();
+        //$Rol2->save();
     }
 }
