@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('titulo', 'Productos')
+@section('titulo', 'Inventario')
 @section('contenido')
 
     <!-- Page Wrapper -->
@@ -19,8 +19,8 @@
                 <div class="container-fluid rounded color">
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> PRODUCTOS <i class="fas fa-boxes"></i></h1>
-                    <p class="mb-4 text-dark">Registro de nuevos productos aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> INVENTARIO <i class="fas fa-boxes"></i></h1>
+                    <p class="mb-4 text-dark">Consulte todos los productos de su inventario aquí.</p>
 
 
                     {{-- mensajes --}}
@@ -29,7 +29,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold">Agrega, edite y elimine productos</h6>
+                            <h6 class="m-0 font-weight-bold">Inventario del sistema</h6>
                         </div>
 
 
@@ -42,10 +42,7 @@
                                         {{-- add product --}}
                                         <div class="col-md-3 mt-4">
                                             <div class="form-group">
-                                                <a title="agregar producto" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
-                                                    href="{{ route('productos.create') }}">
-                                                    Agregar producto <i class="fas fa-plus-circle"></i>
-                                                </a>
+
                                             </div>
                                         </div>
 
@@ -92,8 +89,21 @@
                             </div>
                             @if ($productos->count()))
                             <div class="card-body ">
-
-                                                        
+                                <div class="container">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col col-lg-3">
+                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Suficientes.</h5>
+                                      </div>
+                                      <div class="col-lg-3">
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-warning">2</span> Pocas</h5>
+                                      </div>
+                                      <div class="col-lg-3">
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">3</span> Agotado.</h5>
+                                      </div>
+                                    </div>
+                                </div>
+                               
+                                
                                <div class="table-responsive">
                                     {{-- id="dataTable" --}}
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
@@ -107,7 +117,6 @@
                                                 <th scope="col">PRECIO COMPRA</th>
                                                 <th scope="col">PRECIO VENTA</th>
                                                 <th scope="col">EXISTENCIA</th>
-                                                <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
@@ -138,26 +147,6 @@
                                                                 <h5><td class="badge badge-warning">{{ $producto->stock }}</td></h5>
                                                             @endif
 
-                                                    
-                                                    <td>
-                                                        @can('productos.edit')
-                                                        <a title="editar producto" href="{{ route('productos.edit', [$producto]) }}"
-                                                            class="btn btn-outline-primary btn-circle">
-                                                            <i class="fa fa-edit"></i></a>
-                                                        @endcan
-                                                    </td>
-                                                    <td>
-                                                        @can('productos.destroy')
-                                                        <form action="{{ route('productos.destroy', [$producto]) }}"
-                                                            method="post">
-                                                            @method("delete")
-                                                            @csrf
-                                                            <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form> 
-                                                        @endcan
-                                                    </td>
                                                 </tr>
                                             @empty
                                             <h3 class="text-black text-center"> ¡No hay registros!</h3>
@@ -166,7 +155,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="{{ route('inventario.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="{{ $productos->previousPageUrl() }}">Anterior</a></li>
@@ -187,7 +176,7 @@
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="{{ route('productos.index')}}" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="{{ route('inventario.index')}}" class="btn btn-outline-primary" >regresar</a>
                                     </div>
                                 </div>
                                 
