@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\batertiaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventarioController;
@@ -38,8 +39,10 @@ Route::group(['middleware' =>'auth'], function(){
     Route::resource('role', RolesController::class);
     Route::resource('user', UserController::class)->only(['index','edit','update']);
 
-
-
+    /**
+     * Rutas de las baterias y llantas.
+    */
+    Route::resource('/bateria',batertiaController::class);
 
 // pedidos
     Route::get('/Pedidos/index',[PedidoController::class,'index'])->name('pedido.index')->middleware('can:pedido.index');
@@ -99,6 +102,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
+
 
 });
 
