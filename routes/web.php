@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\llantaController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
 
@@ -43,6 +44,7 @@ Route::group(['middleware' =>'auth'], function(){
      * Rutas de las baterias y llantas.
     */
     Route::resource('/bateria',batertiaController::class);
+    Route::resource('/llantas',llantaController::class);
 
 // pedidos
     Route::get('/Pedidos/index',[PedidoController::class,'index'])->name('pedido.index')->middleware('can:pedido.index');

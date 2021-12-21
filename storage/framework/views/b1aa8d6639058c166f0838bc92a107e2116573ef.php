@@ -1,10 +1,9 @@
 
-<?php $__env->startSection('titulo', 'Agregar Bateria'); ?>
+<?php $__env->startSection('titulo', 'Agregar Llantas'); ?>
 <?php $__env->startSection('contenido'); ?>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-    
     <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- Content Wrapper -->
@@ -19,8 +18,8 @@
             <div class="container-fluid rounded color">
                 <br>
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 bold-title"> PRODUCTOS - BATERÍAS <i class="fas fa-boxes"></i></h1>
-                <p class="mb-4 text-dark">Registro de baterías nuevas.</p>
+                <h1 class="h3 mb-2 bold-title"> PRODUCTOS - LLANTAS <i class="fas fa-boxes"></i></h1>
+                <p class="mb-4 text-dark">Registro de llantas nuevas.</p>
 
 
                 
@@ -29,22 +28,22 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4 rounded card-color">
                     <div class="card-header py-3 bg-color">
-                        <h6 class="m-0 font-weight-bold">Agrega, edite y elimine baterías.</h6>
+                        <h6 class="m-0 font-weight-bold">Agrega, edite y elimine llantas.</h6>
                     </div>
 
 
                     <div class="card shadow  rounded card-color">
                         <div class="container">
 
-                            <form action="<?php echo e(route('productos.index', [$productos])); ?>" method="GET">
+                            <form action="<?php echo e(route('llantas.index', [$productos])); ?>" method="GET">
                                 <div class="row">
 
                                     
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
-                                            <a title="agregar producto" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2" href="<?php echo e(route('bateria.create')); ?>">
+                                            <a title="agregar llanta" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2" href="<?php echo e(route('llantas.create')); ?>">
                                                 <i class="fas fa-plus-circle"></i>
-                                                Agregar batería
+                                                Agregar llanta
                                             </a>
                                         </div>
                                     </div>
@@ -52,15 +51,16 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             <?php ($arrayB = [
-                                            'nombre',
-                                            'descripcion',
-                                            'modelo',
-                                            'tipo',
-                                            // 'PRECIO COMPRA','PRECIO VENTA'
+                                                    'id Llanta',
+                                                    'id Rin',
+                                                    'carga Maxima',
+                                                    'velocidad Maxima',
+                                                    'medida',
+                                                    'presion'
                                             ]); ?>
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option><?php echo e($buscar); ?></option>
+                                                    <option><?php echo e($buscar); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
 
@@ -221,4 +221,4 @@
 <!-- End of Page Wrapper -->
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/productos/baterias_index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/productos/llantas_index.blade.php ENDPATH**/ ?>

@@ -1,10 +1,9 @@
 @extends('layouts.main')
-@section('titulo', 'Agregar Bateria')
+@section('titulo', 'Agregar Llantas')
 @section('contenido')
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-    {{-- incluimos sildebar color: azul :) --}}
     @include('plantilla.sidebar')
 
     <!-- Content Wrapper -->
@@ -19,8 +18,8 @@
             <div class="container-fluid rounded color">
                 <br>
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 bold-title"> PRODUCTOS - BATERÍAS <i class="fas fa-boxes"></i></h1>
-                <p class="mb-4 text-dark">Registro de baterías nuevas.</p>
+                <h1 class="h3 mb-2 bold-title"> PRODUCTOS - LLANTAS <i class="fas fa-boxes"></i></h1>
+                <p class="mb-4 text-dark">Registro de llantas nuevas.</p>
 
 
                 {{-- mensajes --}}
@@ -29,22 +28,22 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4 rounded card-color">
                     <div class="card-header py-3 bg-color">
-                        <h6 class="m-0 font-weight-bold">Agrega, edite y elimine baterías.</h6>
+                        <h6 class="m-0 font-weight-bold">Agrega, edite y elimine llantas.</h6>
                     </div>
 
 
                     <div class="card shadow  rounded card-color">
                         <div class="container">
 
-                            <form action="{{ route('productos.index', [$productos]) }}" method="GET">
+                            <form action="{{ route('llantas.index', [$productos]) }}" method="GET">
                                 <div class="row">
 
                                     {{-- add product --}}
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
-                                            <a title="agregar producto" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2" href="{{ route('bateria.create') }}">
+                                            <a title="agregar llanta" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2" href="{{ route('llantas.create') }}">
                                                 <i class="fas fa-plus-circle"></i>
-                                                Agregar batería
+                                                Agregar llanta
                                             </a>
                                         </div>
                                     </div>
@@ -52,15 +51,16 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                            'nombre',
-                                            'descripcion',
-                                            'modelo',
-                                            'tipo',
-                                            // 'PRECIO COMPRA','PRECIO VENTA'
+                                                    'id Llanta',
+                                                    'id Rin',
+                                                    'carga Maxima',
+                                                    'velocidad Maxima',
+                                                    'medida',
+                                                    'presion'
                                             ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 @foreach ($arrayB as $buscar)
-                                                <option>{{ $buscar }}</option>
+                                                    <option>{{ $buscar }}</option>
                                                 @endforeach
                                             </select>
 
