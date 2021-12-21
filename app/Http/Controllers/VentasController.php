@@ -48,7 +48,7 @@ class VentasController extends Controller
         $request->validate(
             [
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'impuesto' => 'required|numeric',
+                //'impuesto' => 'required|numeric',
                 'articulo' => 'required|regex:/^[\pL\s\-]+$/u',
                 'cantidad' => 'required|numeric',
                 'stock' => 'required|numeric',
@@ -77,10 +77,10 @@ class VentasController extends Controller
         
 
         $iva =Cart::getSubTotal() * 
-        ($request->get('impuesto')/100);  
+        (18/100);  
         $impuesto = Cart::getSubTotal()+$iva;
         
-        $total_pay = round($impuesto-$impuesto * (($request->get('descuento')/100)),2);
+        $total_pay = round(($request->get('descuento')/100),2);
         Cart::update($request->input('cantidad'), array(
             'attributes' => array(
                 'descuento' => $request->input('descuento'),

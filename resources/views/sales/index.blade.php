@@ -103,7 +103,7 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">ID</th>
+                                                <th scope="col">NUMERO</th>
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">ARTICULO</th>
                                                 <th scope="col">FECHA</th>

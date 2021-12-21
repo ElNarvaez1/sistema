@@ -1,11 +1,11 @@
-@extends('layouts.main')
-@section('titulo', 'Clientes')
-@section('contenido')
+
+<?php $__env->startSection('titulo', 'Clientes'); ?>
+<?php $__env->startSection('contenido'); ?>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        {{-- incluimos sildebar color: azul :) --}}
-        @include('plantilla.sidebar')
+        
+        <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -13,7 +13,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                @include('layouts.nav-log')
+                <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
@@ -23,8 +23,8 @@
                     <p class="mb-4 text-dark">Consulte los datos de sus clientes aquí.</p>
 
 
-                    {{-- mensajes --}}
-                    @include('plantilla.notification')
+                    
+                    <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
@@ -36,15 +36,15 @@
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 
-                                {{-- <form action="{{ route('productos.index', [$productos]) }}" method="GET"> --}}
-                                    <form action="{{ route('clientes.index',[$clientes]) }}" method="GET">
+                                
+                                    <form action="<?php echo e(route('clientes.index',[$clientes])); ?>" method="GET">
                                     <div class="row">
 
-                                        {{-- add product --}}
+                                        
                                         <div class="col-md-3 mt-4">
                                             <div class="form-group">
                                                 <a title="agregar nuevo cliente" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
-                                                    href="{{ route('clientes.create') }}"> 
+                                                    href="<?php echo e(route('clientes.create')); ?>"> 
                                                      nuevo cliente <i class="fas fa-plus-circle"></i>
                                                 </a>
                                             </div>
@@ -52,17 +52,17 @@
 
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
-                                                @php($arrayB = [
+                                                <?php ($arrayB = [
                                                     'nombre',
                                                     'telefono',
                                                     'fecha',
                                                     'correo'
                                                     // 'PRECIO COMPRA','PRECIO VENTA'
-                                                    ])
+                                                    ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
-                                                        @foreach ($arrayB as $buscar)
-                                                            <option>{{ $buscar }}</option>
-                                                        @endforeach
+                                                        <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option><?php echo e($buscar); ?></option>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 
                                                 </div>
@@ -89,15 +89,15 @@
                                     </form>
                                   
                                 </div>
-                                {{-- end container --}}
+                                
                             </div>
-                            @if ($clientes->count()))
+                            <?php if($clientes->count()): ?>)
                             <div class="card-body ">
                               
                                
                                 
                                <div class="table-responsive">
-                                    {{-- id="dataTable" --}}
+                                    
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
@@ -112,77 +112,78 @@
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
-                                            @forelse ($clientes as $cliente)
+                                            <?php $__empty_1 = true; $__currentLoopData = $clientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cliente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-                                                    <th scope="row">{{ $cliente->id }}</th>
+                                                    <th scope="row"><?php echo e($cliente->id); ?></th>
 
                                                     <td>
-                                                        @can('productos.show')
+                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
                                                         <a class="text-center"
-                                                            href="{{ route('clientes.show', [$cliente]) }}">
+                                                            href="<?php echo e(route('clientes.show', [$cliente])); ?>">
 
-                                                            {{ $cliente->nombre }}
+                                                            <?php echo e($cliente->nombre); ?>
+
                                                         </a>
-                                                        @endcan
+                                                        <?php endif; ?>
                                                     </td>
 
-                                                    <td class="text-center">{{ $cliente->apellido_p }}</td>
-                                                    <td class="text-center">{{ $cliente->apellido_m }}</td>
-                                                    <td class="text-center">{{ $cliente->fecha }}</td>
-                                                    <td class="text-center"> {{ $cliente->correo}}</td>
-                                                    <td class="text-center"> {{ $cliente->telefono }}</td>
+                                                    <td class="text-center"><?php echo e($cliente->apellido_p); ?></td>
+                                                    <td class="text-center"><?php echo e($cliente->apellido_m); ?></td>
+                                                    <td class="text-center"><?php echo e($cliente->fecha); ?></td>
+                                                    <td class="text-center"> <?php echo e($cliente->correo); ?></td>
+                                                    <td class="text-center"> <?php echo e($cliente->telefono); ?></td>
                                                            
 
                                                     
                                                     <td>
-                                                        {{-- @can('client.edit') --}}
-                                                        <a title="editar datos" href="{{ route('clientes.edit',$cliente) }}"
+                                                        
+                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',$cliente)); ?>"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
-                                                        {{-- @endcan --}}
+                                                        
                                                     </td>
                                                     <td>
-                                                        {{-- @can('productos.destroy') --}}
-                                                        <form action="{{ route('clientes.destroy', [$cliente]) }}"
+                                                        
+                                                        <form action="<?php echo e(route('clientes.destroy', [$cliente])); ?>"
                                                             method="post">
-                                                            @method("delete")
-                                                            @csrf
+                                                            <?php echo method_field("delete"); ?>
+                                                            <?php echo csrf_field(); ?>
                                                             <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
                                                         </form> 
-                                                        {{-- @endcan --}}
+                                                        
                                                     </td>
                                                 </tr>
-                                            @empty
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                             <h3 class="text-black text-center"> ¡No hay registros!</h3>
-                                     @endforelse
+                                     <?php endif; ?>
                                         </tbody>
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="{{ route('clientes.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('clientes.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
-                                                    href="{{ $clientes->previousPageUrl() }}">Anterior</a></li>
-                                            <li class="page-item"><a class="page-link" href="{{ $clientes->url(1) }}">1</a>
+                                                    href="<?php echo e($clientes->previousPageUrl()); ?>">Anterior</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($clientes->url(1)); ?>">1</a>
                                             </li>
-                                            <li class="page-item"><a class="page-link" href="{{ $clientes->url(2) }}">2</a>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($clientes->url(2)); ?>">2</a>
                                             </li>
-                                            <li class="page-item"><a class="page-link" href="{{ $clientes->url(3) }}">3</a>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($clientes->url(3)); ?>">3</a>
                                             </li>
                                             <li class="page-item"><a class="page-link"
-                                                    href="{{ $clientes->nextPageUrl() }}">Siguiente</a></li>
+                                                    href="<?php echo e($clientes->nextPageUrl()); ?>">Siguiente</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            @else
+                            <?php else: ?>
                             <div class="card-body ">
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="{{ route('clientes.index')}}" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="<?php echo e(route('clientes.index')); ?>" class="btn btn-outline-primary" >regresar</a>
                                     </div>
                                 </div>
                                 
@@ -197,7 +198,7 @@
                                
                                 
                                  </div>
-                             @endif
+                             <?php endif; ?>
                         
                         </div>
                         <br>
@@ -208,7 +209,7 @@
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                @include('plantilla.footer')
+                <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <!-- End of Footer -->
 
             </div>
@@ -217,4 +218,6 @@
         </div>
         <!-- End of Page Wrapper -->
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/clients/index.blade.php ENDPATH**/ ?>

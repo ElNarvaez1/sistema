@@ -50,7 +50,7 @@ class ClienteController extends Controller
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
                 'apellido_p' => 'required|regex:/^[\pL\s\-]+$/u',
                 'apellido_m' => 'required|regex:/^[\pL\s\-]+$/u',
-                'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
+                //'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
                 'correo' => 'required|email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
                
@@ -62,7 +62,7 @@ class ClienteController extends Controller
         $cliente ->nombre =Str::upper($request->input('nombre'));
         $cliente ->apellido_p =Str::upper($request->input('apellido_p'));
         $cliente ->apellido_m =Str::upper($request->input('apellido_m'));
-        $cliente ->direccion =Str::upper($request->input('direccion'));
+        $cliente ->direccion = "sdfhjkhgfdfgh";
         
 
         $cliente->saveOrFail();
@@ -113,7 +113,7 @@ class ClienteController extends Controller
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
                 'apellido_p' => 'required|regex:/^[\pL\s\-]+$/u',
                 'apellido_m' => 'required|regex:/^[\pL\s\-]+$/u',
-                'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
+                //'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
                 'correo' => 'required|email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
                
@@ -125,7 +125,7 @@ class ClienteController extends Controller
         $cliente ->nombre =Str::upper($request->input('nombre'));
         $cliente ->apellido_p =Str::upper($request->input('apellido_p'));
         $cliente ->apellido_m =Str::upper($request->input('apellido_m'));
-        $cliente ->direccion =Str::upper($request->input('direccion'));
+        //$cliente ->direccion =Str::upper($request->input('direccion'));
         
         // $cliente->update($request->input());
         $cliente->save();
