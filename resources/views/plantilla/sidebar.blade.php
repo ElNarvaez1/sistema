@@ -64,7 +64,7 @@
       </a>
   </li>
   {{-- @endcan --}}
-
+  
 
 
 
@@ -153,7 +153,16 @@
     </a>
 </li>
 @endcan
+{{--@can('proveedor.index') --}}
+<hr class="sidebar-divider my-0">
 
+<li class="nav-item   {{ !Route::is('proveedor.index') ?: 'active' }}">
+    <a class="nav-link" href="{{ route('proveedor.index') }}">
+        <i class="fas fa-qrcode"></i>
+        <span>Proveedores</span>
+    </a>
+</li>
+{{--@endcan--}}
 
  @can('cart.invoices')
 <hr class="sidebar-divider my-0">

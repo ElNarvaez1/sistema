@@ -12,6 +12,7 @@ use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,13 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
+    //Proveedor
+    Route::get('Proveedor',[ProveedorController::Class,'index'])->name('proveedor.index');
+    Route::get('Proveedor/index',[ProveedorController::Class,'create'])->name('proveedor.create');
+    Route::post('Proveedor/index/add',[ProveedorController::Class,'store'])->name('proveedor.store');
+    Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::Class,'edit'])->name('proveedor.edit');
+    Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::Class,'destroy'])->name('proveedor.destroy');
+    Route::put('Proveedor/index/{idProveedor}',[ProveedorController::Class,'update'])->name('proveedor.update');
 
 });
 

@@ -64,7 +64,7 @@
       </a>
   </li>
   
-
+  
 
 
 
@@ -142,6 +142,15 @@
     </a>
 </li>
 <?php endif; ?>
+
+<hr class="sidebar-divider my-0">
+
+<li class="nav-item   <?php echo e(!Route::is('proveedor.index') ?: 'active'); ?>">
+    <a class="nav-link" href="<?php echo e(route('proveedor.index')); ?>">
+        <i class="fas fa-qrcode"></i>
+        <span>Proveedores</span>
+    </a>
+</li>
 
 
  <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cart.invoices')): ?>
