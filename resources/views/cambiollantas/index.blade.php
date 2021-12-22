@@ -64,8 +64,9 @@
                                 </div>
 
                             </div>
-                            <div class="card-body ">
+                            <div class="card-body "> 
                                 <div class="table-responsive">
+                                {{-- id="dataTbale" --}}
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
@@ -77,16 +78,20 @@
                                                 <th scope="col" colspan="2">ACCIONES</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
+                                            @forelse ($listaCambioLlantas as $cambio)
                                                 <tr class="table-hover">
-                                                    <th class="text-center" scope="row">SERV-123</th>
-                                                    <th class="text-center" scope="row">21-12-2021</th>
-                                                    <th class="text-center" scope="row">Cambio de una llanata marca michellin</th>
-                                                    <th class="text-center" scope="row">$230.0</th>
-                                                    <th class="text-center" scope="row">admin</th>
+                                                    <th class="text-center" scope="row">{{$cambio->idCambio}}</th>
+                                                    <th class="text-center" scope="row">{{$cambio->fecha}}</th>
+                                                    <th class="text-center" scope="row">{{$cambio->descripcion}}</th>
+                                                    <th class="text-center" scope="row">${{$cambio->monto}}</th>
+                                                    <th class="text-center" scope="row">{{$cambio->idUser}}</th>
                                                     <th class="text-center" scope="row">
                                                         <a title="Ver mas" class="btn btn-outline-primary btn-circle"> <i class="fa fa-eye"></i></a>
                                                     </th>
                                                 </tr>
+                                            @empty
+                                                <h3 class="text-black text-center"> ¡No hay registros!</h3>
+                                            @endforelse
                                             <tbody>
                                             <!--<h3 class="text-black text-center"> ¡No hay registros!</h3>-->
                                         </thead>

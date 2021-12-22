@@ -11,7 +11,8 @@ class CambioLLantasController extends Controller
 {
     //retorna la vista principal de cambio de llanats
     public function index(){
-        return view('cambiollantas.index');
+        $listaCambioLlantas = CambioLlanta::all();
+        return view('cambiollantas.index',compact('listaCambioLlantas'));
     }
     //Retorna la vista para agregar un nuevo cambio de llantas
     public function create()

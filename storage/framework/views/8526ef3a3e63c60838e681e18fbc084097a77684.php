@@ -63,8 +63,9 @@
                                 </div>
 
                             </div>
-                            <div class="card-body ">
+                            <div class="card-body "> 
                                 <div class="table-responsive">
+                                
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
@@ -76,16 +77,20 @@
                                                 <th scope="col" colspan="2">ACCIONES</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
+                                            <?php $__empty_1 = true; $__currentLoopData = $listaCambioLlantas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cambio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-                                                    <th class="text-center" scope="row">SERV-123</th>
-                                                    <th class="text-center" scope="row">21-12-2021</th>
-                                                    <th class="text-center" scope="row">Cambio de una llanata marca michellin</th>
-                                                    <th class="text-center" scope="row">$230.0</th>
-                                                    <th class="text-center" scope="row">admin</th>
+                                                    <th class="text-center" scope="row"><?php echo e($cambio->idCambio); ?></th>
+                                                    <th class="text-center" scope="row"><?php echo e($cambio->fecha); ?></th>
+                                                    <th class="text-center" scope="row"><?php echo e($cambio->descripcion); ?></th>
+                                                    <th class="text-center" scope="row">$<?php echo e($cambio->monto); ?></th>
+                                                    <th class="text-center" scope="row"><?php echo e($cambio->idUser); ?></th>
                                                     <th class="text-center" scope="row">
                                                         <a title="Ver mas" class="btn btn-outline-primary btn-circle"> <i class="fa fa-eye"></i></a>
                                                     </th>
                                                 </tr>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                                <h3 class="text-black text-center"> ¡No hay registros!</h3>
+                                            <?php endif; ?>
                                             <tbody>
                                             <!--<h3 class="text-black text-center"> ¡No hay registros!</h3>-->
                                         </thead>
