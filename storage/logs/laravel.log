@@ -2881,3 +2881,23 @@ Did you mean one of these?
 #53 /Applications/XAMPP/xamppfiles/htdocs/sistema/server.php(21): require_once('/Applications/X...')
 #54 {main}
 "} 
+[2021-12-22 04:27:15] local.ERROR: filemtime(): stat failed for /Applications/XAMPP/xamppfiles/htdocs/sistema/.env {"exception":"[object] (ErrorException(code: 0): filemtime(): stat failed for /Applications/XAMPP/xamppfiles/htdocs/sistema/.env at /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Foundation/Console/ServeCommand.php:66)
+[stacktrace]
+#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'filemtime(): st...', '/Applications/X...', 66, Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Foundation/Console/ServeCommand.php(66): filemtime('/Applications/X...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Foundation\\Console\\ServeCommand->handle()
+#3 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#4 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#5 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#6 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#7 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\\Container\\Container->call(Array)
+#8 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/symfony/console/Command/Command.php(299): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#9 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Console/Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#10 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/symfony/console/Application.php(978): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/symfony/console/Application.php(295): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Foundation\\Console\\ServeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 /Applications/XAMPP/xamppfiles/htdocs/sistema/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 /Applications/XAMPP/xamppfiles/htdocs/sistema/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 {main}
+"} 
