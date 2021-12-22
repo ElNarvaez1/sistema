@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('titulo', 'Asignar Rol')
+@section('titulo', 'Cambio de llantas')
 @section('contenido')
 
 
@@ -15,7 +15,7 @@
                     <br>
                     <!--encabezado-->                    
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Cambios de llantas  <i class="fas fa-tools"></i></h1>
-                    <p class="mb-4 text-dark">Consulte la información historica sobre le cambio de llantas</p>
+                    <p class="mb-4 text-dark">Consulte la información historica sobre el cambio de llantas</p>
                     {{-- mensajes --}}
                     @include('plantilla.notification')
                     <div class="card shadow mb-4 rounded card-color">
@@ -25,10 +25,11 @@
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 <div class="row">
+                                {{-- cambiar llantas --}}
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
-                                            <a title="agregar nuevo cliente" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
-                                                        Nuevo cambio de llanta <i class="fas fa-plus-circle"></i>
+                                            <a title="agregar nuevo cliente" href="" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
+                                                        Nuevo cambio neumaticos <i class="fas fa-plus-circle"></i>
                                             </a>
                                         </div>
                                     </div>

@@ -9,7 +9,7 @@ class Producto extends Model
 {
     use SoftDeletes; //Implementamos
     protected $dates = ['deleted_at']; //Registramos la nueva columna
-    protected $table = 'product';
+    protected $table = 'productos';
     protected $primarykey = 'id';
     public $timestamps = false;
     protected $fillable =[

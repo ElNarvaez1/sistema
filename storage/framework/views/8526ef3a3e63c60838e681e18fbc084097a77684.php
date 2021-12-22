@@ -24,6 +24,7 @@
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 <div class="row">
+                                
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
                                             <a title="agregar nuevo cliente" href="" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
@@ -113,4 +114,4 @@
             
            
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/sistema/resources/views/promociones/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/sistema/resources/views/cambiollantas/index.blade.php ENDPATH**/ ?>

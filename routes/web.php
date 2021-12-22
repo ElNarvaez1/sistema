@@ -80,7 +80,7 @@ Route::delete('/Ventas/remove/{id}', [VentasController::class, 'delete'])->name(
 Route::get('/Ventas/download/ticket/{id}', [VentasController::class, 'ticket_download'])->name('venta.ticket');
 
 // PROMOCIONES -API TELEGRAM
-Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
+//Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
 Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTelegram'])->name('promocion.send');
 // Route::get('/updated-activity', [PromocionesController::class,'updatedActivity']);
 
@@ -102,6 +102,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
 //Cambio de llantas
     Route::get('/cambiollanta/index/create', [CambioLLantasController::class,'create'])->name('cambiollanta.create');
+    Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
 
 });
 
