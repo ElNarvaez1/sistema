@@ -31,7 +31,7 @@ class batertiaController extends Controller
         $variablesurl = $request->all();
         $productos = Producto::buscarpor($tipo, Str::upper($buscar))->paginate(5)->appends($variablesurl);
 
-        return view('productos.baterias_index', compact('productos'));
+        return view('productos.baterias.baterias_index', compact('productos'));
     }
 
     /**
@@ -40,7 +40,7 @@ class batertiaController extends Controller
      */
     public function create()
     {
-        return view('productos.baterias_add');
+        return view('productos.baterias.baterias_add');
     }
 
     /**
@@ -53,7 +53,7 @@ class batertiaController extends Controller
         if (!$baterium) {
             return view('errors.404');
         }
-        return view('productos.baterias_show', ["producto" => $baterium]);
+        return view('productos.baterias.baterias_show', ["producto" => $baterium]);
     }
 
     /**
@@ -102,6 +102,6 @@ class batertiaController extends Controller
 
     public function edit(batertiaModel $baterium)
     {
-        return view('productos.baterias_edit', ["producto" => $baterium]);
+        return view('productos.baterias.baterias_edit', ["producto" => $baterium]);
     }
 }
