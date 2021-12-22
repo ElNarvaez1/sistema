@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RolesController;
@@ -33,6 +34,7 @@ Route::group(['middleware' =>'auth'], function(){
 
     // Rutas Dashboard admin
     Route::resource('productos', ProductosController::class);
+    Route::resource('inventario', InventarioController::class);
     Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
     Route::resource('role', RolesController::class);
     Route::resource('user', UserController::class)->only(['index','edit','update']);

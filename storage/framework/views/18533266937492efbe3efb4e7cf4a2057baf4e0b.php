@@ -1,11 +1,11 @@
-@extends('layouts.main')
-@section('titulo', 'Productos')
-@section('contenido')
+
+<?php $__env->startSection('titulo', 'Inventario'); ?>
+<?php $__env->startSection('contenido'); ?>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        {{-- incluimos sildebar color: azul :) --}}
-        @include('plantilla.sidebar')
+        
+        <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -13,55 +13,52 @@
             <!-- Main Content -->
             <div id="content">
 
-                @include('layouts.nav-log')
+                <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> PRODUCTOS <i class="fas fa-boxes"></i></h1>
-                    <p class="mb-4 text-dark">Registro de nuevos productos aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> INVENTARIO <i class="fas fa-boxes"></i></h1>
+                    <p class="mb-4 text-dark">Consulte todos los productos de su inventario aquí.</p>
 
 
-                    {{-- mensajes --}}
-                    @include('plantilla.notification')
+                    
+                    <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold">Agrega, edite y elimine productos</h6>
+                            <h6 class="m-0 font-weight-bold">Inventario del sistema</h6>
                         </div>
 
 
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 
-                                <form action="{{ route('productos.index', [$productos]) }}" method="GET">
+                                <form action="<?php echo e(route('productos.index', [$productos])); ?>" method="GET">
                                     <div class="row">
 
-                                        {{-- add product --}}
+                                        
                                         <div class="col-md-3 mt-4">
                                             <div class="form-group">
-                                                <a title="agregar producto" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
-                                                    href="{{ route('productos.create') }}">
-                                                    Agregar producto <i class="fas fa-plus-circle"></i>
-                                                </a>
+
                                             </div>
                                         </div>
 
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
-                                                @php($arrayB = [
+                                                <?php ($arrayB = [
                                                     'nombre',
                                                     'descripcion',
                                                     'modelo',
                                                     'tipo',
                                                     // 'PRECIO COMPRA','PRECIO VENTA'
-                                                    ])
+                                                    ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
-                                                        @foreach ($arrayB as $buscar)
-                                                            <option>{{ $buscar }}</option>
-                                                        @endforeach
+                                                        <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option><?php echo e($buscar); ?></option>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 
                                                 </div>
@@ -88,14 +85,27 @@
                                     </form>
                                   
                                 </div>
-                                {{-- end container --}}
+                                
                             </div>
-                            @if ($productos->count()))
+                            <?php if($productos->count()): ?>)
                             <div class="card-body ">
-
-                                                        
+                                <div class="container">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col col-lg-3">
+                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Suficientes.</h5>
+                                      </div>
+                                      <div class="col-lg-3">
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-warning">2</span> Pocas</h5>
+                                      </div>
+                                      <div class="col-lg-3">
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">3</span> Agotado.</h5>
+                                      </div>
+                                    </div>
+                                </div>
+                               
+                                
                                <div class="table-responsive">
-                                    {{-- id="dataTable" --}}
+                                    
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
@@ -107,87 +117,67 @@
                                                 <th scope="col">PRECIO COMPRA</th>
                                                 <th scope="col">PRECIO VENTA</th>
                                                 <th scope="col">EXISTENCIA</th>
-                                                <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
-                                            @forelse ($productos as $producto)
+                                            <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-                                                    <th scope="row">{{ $producto->id }}</th>
+                                                    <th scope="row"><?php echo e($producto->id); ?></th>
 
                                                     <td>
-                                                        @can('productos.show')
+                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
                                                         <a class="text-center"
-                                                            href="{{ route('productos.show', [$producto]) }}">
+                                                            href="<?php echo e(route('productos.show', [$producto])); ?>">
 
-                                                            {{ $producto->nombre }}
+                                                            <?php echo e($producto->nombre); ?>
+
                                                         </a>
-                                                        @endcan
+                                                        <?php endif; ?>
                                                     </td>
 
-                                                    <td class="text-justify">{{ $producto->descripcion }}</td>
-                                                    <td class="text-center">{{ $producto->modelo }}</td>
-                                                    <td class="text-center">{{ $producto->tipo }}</td>
-                                                    <td class="text-center">$ {{ $producto->precio_c }}</td>
-                                                    <td class="text-center">$ {{ $producto->precio_v }}</td>
-                                                            @if ($producto->stock>5)
-                                                            <h5><td class="badge badge-success">{{ $producto->stock }}</td></h5>
-                                                            @elseif ($producto->stock == 0)
-                                                            <h5><td class="badge badge-danger">{{ $producto->stock }}</td></h5>
-                                                                @else
-                                                                <h5><td class="badge badge-warning">{{ $producto->stock }}</td></h5>
-                                                            @endif
+                                                    <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
+                                                    <td class="text-center"><?php echo e($producto->modelo); ?></td>
+                                                    <td class="text-center"><?php echo e($producto->tipo); ?></td>
+                                                    <td class="text-center">$ <?php echo e($producto->precio_c); ?></td>
+                                                    <td class="text-center">$ <?php echo e($producto->precio_v); ?></td>
+                                                            <?php if($producto->stock>5): ?>
+                                                            <h5><td class="badge badge-success"><?php echo e($producto->stock); ?></td></h5>
+                                                            <?php elseif($producto->stock == 0): ?>
+                                                            <h5><td class="badge badge-danger"><?php echo e($producto->stock); ?></td></h5>
+                                                                <?php else: ?>
+                                                                <h5><td class="badge badge-warning"><?php echo e($producto->stock); ?></td></h5>
+                                                            <?php endif; ?>
 
-                                                    
-                                                    <td>
-                                                        @can('productos.edit')
-                                                        <a title="editar producto" href="{{ route('productos.edit', [$producto]) }}"
-                                                            class="btn btn-outline-primary btn-circle">
-                                                            <i class="fa fa-edit"></i></a>
-                                                        @endcan
-                                                    </td>
-                                                    <td>
-                                                        @can('productos.destroy')
-                                                        <form action="{{ route('productos.destroy', [$producto]) }}"
-                                                            method="post">
-                                                            @method("delete")
-                                                            @csrf
-                                                            <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form> 
-                                                        @endcan
-                                                    </td>
                                                 </tr>
-                                            @empty
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                             <h3 class="text-black text-center"> ¡No hay registros!</h3>
-                                     @endforelse
+                                     <?php endif; ?>
                                         </tbody>
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('inventario.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
-                                                    href="{{ $productos->previousPageUrl() }}">Anterior</a></li>
-                                            <li class="page-item"><a class="page-link" href="{{ $productos->url(1) }}">1</a>
+                                                    href="<?php echo e($productos->previousPageUrl()); ?>">Anterior</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(1)); ?>">1</a>
                                             </li>
-                                            <li class="page-item"><a class="page-link" href="{{ $productos->url(2) }}">2</a>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(2)); ?>">2</a>
                                             </li>
-                                            <li class="page-item"><a class="page-link" href="{{ $productos->url(3) }}">3</a>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(3)); ?>">3</a>
                                             </li>
                                             <li class="page-item"><a class="page-link"
-                                                    href="{{ $productos->nextPageUrl() }}">Siguiente</a></li>
+                                                    href="<?php echo e($productos->nextPageUrl()); ?>">Siguiente</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            @else
+                            <?php else: ?>
                             <div class="card-body ">
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="{{ route('productos.index')}}" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="<?php echo e(route('inventario.index')); ?>" class="btn btn-outline-primary" >regresar</a>
                                     </div>
                                 </div>
                                 
@@ -202,7 +192,7 @@
                                
                                 
                                  </div>
-                             @endif
+                             <?php endif; ?>
                         
                         </div>
                         <br>
@@ -213,7 +203,7 @@
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                @include('plantilla.footer')
+                <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <!-- End of Footer -->
 
             </div>
@@ -222,4 +212,6 @@
         </div>
         <!-- End of Page Wrapper -->
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/inventario/index.blade.php ENDPATH**/ ?>
