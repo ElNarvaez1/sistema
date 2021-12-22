@@ -13,10 +13,10 @@ class CreateBatertiaModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('batertia_models', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        // Schema::create('batertia_models', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -26,6 +26,6 @@ class CreateBatertiaModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('batertia_models');
+        // Schema::dropIfExists('batertia_models');
     }
 }

@@ -40,32 +40,140 @@
                             <?php echo csrf_field(); ?>
                             <div class="row">
 
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Nombre del producto</label>
-                                        <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>" placeholder="Introduce el nombre del producto" class="form-control text-upper">
-                                        
-                                        <?php $__errorArgs = ['nombre'];
+                                <!--############################################# INPUTS ############################################################################################################-->
+                                                                    <!--------------------------Inputs de la informacion NOMBRE-------------------------->
+                                                                    <div class="col-md-4 mt-2">
+                                        <div class="form-group">
+                                            <label class="fs-5 text-body">Nombre</label>
+                                            <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>"
+                                                placeholder="" class="form-control text-upper">
+                                            
+                                            <?php $__errorArgs = ['nombre'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                    <!--------------------------Inputs de la informacion MODELO-------------------------->
+                                    <div class="col-md-4 mt-2">
+                                        <div class="form-group">
+                                            <label class="fs-5 text-body">Modelo</label>
+                                            <input type="text" name="modelo" value="<?php echo e(old('modelo')); ?>"
+                                                placeholder="" class="form-control text-upper">
+                                                <?php $__errorArgs = ['modelo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <div class="message-error">*<?php echo e($message); ?></div>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                    <!--------------------------Inputs de la informacion IMAGEN-------------------------->
+                                    <div class="col-md-4 mt-2">
+                                        <div class="form-group">
+                                            <label class="fs-5 text-body">Imagen</label>
+                                            <input type="file" name="imageFile" value="" class="form-control text-upper">
+                                                <?php $__errorArgs = ['tipo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <div class="message-error">*<?php echo e($message); ?></div>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                    <!--------------------------Inputs de la informacion PRECIO COMPRA -------------------------->
+                                    <div class="col-md-4 mt-2">
+                                        <div class="form-group">
+                                            <label class="fs-5 text-body">Precio compra $</label>
+                                            <input type="number" name="precio_c" value="<?php echo e(old('precio_c')); ?>"
+                                                        placeholder="" class="form-control text-upper">
+                                                <?php $__errorArgs = ['precio_c'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <div class="message-error">*<?php echo e($message); ?></div>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                    <!--------------------------Inputs de la informacion PRECIO VENTA -------------------------->
+                                    <div class="col-md-4 mt-2">
+                                        <div class="form-group">
+                                            <label class="fs-5 text-body">Precio venta</label>
+                                            <input type="number" name="precio_v" value="<?php echo e(old('precio_v')); ?>"
+                                                        placeholder="$" class="form-control text-upper">
+                                                <?php $__errorArgs = ['precio_v'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <div class="message-error">*<?php echo e($message); ?></div>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                    <!--------------------------Inputs de la informacion EXISTENCIA -------------------------->
+                                    <div class="col-md-4 mt-2">
+                                        <div class="form-group">
+                                            <label class="fs-5 text-body">Existencia</label>
+                                            <input type="number" name="existencia" value="<?php echo e(old('stock')); ?>"
+                                                        placeholder="" class="form-control text-upper" min="1">
+                                                <?php $__errorArgs = ['stock'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <div class="message-error">*<?php echo e($message); ?></div>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                <!-----------------------INPUTS DE ID *Id de la llanta*---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Id de la llanta</label>
+                                        <input type="text" name="idLlanta" value="<?php echo e(old('idLlanta')); ?>" placeholder="Introduce el nombre del producto" class="form-control text-upper">
+                                        
+                                        <?php $__errorArgs = ['idLlanta'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">* <?php echo e($message); ?></div>
                                         <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
-
                                 </div>
+                                <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
 
                                 <div class="col-md-8 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Descripción</label>
-                                        <textarea class="form-control text-upper" placeholder="Descripción del producto..." name="descripcion"><?php echo e(old('descripcion')); ?></textarea>
-
-                                        
-                                        <?php $__errorArgs = ['descripcion'];
+                                        <label class="fs-5 text-body">Carga Maxima</label>
+                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="<?php echo e(old('cargaMaxima')); ?>" class="form-control text-upper">
+                                        <?php $__errorArgs = ['cargaMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -75,19 +183,15 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
                                     </div>
                                 </div>
 
+                                <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Modelo</label>
-                                        
-
-                                        
-                                        
-                                        <input type="text" name="modelo" value="<?php echo e(old('modelo')); ?>" placeholder="Introduce el modelo del producto" class="form-control text-upper">
-                                        <?php $__errorArgs = ['modelo'];
+                                        <label class="fs-5 text-body">velocidad Maxima</label>
+                                        <input type="number" name="stock" value="<?php echo e(old('velocidadMaxima')); ?>" class="form-control text-upper" min="1">
+                                        <?php $__errorArgs = ['velocidadMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -99,16 +203,12 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
+                                <!----------------------- CAJA DE TEXTO *Media* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Tipo</label>
-                                        
-
-                                        <input type="text" name="tipo" value="<?php echo e(old('tipo')); ?>" placeholder="Introduce el tipo del producto" class="form-control text-upper">
-
-                                        
-                                        <?php $__errorArgs = ['tipo'];
+                                        <label class="fs-5 text-body">Medida</label>
+                                        <input type="number" name="medida" value="<?php echo e(old('medida')); ?>" class="form-control text-upper" min="1">
+                                        <?php $__errorArgs = ['medida'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -118,17 +218,14 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
                                     </div>
                                 </div>
-
+                                <!----------------------- CAJA DE TEXTO ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Precio compra $</label>
-                                        <input type="text" name="precio_c" value="<?php echo e(old('precio_c')); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
-
-                                        
-                                        <?php $__errorArgs = ['precio_c'];
+                                        <label class="fs-5 text-body">Presion</label>
+                                        <input type="number" name="presion" value="<?php echo e(old('presion')); ?>" class="form-control text-upper" min="1">
+                                        <?php $__errorArgs = ['presion'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -141,68 +238,6 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Precio venta $</label>
-                                        <input type="text" name="precio_v" value="<?php echo e(old('precio_v')); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
-
-                                        
-                                        <?php $__errorArgs = ['precio_v'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Existencia</label>
-                                        <input type="number" name="stock" value="<?php echo e(old('stock')); ?>" placeholder="En existencia" class="form-control text-upper" min="1">
-
-                                        
-                                        <?php $__errorArgs = ['stock'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Agregar imagen</label>
-
-                                        <!-- Upload image input-->
-
-                                        <input type="file" name="imagen" accept="image/*" placeholder="Inserte una imagen" class="form-control text-upper">
-
-
-                                        
-                                        <?php $__errorArgs = ['imagen'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
 
 
                             </div>
@@ -216,7 +251,7 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
                                 <div class="col-auto">
-                                    <a title="cancelar producto" href=<?php echo e(route('productos.index')); ?> class="btn btn-primary btn-ms">Regresar
+                                    <a title="cancelar producto" href="../" class="btn btn-primary btn-ms">Regresar
                                         <i class="fas fa-strikethrough"></i></a>
                                 </div>
                                 <?php endif; ?>

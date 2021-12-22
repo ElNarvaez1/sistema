@@ -51,16 +51,16 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                                    'id Llanta',
-                                                    'id Rin',
-                                                    'carga Maxima',
-                                                    'velocidad Maxima',
-                                                    'medida',
-                                                    'presion'
+                                            'id Llanta',
+                                            'id Rin',
+                                            'carga Maxima',
+                                            'velocidad Maxima',
+                                            'medida',
+                                            'presion'
                                             ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 @foreach ($arrayB as $buscar)
-                                                    <option>{{ $buscar }}</option>
+                                                <option>{{ $buscar }}</option>
                                                 @endforeach
                                             </select>
 
@@ -142,13 +142,13 @@
 
                                         <td>
                                             @can('productos.edit')
-                                            <a title="editar producto" href="{{ route('productos.edit', [$producto]) }}" class="btn btn-outline-primary btn-circle">
+                                            <a title="editar producto" href="{{ route('llantas.edit', [$producto]) }}" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('productos.destroy')
-                                            <form action="{{ route('productos.destroy', [$producto]) }}" method="post">
+                                            <form action="{{ route('llantas.destroy', [$producto]) }}" method="post">
                                                 @method("delete")
                                                 @csrf
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">

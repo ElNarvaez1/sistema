@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\batertiaModel;
+use App\Models\llantaModel;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -64,9 +65,10 @@ class llantaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(llantaModel $llanta)
     {
-        //
+       return view('productos.llantas_edit',
+                        compact('llanta'));
     }
 
     /**
@@ -76,9 +78,13 @@ class llantaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, llantaModel $llanta)
     {
-        //
+        //Validadomos.
+
+
+        $llanta->save();
+        return redirect()->route('llantas.index');
     }
 
     /**

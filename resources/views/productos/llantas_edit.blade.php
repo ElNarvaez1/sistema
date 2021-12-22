@@ -35,9 +35,10 @@
 
                     <div class="container">
 
-                        <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('llantas.update',$llanta) }}" enctype="multipart/form-data">
 
                             @csrf
+                            @method('PUT')
                             <div class="row">
 
                                 <!--############################################# INPUTS ############################################################################################################-->
@@ -45,7 +46,7 @@
                                                                     <div class="col-md-4 mt-2">
                                         <div class="form-group">
                                             <label class="fs-5 text-body">Nombre</label>
-                                            <input type="text" name="nombre" value="{{ old('nombre') }}"
+                                            <input type="text" name="nombre" value="{{ $llanta->nombre }}"
                                                 placeholder="" class="form-control text-upper">
                                             {{-- validaciones --}}
                                             @error('nombre')
@@ -57,7 +58,7 @@
                                     <div class="col-md-4 mt-2">
                                         <div class="form-group">
                                             <label class="fs-5 text-body">Modelo</label>
-                                            <input type="text" name="modelo" value="{{ old('modelo') }}"
+                                            <input type="text" name="modelo" value="{{ $llanta->modelo }}"
                                                 placeholder="" class="form-control text-upper">
                                                 @error('modelo')
                                                     <div class="message-error">*{{ $message }}</div>
@@ -68,7 +69,7 @@
                                     <div class="col-md-4 mt-2">
                                         <div class="form-group">
                                             <label class="fs-5 text-body">Imagen</label>
-                                            <input type="file" name="imageFile" value="" class="form-control text-upper">
+                                            <input type="file" name="imageFile" value="{{$llanta->imageFile}}" class="form-control text-upper">
                                                 @error('tipo')
                                                     <div class="message-error">*{{ $message }}</div>
                                                 @enderror
@@ -78,7 +79,7 @@
                                     <div class="col-md-4 mt-2">
                                         <div class="form-group">
                                             <label class="fs-5 text-body">Precio compra $</label>
-                                            <input type="number" name="precio_c" value="{{ old('precio_c') }}"
+                                            <input type="number" name="precio_c" value="{{ $llanta->precio_c }}"
                                                         placeholder="" class="form-control text-upper">
                                                 @error('precio_c')
                                                     <div class="message-error">*{{ $message }}</div>
@@ -89,7 +90,7 @@
                                     <div class="col-md-4 mt-2">
                                         <div class="form-group">
                                             <label class="fs-5 text-body">Precio venta</label>
-                                            <input type="number" name="precio_v" value="{{ old('precio_v') }}"
+                                            <input type="number" name="precio_v" value="{{ $llanta->precio_v  }}"
                                                         placeholder="$" class="form-control text-upper">
                                                 @error('precio_v')
                                                     <div class="message-error">*{{ $message }}</div>
@@ -100,7 +101,7 @@
                                     <div class="col-md-4 mt-2">
                                         <div class="form-group">
                                             <label class="fs-5 text-body">Existencia</label>
-                                            <input type="number" name="existencia" value="{{ old('stock') }}"
+                                            <input type="number" name="existencia" value="{{ $llanta->existencia  }}"
                                                         placeholder="" class="form-control text-upper" min="1">
                                                 @error('stock')
                                                     <div class="message-error">*{{ $message }}</div>
@@ -111,7 +112,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Id de la llanta</label>
-                                        <input type="text" name="idLlanta" value="{{ old('idLlanta') }}" placeholder="Introduce el nombre del producto" class="form-control text-upper">
+                                        <input type="text" name="idLlanta" value="{{ $llanta->idLlanta }}" placeholder="Introduce el nombre del producto" class="form-control text-upper">
                                         {{-- validaciones --}}
                                         @error('idLlanta')
                                         <div class="message-error">* {{ $message }}</div>
@@ -123,7 +124,7 @@
                                 <div class="col-md-8 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Carga Maxima</label>
-                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="{{old('cargaMaxima')}}" class="form-control text-upper">
+                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="{{$llanta->cargaMaxima}}" class="form-control text-upper">
                                         @error('cargaMaxima')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -134,7 +135,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">velocidad Maxima</label>
-                                        <input type="number" name="stock" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="stock" value="{{ $llanta->stock }}" class="form-control text-upper" min="1">
                                         @error('velocidadMaxima')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -144,7 +145,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Medida</label>
-                                        <input type="number" name="medida" value="{{ old('medida') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="medida" value="{{ $llanta->medida }}" class="form-control text-upper" min="1">
                                         @error('medida')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -154,7 +155,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Presion</label>
-                                        <input type="number" name="presion" value="{{ old('presion') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="presion" value="{{  $llanta->presion }}" class="form-control text-upper" min="1">
                                         @error('presion')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror

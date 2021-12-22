@@ -13,10 +13,10 @@ class CreateLlantaModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('llanta_models', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        // Schema::create('llanta_models', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -26,6 +26,6 @@ class CreateLlantaModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('llanta_models');
+        // Schema::dropIfExists('llanta_models');
     }
 }

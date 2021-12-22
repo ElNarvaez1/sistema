@@ -51,16 +51,16 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             <?php ($arrayB = [
-                                                    'id Llanta',
-                                                    'id Rin',
-                                                    'carga Maxima',
-                                                    'velocidad Maxima',
-                                                    'medida',
-                                                    'presion'
+                                            'id Llanta',
+                                            'id Rin',
+                                            'carga Maxima',
+                                            'velocidad Maxima',
+                                            'medida',
+                                            'presion'
                                             ]); ?>
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option><?php echo e($buscar); ?></option>
+                                                <option><?php echo e($buscar); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
 
@@ -143,13 +143,13 @@
 
                                         <td>
                                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.edit')): ?>
-                                            <a title="editar producto" href="<?php echo e(route('productos.edit', [$producto])); ?>" class="btn btn-outline-primary btn-circle">
+                                            <a title="editar producto" href="<?php echo e(route('llantas.edit', [$producto])); ?>" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             <?php endif; ?>
                                         </td>
                                         <td>
                                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.destroy')): ?>
-                                            <form action="<?php echo e(route('productos.destroy', [$producto])); ?>" method="post">
+                                            <form action="<?php echo e(route('llantas.destroy', [$producto])); ?>" method="post">
                                                 <?php echo method_field("delete"); ?>
                                                 <?php echo csrf_field(); ?>
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">

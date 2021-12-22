@@ -35,107 +35,107 @@ class CreateCitasTable extends Migration
       
 
         // productos
-        Schema::create('product', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre')->nullable(false); 
-            $table->text('descripcion');
-            $table->string('modelo')->unique();
-            $table ->string('tipo');
-            $table->float('precio_c')->nullable(false);
-            $table->float('precio_v')->nullable(false);
-            $table-> integer('stock');   
-            $table->longText('imagen')->nullable();
+        // Schema::create('product', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('nombre')->nullable(false); 
+        //     $table->text('descripcion');
+        //     $table->string('modelo')->unique();
+        //     $table ->string('tipo');
+        //     $table->float('precio_c')->nullable(false);
+        //     $table->float('precio_v')->nullable(false);
+        //     $table-> integer('stock');   
+        //     $table->longText('imagen')->nullable();
 
-            // $table-> string('');
-            // $table -> string('adress');
-            // $table-> integer('cart_id')->unsigned();
-            $table->rememberToken();
-            $table->timestamps();
-             $table->softDeletes();
-        });
+        //     // $table-> string('');
+        //     // $table -> string('adress');
+        //     // $table-> integer('cart_id')->unsigned();
+        //     $table->rememberToken();
+        //     $table->timestamps();
+        //      $table->softDeletes();
+        // });
 
         //  
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
-        });
-        // Recuperar passwords
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+        // Schema::create('failed_jobs', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('uuid')->unique();
+        //     $table->text('connection');
+        //     $table->text('queue');
+        //     $table->longText('payload');
+        //     $table->longText('exception');
+        //     $table->timestamp('failed_at')->useCurrent();
+        // });
+        // // Recuperar passwords
+        // Schema::create('password_resets', function (Blueprint $table) {
+        //     $table->string('email')->index();
+        //     $table->string('token');
+        //     $table->timestamp('created_at')->nullable();
+        // });
         
 
 
         // pedidos 
 
-        Schema::create('pedidos', function (Blueprint $table) {
+        // Schema::create('pedidos', function (Blueprint $table) {
 
-            $table->increments('id');
-            $table->unsignedBigInteger('id_cliente')->nullable();
-            $table->String('nombre');
-            $table->integer('total_venta');
-            $table->text('productos');
-            $table->string('direccion');
-            $table->String('telefono');
+        //     $table->increments('id');
+        //     $table->unsignedBigInteger('id_cliente')->nullable();
+        //     $table->String('nombre');
+        //     $table->integer('total_venta');
+        //     $table->text('productos');
+        //     $table->string('direccion');
+        //     $table->String('telefono');
 
-            $table->date('fecha');
-            $table->foreign('id_cliente')
-            ->references('id')->on('users') 
-            ->onDelete('cascade');
+        //     $table->date('fecha');
+        //     $table->foreign('id_cliente')
+        //     ->references('id')->on('users') 
+        //     ->onDelete('cascade');
 
-            // $table->rememberToken();
-            // $table->timestamps();
-            $table->softDeletes();
-         } );
-
-
+        //     // $table->rememberToken();
+        //     // $table->timestamps();
+        //     $table->softDeletes();
+        //  } );
 
 
-        //  clientes 
-        Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre')->nullable(false); 
-            $table->text('apellido_p');
-            $table->text('apellido_m');
-            $table->timestamp('fecha');
-            $table->text('direccion');
-            $table->string('correo');
-            $table->String('telefono');
 
-            $table->rememberToken();
-            $table->softDeletes(); 
+
+        // //  clientes 
+        // Schema::create('clientes', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('nombre')->nullable(false); 
+        //     $table->text('apellido_p');
+        //     $table->text('apellido_m');
+        //     $table->timestamp('fecha');
+        //     $table->text('direccion');
+        //     $table->string('correo');
+        //     $table->String('telefono');
+
+        //     $table->rememberToken();
+        //     $table->softDeletes(); 
 
                
-        });
+        // });
 
          //  ventas 
-         Schema::create('ventas', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_cliente')->nullable();
-            $table->string('nombre')->nullable(false); 
-            $table->text('articulo');
-            $table->integer('cantidad');
-            $table->integer('impuesto')->default(18);
-            $table->timestamp('fecha');
-            $table->integer('descuento');
-            $table->integer('total_venta');
+        //  Schema::create('ventas', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->unsignedBigInteger('id_cliente')->nullable();
+        //     $table->string('nombre')->nullable(false); 
+        //     $table->text('articulo');
+        //     $table->integer('cantidad');
+        //     $table->integer('impuesto')->default(18);
+        //     $table->timestamp('fecha');
+        //     $table->integer('descuento');
+        //     $table->integer('total_venta');
            
 
-            $table->foreign('id_cliente')
-            ->references('id')->on('clientes') 
-            ->onDelete('cascade');
+        //     $table->foreign('id_cliente')
+        //     ->references('id')->on('clientes') 
+        //     ->onDelete('cascade');
 
-            $table->softDeletes(); 
+        //     $table->softDeletes(); 
 
                
-        });
+        // });
         //// citas
         // Schema::create('citas', function (Blueprint $table) {
         //     $table->increments('id');
@@ -167,11 +167,11 @@ class CreateCitasTable extends Migration
        
         Schema::dropIfExists('users');
         
-        Schema::dropIfExists('product');
-        Schema::dropIfExists('failed_jobs');
-        Schema::dropIfExists('password_resets');
-        // Schema::dropIfExists('citas');
-        Schema::dropIfExists('pedidos');
-        Schema::dropIfExists('cliente');
+        // Schema::dropIfExists('product');
+        // Schema::dropIfExists('failed_jobs');
+        // Schema::dropIfExists('password_resets');
+        // // Schema::dropIfExists('citas');
+        // Schema::dropIfExists('pedidos');
+        // Schema::dropIfExists('cliente');
     }
 }
