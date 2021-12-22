@@ -93,8 +93,7 @@
                                             <a class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
                                             <ul class="pagination float-right mt-3">
                                                 <li class="page-item"><a class="page-link">Anterior</a></li>
-                                                <li class="page-item"><a class="page-link">1</a></li>
-                                                
+                                                <li class="page-item"><a class="page-link">1</a></li>                                                
                                                 <li class="page-item"><a class="page-link">Siguiente</a></li>
                                             </ul>
                                         </nav>
@@ -103,14 +102,8 @@
 
                         </div>
                     </div>          
-                </div>         
-           
-
-
-
-                        
-                    <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                   
+                </div>   
+                    <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>                   
             <div>
 
         </div>
