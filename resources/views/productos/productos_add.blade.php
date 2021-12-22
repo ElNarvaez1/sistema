@@ -35,7 +35,7 @@
                         
                         <div class="container">
                            
-                            <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('cambiollantas.store') }}" enctype="multipart/form-data">
 
                                 @csrf
                                 <div class="row">

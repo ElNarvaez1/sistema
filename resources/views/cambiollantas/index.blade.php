@@ -1,22 +1,23 @@
-<?php $__env->startSection('titulo', 'Cambio de llantas'); ?>
-<?php $__env->startSection('contenido'); ?>
+@extends('layouts.main')
+@section('titulo', 'Cambio de llantas')
+@section('contenido')
 
 
     
     <div id="wrapper">
-        
-        <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>        
+        {{-- incluimos sildebar color: azul :) --}}
+        @include('plantilla.sidebar')        
         <div id="content-wrapper" class="d-flex flex-column">
             
             <div id="content">
-                <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>   
+                @include('layouts.nav-log')   
                 <div class="container-fluid rounded color">
                     <br>
                     <!--encabezado-->                    
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Cambios de llantas  <i class="fas fa-tools"></i></h1>
                     <p class="mb-4 text-dark">Consulte la información historica sobre el cambio de llantas</p>
-                    
-                    <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    {{-- mensajes --}}
+                    @include('plantilla.notification')
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold">Búsqueda de cambio de llantas</h6>
@@ -24,27 +25,28 @@
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 <div class="row">
+                                {{-- cambiar llantas --}}
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
-                                            <a title="agregar nuevo cliente" href="" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
+                                            <a title="agregar nuevo cliente" href="{{ route('cambiollantas.create') }}" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
                                                         Nuevo cambio neumaticos <i class="fas fa-plus-circle"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <?php ($arrayB = [
+                                            @php($arrayB = [
                                                         'idCambioDeLlanta',
                                                         'fecha',
                                                         'descripcion',
                                                         'total',
                                                         'empleado'
                                                         // 'PRECIO COMPRA','PRECIO VENTA'
-                                                        ]); ?>
+                                                        ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
-                                                <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option><?php echo e($buscar); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                @foreach ($arrayB as $buscar)
+                                                    <option>{{ $buscar }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -103,7 +105,7 @@
                         </div>
                     </div>          
                 </div>   
-                    <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>                   
+                    @include('plantilla.footer')                   
             <div>
 
         </div>
@@ -112,5 +114,4 @@
     </div>
             
            
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/sistema/resources/views/promociones/index.blade.php ENDPATH**/ ?>
+@endsection

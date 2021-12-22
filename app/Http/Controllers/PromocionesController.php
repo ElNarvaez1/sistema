@@ -14,7 +14,7 @@ class PromocionesController extends Controller
 {
     public function index(){
 
-        return view('promociones.index');
+        return view('cambiollantas.index');
     }
 
    

@@ -11,7 +11,6 @@
             <!-- Main Content -->
             <div id="content">
                 @include('layouts.nav-log')
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
                     <br>
@@ -25,7 +24,6 @@
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold ">Registrar cambio de neumáticos</h6>
                         </div>
-
                       
                         {{-- Formulario -> vista de usuario --}}
 
@@ -34,15 +32,13 @@
                                     <div class="container">
                                         <div class="row justify-content-center">
                                             <div class="col-xl-6 col-lg-10 col-md-8">
-                                                <div class="card o-hidden border-login my-5">
-                                                    <div class="card-body p-0">
+                                                <div class="card o-hidden border-login my-5">                                                    
                                                         <div class="container px-5 my-5">
                                                             <div class="row">
                                                                 <div class="right-content">
                                                                     <div class="container">
-                                                                        <form id="contact" action="{{ route('promocion.send')}}"  method="post" enctype="multipart/form-data">
+                                                                        <form method="POST" action="{{ route('cambiollantas.store') }}">
                                                                             {{ csrf_field() }}
-                                                                            @csrf
                                                                             <div class="row">
                                                                                 <div class="col-md-12" style="text-align: center">
                                                                                     <label class="text-black"><FONT SIZE =4><b>Solo se registra el cambio de neumáticos para registros historicos.</b></FONT></label>
@@ -54,28 +50,27 @@
                                                                             <div class="col-md-12 mt-4">
                                                                                     <div class="form-group">
                                                                                     <label class="text-black"><FONT SIZE =3>Fecha en la que se esta realizando el servicio:</FONT></label>
-                                                                                        <input id="fecha" type="date" value="<?php echo date("Y-n-j"); ?>"> <!--el codigo en php es para obtener la fecha actual-->
+                                                                                        <input id="fecha" type="date" value="<?php echo date("Y-n-j"); ?>" required> <!--el codigo en php es para obtener la fecha actual-->
                                                                                         <label class="text-black"><FONT SIZE =3>Descripción sobre el cambio de neumáticos:</FONT></label>
-                                                                                        <textarea class="form-control"
-                                                                                        value="{{old('message')}}"    name="message" placeholder="Descripción"></textarea>
+                                                                                        <textarea class="form-control" value="{{old('message')}}" name="descripcion" placeholder="Descripción" required></textarea>
                                                                                         <br>
                                                                                         <label class="text-black h5"><FONT SIZE =3>Total del servicio $:</FONT></label>
-                                                                                        <input id="number" type="number" value="0.00">
+                                                                                        <input id="total" type="number" name="totalcambio" value="0.00" required>
                                                                                     </div>
                                                                                     @error('message')
                                                                                     <div class="message-error">*{{ $message }}</div>
                                                                                 @enderror                                                                                    
                                                                                 </div>          
-                                                                           <br><br>
+                                                                                <br><br>
                                                                                 <div class="text-black h4" style="text-align: center;">
-                                                                                <button class="btn btn-outline-primary" type="submit">Registrar cambio de llanta<!--<i class="fas fa-paper-plane"></i>--> </button>
+                                                                                <button class="btn btn-outline-primary" type="submit">Registrar<!--<i class="fas fa-paper-plane"></i>--> </button>
+                                                                                <a class="btn btn-outline-success" href="{{ route('cambiollantas.index') }}">Regresar</a>
                                                                             </div>
                                                                         </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        </div>                                                    
                                                 </div>
                                             </div>
                                         </div>
