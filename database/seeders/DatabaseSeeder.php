@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Rol_Empleado;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
 
 
         //$Rol1 = new Rol_Empleado();
