@@ -11,6 +11,7 @@ use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
+use App\Http\Controllers\CambioLLantasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +98,8 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
+//Cambio de llantas
+    Route::get('/cambiollanta/index/create', [CambioLLantasController::class,'create'])->name('cambiollanta.create');
 
 });
 
