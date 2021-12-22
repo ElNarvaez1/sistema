@@ -6,6 +6,7 @@ use App\Models\batertiaModel;
 use App\Models\llantaModel;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 
@@ -22,9 +23,9 @@ class llantaController extends Controller
 
         $tipo = $request->get('type');
         $variablesurl = $request->all();
-        $productos = Producto::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
+        $productos = llantaModel::all(); //Producto::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
 
-       return view('productos.llantas_index',compact('productos'));
+        return view('productos.llantas_index', compact('productos'));
     }
 
     /**
@@ -45,7 +46,31 @@ class llantaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Creamos el objeto de la llanta   
+        // $productos = new Producto();
+
+        // $productos->idProducto = ''; //se ponesolo creo 
+        // $productos->idProveedor = $request->proveedor; //Necesita del compo de lista;
+        // $productos->nombre = $request->nombre;
+        // $productos->descripcion  = $request->modelo;
+        // $productos->imagen = $request->imageFile;
+        // $productos->precioCompra = $request->precio_c;
+        // $productos->PrecioVenta = $request->precio_v;
+        // $productos->existencia = $request->existencia;
+        // $productos->save();
+
+        //Datos del modelo de llanta
+        $llanta = new llantaModel();
+        $llanta->idLlanta =  $request->idLlanta;
+        $llanta->idRin = $request->rin; //Aun no tien
+        $llanta->cargaMaxima = $request->cargaMaxima;
+        $llanta->velocidadMaxima = $request->velocidadMaxima;
+        $llanta->medida = $request->medida;
+        $llanta->presion = $request->presion;
+        $llanta->save();
+
+        //Datos del formulario
+        return redirect()->route('llantas.index');
     }
 
     /**
@@ -67,8 +92,10 @@ class llantaController extends Controller
      */
     public function edit(llantaModel $llanta)
     {
-       return view('productos.llantas_edit',
-                        compact('llanta'));
+        return view(
+            'productos.llantas_edit',
+            compact('llanta')
+        );
     }
 
     /**

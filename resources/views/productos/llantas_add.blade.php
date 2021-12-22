@@ -35,78 +35,88 @@
 
                     <div class="container">
 
-                        <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('llantas.store') }}" enctype="multipart/form-data">
 
                             @csrf
                             <div class="row">
 
                                 <!--############################################# INPUTS ############################################################################################################-->
-                                                                    <!--------------------------Inputs de la informacion NOMBRE-------------------------->
-                                                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Nombre</label>
-                                            <input type="text" name="nombre" value="{{ old('nombre') }}"
-                                                placeholder="" class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('nombre')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                <!--------------------------Inputs de la informacion NOMBRE-------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Nombre</label>
+                                        <input type="text" name="nombre" value="{{ old('nombre') }}" placeholder="" class="form-control text-upper">
+                                        {{-- validaciones --}}
+                                        @error('nombre')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <!--------------------------Inputs de la informacion MODELO-------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Modelo</label>
-                                            <input type="text" name="modelo" value="{{ old('modelo') }}"
-                                                placeholder="" class="form-control text-upper">
-                                                @error('modelo')
-                                                    <div class="message-error">*{{ $message }}</div>
-                                                @enderror
-                                        </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion MODELO-------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Modelo</label>
+                                        <input type="text" name="modelo" value="{{ old('modelo') }}" placeholder="" class="form-control text-upper">
+                                        @error('modelo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <!--------------------------Inputs de la informacion IMAGEN-------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Imagen</label>
-                                            <input type="file" name="imageFile" value="" class="form-control text-upper">
-                                                @error('tipo')
-                                                    <div class="message-error">*{{ $message }}</div>
-                                                @enderror
-                                        </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion Proveedor-------------------------->
+                                @php(
+                                    $proveedores = DB::table('proveedores')->get()
+                                )
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="proveedor">
+                                            <option value="0">Seleccione el proveedor</option>
+                                            @foreach ($proveedores as $proveedor)
+                                            <option value="{{$proveedor->idProveedor}}" >{{$proveedor->nombre}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <!--------------------------Inputs de la informacion PRECIO COMPRA -------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Precio compra $</label>
-                                            <input type="number" name="precio_c" value="{{ old('precio_c') }}"
-                                                        placeholder="" class="form-control text-upper">
-                                                @error('precio_c')
-                                                    <div class="message-error">*{{ $message }}</div>
-                                                @enderror
-                                        </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion IMAGEN-------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Imagen</label>
+                                        <input type="file" name="imageFile" value="" class="form-control text-upper">
+                                        @error('tipo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <!--------------------------Inputs de la informacion PRECIO VENTA -------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Precio venta</label>
-                                            <input type="number" name="precio_v" value="{{ old('precio_v') }}"
-                                                        placeholder="$" class="form-control text-upper">
-                                                @error('precio_v')
-                                                    <div class="message-error">*{{ $message }}</div>
-                                                @enderror
-                                        </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion PRECIO COMPRA -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Precio compra $</label>
+                                        <input type="number" name="precio_c" value="{{ old('precio_c') }}" placeholder="" class="form-control text-upper">
+                                        @error('precio_c')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                    <!--------------------------Inputs de la informacion EXISTENCIA -------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Existencia</label>
-                                            <input type="number" name="existencia" value="{{ old('stock') }}"
-                                                        placeholder="" class="form-control text-upper" min="1">
-                                                @error('stock')
-                                                    <div class="message-error">*{{ $message }}</div>
-                                                @enderror
-                                        </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion PRECIO VENTA -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Precio venta</label>
+                                        <input type="number" name="precio_v" value="{{ old('precio_v') }}" placeholder="$" class="form-control text-upper">
+                                        @error('precio_v')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion EXISTENCIA -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Existencia</label>
+                                        <input type="number" name="existencia" value="{{ old('stock') }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('stock')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <!-----------------------INPUTS DE ID *Id de la llanta*---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
@@ -116,6 +126,22 @@
                                         @error('idLlanta')
                                         <div class="message-error">* {{ $message }}</div>
                                         @enderror
+                                    </div>
+                                </div>
+                                <!-----------------------INPUTS DE ID *Rin de la llanta*---------------------------------------------->
+                                
+                                @php(
+                                    $rines = DB::table('rin')->get()
+                                )
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="rin">
+                                            <option value="0">Seleccione Rin</option>
+                                            @foreach ($rines as $rin)
+                                            <option value="{{$rin->idRin}}" >{{$rin->numero}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
@@ -134,7 +160,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">velocidad Maxima</label>
-                                        <input type="number" name="stock" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="velocidadMaxima" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
                                         @error('velocidadMaxima')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror

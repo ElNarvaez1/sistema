@@ -35,7 +35,7 @@
                     <div class="card shadow  rounded card-color">
                         <div class="container">
 
-                            <form action="{{ route('llantas.index', [$productos]) }}" method="GET">
+                            <form action="{{ route('llantas.index') }}" method="GET">
                                 <div class="row">
 
                                     {{-- add product --}}
@@ -108,14 +108,14 @@
                                 </thead>
                                 <tbody class="text-black2">
                                     @forelse ($productos as $producto)
-                                    <tr class="table-hover">
-                                        <th scope="row">{{ $producto->id }}</th>
+                                    <!-- <tr class="table-hover">
+                                        <th scope="row">{{ $producto->idLlanta }}</th>
 
                                         <td>
-                                            @can('productos.show')
-                                            <a class="text-center" href="{{ route('productos.show', [$producto]) }}">
+                                            @can('llantas.show')
+                                            <a class="text-center" href="{{ route('llantas.show', [$producto]) }}">
 
-                                                {{ $producto->nombre }}
+                                                {{ $producto->idLlanta }}
                                             </a>
                                             @endcan
                                         </td>
@@ -141,13 +141,13 @@
 
 
                                         <td>
-                                            @can('productos.edit')
+                                            @can('llantas.edit')
                                             <a title="editar producto" href="{{ route('llantas.edit', [$producto]) }}" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('productos.destroy')
+                                            @can('llantas.destroy')
                                             <form action="{{ route('llantas.destroy', [$producto]) }}" method="post">
                                                 @method("delete")
                                                 @csrf
@@ -157,14 +157,14 @@
                                             </form>
                                             @endcan
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     @empty
                                     <h3 class="text-black text-center"> ¡No hay registros!</h3>
                                     @endforelse
                                 </tbody>
                             </table>
 
-                            <nav aria-label="Page navigation example float-right">
+                            <!-- <nav aria-label="Page navigation example float-right">
                                 <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
                                 <ul class="pagination float-right mt-3">
                                     <li class="page-item"><a class="page-link" href="{{ $productos->previousPageUrl() }}">Anterior</a></li>
@@ -176,7 +176,7 @@
                                     </li>
                                     <li class="page-item"><a class="page-link" href="{{ $productos->nextPageUrl() }}">Siguiente</a></li>
                                 </ul>
-                            </nav>
+                            </nav> -->
                         </div>
                     </div>
                     @else

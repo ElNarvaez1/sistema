@@ -35,7 +35,7 @@
                     <div class="card shadow  rounded card-color">
                         <div class="container">
 
-                            <form action="<?php echo e(route('llantas.index', [$productos])); ?>" method="GET">
+                            <form action="<?php echo e(route('llantas.index')); ?>" method="GET">
                                 <div class="row">
 
                                     
@@ -108,14 +108,14 @@
                                 </thead>
                                 <tbody class="text-black2">
                                     <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                    <tr class="table-hover">
-                                        <th scope="row"><?php echo e($producto->id); ?></th>
+                                    <!-- <tr class="table-hover">
+                                        <th scope="row"><?php echo e($producto->idLlanta); ?></th>
 
                                         <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
-                                            <a class="text-center" href="<?php echo e(route('productos.show', [$producto])); ?>">
+                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('llantas.show')): ?>
+                                            <a class="text-center" href="<?php echo e(route('llantas.show', [$producto])); ?>">
 
-                                                <?php echo e($producto->nombre); ?>
+                                                <?php echo e($producto->idLlanta); ?>
 
                                             </a>
                                             <?php endif; ?>
@@ -142,13 +142,13 @@
 
 
                                         <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.edit')): ?>
+                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('llantas.edit')): ?>
                                             <a title="editar producto" href="<?php echo e(route('llantas.edit', [$producto])); ?>" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.destroy')): ?>
+                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('llantas.destroy')): ?>
                                             <form action="<?php echo e(route('llantas.destroy', [$producto])); ?>" method="post">
                                                 <?php echo method_field("delete"); ?>
                                                 <?php echo csrf_field(); ?>
@@ -158,26 +158,13 @@
                                             </form>
                                             <?php endif; ?>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                     <h3 class="text-black text-center"> ¡No hay registros!</h3>
                                     <?php endif; ?>
                                 </tbody>
                             </table>
 
-                            <nav aria-label="Page navigation example float-right">
-                                <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
-                                <ul class="pagination float-right mt-3">
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->previousPageUrl()); ?>">Anterior</a></li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(1)); ?>">1</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(2)); ?>">2</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(3)); ?>">3</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->nextPageUrl()); ?>">Siguiente</a></li>
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                     <?php else: ?>

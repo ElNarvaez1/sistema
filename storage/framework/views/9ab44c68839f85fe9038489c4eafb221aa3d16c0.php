@@ -35,120 +35,130 @@
 
                     <div class="container">
 
-                        <form method="POST" action="<?php echo e(route('productos.store')); ?>" enctype="multipart/form-data">
+                        <form method="POST" action="<?php echo e(route('llantas.store')); ?>" enctype="multipart/form-data">
 
                             <?php echo csrf_field(); ?>
                             <div class="row">
 
                                 <!--############################################# INPUTS ############################################################################################################-->
-                                                                    <!--------------------------Inputs de la informacion NOMBRE-------------------------->
-                                                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Nombre</label>
-                                            <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>"
-                                                placeholder="" class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['nombre'];
+                                <!--------------------------Inputs de la informacion NOMBRE-------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Nombre</label>
+                                        <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>" placeholder="" class="form-control text-upper">
+                                        
+                                        <?php $__errorArgs = ['nombre'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
                                     </div>
-                                    <!--------------------------Inputs de la informacion MODELO-------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Modelo</label>
-                                            <input type="text" name="modelo" value="<?php echo e(old('modelo')); ?>"
-                                                placeholder="" class="form-control text-upper">
-                                                <?php $__errorArgs = ['modelo'];
+                                </div>
+                                <!--------------------------Inputs de la informacion MODELO-------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Modelo</label>
+                                        <input type="text" name="modelo" value="<?php echo e(old('modelo')); ?>" placeholder="" class="form-control text-upper">
+                                        <?php $__errorArgs = ['modelo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                    <div class="message-error">*<?php echo e($message); ?></div>
-                                                <?php unset($message);
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
                                     </div>
-                                    <!--------------------------Inputs de la informacion IMAGEN-------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Imagen</label>
-                                            <input type="file" name="imageFile" value="" class="form-control text-upper">
-                                                <?php $__errorArgs = ['tipo'];
+                                </div>
+                                <!--------------------------Inputs de la informacion Proveedor-------------------------->
+                                <?php (
+                                    $proveedores = DB::table('proveedores')->get()
+                                ); ?>
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="proveedor">
+                                            <option value="0">Seleccione el proveedor</option>
+                                            <?php $__currentLoopData = $proveedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proveedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($proveedor->idProveedor); ?>" ><?php echo e($proveedor->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion IMAGEN-------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Imagen</label>
+                                        <input type="file" name="imageFile" value="" class="form-control text-upper">
+                                        <?php $__errorArgs = ['tipo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                    <div class="message-error">*<?php echo e($message); ?></div>
-                                                <?php unset($message);
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
                                     </div>
-                                    <!--------------------------Inputs de la informacion PRECIO COMPRA -------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Precio compra $</label>
-                                            <input type="number" name="precio_c" value="<?php echo e(old('precio_c')); ?>"
-                                                        placeholder="" class="form-control text-upper">
-                                                <?php $__errorArgs = ['precio_c'];
+                                </div>
+                                <!--------------------------Inputs de la informacion PRECIO COMPRA -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Precio compra $</label>
+                                        <input type="number" name="precio_c" value="<?php echo e(old('precio_c')); ?>" placeholder="" class="form-control text-upper">
+                                        <?php $__errorArgs = ['precio_c'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                    <div class="message-error">*<?php echo e($message); ?></div>
-                                                <?php unset($message);
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
                                     </div>
-                                    <!--------------------------Inputs de la informacion PRECIO VENTA -------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Precio venta</label>
-                                            <input type="number" name="precio_v" value="<?php echo e(old('precio_v')); ?>"
-                                                        placeholder="$" class="form-control text-upper">
-                                                <?php $__errorArgs = ['precio_v'];
+                                </div>
+                                <!--------------------------Inputs de la informacion PRECIO VENTA -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Precio venta</label>
+                                        <input type="number" name="precio_v" value="<?php echo e(old('precio_v')); ?>" placeholder="$" class="form-control text-upper">
+                                        <?php $__errorArgs = ['precio_v'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                    <div class="message-error">*<?php echo e($message); ?></div>
-                                                <?php unset($message);
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
                                     </div>
-                                    <!--------------------------Inputs de la informacion EXISTENCIA -------------------------->
-                                    <div class="col-md-4 mt-2">
-                                        <div class="form-group">
-                                            <label class="fs-5 text-body">Existencia</label>
-                                            <input type="number" name="existencia" value="<?php echo e(old('stock')); ?>"
-                                                        placeholder="" class="form-control text-upper" min="1">
-                                                <?php $__errorArgs = ['stock'];
+                                </div>
+                                <!--------------------------Inputs de la informacion EXISTENCIA -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Existencia</label>
+                                        <input type="number" name="existencia" value="<?php echo e(old('stock')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                        <?php $__errorArgs = ['stock'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                    <div class="message-error">*<?php echo e($message); ?></div>
-                                                <?php unset($message);
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
                                     </div>
+                                </div>
                                 <!-----------------------INPUTS DE ID *Id de la llanta*---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
@@ -165,6 +175,22 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                    </div>
+                                </div>
+                                <!-----------------------INPUTS DE ID *Rin de la llanta*---------------------------------------------->
+                                
+                                <?php (
+                                    $rines = DB::table('rin')->get()
+                                ); ?>
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="rin">
+                                            <option value="0">Seleccione Rin</option>
+                                            <?php $__currentLoopData = $rines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($rin->idRin); ?>" ><?php echo e($rin->numero); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
@@ -190,7 +216,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">velocidad Maxima</label>
-                                        <input type="number" name="stock" value="<?php echo e(old('velocidadMaxima')); ?>" class="form-control text-upper" min="1">
+                                        <input type="number" name="velocidadMaxima" value="<?php echo e(old('velocidadMaxima')); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['velocidadMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLlantaModelsTable extends Migration
+class CreateRolEmpleados extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateLlantaModelsTable extends Migration
      */
     public function up()
     {
-        // Schema::create('llanta_models', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
+        Schema::create('rolEmpleados',function(Blueprint $table){
+            $table->id();
+            $table->string('descripcion');
+            $table->float('salario',6,2);
+        });
+
     }
 
     /**
@@ -26,6 +28,6 @@ class CreateLlantaModelsTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('llanta_models');
+        Schema::dropIfExists('rolEmpleados');
     }
 }
