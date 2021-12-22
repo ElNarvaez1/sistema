@@ -95,19 +95,24 @@
                             <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                 <thead class="bg-color ">
                                     <tr class="text-blank text-center">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">NOMBRE</th>
-                                        <th scope="col">DESCRIPCIÓN</th>
-                                        <th scope="col">MODELO</th>
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">PRECIO COMPRA</th>
-                                        <th scope="col">PRECIO VENTA</th>
-                                        <th scope="col">EXISTENCIA</th>
-                                        <th scope="col" colspan="2">ACCIONES</th>
+                                        <th scope="col">idLlanta</th>
+                                        <th scope="col">idRin</th>
+                                        <th scope="col">cargaMaxima</th>
+                                        <th scope="col">velocidadMaxima</th>
+                                        <th scope="col">medida</th>
+                                        <th scope="col">presion</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-black2">
                                     <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    <tr class="table-hover">
+                                        <td class="text-center"><?php echo e($producto->idLlanta); ?></td>
+                                        <td class="text-center"><?php echo e($producto->idRin); ?></td>
+                                        <td class="text-center"><?php echo e($producto->cargaMaxima); ?></td>
+                                        <td class="text-center"><?php echo e($producto->velocidadMaxima); ?></td>
+                                        <td class="text-center"><?php echo e($producto->medida); ?></td>
+                                        <td class="text-center"><?php echo e($producto->presion); ?></td>
+                                    </tr>
                                     <!-- <tr class="table-hover">
                                         <th scope="row"><?php echo e($producto->idLlanta); ?></th>
 
@@ -164,7 +169,6 @@
                                     <?php endif; ?>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                     <?php else: ?>

@@ -95,19 +95,24 @@
                             <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                 <thead class="bg-color ">
                                     <tr class="text-blank text-center">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">NOMBRE</th>
-                                        <th scope="col">DESCRIPCIÓN</th>
-                                        <th scope="col">MODELO</th>
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">PRECIO COMPRA</th>
-                                        <th scope="col">PRECIO VENTA</th>
-                                        <th scope="col">EXISTENCIA</th>
-                                        <th scope="col" colspan="2">ACCIONES</th>
+                                        <th scope="col">idLlanta</th>
+                                        <th scope="col">idRin</th>
+                                        <th scope="col">cargaMaxima</th>
+                                        <th scope="col">velocidadMaxima</th>
+                                        <th scope="col">medida</th>
+                                        <th scope="col">presion</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-black2">
                                     @forelse ($productos as $producto)
+                                    <tr class="table-hover">
+                                        <td class="text-center">{{$producto->idLlanta}}</td>
+                                        <td class="text-center">{{$producto->idRin}}</td>
+                                        <td class="text-center">{{$producto->cargaMaxima}}</td>
+                                        <td class="text-center">{{$producto->velocidadMaxima}}</td>
+                                        <td class="text-center">{{$producto->medida}}</td>
+                                        <td class="text-center">{{$producto->presion}}</td>
+                                    </tr>
                                     <!-- <tr class="table-hover">
                                         <th scope="row">{{ $producto->idLlanta }}</th>
 
@@ -163,20 +168,6 @@
                                     @endforelse
                                 </tbody>
                             </table>
-
-                            <!-- <nav aria-label="Page navigation example float-right">
-                                <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
-                                <ul class="pagination float-right mt-3">
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->previousPageUrl() }}">Anterior</a></li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->url(1) }}">1</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->url(2) }}">2</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->url(3) }}">3</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->nextPageUrl() }}">Siguiente</a></li>
-                                </ul>
-                            </nav> -->
                         </div>
                     </div>
                     @else
