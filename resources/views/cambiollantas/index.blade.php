@@ -28,7 +28,7 @@
                                 {{-- cambiar llantas --}}
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
-                                            <a title="agregar nuevo cliente" href="" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
+                                            <a title="agregar nuevo cliente" href="{{ route('cambiollantas.create') }}" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
                                                         Nuevo cambio neumaticos <i class="fas fa-plus-circle"></i>
                                             </a>
                                         </div>

@@ -101,8 +101,10 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
 //Cambio de llantas
-    Route::get('/cambiollanta/index/create', [CambioLLantasController::class,'create'])->name('cambiollanta.create');
+    Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
     Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
+    Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
+    Route::resource('cambiollantas', CambioLLantasController::class);
 
 });
 
