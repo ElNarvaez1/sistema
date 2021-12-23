@@ -17,8 +17,8 @@
                     @csrf
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> EDITAR EMPLEADO <i class="fas fa-plus-circle mx-3"></i> </h1>
-                    <p class="mb-4 text-dark">Actualice los datos de un empleado aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> REGISTRAR EMPLEADO <i class="fas fa-plus-circle mx-3"></i> </h1>
+                    <p class="mb-4 text-dark">Registre un nuevo empleado aquí.</p>
 
 
                     {{-- mensajes --}}
@@ -27,7 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">ID Empleado: {{$user->id }}</h6>
+                            <h6 class="m-0 font-weight-bold ">Agregar empleado</h6>
                         </div>
 
                         {{-- Formulario -> vista de productos --}}
@@ -35,15 +35,15 @@
                         
                         <div class="container">
                            
-                            <form method="POST" action="{{ route('user.update', [$user]) }}" enctype="multipart/form-data">
-                                @method("PUT")
+                            <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
+
                                 @csrf
                                 <div class="row">
-                           <!--
-                              <div class="col-md-4 mt-4">
-                                    <div class="form-group">
+
+                                <div class="col-md-4 mt-4">
+                                        <div class="form-group">
                                             <label class="text-black h4">Id del empleado</label>
-                                            <input type="text" name="id" value="{{ old('id',$user->id) }}"
+                                            <input type="text" name="id" value="{{ old('id') }}"
                                                 placeholder="ID del empleado"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
@@ -51,13 +51,13 @@
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
-                          -->
+
                                     </div>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del empleado</label>
-                                            <input type="text" name="name" value="{{ old('name',$user->name) }}"
+                                            <input type="text" name="name" value="{{ old('name') }}"
                                                 placeholder="Nombre del empleado"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
@@ -72,7 +72,7 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
-                                            <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno',$user->apellidoPaterno) }}"
+                                            <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno') }}"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
@@ -87,7 +87,7 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
-                                            <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno',$user->apellidoMaterno) }}"
+                                            <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno') }}"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
@@ -100,7 +100,7 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Contraseña</label>
-                                            <input type="text" name="password" value="{{ old('password',$user->password) }}"
+                                            <input type="text" name="password" value="{{ old('password') }}"
                                                 placeholder="contraseña"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
@@ -115,7 +115,7 @@
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>
-                                                    <input type="text" name="email" value="{{ old('email',$user->email) }}"
+                                                    <input type="text" name="email" value="{{ old('email') }}"
                                                         placeholder="CORREO ELECTRONICO"
                                                         class="form-control">
 
@@ -129,7 +129,7 @@
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Telefono</label>
-                                                    <input type="text" name="telefono" value="{{ old('telefono',$user->telefono) }}"
+                                                    <input type="text" name="telefono" value="{{ old('telefono') }}"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">
 
@@ -143,7 +143,7 @@
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Rol</label>
-                                                    <input type="text" name="idRol" value="{{ old('idRol',$user->idRol) }}"
+                                                    <input type="text" name="idRol" value="{{ old('idRol') }}"
                                                         placeholder="idRol "
                                                         class="form-control text-upper">
 
@@ -157,7 +157,7 @@
                                             <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre de usuario</label>
-                                            <input type="text" name="username" value="{{ old('username',$user->username) }}"
+                                            <input type="text" name="username" value="{{ old('username') }}"
                                                 placeholder="Nombre del usuario"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
