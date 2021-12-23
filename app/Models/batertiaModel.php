@@ -24,13 +24,13 @@ class batertiaModel extends Model
     /**
      * Llave primaria.
      */
-    protected $primarykey = 'idBateria';
+    protected $primaryKey = 'idBateria';
     /**
      * Desactiva los campos de los tiempos de creacion y edicion
      */
     public $timestamps = false;
 
-
+    public $incrementing = false;
     /**
      * NOTA:
      *  No use la asingacion masiva por que no me acomodo a esa madre XD
