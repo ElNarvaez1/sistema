@@ -105,6 +105,7 @@
                                         <th scope="col" colspan="2">ACCIONES</th>
                                     </tr>
                                 </thead>
+                                {{route('bateria.index')}}
                                 <tbody class="text-black2">
                                     @foreach ($productos as $baterium)
                                     <tr class="table-hover">
@@ -120,12 +121,12 @@
 
                                         <td>
                                             @can('bateria.edit')
-                                            <a title="editar producto" href="" class="btn btn-outline-primary btn-circle">
+                                            <a title="editar producto" href="{{ route('bateria.edit', $baterium) }}" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             @endcan
                                         </td>
                                         <td>
-                                            <form action="" method="post">
+                                            <form action="{{ route('bateria.destroy', $baterium) }}" method="post">
                                                 @method("delete")
                                                 @csrf
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
@@ -137,26 +138,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
-
-
-                            {{--
-
-                            <nav aria-label="Page navigation example float-right">
-                                <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
-                                <ul class="pagination float-right mt-3">
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->previousPageUrl() }}">Anterior</a></li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->url(1) }}">1</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->url(2) }}">2</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->url(3) }}">3</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="{{ $productos->nextPageUrl() }}">Siguiente</a></li>
-                                </ul>
-                            </nav>
-
-                            --}}
                         </div>
                     </div>
                     @else
@@ -164,7 +145,7 @@
                         <div class=" row">
                             <div class="col-md-4 mt-4">
                                 <div class="form-group">
-                                    <a href="{{ route('productos.index')}}" class="btn btn-outline-primary">regresar</a>
+                                    <a href="{{ route('bateria.index')}}" class="btn btn-outline-primary">regresar</a>
                                 </div>
                             </div>
 

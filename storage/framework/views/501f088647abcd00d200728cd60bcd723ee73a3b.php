@@ -105,6 +105,8 @@
                                         <th scope="col" colspan="2">ACCIONES</th>
                                     </tr>
                                 </thead>
+                                <?php echo e(route('bateria.index')); ?>
+
                                 <tbody class="text-black2">
                                     <?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $baterium): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="table-hover">
@@ -121,12 +123,12 @@
 
                                         <td>
                                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('bateria.edit')): ?>
-                                            <a title="editar producto" href="" class="btn btn-outline-primary btn-circle">
+                                            <a title="editar producto" href="<?php echo e(route('bateria.edit', $baterium)); ?>" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <form action="" method="post">
+                                            <form action="<?php echo e(route('bateria.destroy', $baterium)); ?>" method="post">
                                                 <?php echo method_field("delete"); ?>
                                                 <?php echo csrf_field(); ?>
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
@@ -149,7 +151,7 @@
                         <div class=" row">
                             <div class="col-md-4 mt-4">
                                 <div class="form-group">
-                                    <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary">regresar</a>
+                                    <a href="<?php echo e(route('bateria.index')); ?>" class="btn btn-outline-primary">regresar</a>
                                 </div>
                             </div>
 
