@@ -10,11 +10,13 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
+
             @include('layouts.nav-log')
 
             <!-- Begin Page Content -->
             <div class="container-fluid rounded color">
-                @csrf
+                {{route('bateria.destroy','aX-221221')}}    
+            @csrf
                 <br>
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 bold-title"> REGISTRAR BATERÍA <i class="fas fa-plus-circle mx-3"></i> </h1>

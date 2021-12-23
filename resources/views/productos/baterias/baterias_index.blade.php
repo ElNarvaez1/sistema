@@ -86,12 +86,9 @@
                         </div>
                         {{-- end container --}}
                     </div>
-                    @if ($productos->count()))
+                    @if ($productos->count())
                     <div class="card-body ">
-
-
                         <div class="table-responsive">
-                            {{-- id="dataTable" --}}
                             <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                 <thead class="bg-color ">
                                     <tr class="text-blank text-center">
@@ -105,7 +102,6 @@
                                         <th scope="col" colspan="2">ACCIONES</th>
                                     </tr>
                                 </thead>
-                                {{route('bateria.index')}}
                                 <tbody class="text-black2">
                                     @foreach ($productos as $baterium)
                                     <tr class="table-hover">
@@ -120,13 +116,11 @@
                                         <td class="text-center">{{ $baterium->voltaje }}</td>
 
                                         <td>
-                                            @can('bateria.edit')
-                                            <a title="editar producto" href="{{ route('bateria.edit', $baterium) }}" class="btn btn-outline-primary btn-circle">
+                                            <a title="editar producto" href="{{ route('bateria.edit', $baterium->idBateria) }}" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
-                                            @endcan
                                         </td>
                                         <td>
-                                            <form action="{{ route('bateria.destroy', $baterium) }}" method="post">
+                                            <form action="{{ route('bateria.destroy', $baterium->idBateria) }}" method="post">
                                                 @method("delete")
                                                 @csrf
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
