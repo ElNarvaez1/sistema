@@ -167,10 +167,7 @@
                                         </div>
 
                                     </div>
-
-
-
-                                            
+              
                                         </div>
 
                                         {{-- PARTE BOTONES --}}

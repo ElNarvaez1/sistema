@@ -29,14 +29,14 @@ class VentasController extends Controller
         
 
         $nombres = Cliente::query()
-        ->select(['nombre','apellido_p','apellido_m'])
+        ->select(['nombre','apellidoPaterno','apellidoMaterno'])
         ->get();
        
         $data = [];
         $data_names = "";
         foreach ($nombres as $key => $names) {
 
-            $data_names =$data_names.$names->nombre." ".$names->apellido_p." ".$names->apellido_m;
+            $data_names =$data_names.$names->nombre." ".$names->apellidoPaterno." ".$names->apellidoMaterno;
             $data [] = $data_names;
             $data_names = "";
         }
@@ -118,8 +118,8 @@ class VentasController extends Controller
        
         // comprobar cliente
         $data = Cliente::query()    
-            ->select("id",
-            DB::raw("CONCAT(nombre, ' ',apellido_p, ' ', apellido_m) as nombre_completo")
+            ->select("idCliente",
+            DB::raw("CONCAT(nombre, ' ',apellidoPaterno, ' ', apellidoMaterno) as nombre_completo")
             
         )   
         ->get();

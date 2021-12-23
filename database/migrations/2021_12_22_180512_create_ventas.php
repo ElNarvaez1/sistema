@@ -14,24 +14,19 @@ class CreateVentas extends Migration
     public function up()
     {
         Schema::create('ventas', function (Blueprint $table) {
-            $table->string('idVenta');
-<<<<<<< HEAD
-            $table->string('idCliente')->refences('idCliente')->on('clientes');
-            $table->string('idUser')->references('id')->on('users');
-=======
-            $table->string('idCliente')->refences('idCliente')->on('Clientes');
-            $table->string('idEmpleado')->references('idEmpleado')->on('Empleados');
->>>>>>> Narvaez
-            $table->date('fecha');
-            $table->float('totalVenta',10,2);
-            $table->float('descuento',5,2)->default(0);
+            $table->id();
+            $table->unsignedBigInteger('id_cliente')->nullable();
+            $table->string('nombre')->nullable(false); 
+            $table->text('articulo');
+            $table->integer('cantidad');
+            $table->integer('impuesto')->default(18);
+            $table->timestamp('fecha');
+            $table->integer('descuento');
+            $table->integer('total_venta');
 
-            $table->primary('idVenta');
-<<<<<<< HEAD
-            $table->rememberToken();
             $table->softDeletes(); 
-=======
->>>>>>> Narvaez
+
+
         });
     }
 
