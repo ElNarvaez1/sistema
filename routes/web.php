@@ -40,7 +40,7 @@ Route::group(['middleware' =>'auth'], function(){
     Route::resource('inventario', InventarioController::class);
     Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
     Route::resource('role', RolesController::class);
-    Route::resource('user', UserController::class)->only(['index','edit','update']);
+    Route::resource('user', UserController::class)->only(['index','edit','update', 'create', 'store', 'destroy']);
 
     /**
      * Rutas de las baterias y llantas.

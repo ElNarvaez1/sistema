@@ -31,7 +31,8 @@ class UserSeeder extends Seeder
                 
                 'username' => 'admin',
                 'password' => bcrypt('123456789'),
-                'telefono' => '0123456789'
+                'telefono' => '0123456789',
+                'idRol' => '1'
             ]
         )->assignRole('Admin');
         //factory(User::class, 9)->create();
