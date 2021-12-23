@@ -24,7 +24,10 @@ class CreateProveedores extends Migration
             $table->integer('telefono');
 
             $table->primary('idProveedor');
+<<<<<<< HEAD
             $table->softDeletes(); 
+=======
+>>>>>>> Narvaez
         });
     }
 

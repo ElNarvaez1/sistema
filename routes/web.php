@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\batertiaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventarioController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\llantaController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
 use App\Http\Controllers\ProveedorController;
@@ -39,8 +41,11 @@ Route::group(['middleware' =>'auth'], function(){
     Route::resource('role', RolesController::class);
     Route::resource('user', UserController::class)->only(['index','edit','update']);
 
-
-
+    /**
+     * Rutas de las baterias y llantas.
+    */
+    Route::resource('/bateria',batertiaController::class);
+    Route::resource('/llantas',llantaController::class);
 
 // pedidos
     Route::get('/Pedidos/index',[PedidoController::class,'index'])->name('pedido.index')->middleware('can:pedido.index');
@@ -107,6 +112,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::Class,'edit'])->name('proveedor.edit');
     Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::Class,'destroy'])->name('proveedor.destroy');
     Route::put('Proveedor/index/{idProveedor}',[ProveedorController::Class,'update'])->name('proveedor.update');
+
 
 });
 

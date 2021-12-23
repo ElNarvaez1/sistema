@@ -15,7 +15,11 @@ class CreateProdcutos extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->string('idProducto');
+<<<<<<< HEAD
             $table->string('idProveedor')->references('idProveedor')->on('proveedores');
+=======
+            $table->string('idProveedor')->referemces('idProveedor')->on('proveedores');
+>>>>>>> Narvaez
             $table->string('nombre');
             $table->string('descripcion');
             $table->text('imagen');
@@ -24,9 +28,12 @@ class CreateProdcutos extends Migration
             $table->float('existencia',2,0);
 
             $table->primary('idProducto');
+<<<<<<< HEAD
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+=======
+>>>>>>> Narvaez
         });
     }
 
