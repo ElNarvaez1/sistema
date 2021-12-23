@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\batertiaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventarioController;
@@ -10,9 +11,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\llantaController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CambioLLantasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +39,12 @@ Route::group(['middleware' =>'auth'], function(){
     // Rutas Dashboard admin
     Route::resource('productos', ProductosController::class);
     Route::resource('inventario', InventarioController::class);
-    Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
+    Route::resource('permission', PermissionController::class);
     Route::resource('role', RolesController::class);
     Route::resource('user', UserController::class)->only(['index','edit','update']);
 
-
+    Route::resource('bateria',batertiaController::class);
+    Route::resource('llantas',llantaController::class);
 
 
 // pedidos
@@ -100,6 +105,17 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
+    //Proveedor
+    Route::get('Proveedor',[ProveedorController::class,'index'])->name('proveedor.index');
+    Route::get('Proveedor/index',[ProveedorController::class,'create'])->name('proveedor.create');
+    Route::post('Proveedor/index/add',[ProveedorController::class,'store'])->name('proveedor.store');
+    Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::class,'edit'])->name('proveedor.edit');
+    Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::class,'destroy'])->name('proveedor.destroy');
+    Route::put('Proveedor/index/{idProveedor}',[ProveedorController::class,'update'])->name('proveedor.update');
+
+    
+    
+
 //Cambio de llantas
     Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
     Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
