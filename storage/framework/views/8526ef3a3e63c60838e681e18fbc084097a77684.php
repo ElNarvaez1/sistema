@@ -28,7 +28,7 @@
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
                                             <a title="agregar nuevo cliente" href="<?php echo e(route('cambiollantas.create')); ?>" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
-                                                        Nuevo cambio neumaticos <i class="fas fa-plus-circle"></i>
+                                                        Nuevo cambio llantas <i class="fas fa-plus-circle"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -63,6 +63,7 @@
                                 </div>
 
                             </div>
+                            <?php if($listaCambioLlantas->count()): ?>)
                             <div class="card-body "> 
                                 <div class="table-responsive">
                                 
@@ -105,6 +106,22 @@
                                         </nav>
                                 </div>
                             </div>
+                            <?php else: ?>
+                            <div class="card-body ">
+                               <div class=" row">
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <a href="" class="btn btn-outline-primary" >regresar</a>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-md-8 mt-4">
+                                        <div class="form-group">                                        
+                                            <strong class ="card-title">¡No hay registros!</strong>                                       
+                                            </div>
+                                        </div>
+                                </div>                               
+                            </div>
+                            <?php endif; ?>
 
                         </div>
                     </div>          
