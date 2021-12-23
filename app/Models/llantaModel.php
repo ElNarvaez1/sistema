@@ -13,19 +13,6 @@ class llantaModel extends Model
     /** 
      * Nombre de la tabla.
      */
-<<<<<<< HEAD
-    protected $table = 'llantas';
-    /**
-     * Llave primaria.
-     */
-    protected $primarykey = 'idLlanta';
-    /**
-     * Desactiva los campos de los tiempos de creacion y edicion
-     */
-    public $timestamps = false;
-
-
-=======
     protected $table= 'llantas';
     /**
      * Llave primaria.
@@ -37,7 +24,6 @@ class llantaModel extends Model
     public $timestamps= false;
 
     public $incrementing= false;
->>>>>>> Narvaez
     /**
      * NOTA:
      *  No use la asingacion masiva por que no me acomodo a esa madre XD

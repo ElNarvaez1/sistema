@@ -96,10 +96,7 @@
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> Narvaez
 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
 <hr class="sidebar-divider my-0">
     <li class="nav-item  <?php echo e(request()->routeIs('inventario.index') ? 'active' : ''); ?>">
