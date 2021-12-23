@@ -128,6 +128,6 @@ class llantaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect()->route('llantas.index');
     }
 }
