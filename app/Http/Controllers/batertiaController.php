@@ -29,7 +29,7 @@ class batertiaController extends Controller
 
         $tipo = $request->get('type');
         $variablesurl = $request->all();
-        $productos = Producto::buscarpor($tipo, Str::upper($buscar))->paginate(5)->appends($variablesurl);
+        $productos = batertiaModel::all();//Producto::buscarpor($tipo, Str::upper($buscar))->paginate(5)->appends($variablesurl);
 
         return view('productos.baterias.baterias_index', compact('productos'));
     }
@@ -88,6 +88,9 @@ class batertiaController extends Controller
         $bateria->tamanio = $request->tamanio;
         $bateria->modelo = $request->modelo;
         $bateria->voltaje = $request->voltaje;
+        $bateria->save();
+
+        return redirect()->route('bateria.index');   
     }
 
     /**
@@ -95,7 +98,7 @@ class batertiaController extends Controller
      * 
      * @param 
      */
-    public function destroy(batertiaModel $bateria)
+    public function destroy(batertiaModel $baterium)
     {
         return "Aun en construccion";
     }

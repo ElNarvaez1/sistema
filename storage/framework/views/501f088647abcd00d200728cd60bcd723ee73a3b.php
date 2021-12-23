@@ -36,7 +36,7 @@
                     <div class="card shadow  rounded card-color">
                         <div class="container">
 
-                            <form action="<?php echo e(route('productos.index', [$productos])); ?>" method="GET">
+                            <form action="<?php echo e(route('bateria.index')); ?>" method="GET">
                                 <div class="row">
 
                                     
@@ -95,89 +95,53 @@
                             <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                 <thead class="bg-color ">
                                     <tr class="text-blank text-center">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">NOMBRE</th>
-                                        <th scope="col">DESCRIPCIÓN</th>
-                                        <th scope="col">MODELO</th>
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">PRECIO COMPRA</th>
-                                        <th scope="col">PRECIO VENTA</th>
-                                        <th scope="col">EXISTENCIA</th>
+
+                                        <th scope="col">idBateria</th>
+                                        <th scope="col">idMarca</th>
+                                        <th scope="col">tamaño</th>
+                                        <th scope="col">modelo</th>
+                                        <th scope="col">voltaje</th>
+
                                         <th scope="col" colspan="2">ACCIONES</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-black2">
-                                    <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    <?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $baterium): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="table-hover">
-                                        <th scope="row"><?php echo e($producto->id); ?></th>
-
                                         <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
-                                            <a class="text-center" href="<?php echo e(route('productos.show', [$producto])); ?>">
-
-                                                <?php echo e($producto->nombre); ?>
+                                            <a class="text-center" href="">
+                                                <?php echo e($baterium->idMarca); ?>
 
                                             </a>
-                                            <?php endif; ?>
                                         </td>
-
-                                        <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
-                                        <td class="text-center"><?php echo e($producto->modelo); ?></td>
-                                        <td class="text-center"><?php echo e($producto->tipo); ?></td>
-                                        <td class="text-center">$ <?php echo e($producto->precio_c); ?></td>
-                                        <td class="text-center">$ <?php echo e($producto->precio_v); ?></td>
-                                        <?php if($producto->stock>5): ?>
-                                        <h5>
-                                            <td class="badge badge-success"><?php echo e($producto->stock); ?></td>
-                                        </h5>
-                                        <?php elseif($producto->stock == 0): ?>
-                                        <h5>
-                                            <td class="badge badge-danger"><?php echo e($producto->stock); ?></td>
-                                        </h5>
-                                        <?php else: ?>
-                                        <h5>
-                                            <td class="badge badge-warning"><?php echo e($producto->stock); ?></td>
-                                        </h5>
-                                        <?php endif; ?>
-
+                                        <td class="text-center"><?php echo e($baterium->idMarca); ?></td>
+                                        <td class="text-center"><?php echo e($baterium->tamanio); ?></td>
+                                        <td class="text-center"><?php echo e($baterium->modelo); ?></td>
+                                        <td class="text-center"><?php echo e($baterium->voltaje); ?></td>
 
                                         <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.edit')): ?>
-                                            <a title="editar producto" href="<?php echo e(route('productos.edit', [$producto])); ?>" class="btn btn-outline-primary btn-circle">
+                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('bateria.edit')): ?>
+                                            <a title="editar producto" href="" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.destroy')): ?>
-                                            <form action="<?php echo e(route('productos.destroy', [$producto])); ?>" method="post">
+                                            <form action="" method="post">
                                                 <?php echo method_field("delete"); ?>
                                                 <?php echo csrf_field(); ?>
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
-                                            <?php endif; ?>
                                         </td>
                                     </tr>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                    <h3 class="text-black text-center"> ¡No hay registros!</h3>
-                                    <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
 
-                            <nav aria-label="Page navigation example float-right">
-                                <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
-                                <ul class="pagination float-right mt-3">
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->previousPageUrl()); ?>">Anterior</a></li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(1)); ?>">1</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(2)); ?>">2</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(3)); ?>">3</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="<?php echo e($productos->nextPageUrl()); ?>">Siguiente</a></li>
-                                </ul>
-                            </nav>
+
+
+                            
                         </div>
                     </div>
                     <?php else: ?>

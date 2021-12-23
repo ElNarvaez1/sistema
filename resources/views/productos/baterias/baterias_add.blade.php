@@ -137,14 +137,15 @@
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion MARCA -------------------------->
+                                @php($marcasLlantas = DB::table('marca_baterias')->get() )
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Marca</label>
                                         <select name="idMarca" id="selectorMarca" class="form-control form-select">
                                             <option value="0">Seleccionar</option>
-                                            <option value="1">Marca 1</option>
-                                            <option value="2">Marca 2</option>
-                                            <option value="3">Marca 3</option>
+                                            @foreach($marcasLlantas as $marca)
+                                                <option value="{{$marca->idMarca}}">{{$marca->nombre}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

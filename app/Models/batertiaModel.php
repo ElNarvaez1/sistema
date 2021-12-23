@@ -20,7 +20,7 @@ class batertiaModel extends Model
     /** 
      * Nombre de la tabla.
      */
-    protected $table = 'Baterias';
+    protected $table = 'bateria';
     /**
      * Llave primaria.
      */

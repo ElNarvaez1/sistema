@@ -36,7 +36,7 @@
                     <div class="card shadow  rounded card-color">
                         <div class="container">
 
-                            <form action="{{ route('productos.index', [$productos]) }}" method="GET">
+                            <form action="{{ route('bateria.index') }}" method="GET">
                                 <div class="row">
 
                                     {{-- add product --}}
@@ -95,74 +95,52 @@
                             <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                 <thead class="bg-color ">
                                     <tr class="text-blank text-center">
-                                        <th scope="col">ID</th>
-                                        <th scope="col">NOMBRE</th>
-                                        <th scope="col">DESCRIPCIÓN</th>
-                                        <th scope="col">MODELO</th>
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">PRECIO COMPRA</th>
-                                        <th scope="col">PRECIO VENTA</th>
-                                        <th scope="col">EXISTENCIA</th>
+
+                                        <th scope="col">idBateria</th>
+                                        <th scope="col">idMarca</th>
+                                        <th scope="col">tamaño</th>
+                                        <th scope="col">modelo</th>
+                                        <th scope="col">voltaje</th>
+
                                         <th scope="col" colspan="2">ACCIONES</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-black2">
-                                    @forelse ($productos as $producto)
+                                    @foreach ($productos as $baterium)
                                     <tr class="table-hover">
-                                        <th scope="row">{{ $producto->id }}</th>
-
                                         <td>
-                                            @can('productos.show')
-                                            <a class="text-center" href="{{ route('productos.show', [$producto]) }}">
-
-                                                {{ $producto->nombre }}
+                                            <a class="text-center" href="">
+                                                {{ $baterium->idMarca }}
                                             </a>
-                                            @endcan
                                         </td>
-
-                                        <td class="text-justify">{{ $producto->descripcion }}</td>
-                                        <td class="text-center">{{ $producto->modelo }}</td>
-                                        <td class="text-center">{{ $producto->tipo }}</td>
-                                        <td class="text-center">$ {{ $producto->precio_c }}</td>
-                                        <td class="text-center">$ {{ $producto->precio_v }}</td>
-                                        @if ($producto->stock>5)
-                                        <h5>
-                                            <td class="badge badge-success">{{ $producto->stock }}</td>
-                                        </h5>
-                                        @elseif ($producto->stock == 0)
-                                        <h5>
-                                            <td class="badge badge-danger">{{ $producto->stock }}</td>
-                                        </h5>
-                                        @else
-                                        <h5>
-                                            <td class="badge badge-warning">{{ $producto->stock }}</td>
-                                        </h5>
-                                        @endif
-
+                                        <td class="text-center">{{$baterium->idMarca }}</td>
+                                        <td class="text-center">{{$baterium->tamanio }}</td>
+                                        <td class="text-center">{{ $baterium->modelo }}</td>
+                                        <td class="text-center">{{ $baterium->voltaje }}</td>
 
                                         <td>
-                                            @can('productos.edit')
-                                            <a title="editar producto" href="{{ route('productos.edit', [$producto]) }}" class="btn btn-outline-primary btn-circle">
+                                            @can('bateria.edit')
+                                            <a title="editar producto" href="" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             @endcan
                                         </td>
                                         <td>
-                                            @can('productos.destroy')
-                                            <form action="{{ route('productos.destroy', [$producto]) }}" method="post">
+                                            <form action="" method="post">
                                                 @method("delete")
                                                 @csrf
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
-                                            @endcan
                                         </td>
                                     </tr>
-                                    @empty
-                                    <h3 class="text-black text-center"> ¡No hay registros!</h3>
-                                    @endforelse
+                                    @endforeach
                                 </tbody>
                             </table>
+
+
+
+                            {{--
 
                             <nav aria-label="Page navigation example float-right">
                                 <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
@@ -177,6 +155,8 @@
                                     <li class="page-item"><a class="page-link" href="{{ $productos->nextPageUrl() }}">Siguiente</a></li>
                                 </ul>
                             </nav>
+
+                            --}}
                         </div>
                     </div>
                     @else
