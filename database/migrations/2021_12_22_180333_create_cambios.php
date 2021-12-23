@@ -15,20 +15,12 @@ class CreateCambios extends Migration
     {
         Schema::create('cambios', function (Blueprint $table) {
             $table->string('idCambio');
-<<<<<<< HEAD
             $table->string('idUser')->references('id')->on('users')->onDelete('cascade');
-=======
-            $table->string('idUser');
->>>>>>> Narvaez
             $table->date('fecha');
             $table->string('descripcion');
             $table->float('monto',6,2);
 
             $table->primary('idCambio');
-<<<<<<< HEAD
-            //$table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
-=======
->>>>>>> Narvaez
         });
     }
 

@@ -14,11 +14,7 @@ class CreateBateria extends Migration
     public function up()
     {
         Schema::create('bateria', function (Blueprint $table) {
-<<<<<<< HEAD
             $table->string('idBateria')->references('idProducto')->on('productos');
-=======
-            $table->string('idBateria');
->>>>>>> Narvaez
             $table->string('idMarca')->references('idMarca')->on('marca_baterias');
             $table->string('tamanio');
             $table->string('modelo');

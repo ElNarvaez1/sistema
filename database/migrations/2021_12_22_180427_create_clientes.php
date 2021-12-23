@@ -18,18 +18,12 @@ class CreateClientes extends Migration
             $table->string('nombre');
             $table->string('apellidoPaterno');
             $table->string('apellidoMaterno');
-<<<<<<< HEAD
             $table->timestamp('fecha');
-            $table->integer('telefono')->nullable();
-
+            $table->string('telefono')->nullable();
+            
             $table->primary('idCliente');
             $table->rememberToken();
             $table->softDeletes(); 
-=======
-            $table->integer('telefono')->nullable();
-
-            $table->primary('idCliente');
->>>>>>> Narvaez
         });
     }
 

@@ -15,11 +15,20 @@ class UserSeeder extends Seeder
     {
         User::create(
 <<<<<<< HEAD
+<<<<<<< HEAD
             [                
                 'id' => 'Admin',
 =======
             [
                 'id' => 'Admin0',
+>>>>>>> Narvaez
+=======
+            [
+                'id' => 'Admin0',
+=======
+            [                
+                'id' => 'Admin',
+>>>>>>> 0a9e87a2103063d42ffd1237921cfbd7dd3c0939
 >>>>>>> Narvaez
                 'name' => 'Admin',
                 'apellidoPaterno' => 'Admin',
