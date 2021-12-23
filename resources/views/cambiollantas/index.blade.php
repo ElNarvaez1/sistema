@@ -67,7 +67,7 @@
                             @if ($listaCambioLlantas->count()))
                             <div class="card-body "> 
                                 <div class="table-responsive">
-                                {{-- id="dataTbale" --}}
+                                {{-- id="dataTable" --}}
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
