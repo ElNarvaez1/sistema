@@ -24,6 +24,10 @@ class CreateProveedores extends Migration
             $table->integer('telefono');
 
             $table->primary('idProveedor');
+<<<<<<< HEAD
+=======
+            $table->softDeletes(); 
+>>>>>>> 0a9e87a2103063d42ffd1237921cfbd7dd3c0939
         });
     }
 

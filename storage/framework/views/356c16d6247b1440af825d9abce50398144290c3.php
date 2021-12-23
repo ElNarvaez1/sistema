@@ -1,4 +1,4 @@
-<?php $__env->startSection('titulo', 'Inventario'); ?>
+<?php $__env->startSection('titulo', 'Productos'); ?>
 <?php $__env->startSection('contenido'); ?>
 
     <!-- Page Wrapper -->
@@ -18,8 +18,8 @@
                 <div class="container-fluid rounded color">
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> INVENTARIO <i class="fas fa-boxes"></i></h1>
-                    <p class="mb-4 text-dark">Consulte los datos de su producto aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> PRODUCTOS <i class="fas fa-boxes"></i></h1>
+                    <p class="mb-4 text-dark">Registro de nuevos productos aquí.</p>
 
 
                     
@@ -28,7 +28,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold">Búsqueda de productos por tipo y agregar productos</h6>
+                            <h6 class="m-0 font-weight-bold">Agrega, edite y elimine productos</h6>
                         </div>
 
 
@@ -91,21 +91,8 @@
                             </div>
                             <?php if($productos->count()): ?>)
                             <div class="card-body ">
-                                <div class="container">
-                                    <div class="row justify-content-md-center">
-                                      <div class="col col-lg-3">
-                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Suficientes.</h5>
-                                      </div>
-                                      <div class="col-lg-3">
-                                        <h5 class="text-dark  mx-3"> <span class="badge badge-warning">2</span> Pocas</h5>
-                                      </div>
-                                      <div class="col-lg-3">
-                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">3</span> Agotado.</h5>
-                                      </div>
-                                    </div>
-                                </div>
-                               
-                                
+
+                                                        
                                <div class="table-responsive">
                                     
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">

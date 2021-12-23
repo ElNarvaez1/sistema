@@ -22,20 +22,17 @@ class CreateUsersTable extends Migration
             //Atributos Base
             $table->string('id');
             $table->string('name');
-            $table->string('username');
+            $table->string('apellidoPaterno');
+            $table->string('apellidoMaterno');
             $table->string('email')->unique();
+            $table->string('username');
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('telefono');
             $table->rememberToken();
             $table->timestamps();
 
-
-            //Atributos extras
-            $table->string('apellidoMaterno');
             $table->primary('id');
-            $table->integer('telefono');
-            $table->longText('Foto')->nullable();
-            $table->string('rol'); //No le puse rol por esa madre se crea hasta despues
         });
     }
 

@@ -57,17 +57,26 @@
   
   <hr class="sidebar-divider my-0">
 
-  <li class="nav-item   <?php echo e(!Route::is('promocion.index') ?: 'active'); ?>">
-      <a class="nav-link" href="<?php echo e(route('promocion.index')); ?>">
+  <li class="nav-item   <?php echo e(!Route::is('cambiollantas.index') ?: 'active'); ?>">
+      <a class="nav-link" href="<?php echo e(route('cambiollantas.index')); ?>">
          <i class="fas fa-fw fa-percentage"></i>
           <span>Cambio de neumaticos</span>
       </a>
   </li>
   
+  
 
 
-
-
+<!--
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
+        <hr class="sidebar-divider my-0">
+            <li class="nav-item  <?php echo e(request()->routeIs('productos.index') ? 'active' : ''); ?>">
+                <a class="nav-link" href="<?php echo e(route('productos.index')); ?>">
+                    <i class="fas fa-boxes"></i>
+                    <span>Productos</span></a>
+            </li>
+        <?php endif; ?>
+-->
 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
 <hr class="sidebar-divider my-0">
     <li class="nav-item  <?php echo e(request()->routeIs('bateria.index') ? 'active' : ''); ?>">
@@ -76,6 +85,7 @@
             <span>baterias</span></a>
     </li>
 <?php endif; ?>
+
 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
 <hr class="sidebar-divider my-0">
     <li class="nav-item  <?php echo e(request()->routeIs('llantas.index') ? 'active' : ''); ?>">
@@ -84,6 +94,8 @@
             <span>Llantas</span></a>
     </li>
 <?php endif; ?>
+
+
 
 
 
@@ -143,16 +155,15 @@
 <?php endif; ?>
 
 
- <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('pedido.index')): ?> 
+
 <hr class="sidebar-divider my-0">
 
-<li class="nav-item   <?php echo e(!Route::is('pedido.index') ?: 'active'); ?>">
-    <a class="nav-link" href="<?php echo e(route('pedido.index')); ?>">
+<li class="nav-item   <?php echo e(!Route::is('proveedor.index') ?: 'active'); ?>">
+    <a class="nav-link" href="<?php echo e(route('proveedor.index')); ?>">
         <i class="fas fa-qrcode"></i>
-        <span>Ver pedidos</span>
+        <span>Proveedores</span>
     </a>
 </li>
-<?php endif; ?>
 
 
  <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cart.invoices')): ?>

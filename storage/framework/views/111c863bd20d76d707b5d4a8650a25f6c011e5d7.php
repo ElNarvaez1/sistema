@@ -53,12 +53,11 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'nombre',
-                                                    'direccion',
-                                                    'telefono',
+                                                    'IdCambioLlanta',
                                                     'fecha',
-                                                    'correo'
-                                                    // 'PRECIO COMPRA','PRECIO VENTA'
+                                                    'Descripcion',
+                                                    'total servicio',
+                                                    'correo'                                                    
                                                     ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

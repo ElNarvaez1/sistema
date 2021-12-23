@@ -15,7 +15,7 @@ class CreateCambios extends Migration
     {
         Schema::create('cambios', function (Blueprint $table) {
             $table->string('idCambio');
-            $table->string('idUser');
+            $table->string('idUser')->references('id')->on('users')->onDelete('cascade');
             $table->date('fecha');
             $table->string('descripcion');
             $table->float('monto',6,2);

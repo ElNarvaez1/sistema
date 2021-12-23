@@ -25,7 +25,7 @@ class llantaController extends Controller
         $variablesurl = $request->all();
         $productos = llantaModel::all(); //Producto::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
 
-        return view('productos.llantas_index', compact('productos'));
+        return view('productos.llantas.llantas_index', compact('productos'));
     }
 
     /**
@@ -35,7 +35,7 @@ class llantaController extends Controller
      */
     public function create()
     {
-        return view('productos.llantas_add');
+        return view('productos.llantas.llantas_add');
     }
 
     /**
@@ -90,12 +90,10 @@ class llantaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(llantaModel $llanta)
+    public function edit(Request $request,$llanta)
     {
-        return view(
-            'productos.llantas_edit',
-            compact('llanta')
-        );
+        $temp = llantaModel::find($llanta);
+        return view('productos.llantas.llantas_edit',["llanta" => $temp] );
     }
 
     /**
@@ -105,12 +103,16 @@ class llantaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, llantaModel $llanta)
+    public function update(Request $request, $llanta)
     {
         //Validadomos.
+        $llanta2 = llantaModel::find($llanta);
+        $llanta2->cargaMaxima = $request->cargaMaxima;
+        $llanta2->velocidadMaxima = $request->stock;
+        $llanta2->medida = $request->medida;
+        $llanta2->presion = $request->presion;
+        $llanta2->save();
 
-
-        $llanta->save();
         return redirect()->route('llantas.index');
     }
 
@@ -120,8 +122,10 @@ class llantaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($llanta)
     {
-        //
+        $registro =  llantaModel::find($llanta);
+        $registro->delete();
+        return redirect()->route('llantas.index');
     }
 }

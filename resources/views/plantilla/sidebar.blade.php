@@ -57,17 +57,26 @@
   {{-- @can('client.index') --}}
   <hr class="sidebar-divider my-0">
 
-  <li class="nav-item   {{ !Route::is('promocion.index') ?: 'active' }}">
-      <a class="nav-link" href="{{ route('promocion.index') }}">
+  <li class="nav-item   {{ !Route::is('cambiollantas.index') ?: 'active' }}">
+      <a class="nav-link" href="{{ route('cambiollantas.index') }}">
          <i class="fas fa-fw fa-percentage"></i>
           <span>Cambio de neumaticos</span>
       </a>
   </li>
   {{-- @endcan --}}
+  
 
 
-
-
+<!--
+        @can('productos.index')
+        <hr class="sidebar-divider my-0">
+            <li class="nav-item  {{ request()->routeIs('productos.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('productos.index') }}">
+                    <i class="fas fa-boxes"></i>
+                    <span>Productos</span></a>
+            </li>
+        @endcan
+-->
 @can('productos.index')
 <hr class="sidebar-divider my-0">
     <li class="nav-item  {{ request()->routeIs('bateria.index') ? 'active' : '' }}">
@@ -76,6 +85,7 @@
             <span>baterias</span></a>
     </li>
 @endcan
+
 @can('productos.index')
 <hr class="sidebar-divider my-0">
     <li class="nav-item  {{ request()->routeIs('llantas.index') ? 'active' : '' }}">
@@ -84,6 +94,8 @@
             <span>Llantas</span></a>
     </li>
 @endcan
+
+
 
 
 
@@ -153,7 +165,7 @@
     </li>
 @endcan
 
-
+{{--
  @can('pedido.index') 
 <hr class="sidebar-divider my-0">
 
@@ -164,7 +176,17 @@
     </a>
 </li>
 @endcan
+--}}
+{{--@can('proveedor.index') --}}
+<hr class="sidebar-divider my-0">
 
+<li class="nav-item   {{ !Route::is('proveedor.index') ?: 'active' }}">
+    <a class="nav-link" href="{{ route('proveedor.index') }}">
+        <i class="fas fa-qrcode"></i>
+        <span>Proveedores</span>
+    </a>
+</li>
+{{--@endcan--}}
 
  @can('cart.invoices')
 <hr class="sidebar-divider my-0">
