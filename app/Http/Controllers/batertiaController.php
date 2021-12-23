@@ -101,7 +101,9 @@ class batertiaController extends Controller
      */
     public function destroy(Request $request, batertiaModel $baterium)
     {
-        $baterium->delete();
+        $registro = batertiaModel::find($baterium);
+
+        $registro->delete();
         return redirect()->route('bateria.index');
     }
 
@@ -110,8 +112,16 @@ class batertiaController extends Controller
         return view('productos.baterias.baterias_edit', ["producto" => $baterium]);
     }
 
-    public function update(batertiaModel $baterium){
-        $baterium->save();   
+    public function update(Request $request,batertiaModel $baterium){
+        $bateria = batertiaModel::find($baterium->idBateria);
+
+        $bateria->idMarca = $request->idMarca;
+        $bateria->tamanio = $request->tamanio;
+        $bateria->modelo = $request->modelo;
+        $bateria->voltaje = $request->voltaje;
+        $bateria->save();
+
+        //$baterium->save();   
         return redirect()->route('bateria.index');      
     }
 }

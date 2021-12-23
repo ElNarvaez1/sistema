@@ -122,8 +122,10 @@ class llantaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($llanta)
     {
-        //
+        $registro =  llantaModel::find($llanta);
+        $registro->delete();
+        return redirect()->route('llantas.index');
     }
 }
