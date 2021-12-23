@@ -57,8 +57,8 @@
   {{-- @can('client.index') --}}
   <hr class="sidebar-divider my-0">
 
-  <li class="nav-item   {{ !Route::is('promocion.index') ?: 'active' }}">
-      <a class="nav-link" href="{{ route('promocion.index') }}">
+  <li class="nav-item   {{ !Route::is('cambiollantas.index') ?: 'active' }}">
+      <a class="nav-link" href="{{ route('cambiollantas.index') }}">
          <i class="fas fa-fw fa-percentage"></i>
           <span>Cambio de neumaticos</span>
       </a>

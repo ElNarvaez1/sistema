@@ -1,22 +1,23 @@
-<?php $__env->startSection('titulo', 'Cambio de llantas'); ?>
-<?php $__env->startSection('contenido'); ?>
+@extends('layouts.main')
+@section('titulo', 'Cambio de llantas')
+@section('contenido')
 
 
     
     <div id="wrapper">
-        
-        <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>        
+        {{-- incluimos sildebar color: azul :) --}}
+        @include('plantilla.sidebar')        
         <div id="content-wrapper" class="d-flex flex-column">
             
             <div id="content">
-                <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>   
+                @include('layouts.nav-log')   
                 <div class="container-fluid rounded color">
                     <br>
                     <!--encabezado-->                    
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Cambios de llantas  <i class="fas fa-tools"></i></h1>
                     <p class="mb-4 text-dark">Consulte la información historica sobre el cambio de llantas</p>
-                    
-                    <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                    {{-- mensajes --}}
+                    @include('plantilla.notification')
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold">Búsqueda de cambio de llantas</h6>
@@ -24,27 +25,28 @@
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 <div class="row">
+                                {{-- cambiar llantas --}}
                                     <div class="col-md-3 mt-4">
                                         <div class="form-group">
-                                            <a title="agregar nuevo cliente" href="" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
-                                                        Nuevo cambio neumaticos <i class="fas fa-plus-circle"></i>
+                                            <a title="agregar nuevo cliente" href="{{ route('cambiollantas.create') }}" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"> 
+                                                        Nuevo cambio llantas <i class="fas fa-plus-circle"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <?php ($arrayB = [
+                                            @php($arrayB = [
                                                         'idCambioDeLlanta',
                                                         'fecha',
                                                         'descripcion',
                                                         'total',
                                                         'empleado'
                                                         // 'PRECIO COMPRA','PRECIO VENTA'
-                                                        ]); ?>
+                                                        ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
-                                                <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option><?php echo e($buscar); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                @foreach ($arrayB as $buscar)
+                                                    <option>{{ $buscar }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -62,8 +64,10 @@
                                 </div>
 
                             </div>
-                            <div class="card-body ">
+                            @if ($listaCambioLlantas->count()))
+                            <div class="card-body "> 
                                 <div class="table-responsive">
+                                {{-- id="dataTable" --}}
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
@@ -75,16 +79,20 @@
                                                 <th scope="col" colspan="2">ACCIONES</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
+                                            @forelse ($listaCambioLlantas as $cambio)
                                                 <tr class="table-hover">
-                                                    <th class="text-center" scope="row">SERV-123</th>
-                                                    <th class="text-center" scope="row">21-12-2021</th>
-                                                    <th class="text-center" scope="row">Cambio de una llanata marca michellin</th>
-                                                    <th class="text-center" scope="row">$230.0</th>
-                                                    <th class="text-center" scope="row">admin</th>
+                                                    <th class="text-center" scope="row">{{$cambio->idCambio}}</th>
+                                                    <th class="text-center" scope="row">{{$cambio->fecha}}</th>
+                                                    <th class="text-center" scope="row">{{$cambio->descripcion}}</th>
+                                                    <th class="text-center" scope="row">${{$cambio->monto}}</th>
+                                                    <th class="text-center" scope="row">{{$cambio->idUser}}</th>
                                                     <th class="text-center" scope="row">
                                                         <a title="Ver mas" class="btn btn-outline-primary btn-circle"> <i class="fa fa-eye"></i></a>
                                                     </th>
                                                 </tr>
+                                            @empty
+                                                <h3 class="text-black text-center"> ¡No hay registros!</h3>
+                                            @endforelse
                                             <tbody>
                                             <!--<h3 class="text-black text-center"> ¡No hay registros!</h3>-->
                                         </thead>
@@ -99,11 +107,27 @@
                                         </nav>
                                 </div>
                             </div>
+                            @else
+                            <div class="card-body ">
+                               <div class=" row">
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <a href="" class="btn btn-outline-primary" >regresar</a>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-md-8 mt-4">
+                                        <div class="form-group">                                        
+                                            <strong class ="card-title">¡No hay registros!</strong>                                       
+                                            </div>
+                                        </div>
+                                </div>                               
+                            </div>
+                            @endif
 
                         </div>
                     </div>          
                 </div>   
-                    <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>                   
+                    @include('plantilla.footer')                   
             <div>
 
         </div>
@@ -112,5 +136,4 @@
     </div>
             
            
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/sistema/resources/views/promociones/index.blade.php ENDPATH**/ ?>
+@endsection

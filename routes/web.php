@@ -15,6 +15,7 @@ use App\Http\Controllers\llantaController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\CambioLLantasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +86,7 @@ Route::delete('/Ventas/remove/{id}', [VentasController::class, 'delete'])->name(
 Route::get('/Ventas/download/ticket/{id}', [VentasController::class, 'ticket_download'])->name('venta.ticket');
 
 // PROMOCIONES -API TELEGRAM
-Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
+//Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
 Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTelegram'])->name('promocion.send');
 // Route::get('/updated-activity', [PromocionesController::class,'updatedActivity']);
 
@@ -113,6 +114,11 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::Class,'destroy'])->name('proveedor.destroy');
     Route::put('Proveedor/index/{idProveedor}',[ProveedorController::Class,'update'])->name('proveedor.update');
 
+//Cambio de llantas
+    Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
+    Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
+    Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
+    Route::resource('cambiollantas', CambioLLantasController::class);
 
 });
 

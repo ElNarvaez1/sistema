@@ -57,8 +57,8 @@
   
   <hr class="sidebar-divider my-0">
 
-  <li class="nav-item   <?php echo e(!Route::is('promocion.index') ?: 'active'); ?>">
-      <a class="nav-link" href="<?php echo e(route('promocion.index')); ?>">
+  <li class="nav-item   <?php echo e(!Route::is('cambiollantas.index') ?: 'active'); ?>">
+      <a class="nav-link" href="<?php echo e(route('cambiollantas.index')); ?>">
          <i class="fas fa-fw fa-percentage"></i>
           <span>Cambio de neumaticos</span>
       </a>
