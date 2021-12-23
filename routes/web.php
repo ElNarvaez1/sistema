@@ -40,6 +40,9 @@ Route::group(['middleware' =>'auth'], function(){
     Route::resource('inventario', InventarioController::class);
     Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
     Route::resource('role', RolesController::class);
+
+    Route::resource('user', UserController::class)->only(['index','edit','update', 'create', 'store', 'destroy']);
+
     Route::resource('user', UserController::class)->only(['index','edit','update']);
 
     Route::resource('bateria',batertiaController::class);
@@ -111,9 +114,6 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::class,'edit'])->name('proveedor.edit');
     Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::class,'destroy'])->name('proveedor.destroy');
     Route::put('Proveedor/index/{idProveedor}',[ProveedorController::class,'update'])->name('proveedor.update');
-
-    
-    
 
 //Cambio de llantas
     Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');

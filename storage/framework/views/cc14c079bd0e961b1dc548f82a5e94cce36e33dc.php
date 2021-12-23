@@ -40,6 +40,27 @@
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
 
+                                <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">id del cliente</label>
+                                            <input type="text" name="idCliente" value="<?php echo e(old('idCliente')); ?>"
+                                                placeholder="id del cliente"
+                                                class="form-control text-upper">
+                                            
+                                            <?php $__errorArgs = ['idCliente'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+
+                                    </div>
+
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del cliente</label>
@@ -65,11 +86,11 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
-                                            <input type="text" name="apellido_p" value="<?php echo e(old('apellido_p')); ?>"
+                                            <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno')); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             
-                                            <?php $__errorArgs = ['apellido_p'];
+                                            <?php $__errorArgs = ['apellidoPaterno'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -87,11 +108,11 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
-                                            <input type="text" name="apellido_m" value="<?php echo e(old('apellido_m')); ?>"
+                                            <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno')); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             
-                                            <?php $__errorArgs = ['apellido_m'];
+                                            <?php $__errorArgs = ['apellidoMaterno'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -101,53 +122,12 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Dirección</label>
-                                            <textarea class="form-control text-upper"
-                                                placeholder="Direccion del cliente..."
-                                                name="direccion"><?php echo e(old('direccion')); ?></textarea>
-
-                                            
-                                            <?php $__errorArgs = ['direccion'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-
                                         </div>
                                     </div>
 
                                    
 
-                                            <div class="col-md-4 mt-4">
-                                                <div class="form-group">
-                                                    <label class="text-black h4">E-mail</label>
-                                                    <input type="text" name="correo" value="<?php echo e(old('correo')); ?>"
-                                                        placeholder="CORREO ELECTRONICO"
-                                                        class="form-control">
-
-                                                    
-                                                    <?php $__errorArgs = ['correo'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                </div>
-                                            </div>
+                                           
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">

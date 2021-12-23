@@ -16,7 +16,7 @@ class CreateLlantas extends Migration
         Schema::create('llantas', function (Blueprint $table) {
             $table->string('idLlanta')->references('idProducto')->on('Producto');
             $table->string('idRin')->references('idRin')->on('rin');
-            $table->float('cargaMaxima',6,2);
+            $table->float('cargaMaxima',8,2);
             $table->float('velocidadMaxima');
             $table->string('medida');
             $table->string('presion');

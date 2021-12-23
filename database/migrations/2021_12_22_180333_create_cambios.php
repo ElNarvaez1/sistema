@@ -19,7 +19,6 @@ class CreateCambios extends Migration
             $table->date('fecha');
             $table->string('descripcion');
             $table->float('monto',6,2);
-
             $table->primary('idCambio');
         });
     }

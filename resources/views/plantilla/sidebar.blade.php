@@ -98,8 +98,6 @@
 
 
 
-
-
 @can('productos.index')
 <hr class="sidebar-divider my-0">
     <li class="nav-item  {{ request()->routeIs('inventario.index') ? 'active' : '' }}">
