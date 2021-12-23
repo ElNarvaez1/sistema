@@ -36,24 +36,11 @@
 
                     <div class="container">
 
-                        <form method="POST" action="<?php echo e(route('bateria.store')); ?>" enctype="multipart/form-data">
+                        <form method="POST" action="<?php echo e(route('bateria.update',$producto->idBateria)); ?>" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
+                            <?php echo method_field('PUT'); ?>
                             <div class="row">
-                                <!--
-                                    Productos
-                                        -> idProveedor  
-                                        -> nombre       *
-                                        -> descripcion  *
-                                        -> imagen       * 
-                                        -> precioCompra *
-                                        -> PrecioVenta  *
-                                        -> existencia   *
-                                    Bateria
-                                        -> idMarca      *
-                                        -> tamanio      *
-                                        -> modelo       *
-                                        -> voltaje
-                                    -->
+                                <input type="hidden" name="key" value="<?php echo e($producto->idBateria); ?>">
                                 <!--------------------------Inputs de la informacion NOMBRE-------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
@@ -106,7 +93,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Modelo</label>
-                                        <input type="text" name="modelo" value="<?php echo e(old('modelo')); ?>" placeholder="" class="form-control text-upper">
+                                        <input type="text" name="modelo" value="<?php echo e($producto->modelo); ?>" placeholder="" class="form-control text-upper">
                                         <?php $__errorArgs = ['modelo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -192,7 +179,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Marca</label>
-                                        <select name="idMarca" id="selectorMarca" class="form-control form-select">
+                                        <select name="idMarca" id="selectorMarca" class="form-control form-select" value="<?php echo e($producto->idMarca); ?>">
                                             <option value="0">Seleccionar</option>
                                             <?php $__currentLoopData = $marcasLlantas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $marca): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <option value="<?php echo e($marca->idMarca); ?>"><?php echo e($marca->nombre); ?></option>
@@ -204,14 +191,14 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Tamaño</label>
-                                        <input type="number" name="tamanio" value="<?php echo e(old('stock')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                        <input type="number" name="tamanio" value="<?php echo e($producto->tamanio); ?>" placeholder="" class="form-control text-upper" min="1">
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion VOLTAJE -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Voltaje</label>
-                                        <input type="number" name="voltaje" value="<?php echo e(old('stock')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                        <input type="number" name="voltaje" value="<?php echo e($producto->voltaje); ?>" placeholder="" class="form-control text-upper" min="1">
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion DESCRIPCION-------------------------->
@@ -274,4 +261,4 @@ unset($__errorArgs, $__bag); ?>
 <!-- End of Page Wrapper -->
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/productos/baterias/baterias_add.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/productos/baterias/baterias_edit.blade.php ENDPATH**/ ?>

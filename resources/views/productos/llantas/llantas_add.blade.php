@@ -10,17 +10,16 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-
             @include('layouts.nav-log')
 
             <!-- Begin Page Content -->
             <div class="container-fluid rounded color">
-                {{route('bateria.destroy','aX-221221')}}    
-            @csrf
+                @csrf
                 <br>
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 bold-title"> REGISTRAR BATERÍA <i class="fas fa-plus-circle mx-3"></i> </h1>
-                <p class="mb-4 text-dark">Registre su batería aquí.</p>
+                <h1 class="h3 mb-2 bold-title"> REGISTRAR LLANTA <i class="fas fa-plus-circle mx-3"></i> </h1>
+                <p class="mb-4 text-dark">Registre su mueva llanta.</p>
+
 
                 {{-- mensajes --}}
                 @include('plantilla.notification')
@@ -28,19 +27,20 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4 rounded card-color">
                     <div class="card-header py-3 bg-color">
-                        <h6 class="m-0 font-weight-bold ">Agregar bateria</h6>
+                        <h6 class="m-0 font-weight-bold ">Agregar llantas</h6>
                     </div>
 
-                    {{-- Formulario -> vista de productos --}}
+                    {{-- Formulario -> vista de llantas --}}
 
 
                     <div class="container">
 
-                        <form method="POST" action="{{ route('bateria.update',$producto->idBateria) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('llantas.store') }}" enctype="multipart/form-data">
+
                             @csrf
-                            @method('PUT')
                             <div class="row">
-                                <input type="hidden" name="key" value="{{$producto->idBateria}}">
+
+                                <!--############################################# INPUTS ############################################################################################################-->
                                 <!--------------------------Inputs de la informacion NOMBRE-------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
@@ -52,37 +52,29 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <!--------------------------Inputs de la informacion PROVEEDOR -------------------------->
-                                <!--
-                                    PHP tempral ajajajaj no sabia donde ponerlo
-                                -->
-                                @php(
-                                    $proveedores = App\Models\Proveedor::all()
-                                )
-                                <div class="col-md-4 mt-2">
-                                    <div class="form-group">
-                                        <label class="fs-5 text-body">ID Proveedor</label>
-                                        <select name="proveedor" value="{{ old('proveedor') }}" id="" class="form-control text-upper">
-                                            <option value="0">Seleccione un proveedor</option>
-                                            @foreach( $proveedores as $proveedor)
-                                                <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
-                                            @endforeach
-                                        </select>
-                                        {{-- validaciones --}}
-                                        @error('proveedor')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>    
-
                                 <!--------------------------Inputs de la informacion MODELO-------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Modelo</label>
-                                        <input type="text" name="modelo" value="{{ $producto->modelo }}" placeholder="" class="form-control text-upper">
+                                        <input type="text" name="modelo" value="{{ old('modelo') }}" placeholder="" class="form-control text-upper">
                                         @error('modelo')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion Proveedor-------------------------->
+                                @php(
+                                    $proveedores = DB::table('proveedores')->get()
+                                )
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="proveedor">
+                                            <option value="0">Seleccione el proveedor</option>
+                                            @foreach ($proveedores as $proveedor)
+                                            <option value="{{$proveedor->idProveedor}}" >{{$proveedor->nombre}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion IMAGEN-------------------------->
@@ -125,44 +117,77 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <!--------------------------Inputs de la informacion MARCA -------------------------->
-                                @php($marcasLlantas = DB::table('marca_baterias')->get() )
+                                <!-----------------------INPUTS DE ID *Id de la llanta*---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Id de la llanta</label>
+                                        <input type="text" name="idLlanta" value="{{ old('idLlanta') }}" placeholder="Introduce el nombre del producto" class="form-control text-upper">
+                                        {{-- validaciones --}}
+                                        @error('idLlanta')
+                                        <div class="message-error">* {{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-----------------------INPUTS DE ID *Rin de la llanta*---------------------------------------------->
+                                
+                                @php(
+                                    $rines = DB::table('rin')->get()
+                                )
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Marca</label>
-                                        <select name="idMarca" id="selectorMarca" class="form-control form-select" value="{{$producto->idMarca}}">
-                                            <option value="0">Seleccionar</option>
-                                            @foreach($marcasLlantas as $marca)
-                                                <option value="{{$marca->idMarca}}">{{$marca->nombre}}</option>
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="rin">
+                                            <option value="0">Seleccione Rin</option>
+                                            @foreach ($rines as $rin)
+                                            <option value="{{$rin->idRin}}" >{{$rin->numero}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <!--------------------------Inputs de la informacion TAMANIO -------------------------->
-                                <div class="col-md-4 mt-2">
+                                <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
+
+                                <div class="col-md-8 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Tamaño</label>
-                                        <input type="number" name="tamanio" value="{{ $producto->tamanio }}" placeholder="" class="form-control text-upper" min="1">
-                                    </div>
-                                </div>
-                                <!--------------------------Inputs de la informacion VOLTAJE -------------------------->
-                                <div class="col-md-4 mt-2">
-                                    <div class="form-group">
-                                        <label class="fs-5 text-body">Voltaje</label>
-                                        <input type="number" name="voltaje" value="{{ $producto->voltaje }}" placeholder="" class="form-control text-upper" min="1">
-                                    </div>
-                                </div>
-                                <!--------------------------Inputs de la informacion DESCRIPCION-------------------------->
-                                <div class="col-md-8 mt-2">
-                                    <div class="form-group">
-                                        <label class="fs-5 text-body">Descripción</label>
-                                        <textarea class="form-control text-upper" placeholder="" name="descripcion">{{ old('descripcion') }}</textarea>
-                                        {{-- validaciones --}}
-                                        @error('descripcion')
+                                        <label class="fs-5 text-body">Carga Maxima</label>
+                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="{{old('cargaMaxima')}}" class="form-control text-upper">
+                                        @error('cargaMaxima')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
+
+                                <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">velocidad Maxima</label>
+                                        <input type="number" name="velocidadMaxima" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
+                                        @error('velocidadMaxima')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!----------------------- CAJA DE TEXTO *Media* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Medida</label>
+                                        <input type="number" name="medida" value="{{ old('medida') }}" class="form-control text-upper" min="1">
+                                        @error('medida')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!----------------------- CAJA DE TEXTO ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Presion</label>
+                                        <input type="number" name="presion" value="{{ old('presion') }}" class="form-control text-upper" min="1">
+                                        @error('presion')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
 
                             </div>
 
@@ -175,7 +200,7 @@
                                 </div>
                                 @can('productos.index')
                                 <div class="col-auto">
-                                    <a title="cancelar producto" href="./" class="btn btn-primary btn-ms">Regresar
+                                    <a title="cancelar producto" href="../" class="btn btn-primary btn-ms">Regresar
                                         <i class="fas fa-strikethrough"></i></a>
                                 </div>
                                 @endcan
@@ -183,6 +208,7 @@
                             <br>
 
                         </form>
+
                     </div>
 
                 </div>

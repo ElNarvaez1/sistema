@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\batertiaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\batertiaController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\CarritoController;
