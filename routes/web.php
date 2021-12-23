@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\batertiaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\batertiaController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\CarritoController;
@@ -16,6 +17,10 @@ use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CambioLLantasController;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Narvaez
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +45,14 @@ Route::group(['middleware' =>'auth'], function(){
     Route::resource('inventario', InventarioController::class);
     Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
     Route::resource('role', RolesController::class);
+<<<<<<< HEAD
     Route::resource('user', UserController::class)->only(['index','edit','update', 'create', 'store', 'destroy']);
+=======
+    Route::resource('user', UserController::class)->only(['index','edit','update']);
+
+    Route::resource('bateria',batertiaController::class);
+    Route::resource('llantas',llantaController::class);
+>>>>>>> Narvaez
 
     /**
      * Rutas de las baterias y llantas.
@@ -107,12 +119,24 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
     //Proveedor
+<<<<<<< HEAD
     Route::get('Proveedor',[ProveedorController::Class,'index'])->name('proveedor.index');
     Route::get('Proveedor/index',[ProveedorController::Class,'create'])->name('proveedor.create');
     Route::post('Proveedor/index/add',[ProveedorController::Class,'store'])->name('proveedor.store');
     Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::Class,'edit'])->name('proveedor.edit');
     Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::Class,'destroy'])->name('proveedor.destroy');
     Route::put('Proveedor/index/{idProveedor}',[ProveedorController::Class,'update'])->name('proveedor.update');
+=======
+    Route::get('Proveedor',[ProveedorController::class,'index'])->name('proveedor.index');
+    Route::get('Proveedor/index',[ProveedorController::class,'create'])->name('proveedor.create');
+    Route::post('Proveedor/index/add',[ProveedorController::class,'store'])->name('proveedor.store');
+    Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::class,'edit'])->name('proveedor.edit');
+    Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::class,'destroy'])->name('proveedor.destroy');
+    Route::put('Proveedor/index/{idProveedor}',[ProveedorController::class,'update'])->name('proveedor.update');
+
+    
+    
+>>>>>>> Narvaez
 
 //Cambio de llantas
     Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
