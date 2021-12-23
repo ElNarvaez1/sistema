@@ -70,7 +70,7 @@ class batertiaController extends Controller
         $producto->idProducto = $request->nombre[0].''.
                                 $request->nombre[1].''.
                                 $request->nombre[2].'-'.
-                                date('dmy'); //-> se pone solo
+                                date('Y-m-d H:i:s'); //-> se pone solo
         $producto->idProveedor = $request->proveedor;
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;

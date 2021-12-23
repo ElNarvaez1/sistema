@@ -17,8 +17,6 @@ class CreateVentas extends Migration
             $table->string('idVenta');
             $table->string('idCliente')->refences('idCliente')->on('clientes');
             $table->string('idUser')->references('id')->on('users');
-            $table->string('idCliente')->refences('idCliente')->on('clientes');
-            $table->string('idUser')->references('id')->on('users');
             $table->date('fecha');
             $table->float('totalVenta',10,2);
             $table->float('descuento',5,2)->default(0);
