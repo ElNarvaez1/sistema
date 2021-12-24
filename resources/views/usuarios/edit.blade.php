@@ -18,7 +18,7 @@
                     <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 bold-title"> EDITAR EMPLEADO <i class="fas fa-plus-circle mx-3"></i> </h1>
-                    <p class="mb-4 text-dark">Actualice los datos de un empleado aquí.</p>
+                    <p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>
 
 
                     {{-- mensajes --}}
@@ -39,22 +39,8 @@
                                 @method("PUT")
                                 @csrf
                                 <div class="row">
-                           <!--
-                              <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                            <label class="text-black h4">Id del empleado</label>
-                                            <input type="text" name="id" value="{{ old('id',$user->id) }}"
-                                                placeholder="ID del empleado"
-                                                class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('id')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                          -->
-                                    </div>
 
-                                    <div class="col-md-4 mt-4">
+                                <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del empleado</label>
                                             <input type="text" name="name" value="{{ old('name',$user->name) }}"
@@ -112,7 +98,7 @@
 
                                    
 
-                                            <div class="col-md-4 mt-4">
+                                    <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>
                                                     <input type="text" name="email" value="{{ old('email',$user->email) }}"
@@ -154,7 +140,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4 mt-4">
+                                    <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre de usuario</label>
                                             <input type="text" name="username" value="{{ old('username',$user->username) }}"
@@ -167,7 +153,10 @@
                                         </div>
 
                                     </div>
-              
+
+
+
+                                            
                                         </div>
 
                                         {{-- PARTE BOTONES --}}
