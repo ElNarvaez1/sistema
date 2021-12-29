@@ -16,10 +16,16 @@ class CreateLlantas extends Migration
         Schema::create('llantas', function (Blueprint $table) {
             $table->string('idLlanta')->references('idProducto')->on('Producto');
             $table->string('idRin')->references('idRin')->on('rin');
-            $table->float('cargaMaxima',8,2);
+            $table->float('indiceCarga');
             $table->float('velocidadMaxima');
-            $table->string('medida');
-            $table->string('presion');
+            //$table->string('medida');//que es?
+            $table->integer('presion');
+            $table->integer('ancho');
+            $table->integer('diametro');
+            $table->string('Fabricante');//descutir
+            $table->date('anioFabricacion');
+            $table->string('tipoDeCarro');
+            $table->string('marcasDeCarro');
 
             $table->primary('idLlanta');
         });
