@@ -18,7 +18,7 @@
                     <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 bold-title"> EDITAR EMPLEADO <i class="fas fa-plus-circle mx-3"></i> </h1>
-                    <p class="mb-4 text-dark">Actualice los datos de un empleado aquí.</p>
+                    <p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>
 
 
                     
@@ -39,29 +39,8 @@
                                 <?php echo method_field("PUT"); ?>
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
-                           <!--
-                              <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                            <label class="text-black h4">Id del empleado</label>
-                                            <input type="text" name="id" value="<?php echo e(old('id',$user->id)); ?>"
-                                                placeholder="ID del empleado"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['id'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                        </div>
-                          -->
-                                    </div>
 
-                                    <div class="col-md-4 mt-4">
+                                <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del empleado</label>
                                             <input type="text" name="name" value="<?php echo e(old('name',$user->name)); ?>"
@@ -147,7 +126,7 @@ unset($__errorArgs, $__bag); ?>
 
                                    
 
-                                            <div class="col-md-4 mt-4">
+                                    <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>
                                                     <input type="text" name="email" value="<?php echo e(old('email',$user->email)); ?>"
@@ -210,7 +189,7 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4 mt-4">
+                                    <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre de usuario</label>
                                             <input type="text" name="username" value="<?php echo e(old('username',$user->username)); ?>"
@@ -230,7 +209,10 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
 
                                     </div>
-              
+
+
+
+                                            
                                         </div>
 
                                         
