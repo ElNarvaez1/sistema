@@ -50,7 +50,7 @@
                                                                             <div class="col-md-12 mt-4">
                                                                                     <div class="form-group">
                                                                                     <label class="text-black"><FONT SIZE =3>Fecha en la que se esta realizando el servicio:</FONT></label>
-                                                                                        <input id="fecha" type="date" value="<?php echo date("Y-n-j"); ?>" required> <!--el codigo en php es para obtener la fecha actual-->
+                                                                                        <input disabled="true"id="fecha" type="date" value="<?php echo date("Y-n-j"); ?>" required> <!--el codigo en php es para obtener la fecha actual-->
                                                                                         <label class="text-black"><FONT SIZE =3>Descripción sobre el cambio de neumáticos:</FONT></label>
                                                                                         <textarea class="form-control" value="{{old('message')}}" name="descripcion" placeholder="Descripción" required></textarea>
                                                                                         <br>

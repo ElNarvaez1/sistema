@@ -70,7 +70,7 @@ class batertiaController extends Controller
         $producto->idProducto = $request->nombre[0].''.
                                 $request->nombre[1].''.
                                 $request->nombre[2].'-'.
-                                date('dmy'); //-> se pone solo
+                                date('Y-m-d H:i:s'); //-> se pone solo
         $producto->idProveedor = $request->proveedor;
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
@@ -84,7 +84,7 @@ class batertiaController extends Controller
         $bateria = new batertiaModel();
         $bateria->idBateria = $request->modelo[0].''.
                              $request->modelo[1].'-'.
-                                date('dmy'); //-> Se supone que pone solo xd
+                             date('Y-m-d H:i:s'); //-> Se supone que pone solo xd
         $bateria->idMarca = $request->idMarca;
         $bateria->tamanio = $request->tamanio;
         $bateria->modelo = $request->modelo;

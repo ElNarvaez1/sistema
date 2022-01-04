@@ -10,7 +10,7 @@ class Cliente extends Model
     use SoftDeletes; //Implementamos
     protected $table = 'clientes';
     protected $dates = ['deleted_at']; //Registramos la nueva columna
-    protected $primarykey = 'id';
+    protected $primarykey = 'idCliente';
     public $timestamps = false;
 
 
