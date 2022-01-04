@@ -79,10 +79,10 @@
 -->
 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
 <hr class="sidebar-divider my-0">
-    <li class="nav-item  <?php echo e(request()->routeIs('bateria.index') ? 'active' : ''); ?>">
-        <a class="nav-link" href="<?php echo e(route('bateria.index')); ?>">
+    <li class="nav-item  <?php echo e(request()->routeIs('productos.index') ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo e(route('productos.index')); ?>">
             <i class="fas fa-car-battery"></i>
-            <span>baterias</span></a>
+            <span>Productos</span></a>
     </li>
 <?php endif; ?>
 
