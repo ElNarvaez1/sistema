@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\batertiaModel;
+use App\Models\llantaModel;
 use App\Models\Producto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Session;
@@ -64,35 +67,70 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'descripcion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
-                'modelo' => 'required|unique:product',
-                'tipo' => 'required',
-                'precio_c' => 'required|numeric',
-                'precio_v' => 'required|numeric',
-                'stock' => 'required|numeric',
-                'imagen' => 'required|image|max:2048'
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
+        //         'descripcion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
+        //         'modelo' => 'required|unique:product',
+        //         'tipo' => 'required',
+        //         'precio_c' => 'required|numeric',
+        //         'precio_v' => 'required|numeric',
+        //         'stock' => 'required|numeric',
+        //         'imagen' => 'required|image|max:2048'
+        //     ]
+        // );
         Session::flash('message_save', '¡Producto guardado con éxito!');
-
-        $producto = new Producto($request->input());
+//-----> Seccion de la inpformacion basica de los productos
+        $producto = new Producto();
         $producto->nombre = Str::upper($request->input('nombre'));
         $producto->descripcion = Str::upper($request->input('descripcion'));
-        $producto->modelo = Str::upper($request->input('modelo'));
-        $producto->tipo = Str::upper($request->input('tipo'));
+        // $producto->modelo = Str::upper($request->input('modelo'));
+        $producto->precioCompra=$request->precio_c;
+        $producto->PrecioVenta=$request->precio_v;
+        $producto->existencia=$request->stock;
+        $producto->idProveedor=$request->proveedor;
         
-        $name_camera= $producto->modelo;
-        $url_camera = $request->file('imagen')->storeOnCloudinaryAs('camaras',$name_camera);
-        $producto-> imagen =$url_camera->getPath();
-      
+        $producto->idProducto = 'PROD-'.$producto->nombre.'-'.date('dmy');
+        
+        $url_temp = $request->imagen;
+        $producto-> imagen =$url_temp;
         
 
-        $producto->saveOrFail();
+        if($request->checkProducto == 'llantas'){
+            //Selecciono una llanta
+            $newLlanta = new llantaModel();
+            $newLlanta->idLlanta = $producto->idProducto;
+            $newLlanta->idRin = $request->rin;
+            $newLlanta->indiceCarga = $request->cargaMaxima;
+            $newLlanta->velocidadMaxima =$request->velocidadMaxima;
+            $newLlanta->presion = $request->presion;
+            $newLlanta->ancho = $request->anchoLlanta;
+            $newLlanta->diametro = $request->diametro;
+            $newLlanta->Fabricante = $request->fabricante;
+            $tempYear = Carbon::create($request->aniofabricante,0,0);
+            $newLlanta->anioFabricacion = $tempYear;
+            $newLlanta->tipoDeCarro = $request->tipoCarro;
+            $newLlanta->marcasDeCarro = $request->marcaCarro;
+            $newLlanta->save();
+            $producto->saveOrFail();
+        }else{
+            $newBateria=new batertiaModel();
+            $newBateria->idBateria= $producto->idProducto;
+            $newBateria->idMarca = $request->idMarca;
+            $newBateria->alto= $request->alto;
+            $newBateria->ancho=$request->ancho;
+            $newBateria->largo=$request->largo;
+            $newBateria->amperes=$request->amperes;
+            $newBateria->peso=$request->peso;
+            $newBateria->modelo=$request->modelo;
+            $newBateria->voltaje=$request->voltaje;
+            $newBateria->save();
+        }    
+
+        //Campos del a tabla 
+        // $producto->tipo = Str::upper($request->input('tipo'));
+        // $name_camera= $producto->modelo;
         return redirect()->route("productos.create");
-       
     }
 
     /**

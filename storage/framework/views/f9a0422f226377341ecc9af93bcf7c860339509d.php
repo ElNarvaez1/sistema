@@ -35,7 +35,7 @@
 
                     <div class="container">
 
-                        <form method="POST" action="<?php echo e(route('cambiollantas.store')); ?>" enctype="multipart/form-data">
+                        <form method="POST" action="<?php echo e(route('productos.store')); ?>" enctype="multipart/form-data">
 
                             <?php echo csrf_field(); ?>
                             <div class="row">
@@ -204,18 +204,18 @@ unset($__errorArgs, $__bag); ?>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   Seecion de sub formulario   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <h2 class="col-12 text-dark h5 my-3">Informacion individual</h2>
-
+                                <input type="hidden" name="checkProducto" id="checkValue" value="llantas">
                                 <div class="container-fluid">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item col-md-6" role="presentation">
-                                            <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</button>
+                                            <label  id="tipo-llantas" class="nav-link text-dark w-100 active" data-name="llantas" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</label>
                                         </li>
                                         <li class="nav-item col-md-6" role="presentation">
-                                            <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</button>
+                                            <label  id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</label>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="llantas-seccion" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="tab-pane fade show active" id="llantas-seccion" role="tabpanel" aria-labelledby="tipo-llantas">
                                             <div class="row pt-3">
                                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
                                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   SECCION DEL ID DEL RIN   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
@@ -294,8 +294,8 @@ unset($__errorArgs, $__bag); ?>
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Ancho</label>
-                                                        <input type="number" name="ancho" value="<?php echo e(old('ancho')); ?>" class="form-control text-upper" min="1">
-                                                        <?php $__errorArgs = ['ancho'];
+                                                        <input type="number" name="anchoLlanta" value="<?php echo e(old('anchoLlanta')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['anchoLlanta'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -396,7 +396,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
 
                                         </div>
-                                        <div class="tab-pane fade" id="baterias-seccion" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="tab-pane fade" id="baterias-seccion" role="tabpanel" aria-labelledby="tipo-baterias">
                                             <div class="row">
                                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre baterias</h3>
                                                  <!--------------------------Inputs de la informacion ALTO -------------------------->
@@ -499,6 +499,16 @@ unset($__errorArgs, $__bag); ?>
     <!-- End of Content Wrapper -->
 
 </div>
+<script>
+    const putValue= (e) =>{
+        let inputHiden = document.getElementById('checkValue');
+        inputHiden.value = e.target.dataset.name;
+    }
+    let botonLlantas = document.getElementById('tipo-llantas'); 
+    let botonBateria = document.getElementById('tipo-baterias'); 
+    botonLlantas.addEventListener('click',putValue);
+    botonBateria.addEventListener('click',putValue);
+</script>
 <!-- End of Page Wrapper -->
 
 <?php $__env->stopSection(); ?>
