@@ -1,0 +1,32 @@
+-> CODIGO REMOVIDO ------ NO LO BORREN XD PODRIA SEVIR 
+
+
+-> productos -.add.
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="text-black h4">Tipo</label>
+                                        {{-- @php($tipos = ['IP', 'SEGURIDAD', 'BULLET', 'DOMO', '8 CANALES', '4 CANALES',
+                                                    '16 CANALES', 'P/TRANSMISION DE VIDEO'])
+                                                    <select class="form-control" name="tipo">
+                                                        <option value="" disabled selected>SELECCIONE UNA OPCIÓN</option>
+                                                        @foreach ($tipos as $type)
+
+                                                            @if (old('tipo') == $type)
+                                                                <option selected="selected">{{ $type }}</option>
+                                        @else
+                                        <option>{{ $type }}</option>
+                                        @endif
+                                        @endforeach
+                                        </select> --}}
+
+                                        <input type="text" name="tipo" value="{{ old('tipo') }}" placeholder="Introduce el tipo del producto" class="form-control text-upper">
+
+                                        {{-- validaciones --}}
+                                        @error('tipo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+
+                                    </div>
+                                </div>
+
+

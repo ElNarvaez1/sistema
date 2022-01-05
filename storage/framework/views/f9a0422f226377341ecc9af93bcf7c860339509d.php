@@ -44,17 +44,12 @@
 idProveedor
 
 
-imagen
-precioCompra
-PrecioVenta
-existencia
-idProducto
 
                                 -->
-            <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  NOMBRE     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  NOMBRE     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Nombre del producto</label>
+                                        <label class="fs-5 text-body">Nombre del producto</label>
                                         <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>" placeholder="Introduce el nombre del producto" class="form-control text-upper">
                                         
                                         <?php $__errorArgs = ['nombre'];
@@ -71,11 +66,12 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
 
 
-            <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  DESCRIPCION     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  DESCRIPCION     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+
 
                                 <div class="col-md-8 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Descripción</label>
+                                        <label class="fs-5 text-body">Descripción</label>
                                         <textarea class="form-control text-upper" placeholder="Descripción del producto..." name="descripcion"><?php echo e(old('descripcion')); ?></textarea>
 
                                         
@@ -92,14 +88,11 @@ unset($__errorArgs, $__bag); ?>
 
                                     </div>
                                 </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Modelo</label>
-                                        
-
-                                        
-                                        
+                                        <label class="fs-5 text-body">Modelo</label>
                                         <input type="text" name="modelo" value="<?php echo e(old('modelo')); ?>" placeholder="Introduce el modelo del producto" class="form-control text-upper">
                                         <?php $__errorArgs = ['modelo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -113,16 +106,15 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Imagen     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Tipo</label>
+                                        <label class="fs-5 text-body">Agregar imagen</label>
+                                        <!-- Upload image input-->
+                                        <input type="file" name="imagen" accept="image/*" placeholder="Inserte una imagen" class="form-control text-upper">
                                         
-
-                                        <input type="text" name="tipo" value="<?php echo e(old('tipo')); ?>" placeholder="Introduce el tipo del producto" class="form-control text-upper">
-
-                                        
-                                        <?php $__errorArgs = ['tipo'];
+                                        <?php $__errorArgs = ['imagen'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -132,13 +124,13 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
                                     </div>
                                 </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Precio compra     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Precio compra $</label>
+                                        <label class="fs-5 text-body">Precio compra $</label>
                                         <input type="text" name="precio_c" value="<?php echo e(old('precio_c')); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
 
                                         
@@ -154,12 +146,12 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Precio venta     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Precio venta $</label>
+                                        <label class="fs-5 text-body">Precio venta $</label>
                                         <input type="text" name="precio_v" value="<?php echo e(old('precio_v')); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
-
                                         
                                         <?php $__errorArgs = ['precio_v'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -174,13 +166,13 @@ unset($__errorArgs, $__bag); ?>
 
                                     </div>
                                 </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Existencia     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Existencia</label>
+                                        <label class="fs-5 text-body">Existencia</label>
                                         <input type="number" name="stock" value="<?php echo e(old('stock')); ?>" placeholder="En existencia" class="form-control text-upper" min="1">
-
                                         
                                         <?php $__errorArgs = ['stock'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -194,30 +186,219 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
-                                <div class="col-md-4 mt-4">
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Proveedor     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <?php (
+                                $proveedores = DB::table('proveedores')->get()
+                                ); ?>
+                                <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="text-black h4">Agregar imagen</label>
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="proveedor">
+                                            <option value="0">Seleccione el proveedor</option>
+                                            <?php $__currentLoopData = $proveedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proveedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($proveedor->idProveedor); ?>"><?php echo e($proveedor->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   Seecion de sub formulario   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
-                                        <!-- Upload image input-->
+                                <h2 class="col-12 text-dark h5 my-3">Informacion individual</h2>
+                                
+                                <div class="container-fluid">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item col-md-6" role="presentation">
+                                            <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</button>
+                                        </li>
+                                        <li class="nav-item col-md-6" role="presentation">
+                                            <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="row pt-3">
+                                            <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
+                                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   SECCION DEL ID DEL RIN   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                                <?php (
+                                                $rines = DB::table('rin')->get()
+                                                ); ?>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Proveedor</label>
+                                                        <select title="" class="form-control text-upper" name="rin">
+                                                            <option value="0">Seleccione Rin</option>
+                                                            <?php $__currentLoopData = $rines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($rin->idRin); ?>"><?php echo e($rin->numero); ?></option>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
 
-                                        <input type="file" name="imagen" accept="image/*" placeholder="Inserte una imagen" class="form-control text-upper">
 
+                                                <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
 
-                                        
-                                        <?php $__errorArgs = ['imagen'];
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Indice de Carga (Carga Maxima)</label>
+                                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="<?php echo e(old('cargaMaxima')); ?>" class="form-control text-upper">
+                                                        <?php $__errorArgs = ['cargaMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                        <?php unset($message);
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+
+                                                <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">velocidad Maxima</label>
+                                                        <input type="number" name="velocidadMaxima" value="<?php echo e(old('velocidadMaxima')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['velocidadMaxima'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+
+                                                <!----------------------- CAJA DE Presion ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Presion</label>
+                                                        <input type="number" name="presion" value="<?php echo e(old('presion')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['presion'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+
+                                                <!----------------------- CAJA DE TEXTO *Anvcho* ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Ancho</label>
+                                                        <input type="number" name="ancho" value="<?php echo e(old('ancho')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['ancho'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+                                                <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Diametro</label>
+                                                        <input type="number" name="diametro" value="<?php echo e(old('diametro')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['diametro'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+                                                <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Fabricante</label>
+                                                        <input type="text" name="fabricante" value="<?php echo e(old('fabricante')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['fabricante'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+                                                <!----------------------- CAJA DE TEXTO *Año fabricacnion* ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Año fabricante</label>
+                                                        <input type="text" name="aniofabricante" value="<?php echo e(old('aniofabricante')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['aniofabricante'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+                                                <!----------------------- CAJA DE TEXTO *Tipo carrp* ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Tipo carro</label>
+                                                        <input type="text" name="tipoCarro" value="<?php echo e(old('tipoCarro')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['tipoCarro'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+                                                <!----------------------- CAJA DE TEXTO *marca carrp* ---------------------------------------------->
+                                                <div class="col-md-4 mt-4">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Marca carro</label>
+                                                        <input type="text" name="marcaCarro" value="<?php echo e(old('marcaCarro')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['marcaCarro'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
                                     </div>
                                 </div>
-
 
                             </div>
 
