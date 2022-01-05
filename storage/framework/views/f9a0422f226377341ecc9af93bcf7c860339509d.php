@@ -204,20 +204,20 @@ unset($__errorArgs, $__bag); ?>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   Seecion de sub formulario   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <h2 class="col-12 text-dark h5 my-3">Informacion individual</h2>
-                                
+
                                 <div class="container-fluid">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item col-md-6" role="presentation">
-                                            <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</button>
+                                            <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</button>
                                         </li>
                                         <li class="nav-item col-md-6" role="presentation">
-                                            <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</button>
+                                            <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</button>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="tab-pane fade show active" id="llantas-seccion" role="tabpanel" aria-labelledby="home-tab">
                                             <div class="row pt-3">
-                                            <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
                                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   SECCION DEL ID DEL RIN   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                                 <?php (
                                                 $rines = DB::table('rin')->get()
@@ -396,7 +396,67 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
 
                                         </div>
-                                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                                        <div class="tab-pane fade" id="baterias-seccion" role="tabpanel" aria-labelledby="profile-tab">
+                                            <div class="row">
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre baterias</h3>
+                                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
+                                                <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Alto</label>
+                                                        <input type="number" name="alto" value="<?php echo e(old('alto')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                    </div>
+                                                </div>
+                                                <!--------------------------Inputs de la informacion ancho -------------------------->
+                                                <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Ancho</label>
+                                                        <input type="number" name="ancho" value="<?php echo e(old('ancho')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                    </div>
+                                                </div>
+                                                <!--------------------------Inputs de la informacion LARGO -------------------------->
+                                                <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Largo</label>
+                                                        <input type="number" name="largo" value="<?php echo e(old('largo')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                    </div>
+                                                </div>
+                                                <!--------------------------Inputs de la informacion Amperes -------------------------->
+                                                <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Amperes</label>
+                                                        <input type="number" name="amperes" value="<?php echo e(old('amperes')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                    </div>
+                                                </div>
+                                                <!--------------------------Inputs de la informacion PERO -------------------------->
+                                                <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Peso</label>
+                                                        <input type="number" name="peso" value="<?php echo e(old('peso')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                    </div>
+                                                </div>
+                                                <!--------------------------Inputs de la informacion MARCA -------------------------->
+                                                <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Marca</label>
+                                                        <select name="idMarca" id="selectorMarca" class="form-control form-select">
+                                                            <option value="0">Seleccionar</option>
+                                                            <option value="1">Marca 1</option>
+                                                            <option value="2">Marca 2</option>
+                                                            <option value="3">Marca 3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!--------------------------Inputs de la informacion VOLTAJE -------------------------->
+                                                <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Voltaje</label>
+                                                        <input type="number" name="voltaje" value="<?php echo e(old('stock')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
