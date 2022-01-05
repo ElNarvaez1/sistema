@@ -97,7 +97,7 @@
                                         <th scope="col">ID</th>
                                         <th scope="col">NOMBRE</th>
                                         <th scope="col">DESCRIPCIÓN</th>
-                                        <th scope="col">MODELO</th>
+                                        <!-- <th scope="col">MODELO</th> -->
                                         <th scope="col">TIPO</th>
                                         <th scope="col">PRECIO COMPRA</th>
                                         <th scope="col">PRECIO VENTA</th>
@@ -108,11 +108,11 @@
                                 <tbody class="text-black2">
                                     @forelse ($productos as $producto)
                                     <tr class="table-hover">
-                                        <th scope="row">{{ $producto->id }}</th>
+                                        <th scope="row">{{ $producto->idProducto }}</th>
 
                                         <td>
                                             @can('productos.show')
-                                            <a class="text-center" href="{{ route('productos.show', [$producto]) }}">
+                                            <a class="text-center" href="{{ route('productos.show', $producto->idProducto) }}">
 
                                                 {{ $producto->nombre }}
                                             </a>
@@ -120,34 +120,34 @@
                                         </td>
 
                                         <td class="text-justify">{{ $producto->descripcion }}</td>
-                                        <td class="text-center">{{ $producto->modelo }}</td>
+                                        {{--<td class="text-center">{{ $producto->modelo }}</td> --}}
                                         <td class="text-center">{{ $producto->tipo }}</td>
-                                        <td class="text-center">$ {{ $producto->precio_c }}</td>
-                                        <td class="text-center">$ {{ $producto->precio_v }}</td>
-                                        @if ($producto->stock>5)
+                                        <td class="text-center">$ {{ $producto->precioCompra }}</td>
+                                        <td class="text-center">$ {{ $producto->PrecioVenta }}</td>
+                                        @if ($producto->existencia>5)
                                         <h5>
-                                            <td class="badge badge-success">{{ $producto->stock }}</td>
+                                            <td class="badge badge-success">{{ $producto->existencia }}</td>
                                         </h5>
-                                        @elseif ($producto->stock == 0)
+                                        @elseif ($producto->existencia == 0)
                                         <h5>
-                                            <td class="badge badge-danger">{{ $producto->stock }}</td>
+                                            <td class="badge badge-danger">{{ $producto->existencia }}</td>
                                         </h5>
                                         @else
                                         <h5>
-                                            <td class="badge badge-warning">{{ $producto->stock }}</td>
+                                            <td class="badge badge-warning">{{ $producto->existencia }}</td>
                                         </h5>
                                         @endif
 
 
                                         <td>
                                             @can('productos.edit')
-                                            <a title="editar producto" href="{{ route('productos.edit', [$producto]) }}" class="btn btn-outline-primary btn-circle">
+                                            <a title="editar producto" href="{{ route('productos.edit', $producto->idProducto) }}" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
                                             @endcan
                                         </td>
                                         <td>
                                             @can('productos.destroy')
-                                            <form action="{{ route('productos.destroy', [$producto]) }}" method="post">
+                                            <form action="{{ route('productos.destroy', $producto->idProducto) }}" method="post">
                                                 @method("delete")
                                                 @csrf
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">

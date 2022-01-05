@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Producto extends Model
 {
+    use HasFactory;
     use SoftDeletes; //Implementamos
     protected $dates = ['deleted_at']; //Registramos la nueva columna
     protected $table = 'productos';
-    protected $primarykey = 'idProducto';
+    protected $primaryKey = 'idProducto';
+    public $incrementing = false;
     public $timestamps = false;
     // protected $fillable =[
     //     'nombre',

@@ -38,6 +38,19 @@ class ProductosController extends Controller
         $tipo = $request->get('type');
         $variablesurl = $request->all();
         $productos = Producto::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
+        
+        for ($i=0; $i < count($productos); $i++) { 
+            $productos[$i]->tipo="Temp";
+            if(batertiaModel::find($productos[$i]->idProducto) != null ){
+                //El producto existe en la tabla de baterias
+                $productos[$i]->tipo='Bateria'; 
+            }
+            if(llantaModel::find($productos[$i]->idProducto) != null){
+                //El producto existe en la tabla de baterias
+                $productos[$i]->tipo='LLanta'; 
+            }
+        }
+
         return view('productos.index', compact('productos'));
     }
 
@@ -125,6 +138,7 @@ class ProductosController extends Controller
             $newBateria->modelo=$request->modelo;
             $newBateria->voltaje=$request->voltaje;
             $newBateria->save();
+            $producto->saveOrFail();
         }    
 
         //Campos del a tabla 
@@ -164,10 +178,22 @@ class ProductosController extends Controller
     /*
     Retorna la vista Editar producto
      */
-    public function edit(Producto $producto)
+    public function edit($producto)
     {
+        $productoTemp = Producto::where('idProducto','=',$producto)
+        ->where('deleted_at',null)->get()[0]; 
+        $productoTemp->tipo = '';
+        if(batertiaModel::find($productoTemp->idProducto) != null ){
+            //El producto existe en la tabla de baterias
+            $productoTemp->tipo='Bateria'; 
+        }
+        if(llantaModel::find($productoTemp->idProducto) != null ){
+            //El producto existe en la tabla de baterias
+            $productoTemp->tipo='LLanta'; 
+        }
 
-        return view('productos.productos_edit', ["producto" => $producto]);
+
+        return view('productos.productos_edit', ["producto" => $productoTemp]);
     }
 
     /**
