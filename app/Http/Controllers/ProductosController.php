@@ -183,17 +183,27 @@ class ProductosController extends Controller
         $productoTemp = Producto::where('idProducto','=',$producto)
         ->where('deleted_at',null)->get()[0]; 
         $productoTemp->tipo = '';
+        
+        $bateria=null;
+        $llanta=null;
         if(batertiaModel::find($productoTemp->idProducto) != null ){
             //El producto existe en la tabla de baterias
-            $productoTemp->tipo='Bateria'; 
+            $productoTemp->tipo='Bateria';
+            $bateria = batertiaModel::find($productoTemp->idProducto);
         }
         if(llantaModel::find($productoTemp->idProducto) != null ){
             //El producto existe en la tabla de baterias
             $productoTemp->tipo='LLanta'; 
+            $llanta = llantaModel::find($productoTemp->idProducto);
         }
 
+        
 
-        return view('productos.productos_edit', ["producto" => $productoTemp]);
+
+
+        return view('productos.productos_edit', ["producto" => $productoTemp,
+                                                    "bateria" =>$bateria,
+                                                 "llanta"=>$llanta]);
     }
 
     /**

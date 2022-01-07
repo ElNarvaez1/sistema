@@ -30,3 +30,60 @@
                                 </div>
 
 
+
+
+-> Corta de productos_edit 
+
+
+
+
+<div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="text-black h4">Modelo</label>
+                                        {{-- @php($modelos = ['HFW1200TA28', 'PB401', 'IP66', 'SMARTCAM', 'ONVIF', 'IP67',
+                                                'XVR1A04', 'S8-TURBO-L', 'XVR5104HE-X1', 'DH-XVR1A04', 'XVR1A08',
+                                                'DS-7104HGHI-F1(S)', 'EV4016TURBO', 'S16 TURBO', 'CCTV BNC VIDEO', 'CCTV UTP']) --}}
+
+                                        {{-- <select class="form-control" name="modelo">
+                                                    @foreach ($modelos as $mod)
+                                                        <option @if (old('modelo', $producto->modelo) == $mod) selected @endif>{{ $mod }}
+                                        </option>
+
+                                        @endforeach
+                                        </select> --}}
+                                        {{-- validaciones --}}
+                                        <input type="text" value="{{ old('',$producto->modelo) }}" placeholder="Modelo" class="form-control text-upper" disabled>
+
+                                        @error('modelo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+<div class="col-md-8 mt-4">
+                                    <div class="form-group">
+                                        <label class="text-black h4">Agregar imagen</label>
+
+                                        {{-- small class="text-dark"> --}}
+                                        <small class="text-dark"> <input type="checkbox" class="check-input mx-3" name="check" @if (old('check')=="on" ) checked @endif>¿Desea modificar la imagen? active aqui.</small>
+                                        @if (old('check')=="on")
+
+                                        <input type="file" accept="image/*" name="imagen" placeholder="Inserte una imagen" class="form-control text-upper">
+                                        {{-- validaciones --}}
+
+                                        @error('imagen')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+
+                                        @endif
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+

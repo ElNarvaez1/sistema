@@ -33,15 +33,17 @@
                             @method("PUT")
                             @csrf
 
+                            idProveedor
+
                             <div class="row">
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Imagen  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-9 mt-4">
                                     <img class="img-fluid border-image" src="{{$producto->imagen}}" height="200px" width="300px" alt="">
                                 </div>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Nombre  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-                                <div class="col-md-4 mt-auto ">
+                                <div class="col-md-4 mt-4 ">
                                     <div class="form-group">
-                                        <label class="text-black h4">Nombre del producto</label>
+                                        <label class="fs-5 text-body">Nombre del producto</label>
                                         <input type="text" name="nombre" value="{{ old('nombre', $producto->nombre) }}" placeholder="Introduce el ombre del producto" class="form-control text-upper" name="nombre">
                                         {{-- validaciones --}}
                                         @error('nombre')
@@ -50,21 +52,10 @@
 
                                     </div>
                                 </div>
-                                <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Existencia  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-                                <div class="col-md-4 mt-auto">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Existencia</label>
-                                        <input type="number" name="existencia" value="{{ old('stock', $producto->existencia) }}" placeholder="En existencia" class="form-control text-upper" min="1" name="existencia">
-                                        {{-- validaciones --}}
-                                        @error('existencia')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Descripcion  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-8 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Descripción</label>
+                                        <label class="fs-5 text-body">Descripción</label>
                                         <textarea class="form-control text-upper" name="descripcion">{{ old('descripcion', $producto->descripcion) }}</textarea>
                                         {{-- validaciones --}}
                                         @error('descripcion')
@@ -73,32 +64,10 @@
                                     </div>
                                 </div>
 
+                                <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& TIPO PRODUCTO  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Modelo</label>
-                                        {{-- @php($modelos = ['HFW1200TA28', 'PB401', 'IP66', 'SMARTCAM', 'ONVIF', 'IP67',
-                                                'XVR1A04', 'S8-TURBO-L', 'XVR5104HE-X1', 'DH-XVR1A04', 'XVR1A08',
-                                                'DS-7104HGHI-F1(S)', 'EV4016TURBO', 'S16 TURBO', 'CCTV BNC VIDEO', 'CCTV UTP']) --}}
-
-                                        {{-- <select class="form-control" name="modelo">
-                                                    @foreach ($modelos as $mod)
-                                                        <option @if (old('modelo', $producto->modelo) == $mod) selected @endif>{{ $mod }}
-                                        </option>
-
-                                        @endforeach
-                                        </select> --}}
-                                        {{-- validaciones --}}
-                                        <input type="text" value="{{ old('',$producto->modelo) }}" placeholder="Modelo" class="form-control text-upper" disabled>
-
-                                        @error('modelo')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Tipo</label>
+                                        <label class="fs-5 text-body">Tipo</label>
                                         {{-- @php($tipos = ['IP', 'SEGURIDAD', 'BULLET', 'DOMO', '8 CANALES', '4 CANALES',
                                                     '16 CANALES', 'P/TRANSMISION DE VIDEO'])
 
@@ -117,10 +86,10 @@
                                         @enderror
                                     </div>
                                 </div>
-
+                                <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& PRECIO COMPRA  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Precio compra $</label>
+                                        <label class="fs-5 text-body">Precio compra $</label>
                                         <input type="text" name=" precioCompra" value="{{ old(' precioCompra', $producto-> precioCompra) }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper" name="precio">
                                         {{-- validaciones --}}
                                         @error(' precioCompra')
@@ -128,10 +97,10 @@
                                         @enderror
                                     </div>
                                 </div>
-
+                                <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& PRECIO VENTA  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Precio venta $</label>
+                                        <label class="fs-5 text-body">Precio venta $</label>
                                         <input type="text" name="PrecioVenta" value="{{ old('PrecioVenta', $producto->PrecioVenta) }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper" name="precio">
 
                                         {{-- validaciones --}}
@@ -140,32 +109,197 @@
                                         @enderror
                                     </div>
                                 </div>
-
-                                <div class="col-md-8 mt-4">
+                                <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Existencia  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+                                <div class="col-md-4 mt-auto">
                                     <div class="form-group">
-                                        <label class="text-black h4">Agregar imagen</label>
-
-                                        {{-- small class="text-dark"> --}}
-                                        <small class="text-dark"> <input type="checkbox" class="check-input mx-3" name="check" @if (old('check')=="on" ) checked @endif>¿Desea modificar la imagen? active aqui.</small>
-                                        @if (old('check')=="on")
-
-                                        <input type="file" accept="image/*" name="imagen" placeholder="Inserte una imagen" class="form-control text-upper">
+                                        <label class="fs-5 text-body">Existencia</label>
+                                        <input type="number" name="existencia" value="{{ old('stock', $producto->existencia) }}" placeholder="En existencia" class="form-control text-upper" min="1" name="existencia">
                                         {{-- validaciones --}}
-
-                                        @error('imagen')
+                                        @error('existencia')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            @if($bateria != null)
+                            <div class="row">
 
-                                        @endif
+                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre la bateria</h3>
+                                <!--------------------------Inputs de la informacion ALTO -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Alto</label>
+                                        <input type="number" name="alto" value="{{ $bateria->alto }}" placeholder="" class="form-control text-upper" min="1">
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion ancho -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Ancho</label>
+                                        <input type="number" name="ancho" value="{{ $bateria->ancho }}" placeholder="" class="form-control text-upper" min="1">
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion LARGO -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Largo</label>
+                                        <input type="number" name="largo" value="{{ $bateria->largo }}" placeholder="" class="form-control text-upper" min="1">
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion Amperes -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Amperes</label>
+                                        <input type="number" name="amperes" value="{{ $bateria->amperes }}" placeholder="" class="form-control text-upper" min="1">
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion PERO -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Peso</label>
+                                        <input type="number" name="peso" value="{{ $bateria->peso }}" placeholder="" class="form-control text-upper" min="1">
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion MARCA -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Marca</label>
+                                        <select name="idMarca" id="selectorMarca" value="{{$bateria->marca}}" class="form-control form-select">
+                                            <option value="0">Seleccionar</option>
+                                            <option value="1">Marca 1</option>
+                                            <option value="2">Marca 2</option>
+                                            <option value="3">Marca 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--------------------------Inputs de la informacion VOLTAJE -------------------------->
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Voltaje</label>
+                                        <input type="number" name="voltaje" value="{{ $bateria->voltaje }}" placeholder="" class="form-control text-upper" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                            @else
+                            <!-- ################################################################# Seccion de las llantas ############################################################################################ -->
+                            <div class="row pt-3">
+                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   SECCION DEL ID DEL RIN   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                @php(
+                                $rines = DB::table('rin')->get()
+                                )
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="rin">
+                                            <option value="0">Seleccione Rin</option>
+                                            @foreach ($rines as $rin)
+                                            <option value="{{$rin->idRin}}">{{$rin->numero}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
 
+                                <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
 
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Indice de Carga (Carga Maxima)</label>
+                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="{{old('cargaMaxima')}}" class="form-control text-upper">
+                                        @error('cargaMaxima')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
 
+                                <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">velocidad Maxima</label>
+                                        <input type="number" name="velocidadMaxima" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
+                                        @error('velocidadMaxima')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
 
+                                <!----------------------- CAJA DE Presion ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Presion</label>
+                                        <input type="number" name="presion" value="{{ old('presion') }}" class="form-control text-upper" min="1">
+                                        @error('presion')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!----------------------- CAJA DE TEXTO *Anvcho* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Ancho</label>
+                                        <input type="number" name="anchoLlanta" value="{{ old('anchoLlanta') }}" class="form-control text-upper" min="1">
+                                        @error('anchoLlanta')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Diametro</label>
+                                        <input type="number" name="diametro" value="{{ old('diametro') }}" class="form-control text-upper" min="1">
+                                        @error('diametro')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Fabricante</label>
+                                        <input type="text" name="fabricante" value="{{ old('fabricante') }}" class="form-control text-upper" min="1">
+                                        @error('fabricante')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!----------------------- CAJA DE TEXTO *Año fabricacnion* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Año fabricante</label>
+                                        <input type="text" name="aniofabricante" value="{{ old('aniofabricante') }}" class="form-control text-upper" min="1">
+                                        @error('aniofabricante')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!----------------------- CAJA DE TEXTO *Tipo carrp* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Tipo carro</label>
+                                        <input type="text" name="tipoCarro" value="{{ old('tipoCarro') }}" class="form-control text-upper" min="1">
+                                        @error('tipoCarro')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!----------------------- CAJA DE TEXTO *marca carrp* ---------------------------------------------->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Marca carro</label>
+                                        <input type="text" name="marcaCarro" value="{{ old('marcaCarro') }}" class="form-control text-upper" min="1">
+                                        @error('marcaCarro')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
                             </div>
+                            @endif
+
+
 
                             {{-- PARTE BOTONES --}}
                             <div class="row justify-content-center mt-4">
