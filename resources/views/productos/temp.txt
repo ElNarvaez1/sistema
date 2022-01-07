@@ -87,3 +87,44 @@
 
 
 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-> Corta do del contraldor "Productos controller"
+
+        // $request->validate(
+        //     [
+        //         'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
+        //         'descripcion' => 'required|regex:/[\pL\s\-."+0-9]+$/u', // regex Solo: incluye algunos carcateres
+        //         'modelo' => 'unique:product',
+        //         'tipo' => 'required',
+        //         'precio_c' => 'required|numeric',
+        //         'precio_v' => 'required|numeric',
+        //         'stock' => 'required|numeric'
+        //     ]);
+       
+        Session::flash('message_save', '¡Producto actualizado con éxtio!');
+        
+        $producto->fill($request->input());
+        $producto->nombre = Str::upper($request->input('nombre'));
+        // $producto->modelo = Str::upper($request->input('modelo'));
+        $producto->tipo = Str::upper($request->input('tipo'));
+        $producto->descripcion = Str::upper($request->input('descripcion'));
+
+        if ($request->check=='on'){
+            
+        $request->validate(
+            [
+                'imagen' => 'required|image|max:2048'
+            ]);
+            $name_camera= $producto->modelo;
+            
+            $url_camera = $request->file('imagen')->storeOnCloudinaryAs(
+                'camaras',$name_camera);
+            $producto-> imagen =$url_camera->getPath();
+       
+            
+        }
+        $producto->saveOrFail();
+       
+        return redirect()->route("productos.index");
+
+

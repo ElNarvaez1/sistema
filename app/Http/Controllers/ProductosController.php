@@ -222,41 +222,65 @@ class ProductosController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-
-
-        $request->validate(
-            [
-                'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'descripcion' => 'required|regex:/[\pL\s\-."+0-9]+$/u', // regex Solo: incluye algunos carcateres
-                'modelo' => 'unique:product',
-                'tipo' => 'required',
-                'precio_c' => 'required|numeric',
-                'precio_v' => 'required|numeric',
-                'stock' => 'required|numeric'
-            ]);
-       
-            Session::flash('message_save', '¡Producto actualizado con éxtio!');
-        $producto->fill($request->input());
+        // $request->validate(
+        //     [
+        //         'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
+        //         'descripcion' => 'required|regex:/[\pL\s\-."+0-9]+$/u', // regex Solo: incluye algunos carcateres
+        //         'modelo' => 'unique:product',
+        //         'tipo' => 'required',
+        //         'precio_c' => 'required|numeric',
+        //         'precio_v' => 'required|numeric',
+        //         'stock' => 'required|numeric'
+        //     ]);
+        Session::flash('message_save', '¡Producto actualizado con éxtio!');
+    
+        //-> Guardar los cambios relizados en el prodcutos--tablas
         $producto->nombre = Str::upper($request->input('nombre'));
-        // $producto->modelo = Str::upper($request->input('modelo'));
-        $producto->tipo = Str::upper($request->input('tipo'));
         $producto->descripcion = Str::upper($request->input('descripcion'));
+        $producto->precioCompra=$request->precioCompra;
+        $producto->PrecioVenta=$request->PrecioVenta;
+        $producto->existencia=$request->existencia;
+        $producto->idProveedor=$request->proveedor;
+        
+        if(strcmp($request->tipoProductoClasificacion,"LLanta") == 0 ){
+            //Si resulta ser una llanta.
 
-        if ($request->check=='on'){
+            $newLlanta = llantaModel::find($producto->idProducto);
+
+            $newLlanta->idRin = $request->rin;
+            $newLlanta->indiceCarga = $request->cargaMaxima;
+            $newLlanta->velocidadMaxima =$request->velocidadMaxima;
+            $newLlanta->presion = $request->presion;
+            $newLlanta->ancho = $request->anchoLlanta;
+            $newLlanta->diametro = $request->diametro;
+            $newLlanta->Fabricante = $request->fabricante;
+            $tempYear = Carbon::create($request->aniofabricante,0,0);
+            $newLlanta->anioFabricacion = $tempYear;
+            $newLlanta->tipoDeCarro = $request->tipoCarro;
+            $newLlanta->marcasDeCarro = $request->marcaCarro;
+            $newLlanta->save();
+            $producto->saveOrFail();       
+        }else{
+            //Es una bateria.
+            $newBateria=batertiaModel::find($producto->idProducto);
+
+            $newBateria->idMarca = $request->idMarca;
+            $newBateria->alto= $request->alto;
+            $newBateria->ancho=$request->ancho;
+            $newBateria->largo=$request->largo;
+            $newBateria->amperes=$request->amperes;
+            $newBateria->peso=$request->peso;
+            $newBateria->modelo=$request->modelo;
+            $newBateria->voltaje=$request->voltaje;
+            $newBateria->save();
             
-        $request->validate(
-            [
-                'imagen' => 'required|image|max:2048'
-            ]);
-            $name_camera= $producto->modelo;
-            
-            $url_camera = $request->file('imagen')->storeOnCloudinaryAs(
-                'camaras',$name_camera);
-            $producto-> imagen =$url_camera->getPath();
-       
-            
+            $producto->saveOrFail();
         }
-        $producto->saveOrFail();
+
+
+
+
+
        
         return redirect()->route("productos.index");
     }

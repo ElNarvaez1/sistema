@@ -33,7 +33,7 @@
                             <?php echo method_field("PUT"); ?>
                             <?php echo csrf_field(); ?>
 
-                            idProveedor
+                            <input type="hidden" value="<?php echo e($producto->tipo); ?>" name="tipoProductoClasificacion">
 
                             <div class="row">
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Imagen  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
@@ -153,11 +153,41 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Proveedor     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <?php ($proveedores = DB::table('proveedores')->get()    ); ?>
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="proveedor">
+                                            <option value="0">Seleccione el proveedor</option>
+                                            <?php $__currentLoopData = $proveedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proveedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($proveedor->idProveedor); ?>"><?php echo e($proveedor->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <?php if($bateria != null): ?>
                             <div class="row">
 
                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre la bateria</h3>
+                                                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Modelo</label>
+                                        <input type="text" name="modelo" value="<?php echo e($bateria->modelo); ?>" placeholder="Introduce el modelo del producto" class="form-control text-upper">
+                                        <?php $__errorArgs = ['modelo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </div>
+                                </div>
                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
@@ -224,7 +254,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Proveedor</label>
-                                        <select title="" class="form-control text-upper" name="rin">
+                                        <select title="" class="form-control text-upper" name="rin" value="<?php echo e($llanta->idRin); ?>">
                                             <option value="0">Seleccione Rin</option>
                                             <?php $__currentLoopData = $rines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($rin->idRin); ?>"><?php echo e($rin->numero); ?></option>
@@ -239,7 +269,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Indice de Carga (Carga Maxima)</label>
-                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="<?php echo e(old('cargaMaxima')); ?>" class="form-control text-upper">
+                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="<?php echo e($llanta->indiceCarga); ?>" class="form-control text-upper">
                                         <?php $__errorArgs = ['cargaMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -257,7 +287,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">velocidad Maxima</label>
-                                        <input type="number" name="velocidadMaxima" value="<?php echo e(old('velocidadMaxima')); ?>" class="form-control text-upper" min="1">
+                                        <input type="number" name="velocidadMaxima" value="<?php echo e($llanta->velocidadMaxima); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['velocidadMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -275,7 +305,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Presion</label>
-                                        <input type="number" name="presion" value="<?php echo e(old('presion')); ?>" class="form-control text-upper" min="1">
+                                        <input type="number" name="presion" value="<?php echo e($llanta->presion); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['presion'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -293,7 +323,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Ancho</label>
-                                        <input type="number" name="anchoLlanta" value="<?php echo e(old('anchoLlanta')); ?>" class="form-control text-upper" min="1">
+                                        <input type="number" name="anchoLlanta" value="<?php echo e($llanta->ancho); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['anchoLlanta'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -310,7 +340,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Diametro</label>
-                                        <input type="number" name="diametro" value="<?php echo e(old('diametro')); ?>" class="form-control text-upper" min="1">
+                                        <input type="number" name="diametro" value="<?php echo e($llanta->diametro); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['diametro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -327,7 +357,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Fabricante</label>
-                                        <input type="text" name="fabricante" value="<?php echo e(old('fabricante')); ?>" class="form-control text-upper" min="1">
+                                        <input type="text" name="fabricante" value="<?php echo e($llanta->Fabricante); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['fabricante'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -344,7 +374,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Año fabricante</label>
-                                        <input type="text" name="aniofabricante" value="<?php echo e(old('aniofabricante')); ?>" class="form-control text-upper" min="1">
+                                        <input type="text" name="aniofabricante" value="<?php echo e($llanta->anioFabricacion); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['aniofabricante'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -361,7 +391,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Tipo carro</label>
-                                        <input type="text" name="tipoCarro" value="<?php echo e(old('tipoCarro')); ?>" class="form-control text-upper" min="1">
+                                        <input type="text" name="tipoCarro" value="<?php echo e($llanta->tipoDeCarro); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['tipoCarro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -378,7 +408,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Marca carro</label>
-                                        <input type="text" name="marcaCarro" value="<?php echo e(old('marcaCarro')); ?>" class="form-control text-upper" min="1">
+                                        <input type="text" name="marcaCarro" value="<?php echo e($llanta->marcasDeCarro); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['marcaCarro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

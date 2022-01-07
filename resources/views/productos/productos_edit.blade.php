@@ -33,7 +33,7 @@
                             @method("PUT")
                             @csrf
 
-                            idProveedor
+                            <input type="hidden" value="{{$producto->tipo}}" name="tipoProductoClasificacion">
 
                             <div class="row">
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Imagen  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
@@ -120,11 +120,34 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Proveedor     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                @php($proveedores = DB::table('proveedores')->get()    )
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <select title="" class="form-control text-upper" name="proveedor">
+                                            <option value="0">Seleccione el proveedor</option>
+                                            @foreach ($proveedores as $proveedor)
+                                            <option value="{{$proveedor->idProveedor}}">{{$proveedor->nombre}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             @if($bateria != null)
                             <div class="row">
 
                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre la bateria</h3>
+                                                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Modelo</label>
+                                        <input type="text" name="modelo" value="{{ $bateria->modelo }}" placeholder="Introduce el modelo del producto" class="form-control text-upper">
+                                        @error('modelo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
@@ -191,7 +214,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Proveedor</label>
-                                        <select title="" class="form-control text-upper" name="rin">
+                                        <select title="" class="form-control text-upper" name="rin" value="{{$llanta->idRin}}">
                                             <option value="0">Seleccione Rin</option>
                                             @foreach ($rines as $rin)
                                             <option value="{{$rin->idRin}}">{{$rin->numero}}</option>
@@ -206,7 +229,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Indice de Carga (Carga Maxima)</label>
-                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="{{old('cargaMaxima')}}" class="form-control text-upper">
+                                        <input type="number" name="cargaMaxima" id="idcargaMaxima" value="{{$llanta->indiceCarga}}" class="form-control text-upper">
                                         @error('cargaMaxima')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -217,7 +240,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">velocidad Maxima</label>
-                                        <input type="number" name="velocidadMaxima" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="velocidadMaxima" value="{{ $llanta->velocidadMaxima }}" class="form-control text-upper" min="1">
                                         @error('velocidadMaxima')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -228,7 +251,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Presion</label>
-                                        <input type="number" name="presion" value="{{ old('presion') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="presion" value="{{ $llanta->presion }}" class="form-control text-upper" min="1">
                                         @error('presion')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -239,7 +262,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Ancho</label>
-                                        <input type="number" name="anchoLlanta" value="{{ old('anchoLlanta') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="anchoLlanta" value="{{ $llanta->ancho }}" class="form-control text-upper" min="1">
                                         @error('anchoLlanta')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -249,7 +272,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Diametro</label>
-                                        <input type="number" name="diametro" value="{{ old('diametro') }}" class="form-control text-upper" min="1">
+                                        <input type="number" name="diametro" value="{{ $llanta->diametro }}" class="form-control text-upper" min="1">
                                         @error('diametro')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -259,7 +282,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Fabricante</label>
-                                        <input type="text" name="fabricante" value="{{ old('fabricante') }}" class="form-control text-upper" min="1">
+                                        <input type="text" name="fabricante" value="{{ $llanta->Fabricante }}" class="form-control text-upper" min="1">
                                         @error('fabricante')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -269,7 +292,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Año fabricante</label>
-                                        <input type="text" name="aniofabricante" value="{{ old('aniofabricante') }}" class="form-control text-upper" min="1">
+                                        <input type="text" name="aniofabricante" value="{{ $llanta->anioFabricacion }}" class="form-control text-upper" min="1">
                                         @error('aniofabricante')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -279,7 +302,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Tipo carro</label>
-                                        <input type="text" name="tipoCarro" value="{{ old('tipoCarro') }}" class="form-control text-upper" min="1">
+                                        <input type="text" name="tipoCarro" value="{{ $llanta->tipoDeCarro }}" class="form-control text-upper" min="1">
                                         @error('tipoCarro')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
@@ -289,7 +312,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Marca carro</label>
-                                        <input type="text" name="marcaCarro" value="{{ old('marcaCarro') }}" class="form-control text-upper" min="1">
+                                        <input type="text" name="marcaCarro" value="{{ $llanta->marcasDeCarro }}" class="form-control text-upper" min="1">
                                         @error('marcaCarro')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
