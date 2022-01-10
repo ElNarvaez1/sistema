@@ -137,7 +137,7 @@
                                                     
                                                     <td>
                                                         
-                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',$cliente ->idCliente)); ?>"
+                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',[$cliente])); ?>"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         
