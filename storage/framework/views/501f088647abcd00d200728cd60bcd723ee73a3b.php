@@ -86,12 +86,9 @@
                         </div>
                         
                     </div>
-                    <?php if($productos->count()): ?>)
+                    <?php if($productos->count()): ?>
                     <div class="card-body ">
-
-
                         <div class="table-responsive">
-                            
                             <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                 <thead class="bg-color ">
                                     <tr class="text-blank text-center">
@@ -105,8 +102,6 @@
                                         <th scope="col" colspan="2">ACCIONES</th>
                                     </tr>
                                 </thead>
-                                <?php echo e(route('bateria.index')); ?>
-
                                 <tbody class="text-black2">
                                     <?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $baterium): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="table-hover">
@@ -122,13 +117,11 @@
                                         <td class="text-center"><?php echo e($baterium->voltaje); ?></td>
 
                                         <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('bateria.edit')): ?>
-                                            <a title="editar producto" href="<?php echo e(route('bateria.edit', $baterium)); ?>" class="btn btn-outline-primary btn-circle">
+                                            <a title="editar producto" href="<?php echo e(route('bateria.edit', $baterium->idBateria)); ?>" class="btn btn-outline-primary btn-circle">
                                                 <i class="fa fa-edit"></i></a>
-                                            <?php endif; ?>
                                         </td>
                                         <td>
-                                            <form action="<?php echo e(route('bateria.destroy', $baterium)); ?>" method="post">
+                                            <form action="<?php echo e(route('bateria.destroy', $baterium->idBateria)); ?>" method="post">
                                                 <?php echo method_field("delete"); ?>
                                                 <?php echo csrf_field(); ?>
                                                 <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
@@ -140,10 +133,6 @@
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
-
-
-
-                            
                         </div>
                     </div>
                     <?php else: ?>

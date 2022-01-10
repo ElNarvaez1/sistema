@@ -9,11 +9,13 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
+
             <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <!-- Begin Page Content -->
             <div class="container-fluid rounded color">
-                <?php echo csrf_field(); ?>
+                <?php echo e(route('bateria.destroy','aX-221221')); ?>    
+            <?php echo csrf_field(); ?>
                 <br>
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 bold-title"> REGISTRAR BATERÍA <i class="fas fa-plus-circle mx-3"></i> </h1>
