@@ -41,7 +41,7 @@ Route::group(['middleware' =>'auth'], function(){
     Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
     Route::resource('role', RolesController::class);
 
-    Route::resource('user', UserController::class)->only(['index','edit','update', 'create', 'store', 'destroy']);
+    Route::resource('user', UserController::class)->only(['index','create', 'store']);
 
     Route::resource('user', UserController::class)->only(['index','edit','update']);
 
@@ -107,7 +107,12 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
-    //Proveedor
+
+    Route::get('user/index/{id}/edit',[UserController::class,'edit'])->name('user.edit');
+    Route::delete('user/index/{id}',[UserController::class,'destroy'])->name('user.destroy');
+    Route::put('user/index/{id}',[UserController::class,'update'])->name('user.update');
+    
+//Proveedor
     Route::get('Proveedor',[ProveedorController::class,'index'])->name('proveedor.index');
     Route::get('Proveedor/index',[ProveedorController::class,'create'])->name('proveedor.create');
     Route::post('Proveedor/index/add',[ProveedorController::class,'store'])->name('proveedor.store');
