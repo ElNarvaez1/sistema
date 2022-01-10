@@ -120,6 +120,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
     Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
     Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
+    Route::get('/cambiollantas/index/show/{idCambio}',[CambioLLantasController::class,'show'])->name('cambio.show');
     Route::resource('cambiollantas', CambioLLantasController::class);
 
 });
