@@ -20,21 +20,21 @@
                                                 <div class="row">
                                                         <div class="col-md-4 mt-4">
                                                                 <label class="text-black h4">Fecha de registro</label>
-                                                                <input type="text" name="nombre" value="{{$cambio->fecha}}" placeholder="Nombre del Proveedor" class="form-control text-upper">
+                                                                <input type="text" disabled="true" name="nombre" value="{{$cambio->fecha}}" placeholder="Nombre del Proveedor" class="form-control text-upper">
                                                         </div>
                                                         <div class="col-md-4 mt-4">
                                                                 <label class="text-black h4">Monto</label>
-                                                                <input type="text" name="nombre" value="{{$cambio->monto}}" placeholder="Nombre del Proveedor" class="form-control text-upper">
+                                                                <input type="text" name="nombre" disabled="true" value="{{$cambio->monto}}" placeholder="Nombre del Proveedor" class="form-control text-upper">
                                                         </div>
                                                         <div class="col-md-4 mt-4">
                                                                 <label class="text-black h4">Empleado</label>
-                                                                <input type="text" name="nombre" value="{{$cambio->idUser}}" placeholder="Nombre del Proveedor" class="form-control text-upper">
+                                                                <input type="text" name="nombre" disabled="true" value="{{$cambio->idUser}}" placeholder="Nombre del Proveedor" class="form-control text-upper">
                                                         </div>
                                                 </div>
                                                 <div class="row">
                                                         <div class="col-md-6 mt-4">
                                                                 <label class="text-black">Descripción sobre el cambio de neumáticos:</label>
-                                                                <textarea class="form-control" value="{{$cambio->descripcion}}" name="descripcion" placeholder="Descripción" required></textarea>
+                                                                <textarea class="form-control" disabled="true" value="" name="descripcion" placeholder="Descripción" required>{{$cambio->descripcion}}</textarea>
                                                         </div>
                                                 </div>
                                                 <hr>
