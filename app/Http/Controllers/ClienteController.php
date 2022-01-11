@@ -47,11 +47,12 @@ class ClienteController extends Controller
     {
         $request->validate(
             [
+                'idCliente' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'apellido_p' => 'required|regex:/^[\pL\s\-]+$/u',
-                'apellido_m' => 'required|regex:/^[\pL\s\-]+$/u',
-                'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
-                'correo' => 'required|email',
+                'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
+                'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
+                //'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
+                //'correo' => 'required|email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
                
             ]
@@ -59,13 +60,15 @@ class ClienteController extends Controller
         Session::flash('message_save', '¡Cliente guardado con éxito!');
 
         $cliente = new Cliente($request->input());
+        $cliente ->idCliente =Str::upper($request->input('idCliente'));
         $cliente ->nombre =Str::upper($request->input('nombre'));
-        $cliente ->apellido_p =Str::upper($request->input('apellido_p'));
-        $cliente ->apellido_m =Str::upper($request->input('apellido_m'));
-        $cliente ->direccion =Str::upper($request->input('direccion'));
+        $cliente ->apellidoPaterno =Str::upper($request->input('apellidoPaterno'));
+        $cliente ->apellidoMaterno =Str::upper($request->input('apellidoMaterno'));
+        $cliente ->telefono =Str::upper($request->input('telefono'));
+        //$cliente ->direccion ="dededede";
         
 
-        $cliente->saveOrFail();
+        $cliente -> saveOrFail();
         return redirect()->route("clientes.create");
     }
 
@@ -92,9 +95,9 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
-        $cliente = Cliente::findOrFail($id);
+        
        
         return view('clients.edit', compact('cliente'));
     }
@@ -113,7 +116,7 @@ class ClienteController extends Controller
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
                 'apellido_p' => 'required|regex:/^[\pL\s\-]+$/u',
                 'apellido_m' => 'required|regex:/^[\pL\s\-]+$/u',
-                'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
+               // 'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
                 'correo' => 'required|email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
                
@@ -125,7 +128,7 @@ class ClienteController extends Controller
         $cliente ->nombre =Str::upper($request->input('nombre'));
         $cliente ->apellido_p =Str::upper($request->input('apellido_p'));
         $cliente ->apellido_m =Str::upper($request->input('apellido_m'));
-        $cliente ->direccion =Str::upper($request->input('direccion'));
+        //$cliente ->direccion =Str::upper($request->input('direccion'));
         
         // $cliente->update($request->input());
         $cliente->save();

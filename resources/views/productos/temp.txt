@@ -1,0 +1,130 @@
+-> CODIGO REMOVIDO ------ NO LO BORREN XD PODRIA SEVIR 
+
+
+-> productos -.add.
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="text-black h4">Tipo</label>
+                                        {{-- @php($tipos = ['IP', 'SEGURIDAD', 'BULLET', 'DOMO', '8 CANALES', '4 CANALES',
+                                                    '16 CANALES', 'P/TRANSMISION DE VIDEO'])
+                                                    <select class="form-control" name="tipo">
+                                                        <option value="" disabled selected>SELECCIONE UNA OPCIÓN</option>
+                                                        @foreach ($tipos as $type)
+
+                                                            @if (old('tipo') == $type)
+                                                                <option selected="selected">{{ $type }}</option>
+                                        @else
+                                        <option>{{ $type }}</option>
+                                        @endif
+                                        @endforeach
+                                        </select> --}}
+
+                                        <input type="text" name="tipo" value="{{ old('tipo') }}" placeholder="Introduce el tipo del producto" class="form-control text-upper">
+
+                                        {{-- validaciones --}}
+                                        @error('tipo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+
+                                    </div>
+                                </div>
+
+
+
+
+-> Corta de productos_edit 
+
+
+
+
+<div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                        <label class="text-black h4">Modelo</label>
+                                        {{-- @php($modelos = ['HFW1200TA28', 'PB401', 'IP66', 'SMARTCAM', 'ONVIF', 'IP67',
+                                                'XVR1A04', 'S8-TURBO-L', 'XVR5104HE-X1', 'DH-XVR1A04', 'XVR1A08',
+                                                'DS-7104HGHI-F1(S)', 'EV4016TURBO', 'S16 TURBO', 'CCTV BNC VIDEO', 'CCTV UTP']) --}}
+
+                                        {{-- <select class="form-control" name="modelo">
+                                                    @foreach ($modelos as $mod)
+                                                        <option @if (old('modelo', $producto->modelo) == $mod) selected @endif>{{ $mod }}
+                                        </option>
+
+                                        @endforeach
+                                        </select> --}}
+                                        {{-- validaciones --}}
+                                        <input type="text" value="{{ old('',$producto->modelo) }}" placeholder="Modelo" class="form-control text-upper" disabled>
+
+                                        @error('modelo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+<div class="col-md-8 mt-4">
+                                    <div class="form-group">
+                                        <label class="text-black h4">Agregar imagen</label>
+
+                                        {{-- small class="text-dark"> --}}
+                                        <small class="text-dark"> <input type="checkbox" class="check-input mx-3" name="check" @if (old('check')=="on" ) checked @endif>¿Desea modificar la imagen? active aqui.</small>
+                                        @if (old('check')=="on")
+
+                                        <input type="file" accept="image/*" name="imagen" placeholder="Inserte una imagen" class="form-control text-upper">
+                                        {{-- validaciones --}}
+
+                                        @error('imagen')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+
+                                        @endif
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+-> Corta do del contraldor "Productos controller"
+
+        // $request->validate(
+        //     [
+        //         'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
+        //         'descripcion' => 'required|regex:/[\pL\s\-."+0-9]+$/u', // regex Solo: incluye algunos carcateres
+        //         'modelo' => 'unique:product',
+        //         'tipo' => 'required',
+        //         'precio_c' => 'required|numeric',
+        //         'precio_v' => 'required|numeric',
+        //         'stock' => 'required|numeric'
+        //     ]);
+       
+        Session::flash('message_save', '¡Producto actualizado con éxtio!');
+        
+        $producto->fill($request->input());
+        $producto->nombre = Str::upper($request->input('nombre'));
+        // $producto->modelo = Str::upper($request->input('modelo'));
+        $producto->tipo = Str::upper($request->input('tipo'));
+        $producto->descripcion = Str::upper($request->input('descripcion'));
+
+        if ($request->check=='on'){
+            
+        $request->validate(
+            [
+                'imagen' => 'required|image|max:2048'
+            ]);
+            $name_camera= $producto->modelo;
+            
+            $url_camera = $request->file('imagen')->storeOnCloudinaryAs(
+                'camaras',$name_camera);
+            $producto-> imagen =$url_camera->getPath();
+       
+            
+        }
+        $producto->saveOrFail();
+       
+        return redirect()->route("productos.index");
+
+

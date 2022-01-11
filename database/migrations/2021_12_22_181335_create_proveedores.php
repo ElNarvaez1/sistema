@@ -21,7 +21,7 @@ class CreateProveedores extends Migration
             $table->string('nombreEmpresa');
             $table->text('direccion');
             $table->string('correo')->nullable();
-            $table->integer('telefono');
+            $table->string('telefono');
 
             $table->primary('idProveedor');
             $table->softDeletes(); 

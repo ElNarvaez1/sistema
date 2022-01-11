@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -54,9 +55,38 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->roles()->sync($request->roles);
-        Session::flash('message_save', '¡Rol guardado con éxito!');
-        return redirect()->route("user.edit", $user);
+        {
+
+
+            $request->validate(
+                [
+
+                    'name',
+                    'apellidoPaterno',
+                    'apellidoMaterno',
+                    'password', // regex Solo: incluye algunos carcateres
+                    'email',
+                    'telefono' ,
+                    'username',
+                    'idRol' ,
+    
+                ]
+            );
+            
+            Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
+            $user->fill($request->input());
+            $user ->name =Str::upper($request->input('name'));
+            $user ->apellidoMaterno =Str::upper($request->input('apellidoPaterno'));
+            $user ->apellidoMaterno =Str::upper($request->input('apellidoMaterno'));
+            $user ->password =Str::upper($request->input('password'));
+            $user ->email =Str::upper($request->input('email'));
+            $user ->telefono =Str::upper($request->input('telefono'));
+            $user ->username =Str::upper($request->input('username'));
+            $user ->idRol =Str::upper($request->input('idRol'));
+    
+            $user->saveOrFail();
+            return redirect()->route("user.index");
+        }
     }
 
     /**
@@ -91,9 +121,14 @@ class UserController extends Controller
 
         $request->validate(
             [
-                'name' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'username' => 'required|regex:/[\pL\s\-."+0-9]+$/u', // regex Solo: incluye algunos carcateres
-                'email' => 'required' //unique:users
+                'name',
+                'apellidoPaterno',
+                'apellidoMaterno',
+                'password', // regex Solo: incluye algunos carcateres
+                'email',
+                'telefono' ,
+                'username',
+                'idRol' ,
 
             ]
         );
@@ -102,6 +137,11 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->input('name');
         $user->username = $request->input('username');
+        $user->email = $request->input('apellidoPaterno');
+        $user->email = $request->input('apellidoMaterno');
+        $user->email = $request->input('password');
+        $user->email = $request->input('telefono');
+        $user->email = $request->input('idRol');
         $user->email = $request->input('email');
 
         if ($request->check == 'on') {
@@ -120,6 +160,52 @@ class UserController extends Controller
              $user-> photo =$uploadedFileUrl->getPath();
         }
         $user->saveOrFail();
-        return redirect()->route("user.profile");
+        return redirect()->route("user.index");
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('usuarios.create');
+    }
+
+    public function store(Request $request){
+        $fields = $request->validate([
+                'id',
+                'name',
+                'apellidoPaterno',
+                'apellidoMaterno',
+                'password', // regex Solo: incluye algunos carcateres
+                'email',
+                'telefono' ,
+                'username',
+                'idRol' ,
+        ]);
+
+        Session::flash('message_save', '¡Empleado guardado con éxito!');
+
+        $user = User::create($request->all());
+
+        $token = $user->createToken('tokenApi')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        $user->saveOrFail();
+        return redirect()->route("user.index");
+    }
+
+    public function destroy(User $user)
+    {
+        Session::flash('message_delete', 'Empleado borrado con éxito!');
+        $user->delete();
+        return redirect()->route("user.index");
+    }
+
 }

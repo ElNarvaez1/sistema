@@ -79,12 +79,13 @@
 -->
 @can('productos.index')
 <hr class="sidebar-divider my-0">
-    <li class="nav-item  {{ request()->routeIs('bateria.index') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('bateria.index') }}">
+    <li class="nav-item  {{ request()->routeIs('productos.index') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('productos.index') }}">
             <i class="fas fa-car-battery"></i>
-            <span>baterias</span></a>
+            <span>Productos</span></a>
     </li>
 @endcan
+
 @can('productos.index')
 <hr class="sidebar-divider my-0">
     <li class="nav-item  {{ request()->routeIs('llantas.index') ? 'active' : '' }}">
@@ -93,6 +94,7 @@
             <span>Llantas</span></a>
     </li>
 @endcan
+
 
 
 
@@ -161,7 +163,7 @@
     </li>
 @endcan
 
-
+{{--
  @can('pedido.index') 
 <hr class="sidebar-divider my-0">
 
@@ -172,6 +174,7 @@
     </a>
 </li>
 @endcan
+--}}
 {{--@can('proveedor.index') --}}
 <hr class="sidebar-divider my-0">
 

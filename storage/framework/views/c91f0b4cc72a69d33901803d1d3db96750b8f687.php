@@ -40,9 +40,14 @@
                                                                     
                                     <div class="row">
 
-                                        
+                                    
                                         <div class="col-md-3 mt-4">
-                                            
+                                            <div class="form-group">
+                                                <a title="Agregar nuevo empleado" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
+                                                    href="<?php echo e(route('user.create')); ?>"> 
+                                                     Nuevo empleado <i class="fas fa-plus-circle"></i>
+                                                </a>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-2 mt-4">
@@ -93,28 +98,27 @@
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
                                                 <th scope="col">ID</th>
-                                                <th scope="col">NOMBRE</th>
                                                 <th scope="col">NOMBRE DE USUARIO</th>
                                                 <th scope="col">CORREO ELECTRÓNICO</th>
+                                                <th scope="col">NÚMERO DE CONTACTO</th>
+                                                <th scope="col">NOMBRE</th>
+                                                <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">FECHA DE CREACIÓN</th>
-                                                <th scope="col">EDITAR</th>
+                                                <th scope="col">OPERACIONES</th>
                                                 
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
                                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user.index')): ?>
                                             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <tr class="table-hover">
-                                                    
-                                                    
+                                                <tr class="table-hover"> 
                                                     <td class="text-center"><?php echo e($user->id); ?></td>
-                                                    <td class="text-center"><?php echo e($user->name); ?></td> 
-                                                    
-                                                    
                                                     <td class="text-center"><?php echo e($user->username); ?></td>
                                                     <td class="text-center"><?php echo e($user->email); ?></td>
-                                                    <td class="text-center"><?php echo e($user->created_at); ?></td>
-                                                    
+                                                    <td class="text-center"><?php echo e($user->telefono); ?></td> 
+                                                    <td class="text-center"><?php echo e($user->name); ?></td> 
+                                                    <td class="text-center"><?php echo e($user->apellidoPaterno); ?></td> 
+                                                    <td class="text-center"><?php echo e($user->created_at); ?></td>                                                
                                                     <td class="text-center">
                                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user.edit')): ?>
                                                         <a title="editar"
@@ -122,6 +126,19 @@
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                             <?php endif; ?>
+
+                                                    
+
+                                                            
+                                                        <form action="<?php echo e(route('user.destroy', [$user])); ?>"
+                                                            method="post">
+                                                            <?php echo method_field("delete"); ?>
+                                                            <?php echo csrf_field(); ?>
+                                                            <button title="borrar empleado" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form> 
+                                                        
                                                     </td>
                                                 
                                                 </tr>

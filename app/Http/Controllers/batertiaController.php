@@ -70,7 +70,7 @@ class batertiaController extends Controller
         $producto->idProducto = $request->nombre[0].''.
                                 $request->nombre[1].''.
                                 $request->nombre[2].'-'.
-                                date('dmy'); //-> se pone solo
+                                date('Y-m-d H:i:s'); //-> se pone solo
         $producto->idProveedor = $request->proveedor;
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
@@ -84,7 +84,7 @@ class batertiaController extends Controller
         $bateria = new batertiaModel();
         $bateria->idBateria = $request->modelo[0].''.
                              $request->modelo[1].'-'.
-                                date('dmy'); //-> Se supone que pone solo xd
+                             date('Y-m-d H:i:s'); //-> Se supone que pone solo xd
         $bateria->idMarca = $request->idMarca;
         $bateria->tamanio = $request->tamanio;
         $bateria->modelo = $request->modelo;
@@ -101,7 +101,9 @@ class batertiaController extends Controller
      */
     public function destroy(Request $request, batertiaModel $baterium)
     {
-        $baterium->delete();
+        $registro = batertiaModel::find($baterium);
+
+        $registro->delete();
         return redirect()->route('bateria.index');
     }
 
@@ -110,8 +112,16 @@ class batertiaController extends Controller
         return view('productos.baterias.baterias_edit', ["producto" => $baterium]);
     }
 
-    public function update(batertiaModel $baterium){
-        $baterium->save();   
+    public function update(Request $request,batertiaModel $baterium){
+        $bateria = batertiaModel::find($baterium->idBateria);
+
+        $bateria->idMarca = $request->idMarca;
+        $bateria->tamanio = $request->tamanio;
+        $bateria->modelo = $request->modelo;
+        $bateria->voltaje = $request->voltaje;
+        $bateria->save();
+
+        //$baterium->save();   
         return redirect()->route('bateria.index');      
     }
 }
