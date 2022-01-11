@@ -72,8 +72,7 @@
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
                                                 <th scope="col">IDCambioLlanta</th>
-                                                <th scope="col">fecha</th>
-                                                <th scope="col">descripción</th>
+                                                <th scope="col">fecha</th>                                               
                                                 <th scope="col">total</th>
                                                 <th scope="col">Empleado</th>                                                
                                                 <th scope="col" colspan="2">ACCIONES</th>                                                
@@ -82,12 +81,13 @@
                                             @forelse ($listaCambioLlantas as $cambio)
                                                 <tr class="table-hover">
                                                     <th class="text-center" scope="row">{{$cambio->idCambio}}</th>
-                                                    <th class="text-center" scope="row">{{$cambio->fecha}}</th>
-                                                    <th class="text-center" scope="row">{{$cambio->descripcion}}</th>
+                                                    <th class="text-center" scope="row">{{$cambio->fecha}}</th>                                                    
                                                     <th class="text-center" scope="row">${{$cambio->monto}}</th>
                                                     <th class="text-center" scope="row">{{$cambio->idUser}}</th>
                                                     <th class="text-center" scope="row">
-                                                        <a title="Ver mas" class="btn btn-outline-primary btn-circle"> <i class="fa fa-eye"></i></a>
+                                                    {{-- @can('cambiollantas.index') --}}
+                                                        <a title="Ver mas" href="{{ route('cambio.show', $cambio->idCambio)}}" class="btn btn-outline-primary btn-circle"> <i class="fa fa-eye"></i></a>
+                                                    {{-- @endcan --}}
                                                     </th>
                                                 </tr>
                                             @empty
