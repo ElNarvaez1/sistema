@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('idRol')->references('id')->on('Rol_Empleados');
             $table->rememberToken();
             $table->timestamps();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             
             $table->primary('id');
         });

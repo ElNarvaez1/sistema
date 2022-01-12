@@ -16,7 +16,6 @@ class User extends Authenticatable
     use HasFactory, Notifiable, HasApiTokens;
     use HasRoles;
     use SoftDeletes; //Implementamos
-    protected $dates = ['deleted_at']; //Registramos la nueva columna
     protected $table = 'users';
     protected $primarykey ='id';
     public $incrementing= false;

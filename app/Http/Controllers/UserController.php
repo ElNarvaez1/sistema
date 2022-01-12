@@ -57,11 +57,6 @@ class UserController extends Controller
                 'name' => 'required|regex:/^[\pL\s\-]+$/u', 
                 'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
                 'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
-                'password' => ['required', Password::min(8)
-                            ->letters()
-                            ->numbers()
-                            ->symbols()
-        ],
                 'conf_password',
                 'email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
@@ -74,13 +69,11 @@ class UserController extends Controller
             $name =Str::upper($request->input('name'));
             $apellidoPaterno =Str::upper($request->input('apellidoPaterno'));
             $apellidoMaterno =Str::upper($request->input('apellidoMaterno'));
-            $password =Str::upper($request->input('password'));
             $email =Str::upper($request->input('email'));
             $telefono =Str::upper($request->input('telefono'));
             $username =Str::upper($request->input('username'));
             $idRol =Str::upper($request->input('idRol'));
-            User::WHERE('id',$id)->update(['name'=>$name,'apellidoPaterno'=>$apellidoPaterno,'apellidoMaterno'=>$apellidoMaterno,
-            'password'=>$password ,'email'=>$email , 'idRol'=>$idRol ,'username'=>$username,'telefono'=>$telefono]);
+            User::WHERE('id',$id)->update(['name'=>$name,'apellidoPaterno'=>$apellidoPaterno,'apellidoMaterno'=>$apellidoMaterno,'email'=>$email , 'idRol'=>$idRol ,'username'=>$username,'telefono'=>$telefono]);
 
         Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
             

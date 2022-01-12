@@ -121,8 +121,8 @@
                                                         <select name="idRol" value="{{ old('idRol') }}" id="" class="form-control text-upper">
                                                         <option value="0">Seleccione un rol</option>
                                                        
-                                                            <option value="2">Gerente</option>
-                                                            <option value="3">Empleado</option>
+                                                            <option value="2">Empleado</option>
+                                                            <option value="3">Gerente</option>
                                                     </select>
                                                     {{-- validaciones --}}
                                                     @error('idRol')

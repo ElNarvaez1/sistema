@@ -121,8 +121,8 @@
                                                         <select name="idRol" value="{{ old('idRol',$user->idRol) }}" id="" class="form-control text-upper">
                                                         <option value="0">Seleccione un rol</option>
                                                        
-                                                            <option value="2">Gerente</option>
-                                                            <option value="3">Empleado</option>
+                                                            <option value="2">Empleado</option>
+                                                            <option value="3">Gerente</option>
                                                     </select>
                                                     {{-- validaciones --}}
                                                     @error('idRol')
@@ -144,7 +144,7 @@
                                         </div>
 
                                     </div>
-
+                                <!-- /.container-fluid 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Contraseña</label>
@@ -170,7 +170,7 @@
                                             @enderror
                                         </div>
                                     </div>
-
+-->
                                             
                                         </div>
 
