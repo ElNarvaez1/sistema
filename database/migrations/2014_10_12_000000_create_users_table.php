@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('telefono');
-            $table->string('idRol')->references('role_id')->on('model_has_roles');
+            $table->string('idRol')->references('id')->on('Rol_Empleados');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

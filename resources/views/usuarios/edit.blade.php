@@ -35,7 +35,7 @@
                         
                         <div class="container">
                            
-                            <form method="POST" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('user.update', $user->id, $user) }}" enctype="multipart/form-data">
                                 @method("PUT")
                                 @csrf
                                 <div class="row">
@@ -112,21 +112,24 @@
                                                 </div>
                                             </div>
 
-
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Rol</label>
-                                                   
-
-                                                        <select name="idRol" value="{{ old('idRol',$user->idRol) }}" id="" class="form-control text-upper">
-                                                        <option value="0">Seleccione un rol</option>
-                                                       
-                                                            <option value="2">Empleado</option>
-                                                            <option value="3">Gerente</option>
-                                                    </select>
+                                                    <label class="text-black h4">Lista de roles</label>
+                                                    
+                                                        
+                                                        @foreach( $roles as $role)
+                                                        <div>
+                                                            <label>
+                                                                {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
+                                                                {{$role->name}}
+                                                            </label>
+                                                        </div>
+                                                           
+                                                        @endforeach
+                                                    
                                                     {{-- validaciones --}}
                                                     @error('idRol')
-                                                        <div class="message-error">*{{ $message }}</div>
+                                                    <div class="message-error">*{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>

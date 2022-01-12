@@ -152,13 +152,21 @@ unset($__errorArgs, $__bag); ?>
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Rol</label>
-                                                    <select name="proveedor" value="<?php echo e(old('idRol')); ?>" id="" class="form-control text-upper">
-                                                        <option value="0">Seleccione un rol</option>
+                                                    <label class="text-black h4">Lista de roles</label>
+                                                    
+                                                        
                                                         <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option value="<?php echo e($role->id); ?>"><?php echo e($role->name); ?></option>
+                                                        <div>
+                                                            <label>
+                                                                <?php echo Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']); ?>
+
+                                                                <?php echo e($role->name); ?>
+
+                                                            </label>
+                                                        </div>
+                                                           
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </select>
+                                                    
                                                     
                                                     <?php $__errorArgs = ['idRol'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

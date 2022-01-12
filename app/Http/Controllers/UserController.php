@@ -47,7 +47,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, User $user)
     {
         {
 
@@ -66,6 +66,7 @@ class UserController extends Controller
     
                 ]
             );
+            $idRol=3;
     
             $name =Str::upper($request->input('name'));
             $apellidoPaterno =Str::upper($request->input('apellidoPaterno'));
@@ -73,9 +74,10 @@ class UserController extends Controller
             $email =Str::upper($request->input('email'));
             $telefono =Str::upper($request->input('telefono'));
             $username =Str::upper($request->input('username'));
-            $idRol =Str::upper($request->input('idRol'));
-            User::WHERE('id',$id)->update(['name'=>$name,'apellidoPaterno'=>$apellidoPaterno,'apellidoMaterno'=>$apellidoMaterno,'email'=>$email , 'idRol'=>$idRol ,'username'=>$username,'telefono'=>$telefono]);
+            $idRol = 2;
 
+            User::WHERE('id',$id)->update(['name'=>$name,'apellidoPaterno'=>$apellidoPaterno,'apellidoMaterno'=>$apellidoMaterno,'email'=>$email , 'idRol'=>$idRol ,'username'=>$username,'telefono'=>$telefono]);
+            $user->roles()->sync($request->roles);
         Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
             
             return redirect()->route("user.index");

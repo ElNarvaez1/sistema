@@ -117,13 +117,19 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Rol</label>
-                                                    <select name="proveedor" value="{{ old('idRol') }}" id="" class="form-control text-upper">
-                                                        <option value="0">Seleccione un rol</option>
+                                                    <label class="text-black h4">Lista de roles</label>
+                                                    
+                                                        
                                                         @foreach( $roles as $role)
-                                                            <option value="{{$role->id}}">{{$role->name}}</option>
+                                                        <div>
+                                                            <label>
+                                                                {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
+                                                                {{$role->name}}
+                                                            </label>
+                                                        </div>
+                                                           
                                                         @endforeach
-                                                    </select>
+                                                    
                                                     {{-- validaciones --}}
                                                     @error('idRol')
                                                     <div class="message-error">*{{ $message }}</div>
