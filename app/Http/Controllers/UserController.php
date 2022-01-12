@@ -7,6 +7,7 @@ use Session;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\DB;
 
@@ -162,8 +163,9 @@ class UserController extends Controller
      */
     public function create()
     {
-
-        return view('usuarios.create');
+        $roles = Role::all();
+        return view('usuarios.create', compact('roles'));
+        
     }
 
     public function store(Request $request){
@@ -181,7 +183,7 @@ class UserController extends Controller
             'email'=> 'required',
             'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
             'username'=> 'required',
-            'idRol'=> 'required',
+            
     ]);
         $a = $fields['password'];
         $b = $fields['conf_password'];
@@ -190,10 +192,10 @@ class UserController extends Controller
             Session::flash('message_save', '¡Empleado guardado con éxito!');
 
             //$user = User::create($request->all());
-    
+            $idRol=3;
             $id = "USER-".
             strtoupper($fields['username']).
-            strtoupper("-".$fields['idRol']);
+            strtoupper("-".$fields['name']);
     
             $user = User::create([
                 'name' => $fields['name'],
@@ -204,12 +206,12 @@ class UserController extends Controller
                 'apellidoMaterno' => $fields['apellidoMaterno'],
                 'telefono' => $fields['telefono'],
                 'id' => $id,
-                'idRol' => $fields['idRol']
+                'idRol' => $idRol
                 
     
             ]);
     
-    
+            $user->roles()->sync($request->roles);
             $user->saveOrFail();
             return redirect()->route("user.index");
 

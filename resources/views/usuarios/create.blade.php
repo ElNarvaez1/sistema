@@ -113,20 +113,20 @@
                                                 </div>
                                             </div>
 
+                                            
+
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Rol</label>
-                                                   
-
-                                                        <select name="idRol" value="{{ old('idRol') }}" id="" class="form-control text-upper">
+                                                    <select name="proveedor" value="{{ old('idRol') }}" id="" class="form-control text-upper">
                                                         <option value="0">Seleccione un rol</option>
-                                                       
-                                                            <option value="2">Empleado</option>
-                                                            <option value="3">Gerente</option>
+                                                        @foreach( $roles as $role)
+                                                            <option value="{{$role->id}}">{{$role->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     {{-- validaciones --}}
                                                     @error('idRol')
-                                                        <div class="message-error">*{{ $message }}</div>
+                                                    <div class="message-error">*{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>
