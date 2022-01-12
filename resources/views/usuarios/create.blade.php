@@ -121,8 +121,8 @@
                                                     
                                                         
                                                         @foreach( $roles as $role)
-                                                        <div>
-                                                            <label>
+                                                        <div class="text-black h4">
+                                                            <label >
                                                                 {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
                                                                 {{$role->name}}
                                                             </label>

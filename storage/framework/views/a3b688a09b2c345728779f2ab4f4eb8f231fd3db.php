@@ -156,8 +156,8 @@ unset($__errorArgs, $__bag); ?>
                                                     
                                                         
                                                         <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <div>
-                                                            <label>
+                                                        <div class="text-black h4">
+                                                            <label >
                                                                 <?php echo Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']); ?>
 
                                                                 <?php echo e($role->name); ?>
