@@ -40,19 +40,7 @@
                                 @csrf
                                 <div class="row">
 
-                                <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">id del cliente</label>
-                                            <input type="text" name="idCliente" value="{{ old('idCliente') }}"
-                                                placeholder="id del cliente"
-                                                class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('idCliente')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
 
-                                    </div>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">

@@ -114,7 +114,7 @@
                                         <tbody class="text-black2">
                                             @forelse ($clientes as $cliente)
                                                 <tr class="table-hover">
-                                                    <th scope="row">{{ $cliente->id }}</th>
+                                                    <th scope="row">{{ $cliente->idCliente }}</th>
 
                                                     <td>
                                                         @can('productos.show')
@@ -136,7 +136,7 @@
                                                     
                                                     <td>
                                                         {{-- @can('client.edit') --}}
-                                                        <a title="editar datos" href="{{ route('clientes.edit',[$cliente]) }}"
+                                                        <a title="editar datos" href="{{ route('clientes.edit',[$cliente -> idCliente]) }}"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         {{-- @endcan --}}

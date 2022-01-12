@@ -114,7 +114,7 @@
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $clientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cliente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-                                                    <th scope="row"><?php echo e($cliente->id); ?></th>
+                                                    <th scope="row"><?php echo e($cliente->idCliente); ?></th>
 
                                                     <td>
                                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
@@ -137,7 +137,7 @@
                                                     
                                                     <td>
                                                         
-                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',[$cliente])); ?>"
+                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',[$cliente -> idCliente])); ?>"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         

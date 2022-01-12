@@ -115,7 +115,7 @@
                                         <tbody class="text-black2">
                                             @forelse ($sales as $venta)
                                                 <tr class="table-hover">
-                                                    <th scope="row">{{ $venta->id }}</th>
+                                                    <th scope="row">{{ $venta->idVenta }}</th>
 
                                                     <td>
                                                         {{-- @can('productos.show')
@@ -127,23 +127,23 @@
                                                         @endcan --}}
                                                     </td>
 
-                                                    <td class="text-center">{{ $venta->articulo }}</td>
+                                                    <td class="text-center">{{ $venta->produ }}</td>
                                                     <td class="text-center">{{ $venta->fecha }}</td>
                                                     <td class="text-center">{{ $venta->descuento }} %</td>
-                                                    <td class="text-center"> $ {{ $venta->total_venta }}</td>
+                                                    <td class="text-center"> $ {{ $venta->totalVenta }}</td>
                                                            
 
                                                     
                                                     <td>
                                                         {{-- @can('client.edit') --}}
-                                                        <a title="detalle venta" href="{{ route('venta.detalle_venta',$venta->id) }}"
+                                                        <a title="detalle venta" href="{{ route('venta.detalle_venta',$venta->idVenta) }}"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-info-circle"></i></a>
                                                         {{-- @endcan --}}
                                                     </td>
                                                     <td>
                                                         {{-- @can('productos.destroy') --}}
-                                                        <form action="{{ route('venta.delete', [$venta->id]) }}" 
+                                                        <form action="{{ route('venta.delete', [$venta->idVenta]) }}" 
                                                             method="post">
                                                             @method("delete")
                                                             @csrf
@@ -158,7 +158,7 @@
                                                     <td>
                                                         {{-- @can('productos.destroy') --}}
                                                         
-                                                            <a href="{{ route('venta.ticket', [$venta->id])}}" target="_blank"
+                                                            <a href="{{ route('venta.ticket', [$venta->idVenta])}}" target="_blank"
                                                             class="btn btn-outline-success btn-circle btn-download">
                                                                
                                                                 <i class="fa fa-download"></i>
