@@ -154,7 +154,7 @@ class VentasController extends Controller
                 } 
                 }
            //$venta ->idVenta = 'VEN-'.$venta->totalVenta.'-'.date('dmy');
-           $venta ->idVenta = "VEN-32";
+           $venta ->idVenta = "VEN-34";
            $venta->idUser = 'Admin';
            $venta->idProducto = $item->name;
            //$venta->nombre = $item->attributes->cliente;

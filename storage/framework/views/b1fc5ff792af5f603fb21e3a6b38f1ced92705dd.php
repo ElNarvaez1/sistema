@@ -41,7 +41,7 @@
             <div class="col-xs-6">
                 <h1 class="h2"> Ticket</h1>
                
-                <strong>CLiente: </strong> <?php echo e($ventas[0]->fecha); ?> 
+                <strong>CLiente: </strong> <?php echo e($ventas[0]->nombre); ?> 
                
             </div>
         </div>
@@ -60,8 +60,8 @@
                         <?php $__currentLoopData = $ventas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="table-bordered">
                             
-                        <td  class="text-center"><?php echo e($venta->descuento); ?></td>
-                           <td  class="text-center"><?php echo e($venta->descuento); ?></td>
+                        <td  class="text-center"><?php echo e($venta->articulo); ?></td>
+                           <td  class="text-center"><?php echo e($venta->cantidad); ?></td>
                            <td class="text-right"><?php echo e($venta->descuento); ?> %</td>
                             
                             
@@ -71,10 +71,10 @@
                            
                             <tr>
                                 <td colspan="2" class="text-right">
-                                  <h5>Total descuento (18%): </h5>
+                                  <h5>Total impuesto (18%): </h5>
                               </td>   
                                 <td  class="text-right">
-                                  <?php echo e(number_format($venta->descuento, 2, '.', '')); ?>
+                                  <?php echo e(number_format($venta->impuesto, 2, '.', '')); ?>
 
                               </td>
                           
@@ -84,7 +84,7 @@
                               <h5>Total a pagar </h5>
                           </td>   
                             <td  class="text-right">
-                             $ <?php echo e(number_format($venta->totalVenta,2, '.', '')); ?> MXN
+                             $ <?php echo e(number_format($venta->total_venta,2, '.', '')); ?> MXN
                           </td>
                       
                       </tr>

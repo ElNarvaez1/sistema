@@ -27,7 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">ID Cliente: </h6>
+                            <h6 class="m-0 font-weight-bold ">ID Cliente: <?php echo e($ventas->id); ?></h6>
                         </div>
 
                         
