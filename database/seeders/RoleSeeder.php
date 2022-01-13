@@ -75,6 +75,8 @@ class RoleSeeder extends Seeder
         // CLIENTES CRUD
         Permission::create(['name'=>'client.index','descripcion'=>'ver clientes'])->syncRoles([$role1,$role2,$role3]);
         Permission::create(['name'=>'client.create','descripcion'=>'agregar cliente'])->syncRoles([$role1,$role2,$role3]);
+        //Proveedor
+        Permission::create(['name'=>'proveedor.index','descripcion'=>'ver provedor'])->syncRoles($role1);
 
 
 

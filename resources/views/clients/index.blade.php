@@ -56,8 +56,9 @@
                                                     'nombre',
                                                     'telefono',
                                                     'fecha',
-                                                    'correo'
-                                                    // 'PRECIO COMPRA','PRECIO VENTA'
+                                                    'Descripcion',
+                                                    'total servicio',
+                                                    'correo'                                                    
                                                     ])
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         @foreach ($arrayB as $buscar)
@@ -106,7 +107,6 @@
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">APELLIDO MATERNO</th>
                                                 <th scope="col">FECHA</th>
-                                                <th scope="col">E-MAIL</th>
                                                 <th scope="col">TELEFONO</th>
                                                 <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
@@ -114,36 +114,35 @@
                                         <tbody class="text-black2">
                                             @forelse ($clientes as $cliente)
                                                 <tr class="table-hover">
-                                                    <th scope="row">{{ $cliente->id }}</th>
+                                                    <th scope="row">{{ $cliente->idCliente }}</th>
 
                                                     <td>
                                                         @can('productos.show')
                                                         <a class="text-center"
-                                                            href="{{ route('clientes.show', [$cliente]) }}">
+                                                            href="{{ route('clientes.show', [$cliente ->idCliente]) }}">
 
                                                             {{ $cliente->nombre }}
                                                         </a>
                                                         @endcan
                                                     </td>
 
-                                                    <td class="text-center">{{ $cliente->apellido_p }}</td>
-                                                    <td class="text-center">{{ $cliente->apellido_m }}</td>
+                                                    <td class="text-center">{{ $cliente->apellidoPaterno }}</td>
+                                                    <td class="text-center">{{ $cliente->apellidoMaterno }}</td>
                                                     <td class="text-center">{{ $cliente->fecha }}</td>
-                                                    <td class="text-center"> {{ $cliente->correo}}</td>
                                                     <td class="text-center"> {{ $cliente->telefono }}</td>
                                                            
 
                                                     
                                                     <td>
                                                         {{-- @can('client.edit') --}}
-                                                        <a title="editar datos" href="{{ route('clientes.edit',$cliente) }}"
+                                                        <a title="editar datos" href="{{ route('clientes.edit',[$cliente -> idCliente]) }}"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         {{-- @endcan --}}
                                                     </td>
                                                     <td>
                                                         {{-- @can('productos.destroy') --}}
-                                                        <form action="{{ route('clientes.destroy', [$cliente]) }}"
+                                                        <form action="{{ route('clientes.destroy', [$cliente -> idCliente]) }}"
                                                             method="post">
                                                             @method("delete")
                                                             @csrf

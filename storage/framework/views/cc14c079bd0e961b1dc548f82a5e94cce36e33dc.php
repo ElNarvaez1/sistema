@@ -40,6 +40,11 @@
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Narvaez
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del cliente</label>
@@ -65,11 +70,19 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
+<<<<<<< HEAD
                                             <input type="text" name="apellido_p" value="<?php echo e(old('apellido_p')); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             
                                             <?php $__errorArgs = ['apellido_p'];
+=======
+                                            <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno')); ?>"
+                                                placeholder="Apellido paterno"
+                                                class="form-control text-upper">
+                                            
+                                            <?php $__errorArgs = ['apellidoPaterno'];
+>>>>>>> Narvaez
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -87,11 +100,19 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
+<<<<<<< HEAD
                                             <input type="text" name="apellido_m" value="<?php echo e(old('apellido_m')); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             
                                             <?php $__errorArgs = ['apellido_m'];
+=======
+                                            <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno')); ?>"
+                                                placeholder="Apellido materno"
+                                                class="form-control text-upper">
+                                            
+                                            <?php $__errorArgs = ['apellidoMaterno'];
+>>>>>>> Narvaez
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -104,6 +125,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
 
+<<<<<<< HEAD
 
                                    
 
@@ -127,6 +149,11 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
+=======
+                                   
+
+                                           
+>>>>>>> Narvaez
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">

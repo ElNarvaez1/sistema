@@ -1,6 +1,7 @@
 
 .color{
-    background-color: #4e4e4e54;  /* fallback for old browsers */   
+    /*background-color: #4e4e4e54;  /* fallback for old browsers */   
+    background: transparent;
 }
 .bg-color{
     background: #232526;  /* fallback for old browsers */
@@ -127,4 +128,7 @@
     background-color: #292d33;
     color: rgb(255, 255, 255);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navbar-nav{
+    transition: all 0.5s;
 }
