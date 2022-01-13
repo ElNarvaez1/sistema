@@ -38,7 +38,7 @@ Route::group(['middleware' =>'auth'], function(){
     // Rutas Dashboard admin
     Route::resource('productos', ProductosController::class);
     Route::resource('inventario', InventarioController::class);
-    Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
+    Route::resource('permission', PermissionController::class);
     Route::resource('role', RolesController::class);
 
     Route::resource('user', UserController::class)->only(['index','edit','update', 'create', 'store', 'destroy']);
@@ -119,6 +119,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
     Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
     Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
+    Route::get('/cambiollantas/index/show/{idCambio}',[CambioLLantasController::class,'show'])->name('cambio.show');
     Route::resource('cambiollantas', CambioLLantasController::class);
 });
 

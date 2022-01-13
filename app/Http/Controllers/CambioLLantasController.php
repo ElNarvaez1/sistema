@@ -31,4 +31,13 @@ class CambioLLantasController extends Controller
         $cambiollanta->save();
         return view('cambiollantas.add');
    }
+   public function show($id){
+       
+       $idCambio = $id;
+       if($idCambio == null){
+        return view('errors.404')->with('info','Ocurrio un error');
+       }
+        return view('cambiollantas.show', ['cambio' => CambioLlanta::findOrFail($idCambio)]);
+
+   }
 }
