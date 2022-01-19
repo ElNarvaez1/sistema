@@ -103,11 +103,7 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-<<<<<<< HEAD
                                                 <th scope="col">NUMERO</th>
-=======
-                                                <th scope="col">ID</th>
->>>>>>> Narvaez
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">ARTICULO</th>
                                                 <th scope="col">FECHA</th>
@@ -119,11 +115,7 @@
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $sales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-<<<<<<< HEAD
-                                                    <th scope="row"><?php echo e($venta->id); ?></th>
-=======
                                                     <th scope="row"><?php echo e($venta->idVenta); ?></th>
->>>>>>> Narvaez
 
                                                     <td>
                                                         
@@ -133,38 +125,23 @@
                                                         
                                                     </td>
 
-<<<<<<< HEAD
-                                                    <td class="text-center"><?php echo e($venta->articulo); ?></td>
-                                                    <td class="text-center"><?php echo e($venta->fecha); ?></td>
-                                                    <td class="text-center"><?php echo e($venta->descuento); ?> %</td>
-                                                    <td class="text-center"> $ <?php echo e($venta->total_venta); ?></td>
-=======
                                                     <td class="text-center"><?php echo e($venta->produ); ?></td>
                                                     <td class="text-center"><?php echo e($venta->fecha); ?></td>
                                                     <td class="text-center"><?php echo e($venta->descuento); ?> %</td>
                                                     <td class="text-center"> $ <?php echo e($venta->totalVenta); ?></td>
->>>>>>> Narvaez
                                                            
 
                                                     
                                                     <td>
                                                         
-<<<<<<< HEAD
-                                                        <a title="detalle venta" href="<?php echo e(route('venta.detalle_venta',$venta->id)); ?>"
-=======
                                                         <a title="detalle venta" href="<?php echo e(route('venta.detalle_venta',$venta->idVenta)); ?>"
->>>>>>> Narvaez
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-info-circle"></i></a>
                                                         
                                                     </td>
                                                     <td>
                                                         
-<<<<<<< HEAD
-                                                        <form action="<?php echo e(route('venta.delete', [$venta->id])); ?>" 
-=======
                                                         <form action="<?php echo e(route('venta.delete', [$venta->idVenta])); ?>" 
->>>>>>> Narvaez
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>
@@ -179,11 +156,7 @@
                                                     <td>
                                                         
                                                         
-<<<<<<< HEAD
-                                                            <a href="<?php echo e(route('venta.ticket', [$venta->id])); ?>" target="_blank"
-=======
                                                             <a href="<?php echo e(route('venta.ticket', [$venta->idVenta])); ?>" target="_blank"
->>>>>>> Narvaez
                                                             class="btn btn-outline-success btn-circle btn-download">
                                                                
                                                                 <i class="fa fa-download"></i>

@@ -53,19 +53,12 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-<<<<<<< HEAD
                                                     'nombre',
                                                     'telefono',
-                                                    'fecha',
-                                                    'correo'
-                                                    // 'PRECIO COMPRA','PRECIO VENTA'
-=======
-                                                    'IdCambioLlanta',
                                                     'fecha',
                                                     'Descripcion',
                                                     'total servicio',
                                                     'correo'                                                    
->>>>>>> Narvaez
                                                     ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -114,11 +107,6 @@
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">APELLIDO MATERNO</th>
                                                 <th scope="col">FECHA</th>
-<<<<<<< HEAD
-                                                <th scope="col">E-MAIL</th>
-=======
-
->>>>>>> Narvaez
                                                 <th scope="col">TELEFONO</th>
                                                 <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
@@ -126,20 +114,12 @@
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $clientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cliente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-<<<<<<< HEAD
-                                                    <th scope="row"><?php echo e($cliente->id); ?></th>
-=======
                                                     <th scope="row"><?php echo e($cliente->idCliente); ?></th>
->>>>>>> Narvaez
 
                                                     <td>
                                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
                                                         <a class="text-center"
-<<<<<<< HEAD
-                                                            href="<?php echo e(route('clientes.show', [$cliente])); ?>">
-=======
                                                             href="<?php echo e(route('clientes.show', [$cliente ->idCliente])); ?>">
->>>>>>> Narvaez
 
                                                             <?php echo e($cliente->nombre); ?>
 
@@ -147,39 +127,23 @@
                                                         <?php endif; ?>
                                                     </td>
 
-<<<<<<< HEAD
-                                                    <td class="text-center"><?php echo e($cliente->apellido_p); ?></td>
-                                                    <td class="text-center"><?php echo e($cliente->apellido_m); ?></td>
-                                                    <td class="text-center"><?php echo e($cliente->fecha); ?></td>
-                                                    <td class="text-center"> <?php echo e($cliente->correo); ?></td>
-=======
                                                     <td class="text-center"><?php echo e($cliente->apellidoPaterno); ?></td>
                                                     <td class="text-center"><?php echo e($cliente->apellidoMaterno); ?></td>
                                                     <td class="text-center"><?php echo e($cliente->fecha); ?></td>
-
->>>>>>> Narvaez
                                                     <td class="text-center"> <?php echo e($cliente->telefono); ?></td>
                                                            
 
                                                     
                                                     <td>
                                                         
-<<<<<<< HEAD
-                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',$cliente)); ?>"
-=======
                                                         <a title="editar datos" href="<?php echo e(route('clientes.edit',[$cliente -> idCliente])); ?>"
->>>>>>> Narvaez
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         
                                                     </td>
                                                     <td>
                                                         
-<<<<<<< HEAD
-                                                        <form action="<?php echo e(route('clientes.destroy', [$cliente])); ?>"
-=======
                                                         <form action="<?php echo e(route('clientes.destroy', [$cliente -> idCliente])); ?>"
->>>>>>> Narvaez
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>

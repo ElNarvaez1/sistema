@@ -27,11 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-<<<<<<< HEAD
-                            <h6 class="m-0 font-weight-bold ">ID Cliente: <?php echo e($cliente->id); ?></h6>
-=======
                             <h6 class="m-0 font-weight-bold ">ID Cliente: <?php echo e($cliente -> idCliente); ?></h6>
->>>>>>> Narvaez
                         </div>
 
                         
@@ -39,11 +35,7 @@
                         
                         <div class="container">
                            
-<<<<<<< HEAD
-                            <form method="POST" action="<?php echo e(route('clientes.update', [$cliente])); ?>" enctype="multipart/form-data">
-=======
                             <form method="POST" action="<?php echo e(route('clientes.update', [$cliente -> idCliente])); ?>" enctype="multipart/form-data">
->>>>>>> Narvaez
                                 <?php echo method_field("PUT"); ?>
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
@@ -73,19 +65,11 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
-<<<<<<< HEAD
-                                            <input type="text" name="apellido_p" value="<?php echo e(old('apellido_p',$cliente->apellido_p)); ?>"
-                                                placeholder="Apellido paterno"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['apellido_p'];
-=======
                                             <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno',$cliente->apellidoPaterno)); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             
                                             <?php $__errorArgs = ['apellidoPaterno'];
->>>>>>> Narvaez
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -103,19 +87,11 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
-<<<<<<< HEAD
-                                            <input type="text" name="apellido_m" value="<?php echo e(old('apellido_m',$cliente->apellido_m)); ?>"
-                                                placeholder="Apellido materno"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['apellido_m'];
-=======
                                             <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno',$cliente->apellidoMaterno)); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             
                                             <?php $__errorArgs = ['apellidoMaterno'];
->>>>>>> Narvaez
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -127,14 +103,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> Narvaez
-                                   
-
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>

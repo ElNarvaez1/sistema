@@ -71,44 +71,7 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
 
 
-<<<<<<< HEAD
 
-
-
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Articulo</label>
-                                            <input type="text" name="articulo" value="<?php echo e(old('articulo')); ?>"
-                                                placeholder="Articulo"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['articulo'];
-=======
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Impuesto</label>
-                                            <input type="text" name="impuesto" value="18"
-                                             
-                                                placeholder="impuesto"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['impuesto'];
->>>>>>> Narvaez
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                        </div>
-<<<<<<< HEAD
-                                    </div>
-=======
-
-                                    </div>
 
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$          $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                 <?php (
@@ -125,7 +88,6 @@ unset($__errorArgs, $__bag); ?>
                                         </select>
                                     </div>
                                 </div>
->>>>>>> Narvaez
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
@@ -289,10 +251,6 @@ unset($__errorArgs, $__bag); ?>
                                             </tr>
 
                                             <?php
-<<<<<<< HEAD
-
-=======
->>>>>>> Narvaez
                                                 $i++;
                                                 ?>
                                               
@@ -324,17 +282,10 @@ unset($__errorArgs, $__bag); ?>
                                   <tr>
                               
                                     <td colspan="6" class="text-right">
-<<<<<<< HEAD
                                       <h6></h6>                                               </h5>
                                   </td>   
                                     <td  class="text-right">
                                        
-=======
-                                      <h6>TOTAL IMPUESTO (18%): </h6>                                               </h5>
-                                  </td>   
-                                    <td  class="text-right">
-                                        <?php echo e(number_format($item->attributes->iva, 2, '.', '')); ?> 
->>>>>>> Narvaez
                                             
                                         
                                   </td>
@@ -343,18 +294,10 @@ unset($__errorArgs, $__bag); ?>
                               <tr>
                               25.1814
                                 <td colspan="6" class="text-right">
-<<<<<<< HEAD
                                   <h6></h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
                                    
-=======
-                                  <h6>TOTAL A PAGAR: </h6>                                               </h5>
-                              </td>   
-                                <td  class="text-right">
-                                   <?php echo e($item->attributes->total_pay); ?>
-
->>>>>>> Narvaez
                                         
                                     
                               </td>
@@ -419,8 +362,4 @@ unset($__errorArgs, $__bag); ?>
             <!-- End of Page Wrapper -->
 
         <?php $__env->stopSection(); ?>
-<<<<<<< HEAD
-
-=======
->>>>>>> Narvaez
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/sales/add.blade.php ENDPATH**/ ?>
