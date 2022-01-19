@@ -113,20 +113,28 @@
                                                 </div>
                                             </div>
 
+                                            
+
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Rol</label>
-                                                   
+                                                    <label class="text-black h4">Lista de roles</label>
+                                                     
 
-                                                        <select name="idRol" value="{{ old('idRol') }}" id="" class="form-control text-upper">
-                                                        <option value="0">Seleccione un rol</option>
-                                                       
-                                                            <option value="2">Gerente</option>
-                                                            <option value="3">Empleado</option>
-                                                    </select>
+                                                    
+                                                        
+                                                        @foreach( $roles as $role)
+                                                        <div class="text-black h4">
+                                                            <label >
+                                                                {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
+                                                                {{$role->name}}
+                                                            </label>
+                                                        </div>
+                                                           
+                                                        @endforeach
+                                                    
                                                     {{-- validaciones --}}
                                                     @error('idRol')
-                                                        <div class="message-error">*{{ $message }}</div>
+                                                    <div class="message-error">*{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             </div>

@@ -23,8 +23,51 @@ class UserSeeder extends Seeder
                 'username' => 'admin',
                 'password' => bcrypt('123456789'),
                 'telefono' => '0123456789',
+                'idRol' => '1',
             ]
         )->assignRole('Admin');
+
+        User::create(
+            [                
+                'id' => 'Gerente',
+                'name' => 'Gerente',
+                'apellidoPaterno' => 'Gerente',
+                'apellidoMaterno' => 'Gerente',
+                'email' => 'Gerente@gmail.com',
+                'username' => 'Gerente',
+                'password' => bcrypt('123456789'),
+                'telefono' => '0123456789',
+                'idRol' => '3',
+            ]
+        )->assignRole('Gerente');
+
+        User::create(
+            [                
+                'id' => 'Empleado',
+                'name' => 'Empleado',
+                'apellidoPaterno' => 'Empleado',
+                'apellidoMaterno' => 'Empleado',
+                'email' => 'Empleado@gmail.com',
+                'username' => 'Empleado',
+                'password' => bcrypt('123456789'),
+                'telefono' => '0123456789',
+                'idRol' => '2',
+            ]
+        )->assignRole('Empleado');
+
+        User::create(
+            [                
+                'id' => 'prueba',
+                'name' => 'prueba',
+                'apellidoPaterno' => 'Empleado',
+                'apellidoMaterno' => 'Empleado',
+                'email' => 'prueba@gmail.com',
+                'username' => 'prueba',
+                'password' => bcrypt('123456789'),
+                'telefono' => '0123456789',
+                'idRol' => '2',
+            ]
+        )->assignRole('Empleado');
         //factory(User::class, 9)->create();
         
     }

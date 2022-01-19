@@ -112,7 +112,7 @@
                                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user.index')): ?>
                                             <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr class="table-hover"> 
-                                                    <td class="text-center"><?php echo e($user->id); ?></td>
+                                                    <td scope="row"><?php echo e($user->id); ?></td>
                                                     <td class="text-center"><?php echo e($user->username); ?></td>
                                                     <td class="text-center"><?php echo e($user->email); ?></td>
                                                     <td class="text-center"><?php echo e($user->telefono); ?></td> 
@@ -120,17 +120,15 @@
                                                     <td class="text-center"><?php echo e($user->apellidoPaterno); ?></td> 
                                                     <td class="text-center"><?php echo e($user->created_at); ?></td>                                                
                                                     <td class="text-center">
-                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user.edit')): ?>
-                                                        <a title="editar"
-                                                        href="<?php echo e(route('user.edit', [$user])); ?>"
-                                                            class="btn btn-outline-primary btn-circle">
-                                                            <i class="fa fa-edit"></i></a>
-                                                            <?php endif; ?>
-
-                                                    
 
                                                             
-                                                        <form action="<?php echo e(route('user.destroy', [$user])); ?>"
+                                                        <a title="editar datos" href="<?php echo e(route('user.edit', $user->id)); ?>" class="btn btn-outline-primary btn-circle">
+                                                            <i class="fa fa-edit"></i></a>
+                                                        
+                                                        
+                                                        <?php if(strcmp($user->id, "Admin") !== 0): ?>
+                                                        
+                                                        <form action="<?php echo e(route('user.destroy', $user->id)); ?>"
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>
@@ -139,6 +137,9 @@
                                                             </button>
                                                         </form> 
                                                         
+                                                        <?php endif; ?>
+
+                                                           
                                                     </td>
                                                 
                                                 </tr>

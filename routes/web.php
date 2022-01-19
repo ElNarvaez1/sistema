@@ -43,8 +43,6 @@ Route::group(['middleware' =>'auth'], function(){
 
     Route::resource('user', UserController::class)->only(['index','create', 'store']);
 
-    Route::resource('user', UserController::class)->only(['index','edit','update']);
-
     Route::resource('bateria',batertiaController::class);
     Route::resource('llantas',llantaController::class);
 

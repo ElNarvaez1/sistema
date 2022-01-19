@@ -35,7 +35,7 @@
                         
                         <div class="container">
                            
-                            <form method="POST" action="<?php echo e(route('user.update', [$user])); ?>" enctype="multipart/form-data">
+                            <form method="POST" action="<?php echo e(route('user.update', $user->id, $user)); ?>" enctype="multipart/form-data">
                                 <?php echo method_field("PUT"); ?>
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
@@ -104,27 +104,6 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Contraseña</label>
-                                            <input type="text" name="password" value="<?php echo e(old('password',$user->password)); ?>"
-                                                placeholder="contraseña"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                        </div>
-                                    </div>
-
-                                   
 
                                     <div class="col-md-4 mt-4">
                                                 <div class="form-group">
@@ -170,18 +149,28 @@ unset($__errorArgs, $__bag); ?>
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Rol</label>
-                                                    <input type="text" name="idRol" value="<?php echo e(old('idRol',$user->idRol)); ?>"
-                                                        placeholder="idRol "
-                                                        class="form-control text-upper">
+                                                    <label class="text-black h4">Lista de roles</label>
+                                                    
+                                                        
+                                                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <div class="text-black h4">
+                                                            <label>
+                                                                <?php echo Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']); ?>
 
+                                                                <?php echo e($role->name); ?>
+
+                                                            </label>
+                                                        </div>
+                                                           
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    
                                                     
                                                     <?php $__errorArgs = ['idRol'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                    <div class="message-error">*<?php echo e($message); ?></div>
                                                     <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -209,9 +198,47 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
 
                                     </div>
+                                <!-- /.container-fluid 
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">Contraseña</label>
+                                            <input type="password" name="password" value="<?php echo e(old('password')); ?>"
+                                                placeholder="contraseña"
+                                                class="form-control text-upper">
+                                            
+                                            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
 
-
-
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">Confirmar Contraseña</label>
+                                            <input type="password" name="password" value="<?php echo e(old('conf_password')); ?>"
+                                                placeholder="contraseña"
+                                                class="form-control text-upper">
+                                            
+                                            <?php $__errorArgs = ['conf_password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+-->
                                             
                                         </div>
 
