@@ -35,7 +35,7 @@
                         
                         <div class="container">
                            
-                            <form method="POST" action="{{ route('user.update', [$user]) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
                                 @method("PUT")
                                 @csrf
                                 <div class="row">
@@ -83,20 +83,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Contraseña</label>
-                                            <input type="text" name="password" value="{{ old('password',$user->password) }}"
-                                                placeholder="contraseña"
-                                                class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('password')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                   
 
                                     <div class="col-md-4 mt-4">
                                                 <div class="form-group">
@@ -126,13 +112,18 @@
                                                 </div>
                                             </div>
 
+
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Rol</label>
-                                                    <input type="text" name="idRol" value="{{ old('idRol',$user->idRol) }}"
-                                                        placeholder="idRol "
-                                                        class="form-control text-upper">
+                                                   
 
+                                                        <select name="idRol" value="{{ old('idRol',$user->idRol) }}" id="" class="form-control text-upper">
+                                                        <option value="0">Seleccione un rol</option>
+                                                       
+                                                            <option value="2">Gerente</option>
+                                                            <option value="3">Empleado</option>
+                                                    </select>
                                                     {{-- validaciones --}}
                                                     @error('idRol')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -154,7 +145,31 @@
 
                                     </div>
 
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">Contraseña</label>
+                                            <input type="password" name="password" value="{{ old('password')}}"
+                                                placeholder="contraseña"
+                                                class="form-control text-upper">
+                                            {{-- validaciones --}}
+                                            @error('password')
+                                                <div class="message-error">*{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
 
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">Confirmar Contraseña</label>
+                                            <input type="password" name="password" value="{{ old('conf_password')}}"
+                                                placeholder="contraseña"
+                                                class="form-control text-upper">
+                                            {{-- validaciones --}}
+                                            @error('conf_password')
+                                                <div class="message-error">*{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
 
                                             
                                         </div>

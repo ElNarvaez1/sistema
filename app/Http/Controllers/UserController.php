@@ -7,6 +7,8 @@ use Session;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -15,34 +17,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('can:user.index')->only('index');
-        $this->middleware('can:user.edit')->only('edit');
-        $this->middleware('can:user.update')->only('update');
-    }
+   
 
     public function index(Request $request)
     {
         $buscar = $request->get('buscarpor');
         $tipo = $request->get('type');
-        if ($tipo == 'NOMBRE') {
-            $tipo = "name";
-        } elseif ($tipo == "NOMBRE DE USUARIO") {
-            $tipo = "username";
-        } else {
-            $tipo = "email";
-        }
-
         $variablesurl = $request->all();
-        $users = User::buscar($tipo, $buscar)->paginate(5)->appends($variablesurl);
-        return view('usuarios.index', compact('users'));
+        $users = User::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
+        return view('usuarios.index',compact('users'));
     }
 
-    public function edit(User $user)
+    public function edit(User $user,$id)
     {
         $roles = Role::all();
+        $users = User::WHERE('id',$id)->get();
+        $user;
+        foreach($users as $use){
+            $user=$use;
+        }
         return view('usuarios.edit', compact('user', 'roles'));
     }
 
@@ -53,7 +46,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         {
 
@@ -61,30 +54,36 @@ class UserController extends Controller
             $request->validate(
                 [
 
-                    'name',
-                    'apellidoPaterno',
-                    'apellidoMaterno',
-                    'password', // regex Solo: incluye algunos carcateres
-                    'email',
-                    'telefono' ,
-                    'username',
-                    'idRol' ,
+                'name' => 'required|regex:/^[\pL\s\-]+$/u', 
+                'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
+                'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
+                'password' => ['required', Password::min(8)
+                            ->letters()
+                            ->numbers()
+                            ->symbols()
+        ],
+                'conf_password',
+                'email',
+                'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
+                'username',
+                'idRol' ,
     
                 ]
             );
-            
-            Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
-            $user->fill($request->input());
-            $user ->name =Str::upper($request->input('name'));
-            $user ->apellidoMaterno =Str::upper($request->input('apellidoPaterno'));
-            $user ->apellidoMaterno =Str::upper($request->input('apellidoMaterno'));
-            $user ->password =Str::upper($request->input('password'));
-            $user ->email =Str::upper($request->input('email'));
-            $user ->telefono =Str::upper($request->input('telefono'));
-            $user ->username =Str::upper($request->input('username'));
-            $user ->idRol =Str::upper($request->input('idRol'));
     
-            $user->saveOrFail();
+            $name =Str::upper($request->input('name'));
+            $apellidoPaterno =Str::upper($request->input('apellidoPaterno'));
+            $apellidoMaterno =Str::upper($request->input('apellidoMaterno'));
+            $password =Str::upper($request->input('password'));
+            $email =Str::upper($request->input('email'));
+            $telefono =Str::upper($request->input('telefono'));
+            $username =Str::upper($request->input('username'));
+            $idRol =Str::upper($request->input('idRol'));
+            User::WHERE('id',$id)->update(['name'=>$name,'apellidoPaterno'=>$apellidoPaterno,'apellidoMaterno'=>$apellidoMaterno,
+            'password'=>$password ,'email'=>$email , 'idRol'=>$idRol ,'username'=>$username,'telefono'=>$telefono]);
+
+        Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
+            
             return redirect()->route("user.index");
         }
     }
@@ -170,41 +169,71 @@ class UserController extends Controller
      */
     public function create()
     {
+
         return view('usuarios.create');
     }
 
     public function store(Request $request){
+
         $fields = $request->validate([
-                'id',
-                'name',
-                'apellidoPaterno',
-                'apellidoMaterno',
-                'password', // regex Solo: incluye algunos carcateres
-                'email',
-                'telefono' ,
-                'username',
-                'idRol' ,
-        ]);
+            'name' => 'required|regex:/^[\pL\s\-]+$/u', 
+            'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
+            'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
+            'password' => ['required', Password::min(8)
+                            ->letters()
+                            ->numbers()
+                            ->symbols()
+        ],
+            'conf_password'=> 'required',
+            'email'=> 'required',
+            'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
+            'username'=> 'required',
+            'idRol'=> 'required',
+    ]);
+        $a = $fields['password'];
+        $b = $fields['conf_password'];
 
-        Session::flash('message_save', '¡Empleado guardado con éxito!');
+        if (strcmp($a, $b) === 0) {
+            Session::flash('message_save', '¡Empleado guardado con éxito!');
 
-        $user = User::create($request->all());
+            //$user = User::create($request->all());
+    
+            $id = "USER-".
+            strtoupper($fields['username']).
+            strtoupper("-".$fields['idRol']);
+    
+            $user = User::create([
+                'name' => $fields['name'],
+                'email' => $fields['email'],
+                'username' => $fields['username'],
+                'password' => bcrypt($fields['password']),
+                'apellidoPaterno' => $fields['apellidoPaterno'],
+                'apellidoMaterno' => $fields['apellidoMaterno'],
+                'telefono' => $fields['telefono'],
+                'id' => $id,
+                'idRol' => $fields['idRol']
+                
+    
+            ]);
+    
+    
+            $user->saveOrFail();
+            return redirect()->route("user.index");
 
-        $token = $user->createToken('tokenApi')->plainTextToken;
+        } else {
+            Session::flash('message_save', '¡Las contraseñas no coinciden!');
+            return redirect()->route("user.create");
+        }
 
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
+        
 
-        $user->saveOrFail();
-        return redirect()->route("user.index");
+       
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
         Session::flash('message_delete', 'Empleado borrado con éxito!');
-        $user->delete();
+        $user = User::WHERE('id',$id)->delete();
         return redirect()->route("user.index");
     }
 
