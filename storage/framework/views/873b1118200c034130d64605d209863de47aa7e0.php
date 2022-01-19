@@ -50,7 +50,7 @@
                                                                             <div class="col-md-12 mt-4">
                                                                                     <div class="form-group">
                                                                                     <label class="text-black"><FONT SIZE =3>Fecha en la que se esta realizando el servicio:</FONT></label>
-                                                                                        <input disabled="true"id="fecha" type="date" value="<?php echo date("Y-n-j"); ?>" required> <!--el codigo en php es para obtener la fecha actual-->
+                                                                                        <input disabled="true"id="fecha" type="text" value="<?php echo date("Y-n-j")?>" required> <!--el codigo en php es para obtener la fecha actual-->
                                                                                         <label class="text-black"><FONT SIZE =3>Descripción sobre el cambio de neumáticos:</FONT></label>
                                                                                         <textarea class="form-control" value="<?php echo e(old('message')); ?>" name="descripcion" placeholder="Descripción" required></textarea>
                                                                                         <br>
@@ -70,8 +70,8 @@ unset($__errorArgs, $__bag); ?>
                                                                                 </div>          
                                                                                 <br><br>
                                                                                 <div class="text-black h4" style="text-align: center;">
-                                                                                <button class="btn btn-outline-primary" type="submit">Registrar<!--<i class="fas fa-paper-plane"></i>--> </button>
-                                                                                <a class="btn btn-outline-success" href="<?php echo e(route('cambiollantas.index')); ?>">Regresar</a>
+                                                                                <button class="btn btn-primary btn-ms" type="submit">Guardar <i class="fas fa-save"></i></button>
+                                                                                <a class="btn btn-danger btn-ms" href="<?php echo e(route('cambiollantas.index')); ?>">  <i class="fas fa-strikethrough"></i>Cancelar</a>
                                                                             </div>
                                                                         </form>
                                                                     </div>

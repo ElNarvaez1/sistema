@@ -275,7 +275,6 @@ unset($__errorArgs, $__bag); ?>
                                             </tr>
 
                                             <?php
-
                                                 $i++;
                                                 ?>
                                               
@@ -388,5 +387,4 @@ unset($__errorArgs, $__bag); ?>
             <!-- End of Page Wrapper -->
 
         <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/sistema/resources/views/sales/add.blade.php ENDPATH**/ ?>

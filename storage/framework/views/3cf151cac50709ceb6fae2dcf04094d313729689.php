@@ -105,8 +105,7 @@
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">APELLIDO MATERNO</th>
                                                 <th scope="col">FECHA</th>
-                                                <th scope="col">DIRECCION</th>
-                                                <th scope="col">E-MAIL</th>
+
                                                 <th scope="col">TELEFONO</th>
                                                 <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
@@ -119,7 +118,7 @@
                                                     <td>
                                                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
                                                         <a class="text-center"
-                                                            href="<?php echo e(route('clientes.show', [$cliente])); ?>">
+                                                            href="<?php echo e(route('clientes.show', [$cliente ->idCliente])); ?>">
 
                                                             <?php echo e($cliente->nombre); ?>
 
@@ -127,25 +126,24 @@
                                                         <?php endif; ?>
                                                     </td>
 
-                                                    <td class="text-center"><?php echo e($cliente->apellido_p); ?></td>
-                                                    <td class="text-center"><?php echo e($cliente->apellido_m); ?></td>
+                                                    <td class="text-center"><?php echo e($cliente->apellidoPaterno); ?></td>
+                                                    <td class="text-center"><?php echo e($cliente->apellidoMaterno); ?></td>
                                                     <td class="text-center"><?php echo e($cliente->fecha); ?></td>
-                                                    <td class="text-center"> <?php echo e($cliente->direccion); ?></td>
-                                                    <td class="text-center"> <?php echo e($cliente->correo); ?></td>
+
                                                     <td class="text-center"> <?php echo e($cliente->telefono); ?></td>
                                                            
 
                                                     
                                                     <td>
                                                         
-                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',$cliente)); ?>"
+                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',[$cliente])); ?>"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         
                                                     </td>
                                                     <td>
                                                         
-                                                        <form action="<?php echo e(route('clientes.destroy', [$cliente])); ?>"
+                                                        <form action="<?php echo e(route('clientes.destroy', [$cliente -> idCliente])); ?>"
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>
