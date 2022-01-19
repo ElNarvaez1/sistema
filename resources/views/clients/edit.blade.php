@@ -27,7 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">ID Cliente: {{$cliente->id}}</h6>
+                            <h6 class="m-0 font-weight-bold ">ID Cliente: {{$cliente -> idCliente}}</h6>
                         </div>
 
                         {{-- Formulario -> vista de productos --}}
@@ -35,7 +35,7 @@
                         
                         <div class="container">
                            
-                            <form method="POST" action="{{ route('clientes.update', [$cliente]) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('clientes.update', [$cliente -> idCliente]) }}" enctype="multipart/form-data">
                                 @method("PUT")
                                 @csrf
                                 <div class="row">
@@ -58,11 +58,11 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
-                                            <input type="text" name="apellido_p" value="{{ old('apellido_p',$cliente->apellido_p) }}"
+                                            <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno',$cliente->apellidoPaterno) }}"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('apellido_p')
+                                            @error('apellidoPaterno')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -73,33 +73,15 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
-                                            <input type="text" name="apellido_m" value="{{ old('apellido_m',$cliente->apellido_m) }}"
+                                            <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno',$cliente->apellidoMaterno) }}"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('apellido_m')
+                                            @error('apellidoMaterno')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Dirección</label>
-                                            <textarea class="form-control text-upper"
-                                                placeholder="Direccion del cliente..."
-                                                name="direccion">{{ old('direccion',$cliente->direccion) }}</textarea>
-
-                                            {{-- validaciones --}}
-                                            @error('direccion')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
-                                    </div>
-
-                                   
-
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>

@@ -64,34 +64,23 @@
                                 </div>
 
 
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Impuesto</label>
-                                            <input type="text" name="impuesto" value="18"
-                                             {{-- value="{{ old('impuesto') }}" --}}
-                                                placeholder="impuesto"
-                                                class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('impuesto')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
 
+
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$          $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                @php(
+                                $productos = DB::table('productos')->get()
+                                )
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                    <label class="text-black h4">Articulo</label>
+                                        <select title="" class="form-control text-upper" name="articulo">
+                                            <option value="0">Seleccione el articulo</option>
+                                            @foreach ($productos as $Producto)
+                                            <option value="{{$Producto->idProducto}}">{{$Producto->nombre}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-
-
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Articulo</label>
-                                            <input type="text" name="articulo" value="{{ old('articulo') }}"
-                                                placeholder="Articulo"
-                                                class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('articulo')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                </div>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
@@ -258,10 +247,10 @@
                                   <tr>
                               
                                     <td colspan="6" class="text-right">
-                                      <h6>TOTAL IMPUESTO (18%): </h6>                                               </h5>
+                                      <h6></h6>                                               </h5>
                                   </td>   
                                     <td  class="text-right">
-                                        {{ number_format($item->attributes->iva, 2, '.', '') }} 
+                                       
                                             
                                         
                                   </td>
@@ -270,10 +259,10 @@
                               <tr>
                               25.1814
                                 <td colspan="6" class="text-right">
-                                  <h6>TOTAL A PAGAR: </h6>                                               </h5>
+                                  <h6></h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
-                                   {{$item->attributes->total_pay}}
+                                   
                                         
                                     
                               </td>
