@@ -116,11 +116,7 @@
                                                 <tr class="table-hover">
                                                     <th scope="row"><?php echo e($cliente->idCliente); ?></th>
 
-                                                    <td class="text-center">
-                                                            <?php echo e($cliente->nombre); ?>
-
-                                                    </td>
-
+                                                    <td class="text-center"><?php echo e($cliente->nombre); ?> </td>
                                                     <td class="text-center"><?php echo e($cliente->apellidoPaterno); ?></td>
                                                     <td class="text-center"><?php echo e($cliente->apellidoMaterno); ?></td>
                                                     <td class="text-center"><?php echo e($cliente->fecha); ?></td>

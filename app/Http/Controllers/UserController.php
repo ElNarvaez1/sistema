@@ -59,7 +59,7 @@ class UserController extends Controller
                 'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
                 'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
                 'conf_password',
-                'email',
+                'email'=> 'required|email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
                 'username',
                 'idRol' ,
@@ -182,7 +182,7 @@ class UserController extends Controller
                             ->symbols()
         ],
             'conf_password'=> 'required',
-            'email'=> 'required',
+            'email'=> 'required|email',
             'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
             'username'=> 'required',
             

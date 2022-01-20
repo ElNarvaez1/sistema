@@ -152,17 +152,6 @@ unset($__errorArgs, $__bag); ?>
                                                     <label class="text-black h4">Lista de roles</label>
                                                     
                                                         
-                                                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <div>
-                                                            <label>
-                                                                <?php echo Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']); ?>
-
-                                                                <?php echo e($role->name); ?>
-
-                                                            </label>
-                                                        </div>
-                                                           
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     
                                                     
                                                     <?php $__errorArgs = ['idRol'];

@@ -117,15 +117,6 @@
                                                     <label class="text-black h4">Lista de roles</label>
                                                     
                                                         
-                                                        @foreach( $roles as $role)
-                                                        <div class="text-black h4">
-                                                            <label>
-                                                                {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
-                                                                {{$role->name}}
-                                                            </label>
-                                                        </div>
-                                                           
-                                                        @endforeach
                                                     
                                                     {{-- validaciones --}}
                                                     @error('idRol')
