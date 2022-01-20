@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-10 ">
-                <h1>MICHELIN</h1>
+                <h1>Llantero de Oaxaca</h1>
                
             </div>
             
@@ -22,7 +22,7 @@
         <hr>
         <div class="row">
             <div class="col-xs-10">
-                <h1 class="h6">André Michelin</h1>
+                <h1 class="h6">nombre del empleado</h1>
                
             </div>
             <div class="col-xs-2 text-center">
@@ -40,7 +40,7 @@
             <div class="col-xs-6">
                 <h1 class="h2"> Ticket</h1>
                
-                <strong>CLiente: </strong> {{ $ventas[0]->nombre }} 
+                <!--<strong>CLiente: </strong> {{ $ventas[0]->nombre}} -->
                
             </div>
         </div>
@@ -59,30 +59,16 @@
                         @foreach ($ventas as $venta)
                         <tr class="table-bordered">
                             
-                        <td  class="text-center">{{ $venta->articulo }}</td>
-                           <td  class="text-center">{{ $venta->cantidad }}</td>
+                        <!--<td  class="text-center">{{ $venta->articulo }}</td>
+                           <td  class="text-center">{{ $venta->cantidad }}</td>-->
                            <td class="text-right">{{ $venta->descuento }} %</td>
                             
-                            
-                           
-                           
-                            </tr>
-                           
-                            <tr>
-                                <td colspan="2" class="text-right">
-                                  <h5>Total impuesto (18%): </h5>
-                              </td>   
-                                <td  class="text-right">
-                                  {{ number_format($venta->impuesto, 2, '.', '') }}
-                              </td>
-                          
-                          </tr>
                           <tr>
                             <td colspan="2" class="text-right">
                               <h5>Total a pagar </h5>
                           </td>   
                             <td  class="text-right">
-                             $ {{ number_format($venta->total_venta,2, '.', '') }} MXN
+                             $ {{ number_format($venta->totalVenta,2, '.', '') }} MXN
                           </td>
                       
                       </tr>

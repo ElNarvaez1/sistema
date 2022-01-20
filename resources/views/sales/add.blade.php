@@ -79,6 +79,9 @@
                                             <option value="{{$Producto->idProducto}}">{{$Producto->nombre}}</option>
                                             @endforeach
                                         </select>
+                                        @error('articulo')
+                                                <div class="message-error">*{{ $message }}</div>
+                                            @enderror
                                     </div>
                                 </div>
 

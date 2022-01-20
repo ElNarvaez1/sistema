@@ -68,8 +68,8 @@ class VentasController extends Controller
         $request->validate(
             [
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'impuesto' => 'required|numeric',
-                //'articulo' => 'required|regex:/^[\pL\s\-]+$/u',
+                //'impuesto' => 'required|numeric',
+                'articulo' => 'required|regex:/^[\pL\s\-+0-9]+$/u',
                 'cantidad' => 'required|numeric',
                 'stock' => 'required|numeric',
                 'descuento' => 'required|numeric',
@@ -154,7 +154,7 @@ class VentasController extends Controller
                 } 
                 }
            //$venta ->idVenta = 'VEN-'.$venta->totalVenta.'-'.date('dmy');
-           $venta ->idVenta = "VEN-34";
+           $venta ->idVenta = "VEN-".date('Y-m-d H:i:s');
            $venta->idUser = 'Admin';
            $venta->idProducto = $item->name;
            //$venta->nombre = $item->attributes->cliente;
