@@ -86,15 +86,6 @@
     </li>
 @endcan
 
-@can('productos.index')
-<hr class="sidebar-divider my-0">
-    <li class="nav-item  {{ request()->routeIs('llantas.index') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('llantas.index') }}">
-            <i class="fas fa-truck-monster"></i>
-            <span>Llantas</span></a>
-    </li>
-@endcan
-
 
 
 

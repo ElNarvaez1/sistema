@@ -93,14 +93,11 @@ class VentasController extends Controller
             )
         )
         );
-
-        
-
-        $iva =Cart::getSubTotal() * 
-        (18/100);  
+       $iva =Cart::getSubTotal() * 
+        ($request->get('impuesto')/100);  
         $impuesto = Cart::getSubTotal()+$iva;
         
-        $total_pay = round(($request->get('descuento')/100),2);
+        $total_pay = round($impuesto-$impuesto * (($request->get('descuento')/100)),2);
         Cart::update($request->input('cantidad'), array(
             'attributes' => array(
                 'descuento' => $request->input('descuento'),

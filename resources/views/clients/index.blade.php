@@ -116,16 +116,7 @@
                                                 <tr class="table-hover">
                                                     <th scope="row">{{ $cliente->idCliente }}</th>
 
-                                                    <td>
-                                                        @can('productos.show')
-                                                        <a class="text-center"
-                                                            href="{{ route('clientes.show', [$cliente ->idCliente]) }}">
-
-                                                            {{ $cliente->nombre }}
-                                                        </a>
-                                                        @endcan
-                                                    </td>
-
+                                                    <td class="text-center">{{ $cliente->nombre }} </td>
                                                     <td class="text-center">{{ $cliente->apellidoPaterno }}</td>
                                                     <td class="text-center">{{ $cliente->apellidoMaterno }}</td>
                                                     <td class="text-center">{{ $cliente->fecha }}</td>

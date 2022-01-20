@@ -86,15 +86,6 @@
     </li>
 <?php endif; ?>
 
-<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
-<hr class="sidebar-divider my-0">
-    <li class="nav-item  <?php echo e(request()->routeIs('llantas.index') ? 'active' : ''); ?>">
-        <a class="nav-link" href="<?php echo e(route('llantas.index')); ?>">
-            <i class="fas fa-truck-monster"></i>
-            <span>Llantas</span></a>
-    </li>
-<?php endif; ?>
-
 
 
 

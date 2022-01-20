@@ -262,10 +262,10 @@
                               <tr>
                               25.1814
                                 <td colspan="6" class="text-right">
-                                  <h6></h6>                                               </h5>
+                                  <h6>TOTAL A PAGAR: </h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
-                                   
+                                   {{$item->attributes->total_pay}}
                                         
                                     
                               </td>

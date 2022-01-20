@@ -110,14 +110,7 @@
                                     <tr class="table-hover">
                                         <th scope="row">{{ $producto->idProducto }}</th>
 
-                                        <td>
-                                            @can('productos.show')
-                                            <a class="text-center" href="{{ route('productos.show', $producto->idProducto) }}">
-
-                                                {{ $producto->nombre }}
-                                            </a>
-                                            @endcan
-                                        </td>
+                                        <td class="text-center">{{ $producto->nombre }}</td>
 
                                         <td class="text-justify">{{ $producto->descripcion }}</td>
                                         {{--<td class="text-center">{{ $producto->modelo }}</td> --}}
