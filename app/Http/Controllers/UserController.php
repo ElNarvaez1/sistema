@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserEditRequest;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -18,24 +22,24 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
 
     public function index(Request $request)
     {
         $buscar = $request->get('buscarpor');
         $tipo = $request->get('type');
         $variablesurl = $request->all();
-        $users = User::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
-        return view('usuarios.index',compact('users'));
+        $users = User::buscarpor($tipo, Str::upper($buscar))->paginate(5)->appends($variablesurl);
+        return view('usuarios.index', compact('users'));
     }
 
-    public function edit(User $user,$id)
+    public function edit(User $user, $id)
     {
         $roles = Role::all();
-        $users = User::WHERE('id',$id)->get();
+        $users = User::WHERE('id', $id)->get();
         $user;
-        foreach($users as $use){
-            $user=$use;
+        foreach ($users as $use) {
+            $user = $use;
         }
         return view('usuarios.edit', compact('user', 'roles'));
     }
@@ -48,38 +52,36 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id, User $user)
-    {
-        {
-
-
+    { {
+            $usuario = User::find($id);
             $request->validate(
                 [
-
-                'name' => 'required|regex:/^[\pL\s\-]+$/u', 
-                'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
-                'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
-                'conf_password',
-                'email'=> 'required|email',
-                'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
-                'username',
-                'idRol' ,
-    
+                    'name' => 'required|regex:/^[\pL\s\-]+$/u',
+                    'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
+                    'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
+                    'password' => 'sometimes',
+                    'email' => ['required', 'email', Rule::unique('users')->ignore($usuario->id)],
+                    'telefono' => ['required', 'regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u', Rule::unique('users')->ignore($usuario->id)],
+                    'username' =>  ['required', Rule::unique('users')->ignore($usuario->id)],
+                    'idRol',
                 ]
             );
-            $idRol=3;
-    
-            $name =Str::upper($request->input('name'));
-            $apellidoPaterno =Str::upper($request->input('apellidoPaterno'));
-            $apellidoMaterno =Str::upper($request->input('apellidoMaterno'));
-            $email =Str::upper($request->input('email'));
-            $telefono =Str::upper($request->input('telefono'));
-            $username =Str::upper($request->input('username'));
-            $idRol = 2;
 
-            User::WHERE('id',$id)->update(['name'=>$name,'apellidoPaterno'=>$apellidoPaterno,'apellidoMaterno'=>$apellidoMaterno,'email'=>$email , 'idRol'=>$idRol ,'username'=>$username,'telefono'=>$telefono]);
+            $idRol = 3;
+
+            $name = Str::upper($request->input('name'));
+            $apellidoPaterno = Str::upper($request->input('apellidoPaterno'));
+            $apellidoMaterno = Str::upper($request->input('apellidoMaterno'));
+            $email = Str::upper($request->input('email'));
+            $telefono = Str::upper($request->input('telefono'));
+            $username = Str::upper($request->input('username'));
+            $idRol = 2;
+            $password = bcrypt($request['password']);
+
+            User::WHERE('id', $id)->update(['name' => $name, 'password' => $password, 'apellidoPaterno' => $apellidoPaterno, 'apellidoMaterno' => $apellidoMaterno, 'email' => $email, 'idRol' => $idRol, 'username' => $username, 'telefono' => $telefono]);
             $user->roles()->sync($request->roles);
-        Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
-            
+            Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
+
             return redirect()->route("user.index");
         }
     }
@@ -121,9 +123,9 @@ class UserController extends Controller
                 'apellidoMaterno',
                 'password', // regex Solo: incluye algunos carcateres
                 'email',
-                'telefono' ,
+                'telefono',
                 'username',
-                'idRol' ,
+                'idRol',
 
             ]
         );
@@ -148,11 +150,11 @@ class UserController extends Controller
             );
 
 
-            $name_photo= $request->id;
+            $name_photo = $request->id;
 
-            $uploadedFileUrl = $request->file('photo')->storeOnCloudinaryAs('perfil',$name_photo);
+            $uploadedFileUrl = $request->file('photo')->storeOnCloudinaryAs('perfil', $name_photo);
 
-             $user-> photo =$uploadedFileUrl->getPath();
+            $user->photo = $uploadedFileUrl->getPath();
         }
         $user->saveOrFail();
         return redirect()->route("user.index");
@@ -167,26 +169,12 @@ class UserController extends Controller
     {
         $roles = Role::all();
         return view('usuarios.create', compact('roles'));
-        
     }
 
-    public function store(Request $request){
+    public function store(UserCreateRequest $request)
+    {
 
-        $fields = $request->validate([
-            'name' => 'required|regex:/^[\pL\s\-]+$/u', 
-            'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
-            'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u', 
-            'password' => ['required', Password::min(8)
-                            ->letters()
-                            ->numbers()
-                            ->symbols()
-        ],
-            'conf_password'=> 'required',
-            'email'=> 'required|email',
-            'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
-            'username'=> 'required',
-            
-    ]);
+        $fields = $request;
         $a = $fields['password'];
         $b = $fields['conf_password'];
 
@@ -194,11 +182,11 @@ class UserController extends Controller
             Session::flash('message_save', '¡Empleado guardado con éxito!');
 
             //$user = User::create($request->all());
-            $idRol=3;
-            $id = "USER-".
-            strtoupper($fields['username']).
-            strtoupper("-".$fields['name']);
-    
+            $idRol = 3;
+            $id = "USER-" .
+                strtoupper($fields['username']) .
+                strtoupper("-" . $fields['name']) . '-' . date('dmy');
+
             $user = User::create([
                 'name' => $fields['name'],
                 'email' => $fields['email'],
@@ -209,29 +197,25 @@ class UserController extends Controller
                 'telefono' => $fields['telefono'],
                 'id' => $id,
                 'idRol' => $idRol
-                
-    
+
+
             ]);
-    
+            // if(isset($request->roles)){
+
+            // }
             $user->roles()->sync($request->roles);
             $user->saveOrFail();
             return redirect()->route("user.index");
-
         } else {
             Session::flash('message_save', '¡Las contraseñas no coinciden!');
             return redirect()->route("user.create");
         }
-
-        
-
-       
     }
 
     public function destroy($id)
     {
         Session::flash('message_delete', 'Empleado borrado con éxito!');
-        $user = User::WHERE('id',$id)->delete();
+        $user = User::WHERE('id', $id)->delete();
         return redirect()->route("user.index");
     }
-
 }
