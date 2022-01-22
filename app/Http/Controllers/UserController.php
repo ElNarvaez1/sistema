@@ -77,9 +77,9 @@ class UserController extends Controller
             $username = Str::upper($request->input('username'));
             $idRol = 2;
             $password = bcrypt($request['password']);
-
-            User::WHERE('id', $id)->update(['name' => $name, 'password' => $password, 'apellidoPaterno' => $apellidoPaterno, 'apellidoMaterno' => $apellidoMaterno, 'email' => $email, 'idRol' => $idRol, 'username' => $username, 'telefono' => $telefono]);
             $user->roles()->sync($request->roles);
+            User::WHERE('id', $id)->update(['name' => $name, 'password' => $password, 'apellidoPaterno' => $apellidoPaterno, 'apellidoMaterno' => $apellidoMaterno, 'email' => $email, 'idRol' => $idRol, 'username' => $username, 'telefono' => $telefono]);
+            
             Session::flash('message_save', '¡Sus datos se actualizaron con éxtio!');
 
             return redirect()->route("user.index");
