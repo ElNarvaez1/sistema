@@ -41,7 +41,7 @@
             <div class="col-xs-6">
                 <h1 class="h2"> Ticket</h1>
                
-                
+                <!--<strong>CLiente: </strong> <?php echo e($ventas[0]->nombre); ?> -->
                
             </div>
         </div>
@@ -59,6 +59,9 @@
                     <tbody><tfoot>
                         <?php $__currentLoopData = $ventas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="table-bordered">
+                            
+                        <!--<td  class="text-center"><?php echo e($venta->articulo); ?></td>
+                           <td  class="text-center"><?php echo e($venta->cantidad); ?></td>-->
                            <td class="text-right"><?php echo e($venta->descuento); ?> %</td>
                             
                           <tr>
