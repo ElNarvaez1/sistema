@@ -46,7 +46,7 @@ class ProveedorController extends Controller
         //VALIDACION
         $request->validate(
             [
-                'idProveedor' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
+                'idProveedor' => 'required|regex:/^[ña-z]{3,4}[0-9]{6}[0-9a-z]{3}$/i', // regex solo letras
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
                 'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
                 'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
