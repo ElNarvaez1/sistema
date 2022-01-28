@@ -154,6 +154,14 @@
     </a>
 </li>
 
+<hr class="sidebar-divider my-0">
+
+<li class="nav-item   <?php echo e(!Route::is('devoluciones.index') ?: 'active'); ?>">
+    <a class="nav-link" href="<?php echo e(route('devoluciones.index')); ?>">
+        <i class="fas fa-qrcode"></i>
+        <span>Devoluciones</span>
+    </a>
+</li>
 
 
 
