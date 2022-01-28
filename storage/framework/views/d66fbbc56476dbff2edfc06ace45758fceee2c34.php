@@ -145,8 +145,8 @@
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>
-                                                            <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
-                                                                <i class="fa fa-trash"></i>
+                                                            <button title="Devolver" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
+                                                                <i class="fa fa-reply-all"></i>
                                                             </button>
                                                         </form> 
                                                         
