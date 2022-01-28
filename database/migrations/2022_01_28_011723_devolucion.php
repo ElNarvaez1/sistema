@@ -15,7 +15,8 @@ class Devolucion extends Migration
     {
         Schema::create('devolucion', function (Blueprint $table) {
             $table->string('idVenta')->references('idVenta')->on('Ventas');
-            $table->integer('cantidad_devueltos');
+            $table->text('observacion');
+            //$table->integer('cantidad_devueltos');
             
         });
     }

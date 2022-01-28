@@ -186,13 +186,13 @@ class VentasController extends Controller
     }
 
     public function delete($idVenta){
-        $detalle1 = DetalleVenta::WHERE('idVenta',$idVenta);
-        $venta = Venta::WHERE('idVenta',$idVenta);
-        Session::flash('message_delete', '¡Producto cancelado con éxito!');
+        //$detalle1 = DetalleVenta::WHERE('idVenta',$idVenta)->delete();
+        //$venta = Venta::WHERE('idVenta',$idVenta)->delete();
+        //Session::flash('message_delete', '¡Producto cancelado con éxito!');
         //$venta = Venta::findOrFail($id);
         //$venta->delete();
-
-        return view("devoluciones.confirmar_devolucion",compact(['detalle1','venta']));
+        $idVentaTemp = $idVenta;
+        return view("devoluciones.confirmar_devolucion",['venta' => Venta::WHERE('idVenta',$idVenta)->first()]);
     }
     public function ticket_download($idVenta){
 
