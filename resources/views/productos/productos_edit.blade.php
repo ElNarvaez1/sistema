@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Proveedor     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-                                @php($proveedores = DB::table('proveedores')->get()    )
+                                @php($proveedores = DB::table('proveedores')->get() )
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Proveedor</label>
@@ -138,7 +138,7 @@
                             <div class="row">
 
                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre la bateria</h3>
-                                                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Modelo</label>
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @else
+                            @elseif($llanta != null)
                             <!-- ################################################################# Seccion de las llantas ############################################################################################ -->
                             <div class="row pt-3">
                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
@@ -320,24 +320,35 @@
                                 </div>
 
                             </div>
-                            @endif
-
-
-
-                            {{-- PARTE BOTONES --}}
-                            <div class="row justify-content-center mt-4">
-                                <div class="col-auto">
-                                    <button title="guardar producto" type="submit" class="btn btn-primary btn-ms">
-                                        Guardar <i class="fas fa-save"></i></button>
+                            @else
+                            <!-- Infomracion de los rines --->
+                            <div class="row pt-3">
+                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre los rines</h3>
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Numero de rin</label>
+                                        <input type="number" name="numeroRin" value="{{ $rin->numero }}" placeholder="" class="form-control text-upper" min="1">
+                                    </div>
                                 </div>
-                                <div class="col-auto">
-                                    @can('productos.index')
-                                    <a title="cancelar" href={{ route('productos.index') }} class="btn btn-danger btn-ms">cancelar
-                                        <i class="fas fa-strikethrough"></i></a>
-                                    @endcan
+                            </div>    
+                                @endif
+
+
+
+                                {{-- PARTE BOTONES --}}
+                                <div class="row justify-content-center mt-4">
+                                    <div class="col-auto">
+                                        <button title="guardar producto" type="submit" class="btn btn-primary btn-ms">
+                                            Guardar <i class="fas fa-save"></i></button>
+                                    </div>
+                                    <div class="col-auto">
+                                        @can('productos.index')
+                                        <a title="cancelar" href={{ route('productos.index') }} class="btn btn-danger btn-ms">cancelar
+                                            <i class="fas fa-strikethrough"></i></a>
+                                        @endcan
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
+                                <br>
                         </form>
 
                     </div>

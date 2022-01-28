@@ -158,11 +158,14 @@ idProveedor
                                 <input type="hidden" name="checkProducto" id="checkValue" value="llantas">
                                 <div class="container-fluid">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item col-md-6" role="presentation">
+                                        <li class="nav-item col-md-4" role="presentation">
                                             <label  id="tipo-llantas" class="nav-link text-dark w-100 active" data-name="llantas" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</label>
                                         </li>
-                                        <li class="nav-item col-md-6" role="presentation">
+                                        <li class="nav-item col-md-4" role="presentation">
                                             <label  id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</label>
+                                        </li>
+                                        <li class="nav-item col-md-4" role="presentation">
+                                            <label  id="tipo-rin" class="nav-link text-dark w-100" data-name="rin" data-bs-toggle="tab" data-bs-target="#rin-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Rin</label>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
@@ -179,16 +182,15 @@ idProveedor
                                                         <select title="" class="form-control text-upper" name="rin">
                                                             <option value="0">Seleccione Rin</option>
                                                             @foreach ($rines as $rin)
-                                                            <option value="{{$rin->idRin}}">{{$rin->numero}}</option>
+                                                            <option value="{{$rin->idRin}}">{{$rin->idRin.'-'.$rin->numero}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                </div>
-
+                                                </div>        
 
                                                 <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
 
-                                                <div class="col-md-8">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Indice de Carga (Carga Maxima)</label>
                                                         <input type="number" name="cargaMaxima" id="idcargaMaxima" value="{{old('cargaMaxima')}}" class="form-control text-upper">
@@ -345,6 +347,21 @@ idProveedor
 
                                             </div>
                                         </div>
+                                        <div class="tab-pane fad" id="rin-seccion" role="tabpanel" aria-labelledby="tipo-rin">
+                                                <!--- 
+                                                    idRin
+                                                    numero
+                                                ---->   
+                                                <div class="row">
+                                                    <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre los rines</h3>
+                                                    <div class="col-md-4 mt-2">
+                                                    <div class="form-group">
+                                                        <label class="fs-5 text-body">Numero de rin</label>
+                                                        <input type="number" name="numeroRin" value="{{ old('numeroRin') }}" placeholder="" class="form-control text-upper" min="1">
+                                                    </div>
+                                                </div>
+                                                </div>    
+                                        </div>
                                     </div>
                                 </div>
 
@@ -394,8 +411,10 @@ idProveedor
     }
     let botonLlantas = document.getElementById('tipo-llantas'); 
     let botonBateria = document.getElementById('tipo-baterias'); 
+    let botonRin = document.getElementById('tipo-rin'); 
     botonLlantas.addEventListener('click',putValue);
     botonBateria.addEventListener('click',putValue);
+    botonRin.addEventListener('click',putValue);
 </script>
 <!-- End of Page Wrapper -->
 
