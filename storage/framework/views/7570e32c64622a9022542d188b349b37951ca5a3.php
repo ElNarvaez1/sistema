@@ -102,7 +102,7 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">ID</th>
+                                                <th scope="col">NUMERO</th>
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">ARTICULO</th>
                                                 <th scope="col">FECHA</th>
@@ -114,7 +114,7 @@
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $sales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-                                                    <th scope="row"><?php echo e($venta->id); ?></th>
+                                                    <th scope="row"><?php echo e($venta->idVenta); ?></th>
 
                                                     <td>
                                                         
@@ -124,28 +124,28 @@
                                                         
                                                     </td>
 
-                                                    <td class="text-center"><?php echo e($venta->articulo); ?></td>
+                                                    <td class="text-center"><?php echo e($venta->produ); ?></td>
                                                     <td class="text-center"><?php echo e($venta->fecha); ?></td>
                                                     <td class="text-center"><?php echo e($venta->descuento); ?> %</td>
-                                                    <td class="text-center"> $ <?php echo e($venta->total_venta); ?></td>
+                                                    <td class="text-center"> $ <?php echo e($venta->totalVenta); ?></td>
                                                            
 
                                                     
                                                     <td>
                                                         
-                                                        <a title="detalle venta" href="<?php echo e(route('venta.detalle_venta',$venta->id)); ?>"
+                                                        <a title="detalle venta" href="<?php echo e(route('venta.detalle_venta',$venta->idVenta)); ?>"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-info-circle"></i></a>
                                                         
                                                     </td>
                                                     <td>
                                                         
-                                                        <form action="<?php echo e(route('venta.delete', [$venta->id])); ?>" 
+                                                        <form action="<?php echo e(route('venta.delete', [$venta->idVenta])); ?>" 
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>
-                                                            <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
-                                                                <i class="fa fa-trash"></i>
+                                                            <button title="Devolver" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
+                                                                <i class="fa fa-reply-all"></i>
                                                             </button>
                                                         </form> 
                                                         
@@ -155,7 +155,7 @@
                                                     <td>
                                                         
                                                         
-                                                            <a href="<?php echo e(route('venta.ticket', [$venta->id])); ?>" target="_blank"
+                                                            <a href="<?php echo e(route('venta.ticket', [$venta->idVenta])); ?>" target="_blank"
                                                             class="btn btn-outline-success btn-circle btn-download">
                                                                
                                                                 <i class="fa fa-download"></i>

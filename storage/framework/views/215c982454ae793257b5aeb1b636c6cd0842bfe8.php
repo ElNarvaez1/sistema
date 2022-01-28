@@ -1,0 +1,1 @@
+Hola<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/sistema/resources/views/devoluciones/confirmar_devolucion.blade.php ENDPATH**/ ?>

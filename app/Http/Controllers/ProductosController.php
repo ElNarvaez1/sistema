@@ -67,6 +67,47 @@ class ProductosController extends Controller
 
     }
 
+    //======================================================================
+    /**
+     * Este arreglo no va aqui pero lo puse provisionalmente.
+     */
+    public $rulesToProdcuto = [
+        //Validar la informacion del prodcuto.
+            'nombre' => 'required|regex:/^[\pL\s\-]+$/u',
+            'descripcion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u',
+            'precio_c' => 'required|numeric',
+            'precio_v' => 'required|numeric',
+            'stock' => 'required|numeric'
+            //'proveedor' => 'required'
+    ];
+
+    public $rulesToLlanta = [
+        //Validar la informacion del prodcuto.
+        //'rin' => 'required', -> No se como validarlo xd 
+        'cargaMaxima' => 'required|numeric',
+        'velocidadMaxima' => 'required|numeric',
+        'presion' => 'required|numeric',
+        'anchoLlanta' => 'required|numeric',
+        'diametro' => 'required|numeric',
+        'fabricante' => 'required|alpha',
+        'aniofabricante' => 'required|numeric',
+        'tipoCarro' => 'required|alpha',
+        'marcaCarro' => 'required|alpha_num'
+    ];
+
+    public $rulesToBaterias = [
+        'alto' => 'required|numeric',
+        'ancho' => 'required|numeric',
+        'largo' => 'required|numeric',
+        'amperes' => 'required|numeric',
+        'peso' => 'required|numeric',
+        'modelo' => 'required|alpha_num',
+        'voltaje' => 'required|numeric'
+    ];
+    //======================================================================
+
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -92,8 +133,10 @@ class ProductosController extends Controller
         //         'imagen' => 'required|image|max:2048'
         //     ]
         // );
-        Session::flash('message_save', '¡Producto guardado con éxito!');
 //-----> Seccion de la inpformacion basica de los productos
+        
+         
+        
         $producto = new Producto();
         $producto->nombre = Str::upper($request->input('nombre'));
         $producto->descripcion = Str::upper($request->input('descripcion'));
@@ -111,6 +154,13 @@ class ProductosController extends Controller
 
         if($request->checkProducto == 'llantas'){
             //Selecciono una llanta
+
+            //Validamos que la informacion de la llanta sea valida.    
+            $request->validate($this->rulesToLlanta);
+
+             //Validamos que la informacion del productos sea valida.    
+             $request->validate($this->rulesToProdcuto); 
+
             $newLlanta = new llantaModel();
             $newLlanta->idLlanta = $producto->idProducto;
             $newLlanta->idRin = $request->rin;
@@ -127,6 +177,13 @@ class ProductosController extends Controller
             $newLlanta->save();
             $producto->saveOrFail();
         }else{
+            //Validamos que la informacion de la bateria sea valida.    
+            $request->validate($this->rulesToBaterias);
+
+            //Validamos que la informacion del productos sea valida.    
+            $request->validate($this->rulesToProdcuto); 
+
+
             $newBateria=new batertiaModel();
             $newBateria->idBateria= $producto->idProducto;
             $newBateria->idMarca = $request->idMarca;
@@ -140,7 +197,7 @@ class ProductosController extends Controller
             $newBateria->save();
             $producto->saveOrFail();
         }    
-
+        Session::flash('message_save', '¡Producto guardado con éxito!');
         //Campos del a tabla 
         // $producto->tipo = Str::upper($request->input('tipo'));
         // $name_camera= $producto->modelo;

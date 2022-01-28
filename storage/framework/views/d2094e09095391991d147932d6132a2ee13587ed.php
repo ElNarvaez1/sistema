@@ -38,7 +38,7 @@
                                 <div class="row">
                                 <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">id del Proveedor</label>
+                                            <label class="text-black h4">RFC del Proveedor</label>
                                             <input type="text" name="idProveedor" value="<?php echo e(old('idProveedor')); ?>"
                                                 placeholder="id del Proveedor"
                                                 class="form-control text-upper">

@@ -1,0 +1,1 @@
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/sistema/resources/views/devoluciones/index.blade.php ENDPATH**/ ?>

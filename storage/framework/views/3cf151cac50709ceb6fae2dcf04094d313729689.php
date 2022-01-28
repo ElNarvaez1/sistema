@@ -52,7 +52,8 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'IdCambioLlanta',
+                                                    'nombre',
+                                                    'telefono',
                                                     'fecha',
                                                     'Descripcion',
                                                     'total servicio',
@@ -105,7 +106,6 @@
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">APELLIDO MATERNO</th>
                                                 <th scope="col">FECHA</th>
-
                                                 <th scope="col">TELEFONO</th>
                                                 <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
@@ -113,30 +113,19 @@
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $clientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cliente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
-                                                    <th scope="row"><?php echo e($cliente->id); ?></th>
+                                                    <th scope="row"><?php echo e($cliente->idCliente); ?></th>
 
-                                                    <td>
-                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
-                                                        <a class="text-center"
-                                                            href="<?php echo e(route('clientes.show', [$cliente ->idCliente])); ?>">
-
-                                                            <?php echo e($cliente->nombre); ?>
-
-                                                        </a>
-                                                        <?php endif; ?>
-                                                    </td>
-
+                                                    <td class="text-center"><?php echo e($cliente->nombre); ?> </td>
                                                     <td class="text-center"><?php echo e($cliente->apellidoPaterno); ?></td>
                                                     <td class="text-center"><?php echo e($cliente->apellidoMaterno); ?></td>
                                                     <td class="text-center"><?php echo e($cliente->fecha); ?></td>
-
                                                     <td class="text-center"> <?php echo e($cliente->telefono); ?></td>
                                                            
 
                                                     
                                                     <td>
                                                         
-                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',[$cliente])); ?>"
+                                                        <a title="editar datos" href="<?php echo e(route('clientes.edit',[$cliente -> idCliente])); ?>"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         

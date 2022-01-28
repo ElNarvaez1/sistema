@@ -70,15 +70,22 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
 
 
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Impuesto</label>
-                                            <input type="text" name="impuesto" value="18"
-                                             
-                                                placeholder="impuesto"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['impuesto'];
+
+
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$          $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <?php (
+                                $productos = DB::table('productos')->get()
+                                ); ?>
+                                <div class="col-md-4 mt-4">
+                                    <div class="form-group">
+                                    <label class="text-black h4">Articulo</label>
+                                        <select title="" class="form-control text-upper" name="articulo">
+                                            <option value="0">Seleccione el articulo</option>
+                                            <?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($Producto->idProducto); ?>"><?php echo e($Producto->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                        <?php $__errorArgs = ['articulo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -88,30 +95,8 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                        </div>
-
                                     </div>
-
-
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Articulo</label>
-                                            <input type="text" name="articulo" value="<?php echo e(old('articulo')); ?>"
-                                                placeholder="Articulo"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['articulo'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                        </div>
-                                    </div>
+                                </div>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
@@ -306,10 +291,10 @@ unset($__errorArgs, $__bag); ?>
                                   <tr>
                               
                                     <td colspan="6" class="text-right">
-                                      <h6>TOTAL IMPUESTO (18%): </h6>                                               </h5>
+                                      <h6></h6>                                               </h5>
                                   </td>   
                                     <td  class="text-right">
-                                        <?php echo e(number_format($item->attributes->iva, 2, '.', '')); ?> 
+                                       
                                             
                                         
                                   </td>

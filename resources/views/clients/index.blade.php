@@ -53,7 +53,8 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 @php($arrayB = [
-                                                    'IdCambioLlanta',
+                                                    'nombre',
+                                                    'telefono',
                                                     'fecha',
                                                     'Descripcion',
                                                     'total servicio',
@@ -106,7 +107,6 @@
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">APELLIDO MATERNO</th>
                                                 <th scope="col">FECHA</th>
-
                                                 <th scope="col">TELEFONO</th>
                                                 <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
@@ -114,29 +114,19 @@
                                         <tbody class="text-black2">
                                             @forelse ($clientes as $cliente)
                                                 <tr class="table-hover">
-                                                    <th scope="row">{{ $cliente->id }}</th>
+                                                    <th scope="row">{{ $cliente->idCliente }}</th>
 
-                                                    <td>
-                                                        @can('productos.show')
-                                                        <a class="text-center"
-                                                            href="{{ route('clientes.show', [$cliente ->idCliente]) }}">
-
-                                                            {{ $cliente->nombre }}
-                                                        </a>
-                                                        @endcan
-                                                    </td>
-
+                                                    <td class="text-center">{{ $cliente->nombre }} </td>
                                                     <td class="text-center">{{ $cliente->apellidoPaterno }}</td>
                                                     <td class="text-center">{{ $cliente->apellidoMaterno }}</td>
                                                     <td class="text-center">{{ $cliente->fecha }}</td>
-
                                                     <td class="text-center"> {{ $cliente->telefono }}</td>
                                                            
 
                                                     
                                                     <td>
                                                         {{-- @can('client.edit') --}}
-                                                        <a title="editar datos" href="{{ route('clientes.edit',[$cliente]) }}"
+                                                        <a title="editar datos" href="{{ route('clientes.edit',[$cliente -> idCliente]) }}"
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
                                                         {{-- @endcan --}}

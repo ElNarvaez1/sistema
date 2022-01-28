@@ -112,7 +112,7 @@
                                             @can('user.index')
                                             @foreach ($users as $user)
                                                 <tr class="table-hover"> 
-                                                    <td class="text-center">{{ $user->id }}</td>
+                                                    <td scope="row">{{ $user->id }}</td>
                                                     <td class="text-center">{{ $user->username }}</td>
                                                     <td class="text-center">{{ $user->email }}</td>
                                                     <td class="text-center">{{ $user->telefono }}</td> 
@@ -120,17 +120,15 @@
                                                     <td class="text-center">{{ $user->apellidoPaterno }}</td> 
                                                     <td class="text-center">{{ $user->created_at }}</td>                                                
                                                     <td class="text-center">
-                                                        @can('user.edit')
-                                                        <a title="editar"
-                                                        href="{{ route('user.edit', [$user]) }}"
-                                                            class="btn btn-outline-primary btn-circle">
+
+                                                            {{-- @can('user.index') --}}
+                                                        <a title="editar datos" href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
-                                                            @endcan
-
-                                                    
-
-                                                            {{-- @can('productos.destroy') --}}
-                                                        <form action="{{ route('user.destroy', [$user]) }}"
+                                                        {{-- @endcan --}}
+                                                        
+                                                        @if (strcmp($user->id, "Admin") !== 0)
+                                                        {{-- @can('productos.destroy') --}}
+                                                        <form action="{{ route('user.destroy', $user->id) }}"
                                                             method="post">
                                                             @method("delete")
                                                             @csrf
@@ -139,6 +137,9 @@
                                                             </button>
                                                         </form> 
                                                         {{-- @endcan --}}
+                                                        @endif
+
+                                                           
                                                     </td>
                                                 
                                                 </tr>

@@ -29,7 +29,6 @@ class CambioLLantasController extends Controller
         $cambiollanta->descripcion = $request->input('descripcion');
         $cambiollanta->monto = $request->input('totalcambio');
         $cambiollanta->save();
-
         $listaCambioLlantas = CambioLlanta::all();
         return view('cambiollantas.index',compact('listaCambioLlantas'));
    }

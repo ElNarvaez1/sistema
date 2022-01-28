@@ -55,7 +55,7 @@
                                                                                         <textarea class="form-control" value="{{old('message')}}" name="descripcion" placeholder="Descripción" required></textarea>
                                                                                         <br>
                                                                                         <label class="text-black h5"><FONT SIZE =3>Total del servicio $:</FONT></label>
-                                                                                        <input id="total" type="number" name="totalcambio" value="0.00" required>
+                                                                                        <input id="total" type="number" name="totalcambio" value="0.00" min="0" required>
                                                                                     </div>
                                                                                     @error('message')
                                                                                     <div class="message-error">*{{ $message }}</div>

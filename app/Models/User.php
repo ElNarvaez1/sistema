@@ -9,11 +9,18 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Notifications\MyResetPassword;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
     use HasRoles;
+    use SoftDeletes; //Implementamos
+    protected $table = 'users';
+    protected $primarykey ='id';
+    public $incrementing= false;
+    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,7 +35,7 @@ class User extends Authenticatable
         'username',
         'password',
         'telefono',
-        'idRol'
+        'idRol',
     ];
 
     //protected $guarded = [];
@@ -63,11 +70,10 @@ class User extends Authenticatable
     // }
 
     // función para la búsqueda de usuarios
-    public function scopeBuscar($query, $tipo, $buscar) {
-        if ( ($tipo) && ($buscar) ) {
-            return $query->where($tipo,'like',"%$buscar%");
-        }
-
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+    	if ( ($tipo) && ($buscar) ) {
+    		return $query->where($tipo,'like',"%$buscar%");
+    	}
     }
     public function sendPasswordResetNotification($token)
     {

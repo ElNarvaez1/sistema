@@ -86,15 +86,6 @@
     </li>
 @endcan
 
-@can('productos.index')
-<hr class="sidebar-divider my-0">
-    <li class="nav-item  {{ request()->routeIs('llantas.index') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('llantas.index') }}">
-            <i class="fas fa-truck-monster"></i>
-            <span>Llantas</span></a>
-    </li>
-@endcan
-
 
 
 
@@ -186,16 +177,6 @@
 </li>
 {{--@endcan--}}
 
- @can('cart.invoices')
-<hr class="sidebar-divider my-0">
-
-<li class="nav-item   {{ !Route::is('cart.invoices') ?: 'active' }}">
-    <a class="nav-link" href="{{ route('cart.invoices') }}">
-        <i class="fas fa-file-invoice-dollar"></i>
-        <span>Nota de pago</span>
-    </a>
-</li>
-@endcan
 
 
 

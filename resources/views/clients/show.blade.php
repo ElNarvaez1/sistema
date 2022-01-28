@@ -81,20 +81,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Dirección</label>
-                                            <textarea class="form-control text-upper"
-                                                placeholder="Direccion del cliente..." disabled
-                                                name="direccion">{{ old('direccion',$cliente->direccion) }}</textarea>
 
-                                            {{-- validaciones --}}
-                                            @error('direccion')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
-                                    </div>
 
                                    
 

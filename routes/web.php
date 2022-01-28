@@ -16,6 +16,7 @@ use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CambioLLantasController;
+use App\Http\Controllers\DevolucionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +42,7 @@ Route::group(['middleware' =>'auth'], function(){
     Route::resource('permission', PermissionController::class);
     Route::resource('role', RolesController::class);
 
-    Route::resource('user', UserController::class)->only(['index','edit','update', 'create', 'store', 'destroy']);
-
-    Route::resource('user', UserController::class)->only(['index','edit','update']);
+    Route::resource('user', UserController::class)->only(['index','create', 'store']);
 
     Route::resource('bateria',batertiaController::class);
     Route::resource('llantas',llantaController::class);
@@ -107,7 +106,12 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
-    //Proveedor
+
+    Route::get('user/index/{id}/edit',[UserController::class,'edit'])->name('user.edit');
+    Route::delete('user/index/{id}',[UserController::class,'destroy'])->name('user.destroy');
+    Route::put('user/index/{id}',[UserController::class,'update'])->name('user.update');
+    
+//Proveedor
     Route::get('Proveedor',[ProveedorController::class,'index'])->name('proveedor.index');
     Route::get('Proveedor/index',[ProveedorController::class,'create'])->name('proveedor.create');
     Route::post('Proveedor/index/add',[ProveedorController::class,'store'])->name('proveedor.store');
@@ -121,6 +125,10 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
     Route::get('/cambiollantas/index/show/{idCambio}',[CambioLLantasController::class,'show'])->name('cambio.show');
     Route::resource('cambiollantas', CambioLLantasController::class);
+
+//Devoluciones
+Route::get('/devolucion/index', [DevolucionesController::class,'index'])->name('devoluciones.index');
+
 });
 
 

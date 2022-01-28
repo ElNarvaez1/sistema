@@ -110,15 +110,7 @@
                                     <tr class="table-hover">
                                         <th scope="row"><?php echo e($producto->idProducto); ?></th>
 
-                                        <td>
-                                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
-                                            <a class="text-center" href="<?php echo e(route('productos.show', $producto->idProducto)); ?>">
-
-                                                <?php echo e($producto->nombre); ?>
-
-                                            </a>
-                                            <?php endif; ?>
-                                        </td>
+                                        <td class="text-center"><?php echo e($producto->nombre); ?></td>
 
                                         <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
                                         
