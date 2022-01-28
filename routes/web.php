@@ -128,6 +128,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
 
 //Devoluciones
 Route::get('/devolucion/index', [DevolucionesController::class,'index'])->name('devoluciones.index');
+Route::delete('/devolucion/remove', [DevolucionesController::class,'delete'])->name('devolucion.delete');
 
 });
 

@@ -176,6 +176,14 @@
     </a>
 </li>
 {{--@endcan--}}
+<hr class="sidebar-divider my-0">
+
+<li class="nav-item   {{ !Route::is('devoluciones.index') ?: 'active' }}">
+    <a class="nav-link" href="{{ route('devoluciones.index') }}">
+        <i class="fas fa-qrcode"></i>
+        <span>Devoluciones</span>
+    </a>
+</li>
 
 
 

@@ -36,9 +36,8 @@
                                                         <div class="container px-5 my-5">
                                                             <div class="row">
                                                                 <div class="right-content">
-                                                                    <div class="container">
-                                                                        <form method="POST" action="">
-                                                                            {{ csrf_field() }}
+                                                                    <div class="container">                                                                
+                                                                            
                                                                             <div class="row">
                                                                                 <div class="col-md-12" style="text-align: center">
                                                                                     <label class="text-black"><FONT SIZE =4><b>Asegurese de realizar la devolucion correcta</b></FONT></label>
@@ -46,7 +45,10 @@
                                                                                 </div>
                                                                                 <div class="col-md-12">
                                                                                     <div class="text-center">                                                                                        
-                                                                                </div>                                                                               
+                                                                                </div>    
+                                                                                <form action=" {{ route('devolucion.delete') }}" method="post">
+                                                                                    @method("delete")
+                                                                                    @csrf                                                                           
                                                                             <div class="col-md-12 mt-4">
                                                                                     <div class="form-group">
                                                                                     <label class="text-black"><FONT SIZE =3>Fecha en la que se esta realizando la devolución:</FONT></label>
@@ -54,12 +56,12 @@
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="text-black h5"><FONT SIZE =3>IDVenta:</FONT></label>
-                                                                                            <input disabled="true" value="{{$venta->idVenta}}" type="text" required>
+                                                                                            <input name="inidVenta" value="{{$venta->idVenta}}" type="text" required>
                                                                                         </div>
                                                                                         
                                                                                         <div class="form-group">
                                                                                             <label class="text-black"><FONT SIZE =3>Motivo de la devolución:</FONT></label>
-                                                                                            <textarea class="form-control" value="{{old('message')}}" name="descripcion" placeholder="ejemp. Producto en mal estado" required></textarea>
+                                                                                            <textarea class="form-control" name="motivo" value="{{old('message')}}" placeholder="ejemp. Producto en mal estado" required></textarea>
                                                                                         </div>                                                                                       
                                                                                     
                                                                                     @error('message')
@@ -68,10 +70,14 @@
                                                                                 </div>          
                                                                                 <br><br>
                                                                                 <div class="text-black h4" style="text-align: center;">
-                                                                                <button class="btn btn-primary btn-ms" type="submit">Confirmar <i class="fas fa-save"></i></button>
+                                                                                
+                                                                                
+                                                                                    <button title="confirmaDev" class="btn btn-primary btn-ms" type="submit">Confirmar <i class="fas fa-save"></i></button>
+                                                                                </form>
+                                                             
                                                                                 <a class="btn btn-danger btn-ms" href="{{route('venta.index')}}">  <i class="fas fa-strikethrough"></i>Cancelar</a>
                                                                             </div>
-                                                                        </form>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
