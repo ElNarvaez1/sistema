@@ -43,6 +43,7 @@
                                             <a title="agregar producto" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2" href="<?php echo e(route('productos.create')); ?>">
                                                 Agregar producto <i class="fas fa-plus-circle"></i>
                                             </a>
+                                            <>
                                         </div>
                                     </div>
 
