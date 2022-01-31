@@ -38,7 +38,8 @@
                             <div class="container">
                                 
                                 {{-- <form action="{{route('proveedor.index',[$proveedor])}}" method="GET"> --}}
-                                    <form action="" method="GET">
+                                    <form action="{{ route('proveedor.index') }}" method="GET">
+
                                     <div class="row">
 
                                         {{-- add product --}}
@@ -51,7 +52,47 @@
                                             </div>
                                         </div>
 
-                                        
+                                         <div class="col-md-2 mt-4">
+                                            <div class="form-group">
+                                                @php($arrayB = [
+                                                    ['idProveedor','ID PROVEEDOR'],
+                                                    ['nombre','NOMBRE'],
+                                                    ['apellidoPaterno','APELLIDO PATERNO'],
+                                                    ['apellidoMaterno','APELLIDO MATERNO'],
+                                                    ['nombreEmpresa','EMPRESA'],
+                                                    ['direccion','DIRECCIÓN'],
+                                                    ['correo','CORREO ELECTRONICO'],
+                                                    ['telefono','TELEFONO'],
+                
+                                                    ])
+                                                    <select title="buscar por" class="form-control text-upper" name="type">
+                                                        @foreach ($arrayB as $buscar)
+                                                            <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mt-4">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="buscarpor" type="search"
+                                                        placeholder="Buscar">
+
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="col-md-3 mt-4">
+                                                <div class="form-group">
+                                                    <button title="buscar" class="btn btn-outline-primary text-black2"
+                                                        type="submit">Buscar</button>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </form>
                                   
                                 </div>

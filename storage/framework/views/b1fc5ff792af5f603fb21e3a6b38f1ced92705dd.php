@@ -22,7 +22,7 @@
         <hr>
         <div class="row">
             <div class="col-xs-10">
-                <h1 class="h6">nombre del empleado</h1>
+                <h1 class="h6">Nombre del empleado: <?php echo e(Auth::user()->name); ?></h1>
                
             </div>
             <div class="col-xs-2 text-center">
@@ -41,7 +41,8 @@
             <div class="col-xs-6">
                 <h1 class="h2"> Ticket</h1>
                
-                <!--<strong>CLiente: </strong> <?php echo e($ventas[0]->nombre); ?> -->
+                <strong>Cliente: </strong> <?php echo e($ventas[0]->idCliente); ?>
+
                
             </div>
         </div>
@@ -60,8 +61,8 @@
                         <?php $__currentLoopData = $ventas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="table-bordered">
                             
-                        <!--<td  class="text-center"><?php echo e($venta->articulo); ?></td>
-                           <td  class="text-center"><?php echo e($venta->cantidad); ?></td>-->
+                        <td  class="text-center"><?php echo e($venta->idProducto); ?></td>
+                           <td  class="text-center"><?php echo e($ventas[0]->fecha); ?></td>
                            <td class="text-right"><?php echo e($venta->descuento); ?> %</td>
                             
                           <tr>

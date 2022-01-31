@@ -38,7 +38,8 @@
                                         <div class="form-group">
                                             <?php ($arrayB = [
                                                         ['idCambio','ID CAMBIO'],
-                                                        ['fecha','FECHA']
+                                                        ['fecha','FECHA'],
+                                                        ['monto','MONTO']
                                                         ]); ?>
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

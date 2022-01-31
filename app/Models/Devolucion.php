@@ -12,6 +12,11 @@ class Devolucion extends Model
     public $incrementing = false;
     public $timestamps = false;
 
+    protected $fillable = [
+        'idVenta',
+        'observacion'
+    ];
+
     // función para la búsqueda de productos
     public function scopeBuscarpor($query, $tipo, $buscar) {
     	if ( ($tipo) && ($buscar) ) {

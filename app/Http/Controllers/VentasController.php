@@ -180,11 +180,11 @@ class VentasController extends Controller
         //$ventas = Venta::findOrFail($idVenta);
         // dd($ventas);
         $ventas = Venta::WHERE('idVenta',$idVenta)->get();
-        $Venta;
+        $venta;
         foreach($ventas as $vente){
-            $Venta=$vente;
+            $venta=$vente;
         }
-        return view('sales.detalle_sales',compact('ventas'));
+        return view('sales.detalle_sales',compact('venta'));
     }
 
     public function delete($idVenta){

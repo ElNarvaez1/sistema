@@ -35,7 +35,8 @@ class CambioLLantasController extends Controller
         $cambiollanta->monto = $request->input('totalcambio');
         $cambiollanta->save();
         $listaCambioLlantas = CambioLlanta::all();
-        return view('cambiollantas.index',compact('listaCambioLlantas'));
+        return redirect()->route('cambiollantas.index');
+        //return view('cambiollantas.index',compact('listaCambioLlantas'));
    }
    public function show($id){
        
