@@ -98,7 +98,6 @@
                                             <textarea class="form-control text-upper"
                                                 placeholder="Direccion del cliente..."
                                                 name="direccion">{{ old('direccion', $proveedor->direccion) }}</textarea>
-
                                             {{-- validaciones --}}
                                             @error('direccion')
                                                 <div class="message-error">*{{ $message }}</div>
@@ -106,8 +105,6 @@
 
                                         </div>
                                     </div>
-
-                                   
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
@@ -135,21 +132,16 @@
                                                         <div class="message-error">*{{ $message }}</div>
                                                     @enderror
                                                 </div>
-                                            </div>
 
-
-
-                                            
+                                            </div>   
                                         </div>
-
                                         {{-- PARTE BOTONES --}}
-                                        
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-auto">
                                                 <button title="guardar datos" type="submit" class="btn btn-primary btn-ms">
                                                     Guardar <i class="fas fa-save"></i></button>
                                             </div>
-                                            
+
                                             <div class="col-auto">
                                                 <a title="cancelar producto" href="{{route('proveedor.index')}}" class="btn btn-danger btn-ms">cancelar
                                                     <i class="fas fa-strikethrough"></i></a>

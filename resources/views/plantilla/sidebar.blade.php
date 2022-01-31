@@ -20,6 +20,7 @@
 </li>
 
 <!-- Divider -->
+
 <!--
  @can('reporte.index')
  <hr class="sidebar-divider my-0">
@@ -77,11 +78,13 @@
             </li>
         @endcan
 -->
+
 @can('productos.index')
 <hr class="sidebar-divider my-0">
     <li class="nav-item  {{ request()->routeIs('productos.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('productos.index') }}">
-            <i class="fas fa-car-battery"></i>
+      <i class="fas fa-car-battery"></i>
+
             <span>Productos</span></a>
     </li>
 @endcan
@@ -154,6 +157,7 @@
     </li>
 @endcan
 
+
 {{--
  @can('pedido.index') 
 <hr class="sidebar-divider my-0">
@@ -184,14 +188,6 @@
         <span>Devoluciones</span>
     </a>
 </li>
-
-
-
-
-
-
-
-
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

@@ -20,6 +20,7 @@
 </li>
 
 <!-- Divider -->
+
 <!--
  <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('reporte.index')): ?>
  <hr class="sidebar-divider my-0">
@@ -77,11 +78,13 @@
             </li>
         <?php endif; ?>
 -->
+
 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
 <hr class="sidebar-divider my-0">
     <li class="nav-item  <?php echo e(request()->routeIs('productos.index') ? 'active' : ''); ?>">
         <a class="nav-link" href="<?php echo e(route('productos.index')); ?>">
-            <i class="fas fa-car-battery"></i>
+      <i class="fas fa-car-battery"></i>
+
             <span>Productos</span></a>
     </li>
 <?php endif; ?>
@@ -145,6 +148,7 @@
 
 
 
+
 <hr class="sidebar-divider my-0">
 
 <li class="nav-item   <?php echo e(!Route::is('proveedor.index') ?: 'active'); ?>">
@@ -162,14 +166,6 @@
         <span>Devoluciones</span>
     </a>
 </li>
-
-
-
-
-
-
-
-
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

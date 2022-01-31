@@ -42,7 +42,7 @@ class VentasController extends Controller
 
         return view('sales.index', compact('sales'));
     }
-
+//crea el cliente
     public function create(Request $request){
         // ver clientes
         
@@ -141,7 +141,7 @@ class VentasController extends Controller
         )   
         ->get();
        
-      
+      //guarda la venta 
         foreach (Cart::getContent() as $item) {
             
             $venta = new Venta();
@@ -209,4 +209,13 @@ class VentasController extends Controller
     // download PDF file with download method
     return $pdf->stream("ticket.pdf",array('Attachment'=>false));
     }
+    //agregado por ever
+    public function Producto($id)
+    {
+        $sql='SELECT * FROM productos WHERE idProducto=?';
+        $productos=DB::select($sql,[$id]);
+         return $productos;
+    }
+   
+
 }

@@ -19,8 +19,6 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 bold-title"> Nueva Venta <i class="fas fa-cart-arrow-down"></i> </h1>
                     <p class="mb-4 text-dark">Registre una nueva venta aquí.</p>
-
-
                     {{-- mensajes --}}
                     @include('plantilla.notification')
 
@@ -29,7 +27,6 @@
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold ">Agregar venta</h6>
                         </div>
-
                         {{-- Formulario -> vista de productos --}}
 
                         
@@ -47,13 +44,11 @@
                                         <select class="form-control" name="nombre" value="{{ old('nombre') }}">
                                                     <option value="" disabled selected>SELECCIONE UNA OPCIÓN</option>
                                                     @foreach ($data as $name)
-
                                                         @if (old('nombre') == $name)
                                                             <option selected="selected">{{ $name }}</option>
                                                         @else
                                                             <option>{{ $name }}</option>
                                                         @endif
-
                                                     @endforeach
                                                 </select>
                                                 @error('nombre')
@@ -69,11 +64,15 @@
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$          $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                 @php(
                                 $productos = DB::table('productos')->get()
+                                
+                                
+                              
+                                            
                                 )
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                     <label class="text-black h4">Articulo</label>
-                                        <select title="" class="form-control text-upper" name="articulo">
+                                        <select title="" class="form-control text-upper" name="articulo" id="idP">
                                             <option value="0">Seleccione el articulo</option>
                                             @foreach ($productos as $Producto)
                                             <option value="{{$Producto->idProducto}}">{{$Producto->nombre}}</option>
@@ -84,13 +83,13 @@
                                             @enderror
                                     </div>
                                 </div>
-
+                                
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Cantidad</label>
                                             <input type="number" name="cantidad" value="{{ old('cantidad') }}"
                                                min="1" max="40" placeholder="Cantidad"
-                                                class="form-control text-upper">
+                                                class="form-control text-upper" id="ca">
                                             {{-- validaciones --}}
                                             @error('cantidad')
                                                 <div class="message-error">*{{ $message }}</div>
@@ -104,7 +103,7 @@
                                             <input type="number" name="stock"  value="30"
                                             {{-- value="{{ old('stock') }}" --}}
                                                min="1" max="40" placeholder="Stock"
-                                                class="form-control text-upper">
+                                                class="form-control text-upper" id="s">
                                             {{-- validaciones --}}
                                             @error('stock')
                                                 <div class="message-error">*{{ $message }}</div>
@@ -126,14 +125,17 @@
                                         </div>
                                     </div>
    
-
+                                   
                                     <div class="col-md-4 mt-4">
+                                         
                                         <div class="form-group">
                                             <label class="text-black h4">Precio venta</label>
                                             <input type="text" name="pecio_venta" value="{{ old('pecio_venta') }}"
                                                min="1" max="40" placeholder="Precio de venta"
-                                                class="form-control text-upper">
+                                                class="form-control text-upper" id="p">
+
                                             {{-- validaciones --}}
+                                        
                                             @error('pecio_venta')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
@@ -157,9 +159,8 @@
                                     </form>
                                     
                                 </div>
-                                @if (count(Cart::getContent()))
-                           
-
+                               
+                                @if (count(Cart::getContent()))  
                                 <div class="card-body ">
                                     <div class="table-responsive">
                                         {{-- id="dataTable" --}}
@@ -174,7 +175,7 @@
                                                     <th scope="col">CANTIDAD</th>
                                                     <th scope="col">DESCUENTO</th>
                                                     <th scope="col">SUBTOTAL</th>
-                                                    <th scope="col">TOTAL</th>
+                                                    <th scope="col">TOTAL </th>
                                                     <th scope="col">ACCIÓN</th>
                                                     
                                                     {{-- <th scope="col">CANTIDAD</th> --}}
@@ -189,6 +190,7 @@
                                                     
                                                 <?php
                                                 {{  $i = 1;}} //contador para el listado de objetos en el carrito
+                                                
                                             ?>
 
                                                @foreach (Cart::getContent() as $item)
@@ -200,10 +202,10 @@
                                                
                                                 <td class="text-center">{{ $item->id }}</td>
                                                 <td class="text-center">{{ $item->name }}</td>
-                                                <td class="text-center">$ {{ number_format($item->price, 2, '.', '') }}</td>
-                                                <td class="text-center">{{ $item->quantity}}</td>
+                                                <td class="text-center">$ {{ number_format($item->price, 2, '.', '') }} MXN</td>
+                                                <td class="text-center">{{ ($item->quantity)}}</td>
                                                 <td class="text-center">{{ $item->attributes->descuento}} %</td>
-                                                <td class="text-center">$ {{  number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')}}</td>
+                                                <td class="text-center">$ {{  number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')}} MXN</td>
                                                 @if($item->attributes->descuento>0)
                                                 <td class="text-center">{{number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')-(number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')*($item->attributes->descuento/100))}} MXN</td>
                                                 @endif
@@ -336,3 +338,6 @@
             <!-- End of Page Wrapper -->
 
         @endsection
+@section('scripts')
+
+@endsection

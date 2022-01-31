@@ -126,7 +126,10 @@ unset($__errorArgs, $__bag); ?>
                                             <textarea class="form-control text-upper"
                                                 placeholder="Direccion del cliente..."
                                                 name="direccion"><?php echo e(old('direccion', $proveedor->direccion)); ?></textarea>
+<<<<<<< HEAD
 
+=======
+>>>>>>> Everardo
                                             
                                             <?php $__errorArgs = ['direccion'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -142,8 +145,11 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
 
+<<<<<<< HEAD
                                    
 
+=======
+>>>>>>> Everardo
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>
@@ -184,6 +190,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                                 </div>
+<<<<<<< HEAD
                                             </div>
 
 
@@ -192,13 +199,22 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
 
                                         
+=======
+
+                                            </div>   
+                                        </div>
+>>>>>>> Everardo
                                         
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-auto">
                                                 <button title="guardar datos" type="submit" class="btn btn-primary btn-ms">
                                                     Guardar <i class="fas fa-save"></i></button>
                                             </div>
+<<<<<<< HEAD
                                             
+=======
+
+>>>>>>> Everardo
                                             <div class="col-auto">
                                                 <a title="cancelar producto" href="<?php echo e(route('proveedor.index')); ?>" class="btn btn-danger btn-ms">cancelar
                                                     <i class="fas fa-strikethrough"></i></a>

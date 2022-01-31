@@ -8,10 +8,10 @@
         @include('plantilla.sidebar')
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            
             <!-- Main Content -->
             <div id="content">
                 @include('layouts.nav-log')
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
                     @csrf
@@ -37,8 +37,11 @@
 
                                 @csrf
                                 <div class="row">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Everardo
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del Proveedor</label>

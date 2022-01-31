@@ -8,10 +8,10 @@
         <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            
             <!-- Main Content -->
             <div id="content">
                 <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
                     <?php echo csrf_field(); ?>
@@ -37,8 +37,11 @@
 
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Everardo
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del Proveedor</label>
