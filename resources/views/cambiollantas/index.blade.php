@@ -24,6 +24,7 @@
                         </div>
                         <div class="card shadow  rounded card-color">
                             <div class="container">
+                            <form action="{{ route('cambiollantas.index', [$listaCambioLlantas]) }}" method="GET">
                                 <div class="row">
                                 {{-- cambiar llantas --}}
                                     <div class="col-md-3 mt-4">
@@ -36,15 +37,12 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                                        'idCambioDeLlanta',
-                                                        'fecha',
-                                                        'total',
-                                                        'empleado'
-                                                        // 'PRECIO COMPRA','PRECIO VENTA'
+                                                        ['idCambio','ID CAMBIO'],
+                                                        ['fecha','FECHA']
                                                         ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 @foreach ($arrayB as $buscar)
-                                                    <option>{{ $buscar }}</option>
+                                                    <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -61,7 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            </form>
                             </div>
                             @if ($listaCambioLlantas->count()))
                             <div class="card-body "> 
