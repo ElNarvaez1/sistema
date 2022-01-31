@@ -127,6 +127,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::resource('cambiollantas', CambioLLantasController::class);
 
 //Devoluciones
+//Route::resource('devolucion', DevolucionesController::class);
 Route::get('/devolucion/index', [DevolucionesController::class,'index'])->name('devoluciones.index');
 Route::delete('/devolucion/remove', [DevolucionesController::class,'delete'])->name('devolucion.delete');
 
