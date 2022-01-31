@@ -85,7 +85,7 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono</label>
+                                                    <label class="text-black h4">Teléfono</label>
                                                     <input type="text" name="telefono" value="{{ old('telefono',$cliente->telefono) }}"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">
@@ -111,7 +111,7 @@
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href={{ route('clientes.index') }} class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href={{ route('clientes.index') }} class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

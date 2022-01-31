@@ -54,7 +54,7 @@
             <?php $__env->startComponent('plantilla.infoLDP'); ?>
             <?php $__env->slot('iconoInfo','fas fa-shopping-bag'); ?>
             <!--Por mientras no lleva nada-->
-            <?php $__env->slot('texto1','Venta de neumaticos'); ?>
+            <?php $__env->slot('texto1','Venta de neumáticos'); ?>
             <!---->
             <?php $__env->slot('texto2','¡Adquiere tus productos al mejor precio!'); ?>
             <!---->
@@ -148,7 +148,7 @@
             <!-- Begin Page Content -->
             <div class="container-fluid rounded">
                 <!-- Page Heading -->
-                <h1 class="h4 mb-2">SISTEMAS DE VENTA DE NEUMATICOS</h1>
+                <h1 class="h4 mb-2">SISTEMAS DE VENTA DE NEUMÁTICOS</h1>
                 <!-- <p class="mb-4 text-dark">“la innovación al servicio de la movilidad”</p> -->
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4 rounded card-color mt-4">

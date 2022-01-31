@@ -78,7 +78,7 @@ unset($__errorArgs, $__bag); ?>
                                 ); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                    <label class="text-black h4">Articulo*</label>
+                                    <label class="text-black h4">Artículo*</label>
                                         <select title="" class="form-control text-upper" name="articulo" id="idP">
                                             <option value="0">Seleccione el articulo</option>
                                             <?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -190,7 +190,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-md-6">
                                                 <button title="guardar datos" type="submit" class="btn btn-primary btn-lg btn-block">
-                                                    agregar <i class="fas fa-plus-circle"></i></button>
+                                                    Agregar <i class="fas fa-plus-circle"></i></button>
                                             </div>
                                             
                                           
@@ -210,8 +210,6 @@ unset($__errorArgs, $__bag); ?>
                                             <thead class="bg-color ">
                                                 <tr class="text-blank text-center">
                                                     
-                                                    <th scope="col">NO</th>
-                                                    <th scope="col">ID</th>
                                                     <th scope="col">PRODUCTO</th>
                                                     <th scope="col">PRECIO</th>
                                                     <th scope="col">CANTIDAD</th>
@@ -240,9 +238,6 @@ unset($__errorArgs, $__bag); ?>
 
                                                 
                                                <tr class="table-hover">
-                                                <td class="text-center"><?php echo e($i); ?></td>
-                                               
-                                                <td class="text-center"><?php echo e($item->id); ?></td>
                                                 <td class="text-center"><?php echo e($item->name); ?></td>
                                                 <td class="text-center">$ <?php echo e(number_format($item->price, 2, '.', '')); ?> MXN</td>
                                                 <td class="text-center"><?php echo e(($item->quantity)); ?></td>
@@ -284,7 +279,7 @@ unset($__errorArgs, $__bag); ?>
                                             <?php echo csrf_field(); ?>
                                             <td class="text-center">
                                               <input title="limpiar todo el carrito" 
-                                              class="btn btn-outline-danger btn-lg btn-block" type="submit" name="Limpiar" value="limpiar Carrito">
+                                              class="btn btn-outline-danger btn-lg btn-block" type="submit" name="Limpiar" value="Limpiar Carrito">
                                       </form>
                                       
                                         <td colspan="5" class="text-right">

@@ -41,7 +41,7 @@
                                             <div class="form-group">
                                                 <a title="agregar nuevo cliente" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
                                                     href="{{ route('venta.create') }}"> 
-                                                     nueva venta <i class="fas fa-cart-arrow-down"></i>
+                                                     Nueva venta <i class="fas fa-cart-arrow-down"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -165,7 +165,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="{{ $sales->previousPageUrl() }}">Anterior</a></li>
@@ -186,7 +186,7 @@
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary" >Regresar</a>
                                     </div>
                                 </div>
                                 

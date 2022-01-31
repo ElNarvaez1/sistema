@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo', 'Cambio de llantas'); ?>
 <?php $__env->startSection('contenido'); ?>
 
@@ -69,10 +68,10 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">IDCambioLlanta</th>
-                                                <th scope="col">fecha</th>                                               
-                                                <th scope="col">total</th>
-                                                <th scope="col">Empleado</th>                                                
+                                                <th scope="col">ID</th>
+                                                <th scope="col">FECHA</th>                                               
+                                                <th scope="col">TOTAL</th>
+                                                <th scope="col">EMPLEADO</th>                                                
                                                 <th scope="col" colspan="2">ACCIONES</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
@@ -96,11 +95,18 @@
                                         </thead>
                                     </table>
                                         <nav aria-label="Page navigation example float-right">
-                                            <a class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                            <a class="btn btn-outline-primary mx-3 mt-3" href="<?php echo e(route('cambiollantas.index')); ?>" >Refrescar</a>
                                             <ul class="pagination float-right mt-3">
-                                                <li class="page-item"><a class="page-link">Anterior</a></li>
-                                                <li class="page-item"><a class="page-link">1</a></li>                                                
-                                                <li class="page-item"><a class="page-link">Siguiente</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="<?php echo e($listaCambioLlantas->previousPageUrl()); ?>">Anterior</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(1)); ?>">1</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(2)); ?>">2</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(3)); ?>">3</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="<?php echo e($listaCambioLlantas->nextPageUrl()); ?>">Siguiente</a></li>
                                             </ul>
                                         </nav>
                                 </div>
@@ -110,7 +116,7 @@
                                <div class=" row">
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <a href="" class="btn btn-outline-primary" >regresar</a>
+                                            <a href="<?php echo e(route('cambiollantas.index')); ?>" class="btn btn-outline-primary" >regresar</a>
                                         </div>
                                     </div>                                    
                                     <div class="col-md-8 mt-4">

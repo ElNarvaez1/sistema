@@ -128,7 +128,7 @@ class VentasController extends Controller
     public function clear(Request $request)
     {
         Cart::clear();
-        Session::flash('message_delete', " ¡se a borrado el carrito correctamente!");
+        Session::flash('message_delete', " ¡se ha borrado el carrito correctamente!");
 
         return back();
     }

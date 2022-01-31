@@ -13,13 +13,15 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-10 ">
-                <h1>Llantero de Oaxaca</h1>
-               
+            <div class="col-xs-10 text-end aling-text-right">
+                <h3>Llantero de Oaxaca</h3>
             </div>
-            
+            <div class="aling-text-right">
+                <img src="https://wallpapercave.com/uwp/uwp1581891.jpeg" alt="Llantero"
+                    width="100" height="100" class="d-inline-block text-end" align="right"> 
+            </div>
         </div>
-        <hr>
+        <br>
         <div class="row">
             <div class="col-xs-10">
                 <h1 class="h6">Nombre del empleado: <?php echo e(Auth::user()->name); ?></h1>
@@ -33,17 +35,14 @@
                
             </div>
         </div>
-        <hr>
         <div class="row text-center" style="margin-bottom: 2rem;">
             <div class="col-xs-6">
                 
             </div>
             <div class="col-xs-6">
                 <h1 class="h2"> Ticket</h1>
-               
                 <strong>Cliente: </strong> <?php echo e($ventas[0]->idCliente); ?>
 
-               
             </div>
         </div>
         <div class="row">
@@ -90,6 +89,14 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <p class="h4">¡Gracias por su compra!</p>
+            </div>
+            <div class="col-xs-12 text-justify">
+                <br>
+                <p class="h7">Políticas de devolucion</p>
+                <p class="h7">El Cliente, deberá presentar la nota de venta para solicitar la devolución en sucursal.
+                    El Cliente deberá regresar la mercancía bajo su propio costo a más tardar 1 semana, después de realizar la compra.
+                    No se aceptan productos cuyo mal estado NO sea causado por el local o sus empleados, ya que de no ser así; no se aceptarán reclamos ni devoluciones en el producto.
+                    El llantero de Oaxaca, se reserva el derecho de admitir Devoluciones que queden al margen de las cláusulas anteriormente expuestas.</p>
             </div>
         </div>
     </div>

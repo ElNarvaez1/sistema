@@ -1,28 +1,28 @@
-@extends('layouts.main')
-@section('titulo', 'Agregar cliente')
-@section('contenido')
+
+<?php $__env->startSection('titulo', 'Agregar cliente'); ?>
+<?php $__env->startSection('contenido'); ?>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        {{-- incluimos sildebar color: azul :) --}}
-        @include('plantilla.sidebar')
+        
+        <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
-                @include('layouts.nav-log')
+                <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 bold-title"> REGISTRAR CLIENTE <i class="fas fa-plus-circle mx-3"></i> </h1>
                     <p class="mb-4 text-dark">Registre un nuevo cliente aquí.</p>
 
 
-                    {{-- mensajes --}}
-                    @include('plantilla.notification')
+                    
+                    <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
@@ -30,14 +30,14 @@
                             <h6 class="m-0 font-weight-bold ">Agregar cliente</h6>
                         </div>
 
-                        {{-- Formulario -> vista de productos --}}
+                        
 
                         
                         <div class="container">
                            
-                            <form method="POST" action="{{ route('clientes.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="<?php echo e(route('clientes.store')); ?>" enctype="multipart/form-data">
 
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <div class="row">
 
 
@@ -45,13 +45,20 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del cliente*</label>
-                                            <input type="text" name="nombre" value="{{ old('nombre') }}"
+                                            <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>"
                                                 placeholder="Nombre del cliente"
                                                 class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('nombre')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
+                                            
+                                            <?php $__errorArgs = ['nombre'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </div>
 
                                     </div>
@@ -60,13 +67,20 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno*</label>
-                                            <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno') }}"
+                                            <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno')); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('apellidoPaterno')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
+                                            
+                                            <?php $__errorArgs = ['apellidoPaterno'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </div>
 
                                     </div>
@@ -75,26 +89,40 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno*</label>
-                                            <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno') }}"
+                                            <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno')); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('apellidoMaterno')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
+                                            
+                                            <?php $__errorArgs = ['apellidoMaterno'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>                            
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Teléfono*</label>
-                                                    <input type="text" name="telefono" value="{{ old('telefono') }}"
+                                                    <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">
 
-                                                    {{-- validaciones --}}
-                                                    @error('telefono')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                    @enderror
+                                                    
+                                                    <?php $__errorArgs = ['telefono'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
 
@@ -103,7 +131,7 @@
                                             
                                         </div>
 
-                                        {{-- PARTE BOTONES --}}
+                                        
                                         
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-auto">
@@ -112,7 +140,7 @@
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href={{ route('clientes.index') }} class="btn btn-danger btn-ms">Cancelar
+                                                <a title="cancelar producto" href=<?php echo e(route('clientes.index')); ?> class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        
@@ -134,7 +162,7 @@
                     <!-- End of Main Content -->
 
                     <!-- Footer -->
-                    @include('plantilla.footer')
+                    <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <!-- End of Footer -->
                 </div>
                 <!-- End of Content Wrapper -->
@@ -142,4 +170,6 @@
             </div>
             <!-- End of Page Wrapper -->
 
-        @endsection
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/clients/create.blade.php ENDPATH**/ ?>
