@@ -53,7 +53,7 @@ class ProveedorController extends Controller
         strtoupper("-".$request->apellidoMaterno[0]).
         strtoupper($request->apellidoMaterno[1]).
         strtoupper($request->telefono[4]).
-        strtoupper($request->telefono[5]);
+        strtoupper($request->telefono[5]).date('Y-m-d H:i:s');
 
         $proveedor = new Proveedor($request->input());
         $proveedor  ->idProveedor =$llavePrimaria7;
@@ -124,7 +124,7 @@ class ProveedorController extends Controller
                 'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
                 'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
                 'nombreEmpresa' => 'required|regex:/^[\pL\s\-]+$/u',
-                'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
+                'direccion' => 'required|regex:/[\pL\s\-"+\#0-9]+.$/u', // regex Solo: incluye algunos carcateres
                 'correo' => 'required|email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
                

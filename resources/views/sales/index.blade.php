@@ -147,7 +147,7 @@
                                                             method="post">
                                                             @method("delete")
                                                             @csrf
-                                                            <button title="Devolver" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
+                                                            <button title="Devolver" type="submit" class="btn btn-outline-danger btn-circle">
                                                                 <i class="fa fa-reply-all"></i>
                                                             </button>
                                                         </form> 
