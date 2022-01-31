@@ -157,7 +157,7 @@ class ProductosController extends Controller
         $producto->idProducto = 'PROD-' . $producto->nombre . '-' . Str::random(5);
 
         $url_temp = $request->imagen;
-        $producto->imagen = $url_temp;
+        $producto->imagen = "url_temp";
 
 
         switch ($request->checkProducto) {

@@ -82,19 +82,6 @@ idProveedor
                                         @enderror
                                     </div>
                                 </div>
-                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Imagen     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="fs-5 text-body">Agregar imagen*</label>
-                                        <!-- Upload image input-->
-                                        <input type="file" name="imagen" accept="image/*" placeholder="Inserte una imagen" class="form-control text-upper">
-                                        {{-- validaciones --}}
-                                        @error('imagen')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Precio compra     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <div class="col-md-4 mt-4">

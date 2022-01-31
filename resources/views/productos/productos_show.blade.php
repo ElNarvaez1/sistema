@@ -34,9 +34,6 @@
                             @csrf
 
                             <div class="row">
-                                <div class="col-md-4 mt-4">
-                                    <img class="img-fluid rounded" src="{{$producto->imagen}}" width="300px" height="200px" alt="">
-                                </div>
 
                                 <div class="col-md-4 mt-auto ">
                                     <div class="form-group">

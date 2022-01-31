@@ -36,10 +36,6 @@
                             <input type="hidden" value="<?php echo e($producto->tipo); ?>" name="tipoProductoClasificacion">
 
                             <div class="row">
-                                <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Imagen  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
-                                <div class="col-md-9 mt-4">
-                                    <img class="img-fluid border-image" src="<?php echo e($producto->imagen); ?>" height="200px" width="300px" alt="">
-                                </div>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Nombre  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4 ">
                                     <div class="form-group">

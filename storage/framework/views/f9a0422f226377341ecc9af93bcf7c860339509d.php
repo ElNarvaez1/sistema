@@ -103,26 +103,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Imagen     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="fs-5 text-body">Agregar imagen*</label>
-                                        <!-- Upload image input-->
-                                        <input type="file" name="imagen" accept="image/*" placeholder="Inserte una imagen" class="form-control text-upper">
-                                        
-                                        <?php $__errorArgs = ['imagen'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Precio compra     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <div class="col-md-4 mt-4">
