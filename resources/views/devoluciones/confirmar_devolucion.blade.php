@@ -56,7 +56,7 @@
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="text-black h5"><FONT SIZE =3>IDVenta:</FONT></label>
-                                                                                            <input name="inidVenta" value="{{$venta->idVenta}}" type="text" required>
+                                                                                            <input name="inidVenta" value="{{$venta->idVenta}}" type="text" readonly>
                                                                                         </div>
                                                                                         
                                                                                         <div class="form-group">

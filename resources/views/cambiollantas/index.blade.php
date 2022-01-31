@@ -24,6 +24,7 @@
                         </div>
                         <div class="card shadow  rounded card-color">
                             <div class="container">
+                            <form action="{{ route('cambiollantas.index', [$listaCambioLlantas]) }}" method="GET">
                                 <div class="row">
                                 {{-- cambiar llantas --}}
                                     <div class="col-md-3 mt-4">
@@ -36,11 +37,10 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                                        'idCambioDeLlanta',
+                                                        'idCambio',
                                                         'fecha',
                                                         'descripcion',
-                                                        'total',
-                                                        'empleado'
+                                                        'monto'                                                        
                                                         // 'PRECIO COMPRA','PRECIO VENTA'
                                                         ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            </form>
                             </div>
                             @if ($listaCambioLlantas->count()))
                             <div class="card-body "> 

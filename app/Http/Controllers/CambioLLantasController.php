@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CambioLlanta;
+use Illuminate\Support\Str;
 use DateTime;
 use Session;
 
 class CambioLLantasController extends Controller
 {
     //retorna la vista principal de cambio de llanats
-    public function index(){
-        $listaCambioLlantas = CambioLlanta::all();
+    public function index(Request $request){   
+        $buscar = $request->get('buscarpor'); 
+        $tipo = $request->get('type');  
+        $variablesurl = $request->all();  
+        $listaCambioLlantas = CambioLlanta::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
         return view('cambiollantas.index',compact('listaCambioLlantas'));
     }
     //Retorna la vista para agregar un nuevo cambio de llantas

@@ -12,4 +12,11 @@ class CambioLlanta extends Model
     protected $primaryKey = "idCambio";
     public $incrementing = false;
     public $timestamps = false;
+
+    // función para la búsqueda deCambio de llanta
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+    	if ( ($tipo) && ($buscar) ) {
+    		return $query->where($tipo,'like',"%$buscar%");
+    	}
+    }
 }
