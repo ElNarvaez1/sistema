@@ -117,8 +117,8 @@
                                             <label class="text-black h4">Descuento</label>
                                             <input type="number" name="descuento" value="0"
                                             {{-- value="{{ old('descuento') }}" --}}
-                                               min="0" max="40" placeholder="descuento"
-                                                class="form-control text-upper">
+                                               min="0" max="100" placeholder="descuento"
+                                                class="form-control text-upper" maxlength="2">
                                             {{-- validaciones --}}
                                             @error('descuento')
                                                 <div class="message-error">*{{ $message }}</div>
@@ -174,6 +174,7 @@
                                                     <th scope="col">CANTIDAD</th>
                                                     <th scope="col">DESCUENTO</th>
                                                     <th scope="col">SUBTOTAL</th>
+                                                    <th scope="col">TOTAL</th>
                                                     <th scope="col">ACCIÓN</th>
                                                     
                                                     {{-- <th scope="col">CANTIDAD</th> --}}
@@ -203,7 +204,12 @@
                                                 <td class="text-center">{{ $item->quantity}}</td>
                                                 <td class="text-center">{{ $item->attributes->descuento}} %</td>
                                                 <td class="text-center">$ {{  number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')}}</td>
-                                                
+                                                @if($item->attributes->descuento>0)
+                                                <td class="text-center">{{number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')-(number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')*($item->attributes->descuento/100))}} MXN</td>
+                                                @endif
+                                                @if($item->attributes->descuento==0)
+                                                <td class="text-center">${{number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')}} MXN</td>
+                                                @endif
                                                 <td class="text-center">
                                                     <form action="{{ route('venta.removeitem')}}"
                                                     method="POST">
@@ -238,7 +244,7 @@
                                       </form>
                                       
                                         <td colspan="5" class="text-right">
-                                          <h6>TOTAL</h6>
+                                          <h6>SUBTOTAL</h6>
                                       </td>   
                                         <td  class="text-right">
                                          
@@ -265,7 +271,7 @@
                                   <h6>TOTAL A PAGAR: </h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
-                                   {{$item->attributes->total_pay}}
+                                   {{$item->attributes->total_pay}} MXN
                                         
                                     
                               </td>

@@ -104,30 +104,6 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Lista de roles*</label>
-
-
-
-
-                                        @foreach( $roles as $role)
-                                        <div class="text-black h4">
-                                            {!! Form::radio('roles[]', $role->id, null, ['class' => 'mr-1'],'name','roles') !!}
-                                            <label>
-                                                {{$role->name}}
-                                            </label>
-                                        </div>
-
-                                        @endforeach
-
-                                        {{-- validaciones --}}
-                                        @error('idRol')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
                                         <label class="text-black h4">Nombre de usuario</label>
                                         <input type="text" name="username" value="{{ old('username',$user->username) }}" placeholder="Nombre del usuario" class="form-control text-upper">
                                         {{-- validaciones --}}

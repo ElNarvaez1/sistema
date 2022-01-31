@@ -65,7 +65,7 @@ class ClienteController extends Controller
         strtoupper("-".$request->apellidoMaterno[0]).
         strtoupper($request->apellidoMaterno[1]).
         strtoupper($request->telefono[4]).
-        strtoupper($request->telefono[5]);
+        strtoupper($request->telefono[5]).date('Y-m-d H:i:s');
 
         $cliente = new Cliente($request->input());
         $cliente ->idCliente = $llavePrimaria;

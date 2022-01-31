@@ -145,8 +145,8 @@ unset($__errorArgs, $__bag); ?>
                                             <label class="text-black h4">Descuento</label>
                                             <input type="number" name="descuento" value="0"
                                             
-                                               min="0" max="40" placeholder="descuento"
-                                                class="form-control text-upper">
+                                               min="0" max="100" placeholder="descuento"
+                                                class="form-control text-upper" maxlength="2">
                                             
                                             <?php $__errorArgs = ['descuento'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -216,6 +216,7 @@ unset($__errorArgs, $__bag); ?>
                                                     <th scope="col">CANTIDAD</th>
                                                     <th scope="col">DESCUENTO</th>
                                                     <th scope="col">SUBTOTAL</th>
+                                                    <th scope="col">TOTAL</th>
                                                     <th scope="col">ACCIÓN</th>
                                                     
                                                     
@@ -245,7 +246,12 @@ unset($__errorArgs, $__bag); ?>
                                                 <td class="text-center"><?php echo e($item->quantity); ?></td>
                                                 <td class="text-center"><?php echo e($item->attributes->descuento); ?> %</td>
                                                 <td class="text-center">$ <?php echo e(number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')); ?></td>
-                                                
+                                                <?php if($item->attributes->descuento>0): ?>
+                                                <td class="text-center"><?php echo e(number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')-(number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')*($item->attributes->descuento/100))); ?> MXN</td>
+                                                <?php endif; ?>
+                                                <?php if($item->attributes->descuento==0): ?>
+                                                <td class="text-center">$<?php echo e(number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')); ?> MXN</td>
+                                                <?php endif; ?>
                                                 <td class="text-center">
                                                     <form action="<?php echo e(route('venta.removeitem')); ?>"
                                                     method="POST">
@@ -280,7 +286,7 @@ unset($__errorArgs, $__bag); ?>
                                       </form>
                                       
                                         <td colspan="5" class="text-right">
-                                          <h6>TOTAL</h6>
+                                          <h6>SUBTOTAL</h6>
                                       </td>   
                                         <td  class="text-right">
                                          
@@ -307,8 +313,7 @@ unset($__errorArgs, $__bag); ?>
                                   <h6>TOTAL A PAGAR: </h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
-                                   <?php echo e($item->attributes->total_pay); ?>
-
+                                   <?php echo e($item->attributes->total_pay); ?> MXN
                                         
                                     
                               </td>

@@ -139,39 +139,6 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Lista de roles*</label>
-
-
-
-
-                                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <div class="text-black h4">
-                                            <?php echo Form::radio('roles[]', $role->id, null, ['class' => 'mr-1'],'name','roles'); ?>
-
-                                            <label>
-                                                <?php echo e($role->name); ?>
-
-                                            </label>
-                                        </div>
-
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                                        
-                                        <?php $__errorArgs = ['idRol'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
                                         <label class="text-black h4">Nombre de usuario</label>
                                         <input type="text" name="username" value="<?php echo e(old('username',$user->username)); ?>" placeholder="Nombre del usuario" class="form-control text-upper">
                                         
