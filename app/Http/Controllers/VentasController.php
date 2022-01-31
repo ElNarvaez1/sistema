@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Venta;
 use App\Models\Cliente;
+use App\Models\Producto;
+use App\Models\DetalleVenta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Session;
@@ -20,23 +22,41 @@ class VentasController extends Controller
         $tipo = $request->get('type');
         $variablesurl = $request->all();
         $sales = Venta::buscarpor($tipo,Str::upper($buscar))->paginate(5)->appends($variablesurl);
+
+        $nombre = Cliente::all();
+        foreach ($sales as $nom) { 
+            $nombres1=Cliente::where('idCliente','=',$nom->idCliente)->get();
+            if(count($nombres1)>0){
+            $nom->nombre=$nombres1[0]->nombre;
+            }   
+        }
+
+        $produ = Producto::all();
+        foreach ($sales as $nom1) { 
+            $nombrepro=Producto::where('idProducto','=',$nom1->idProducto)->get();
+            if(count($nombrepro)>0){
+            $nom1->produ=$nombrepro[0]->nombre;
+            }   
+        }
+
+
         return view('sales.index', compact('sales'));
     }
-
+//crea el cliente
     public function create(Request $request){
         // ver clientes
         
         
 
         $nombres = Cliente::query()
-        ->select(['nombre','apellido_p','apellido_m'])
+        ->select(['nombre','apellidoPaterno','apellidoMaterno'])
         ->get();
        
         $data = [];
         $data_names = "";
         foreach ($nombres as $key => $names) {
 
-            $data_names =$data_names.$names->nombre." ".$names->apellido_p." ".$names->apellido_m;
+            $data_names =$data_names.$names->nombre." ".$names->apellidoPaterno." ".$names->apellidoMaterno;
             $data [] = $data_names;
             $data_names = "";
         }
@@ -48,8 +68,8 @@ class VentasController extends Controller
         $request->validate(
             [
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'impuesto' => 'required|numeric',
-                'articulo' => 'required|regex:/^[\pL\s\-]+$/u',
+                //'impuesto' => 'required|numeric',
+                'articulo' => 'required|regex:/^[\pL\s\-+0-9]+$/u',
                 'cantidad' => 'required|numeric',
                 'stock' => 'required|numeric',
                 'descuento' => 'required|numeric',
@@ -73,10 +93,7 @@ class VentasController extends Controller
             )
         )
         );
-
-        
-
-        $iva =Cart::getSubTotal() * 
+       $iva =Cart::getSubTotal() * 
         ($request->get('impuesto')/100);  
         $impuesto = Cart::getSubTotal()+$iva;
         
@@ -118,30 +135,36 @@ class VentasController extends Controller
        
         // comprobar cliente
         $data = Cliente::query()    
-            ->select("id",
-            DB::raw("CONCAT(nombre, ' ',apellido_p, ' ', apellido_m) as nombre_completo")
+            ->select("idCliente",
+            DB::raw("CONCAT(nombre, ' ',apellidoPaterno, ' ', apellidoMaterno) as nombre_completo")
             
         )   
         ->get();
        
-      
+      //guarda la venta 
         foreach (Cart::getContent() as $item) {
             
             $venta = new Venta();
             foreach ($data as $key => $cliente) {
                 if($cliente->nombre_completo ==$item->attributes->cliente ){
-                    $venta->id_cliente=$cliente->id;
+                    $venta->idCliente=$cliente->idCliente;
                 } 
                 }
-      
-           $venta->nombre = $item->attributes->cliente;
-           $venta->articulo = $item->name;
-           $venta->cantidad = $item->quantity;
-           $venta->impuesto = $item->attributes->iva;
+           //$venta ->idVenta = 'VEN-'.$venta->totalVenta.'-'.date('dmy');
+           $venta ->idVenta = "VEN-".date('Y-m-d H:i:s');
+           $venta->idUser = 'Admin';
+           $venta->idProducto = $item->name;
+           //$venta->nombre = $item->attributes->cliente;
+           //$venta->articulo = $item->name;
+           //$venta->cantidad = $item->quantity;
+           //$venta->impuesto = $item->attributes->iva;
            $venta->descuento = $item->attributes->descuento; 
-           $venta->total_venta = $item->attributes->total_pay; 
-           
-               
+           $venta->totalVenta = $item->attributes->total_pay; 
+           $detalle = new DetalleVenta();
+           $detalle->idProducto = $venta->idProducto;
+           $detalle->idVenta = $venta->idVenta;
+           $detalle->cantidad = $item->quantity;
+           $detalle->save();
         }
         $venta->saveOrFail();
         Cart::clear();
@@ -150,25 +173,31 @@ class VentasController extends Controller
         return redirect()->route('venta.index');
 
     }
-    public function detalle_venta($id){
+    public function detalle_venta($idVenta){
 
-        $ventas = Venta::findOrFail($id);
+        //$ventas = Venta::findOrFail($idVenta);
         // dd($ventas);
-
+        $ventas = Venta::WHERE('idVenta',$idVenta)->get();
+        $Venta;
+        foreach($ventas as $vente){
+            $Venta=$vente;
+        }
         return view('sales.detalle_sales',compact('ventas'));
     }
 
-    public function delete($id){
+    public function delete($idVenta){
+        $detalle1 = DetalleVenta::WHERE('idVenta',$idVenta)->delete();
+        $venta = Venta::WHERE('idVenta',$idVenta)->delete();
         Session::flash('message_delete', '¡Producto cancelado con éxito!');
-        $venta = Venta::findOrFail($id);
-        $venta->delete();
+        //$venta = Venta::findOrFail($id);
+        //$venta->delete();
 
         return redirect()->route("venta.index");
     }
-    public function ticket_download($id){
+    public function ticket_download($idVenta){
 
-        $ventas = DB::table('ventas')->where('id', '=',$id)
-        ->where('id', "=",$id)   
+        $ventas = DB::table('ventas')->where('idVenta', '=',$idVenta)
+        ->where('idVenta', "=",$idVenta)   
         ->get();
        
         // share data to view
@@ -180,4 +209,13 @@ class VentasController extends Controller
     // download PDF file with download method
     return $pdf->stream("ticket.pdf",array('Attachment'=>false));
     }
+    //agregado por ever
+    public function Producto($id)
+    {
+        $sql='SELECT * FROM productos WHERE idProducto=?';
+        $productos=DB::select($sql,[$id]);
+         return $productos;
+    }
+   
+
 }

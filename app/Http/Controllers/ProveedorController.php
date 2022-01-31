@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Session;
@@ -46,7 +45,8 @@ class ProveedorController extends Controller
         //VALIDACION
         $request->validate(
             [
-                'idProveedor' => 'required|regex:/^[ña-z]{3,4}[0-9]{6}[0-9a-z]{3}$/i', // regex solo letras
+                //'idProveedor' => 'required|regex:/^^[A-Z]{1}([AEIOU]{1})([A-Z]{2})([0-9]{2})(0[1-9]{1}|1[0-2]{1})([0-2]{1}[1-9]{1}|3(0|1))([0-9A-Z]{3})/gm', // regex solo letras
+
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
                 'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
                 'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
@@ -59,8 +59,17 @@ class ProveedorController extends Controller
         );
        Session::flash('message_save', '¡Proveedor guardado con éxito!');
 
+       $llavePrimaria = "PROV-".
+       strtoupper($request->apellidoPaterno[0]).
+       strtoupper($request->apellidoPaterno[1]).
+       strtoupper("-".$request->apellidoMaterno[0]).
+       strtoupper($request->apellidoMaterno[1]).
+       strtoupper($request->telefono[4]).
+       strtoupper($request->telefono[5]).'-'.date('Y-m-d H:i:s');
         $proveedor = new Proveedor($request->input());
-        $proveedor  ->idProveedor =Str::upper($request->input('idProveedor'));
+        
+        $proveedor  ->idProveedor =$llavePrimaria;
+
         
         $proveedor  ->nombre =Str::upper($request->input('nombre'));
         $proveedor  ->apellidoPaterno =Str::upper($request->input('apellidoPaterno'));
@@ -85,7 +94,9 @@ class ProveedorController extends Controller
     {
         if($proveedor->id == null){
           
-            return view('errors.404')->with('info','perra desgraciada');
+
+            return view('errors.404')->with('info','error');
+
         }
 
         return view('proveedor.show', compact('proveedor'));
@@ -170,4 +181,6 @@ class ProveedorController extends Controller
        
        
     }
+
+
 }

@@ -40,6 +40,8 @@
                                 @csrf
                                 <div class="row">
 
+
+
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del cliente</label>
@@ -58,11 +60,11 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
-                                            <input type="text" name="apellido_p" value="{{ old('apellido_p') }}"
+                                            <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno') }}"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('apellido_p')
+                                            @error('apellidoPaterno')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -73,47 +75,15 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
-                                            <input type="text" name="apellido_m" value="{{ old('apellido_m') }}"
+                                            <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno') }}"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('apellido_m')
+                                            @error('apellidoMaterno')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
-
-                                    <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">Dirección</label>
-                                            <textarea class="form-control text-upper"
-                                                placeholder="Direccion del cliente..."
-                                                name="direccion">{{ old('direccion') }}</textarea>
-
-                                            {{-- validaciones --}}
-                                            @error('direccion')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
-                                    </div>
-
-                                   
-
-                                            <div class="col-md-4 mt-4">
-                                                <div class="form-group">
-                                                    <label class="text-black h4">E-mail</label>
-                                                    <input type="text" name="correo" value="{{ old('correo') }}"
-                                                        placeholder="CORREO ELECTRONICO"
-                                                        class="form-control">
-
-                                                    {{-- validaciones --}}
-                                                    @error('correo')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
+                                    </div>                            
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Telefono</label>

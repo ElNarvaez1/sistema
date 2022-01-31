@@ -1,6 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\batertiaController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\CarritoController;
@@ -10,9 +10,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\llantaController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\CambioLLantasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +37,15 @@ Route::group(['middleware' =>'auth'], function(){
     // Rutas Dashboard admin
     Route::resource('productos', ProductosController::class);
     Route::resource('inventario', InventarioController::class);
-    Route::resource('permission', PermissionController::class)->only(['index','edit','update','destroy']);
+
+    Route::resource('permission', PermissionController::class);
+
     Route::resource('role', RolesController::class);
-    Route::resource('user', UserController::class)->only(['index','edit','update']);
 
+    Route::resource('user', UserController::class)->only(['index','create', 'store']);
 
+    Route::resource('bateria',batertiaController::class);
+    Route::resource('llantas',llantaController::class);
 
 
 // pedidos
@@ -78,9 +84,12 @@ Route::post('/Ventas/pago-tiket', [VentasController::class, 'payCart'])->name('v
 Route::get('/Ventas/detalleventa/{id}', [VentasController::class, 'detalle_venta'])->name('venta.detalle_venta');
 Route::delete('/Ventas/remove/{id}', [VentasController::class, 'delete'])->name('venta.delete');
 Route::get('/Ventas/download/ticket/{id}', [VentasController::class, 'ticket_download'])->name('venta.ticket');
+//agregado por ever
+Route::post('/Ventas/index/create/{id}', [VentasController::class,'Producto'])->name('ajax');
+
 
 // PROMOCIONES -API TELEGRAM
-Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
+//Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
 Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTelegram'])->name('promocion.send');
 // Route::get('/updated-activity', [PromocionesController::class,'updatedActivity']);
 
@@ -113,6 +122,24 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
   
     
 
+    Route::get('user/index/{id}/edit',[UserController::class,'edit'])->name('user.edit');
+    Route::delete('user/index/{id}',[UserController::class,'destroy'])->name('user.destroy');
+    Route::put('user/index/{id}',[UserController::class,'update'])->name('user.update');
+    
+//Proveedor
+    Route::get('Proveedor',[ProveedorController::class,'index'])->name('proveedor.index');
+    Route::get('Proveedor/index',[ProveedorController::class,'create'])->name('proveedor.create');
+    Route::post('Proveedor/index/add',[ProveedorController::class,'store'])->name('proveedor.store');
+    Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::class,'edit'])->name('proveedor.edit');
+    Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::class,'destroy'])->name('proveedor.destroy');
+    Route::put('Proveedor/index/{idProveedor}',[ProveedorController::class,'update'])->name('proveedor.update');
+
+//Cambio de llantas
+    Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
+    Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
+    Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
+    Route::get('/cambiollantas/index/show/{idCambio}',[CambioLLantasController::class,'show'])->name('cambio.show');
+    Route::resource('cambiollantas', CambioLLantasController::class);
 });
 
 

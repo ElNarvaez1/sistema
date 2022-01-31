@@ -40,9 +40,14 @@
                                                                     
                                     <div class="row">
 
-                                        {{-- add product --}}
+                                    {{-- add product --}}
                                         <div class="col-md-3 mt-4">
-                                            
+                                            <div class="form-group">
+                                                <a title="Agregar nuevo empleado" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
+                                                    href="{{ route('user.create') }}"> 
+                                                     Nuevo empleado <i class="fas fa-plus-circle"></i>
+                                                </a>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-2 mt-4">
@@ -93,35 +98,48 @@
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
                                                 <th scope="col">ID</th>
-                                                <th scope="col">NOMBRE</th>
                                                 <th scope="col">NOMBRE DE USUARIO</th>
                                                 <th scope="col">CORREO ELECTRÓNICO</th>
+                                                <th scope="col">NÚMERO DE CONTACTO</th>
+                                                <th scope="col">NOMBRE</th>
+                                                <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">FECHA DE CREACIÓN</th>
-                                                <th scope="col">EDITAR</th>
+                                                <th scope="col">OPERACIONES</th>
                                                 {{-- <th scope="col">ELIMINAR</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
                                             @can('user.index')
                                             @foreach ($users as $user)
-                                                <tr class="table-hover">
-                                                    
-                                                    
-                                                    <td class="text-center">{{ $user->id }}</td>
-                                                    <td class="text-center">{{ $user->name }}</td> 
-                                                    
-                                                    
+                                                <tr class="table-hover"> 
+                                                    <td scope="row">{{ $user->id }}</td>
                                                     <td class="text-center">{{ $user->username }}</td>
                                                     <td class="text-center">{{ $user->email }}</td>
-                                                    <td class="text-center">{{ $user->created_at }}</td>
-                                                    
+                                                    <td class="text-center">{{ $user->telefono }}</td> 
+                                                    <td class="text-center">{{ $user->name }}</td> 
+                                                    <td class="text-center">{{ $user->apellidoPaterno }}</td> 
+                                                    <td class="text-center">{{ $user->created_at }}</td>                                                
                                                     <td class="text-center">
-                                                        @can('user.edit')
-                                                        <a title="editar"
-                                                        href="{{ route('user.edit', [$user]) }}"
-                                                            class="btn btn-outline-primary btn-circle">
+
+                                                            {{-- @can('user.index') --}}
+                                                        <a title="editar datos" href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-edit"></i></a>
-                                                            @endcan
+                                                        {{-- @endcan --}}
+                                                        
+                                                        @if (strcmp($user->id, "Admin") !== 0)
+                                                        {{-- @can('productos.destroy') --}}
+                                                        <form action="{{ route('user.destroy', $user->id) }}"
+                                                            method="post">
+                                                            @method("delete")
+                                                            @csrf
+                                                            <button title="borrar empleado" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </form> 
+                                                        {{-- @endcan --}}
+                                                        @endif
+
+                                                           
                                                     </td>
                                                 
                                                 </tr>

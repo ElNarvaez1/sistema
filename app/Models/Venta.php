@@ -20,7 +20,7 @@ class Venta extends Model
         'cantidad',
         'impuesto',
         'descuento',
-        'total_venta'
+        'totalVenta'
     ];
 
      // función para la búsqueda de productos

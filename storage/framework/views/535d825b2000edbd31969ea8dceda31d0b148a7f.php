@@ -8,10 +8,10 @@
         <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            
             <!-- Main Content -->
             <div id="content">
                 <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
                     <?php echo csrf_field(); ?>
@@ -37,27 +37,6 @@
 
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
-                                <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">id del Proveedor</label>
-                                            <input type="text" name="idProveedor" value="<?php echo e(old('idProveedor')); ?>"
-                                                placeholder="id del Proveedor"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['idProveedor'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                        </div>
-
-                                    </div>
-
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del Proveedor</label>

@@ -9,6 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- ever agrego esto-->
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
+
     <title> <?php echo $__env->yieldContent('titulo','main'); ?> </title>
     <!-- Custom fonts for this template-->
     <link href="<?php echo e(asset('vendor/fontawesome-free/css/all.min.css')); ?>" rel="stylesheet" type="text/css">
@@ -23,6 +27,9 @@
 
     <link rel="stylesheet" href="<?php echo asset('css/main.css'); ?>">
 
+    <script scr="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+    
+
 </head>
 
 <body id="page-top">
@@ -31,9 +38,12 @@
     <!--Contenido principal-->
     <?php echo $__env->yieldContent('contenido'); ?>
 
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('js/Ever.js')); ?>"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 
 
@@ -50,11 +60,6 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo e(asset('js/demo/datatables-demo.js')); ?>"></script>
     <script src="<?php echo e(asset('js/main.js')); ?>"></script>
-
-
-
-
-
     <!-- Page level plugins -->
     <script src="<?php echo e(asset('vendor/chart.js/Chart.min.js')); ?>"></script>
 

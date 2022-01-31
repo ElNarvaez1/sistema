@@ -20,6 +20,7 @@
 </li>
 
 <!-- Divider -->
+
 <!--
  @can('reporte.index')
  <hr class="sidebar-divider my-0">
@@ -57,34 +58,39 @@
   {{-- @can('client.index') --}}
   <hr class="sidebar-divider my-0">
 
-  <li class="nav-item   {{ !Route::is('promocion.index') ?: 'active' }}">
-      <a class="nav-link" href="{{ route('promocion.index') }}">
+  <li class="nav-item   {{ !Route::is('cambiollantas.index') ?: 'active' }}">
+      <a class="nav-link" href="{{ route('cambiollantas.index') }}">
          <i class="fas fa-fw fa-percentage"></i>
           <span>Cambio de neumaticos</span>
       </a>
   </li>
   {{-- @endcan --}}
+  
 
-  {{--@can('proveedor.index') --}}
-<hr class="sidebar-divider my-0">
 
-<li class="nav-item   {{ !Route::is('proveedor.index') ?: 'active' }}">
-    <a class="nav-link" href="{{ route('proveedor.index') }}">
-        <i class="fas fa-qrcode"></i>
-        <span>Proveedores</span>
-    </a>
-</li>
-{{--@endcan--}}
-
+<!--
+        @can('productos.index')
+        <hr class="sidebar-divider my-0">
+            <li class="nav-item  {{ request()->routeIs('productos.index') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('productos.index') }}">
+                    <i class="fas fa-boxes"></i>
+                    <span>Productos</span></a>
+            </li>
+        @endcan
+-->
 
 @can('productos.index')
 <hr class="sidebar-divider my-0">
     <li class="nav-item  {{ request()->routeIs('productos.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('productos.index') }}">
-            <i class="fas fa-boxes"></i>
+      <i class="fas fa-car-battery"></i>
+
             <span>Productos</span></a>
     </li>
 @endcan
+
+
+
 
 @can('productos.index')
 <hr class="sidebar-divider my-0">
@@ -152,26 +158,28 @@
 @endcan
 
 
-
-
-
- @can('cart.invoices')
+{{--
+ @can('pedido.index') 
 <hr class="sidebar-divider my-0">
 
-<li class="nav-item   {{ !Route::is('cart.invoices') ?: 'active' }}">
-    <a class="nav-link" href="{{ route('cart.invoices') }}">
-        <i class="fas fa-file-invoice-dollar"></i>
-        <span>Nota de pago</span>
+<li class="nav-item   {{ !Route::is('pedido.index') ?: 'active' }}">
+    <a class="nav-link" href="{{ route('pedido.index') }}">
+        <i class="fas fa-qrcode"></i>
+        <span>Ver pedidos</span>
     </a>
 </li>
 @endcan
+--}}
+{{--@can('proveedor.index') --}}
+<hr class="sidebar-divider my-0">
 
-
-
-
-
-
-
+<li class="nav-item   {{ !Route::is('proveedor.index') ?: 'active' }}">
+    <a class="nav-link" href="{{ route('proveedor.index') }}">
+        <i class="fas fa-qrcode"></i>
+        <span>Proveedores</span>
+    </a>
+</li>
+{{--@endcan--}}
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

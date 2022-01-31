@@ -8,10 +8,10 @@
         @include('plantilla.sidebar')
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            
             <!-- Main Content -->
             <div id="content">
                 @include('layouts.nav-log')
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
                     @csrf
@@ -37,20 +37,6 @@
 
                                 @csrf
                                 <div class="row">
-                                <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">id del Proveedor</label>
-                                            <input type="text" name="idProveedor" value="{{ old('idProveedor') }}"
-                                                placeholder="id del Proveedor"
-                                                class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('idProveedor')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                    </div>
-
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del Proveedor</label>
