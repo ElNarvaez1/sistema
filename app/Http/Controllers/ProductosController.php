@@ -383,7 +383,7 @@ class ProductosController extends Controller
 
             //Validamos que la informacion del productos sea valida.    
             //$request->validate($this->rulesToProdcuto);
-
+ 
             $updateRin = RinModel::find($producto->idProducto);
             $updateRin->numero = $request->numeroRin;
             $updateRin->save();
