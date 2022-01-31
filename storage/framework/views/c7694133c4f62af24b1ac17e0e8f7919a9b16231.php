@@ -17,8 +17,8 @@
                     <?php echo csrf_field(); ?>
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> VER DATOS CLIENTE <i class="fas fa-eye"></i> </h1>
-                    <p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> VER DATOS DE LA VENTA <i class="fas fa-eye"></i> </h1>
+                    <!--<p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>-->
 
 
                     
@@ -27,7 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">ID Cliente: <?php echo e($venta->idCliente); ?></h6>
+                            <h6 class="m-0 font-weight-bold ">ID de la venta: <?php echo e($venta->idVenta); ?></h6>
                         </div>
 
                         
@@ -40,7 +40,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del cliente</label>
+                                            <label class="text-black h4">ID del cliente</label>
                                             <input type="text" name="idCliente" value="<?php echo e(old('idCliente',$venta->idCliente)); ?>"
                                                 placeholder="ID del cliente" disabled
                                                 class="form-control text-upper">
@@ -90,6 +90,27 @@ unset($__errorArgs, $__bag); ?>
                                                 class="form-control text-upper">
                                             
                                             <?php $__errorArgs = ['fecha'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">Sub total</label>
+                                            <input type="text" name="subTotal" value="<?php echo e(old('subTotal',$venta->subVenta)); ?>"
+                                                placeholder="sub venta" disabled
+                                                class="form-control text-upper">
+
+                                            
+                                            <?php $__errorArgs = ['subTotal'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

@@ -53,8 +53,8 @@
                         <tr>
                             <th>ARTICULO</th>
                             <th>CANTIDAD</th>
+                            <th>SUB TOTAL</th>
                             <th>DESCUENTO</th>
-                            
                         </tr>
                     </thead>
                     <tbody><tfoot>
@@ -62,11 +62,12 @@
                         <tr class="table-bordered">
                             
                         <td  class="text-center"><?php echo e($venta->idProducto); ?></td>
-                           <td  class="text-center"><?php echo e($ventas[0]->fecha); ?></td>
+                           <td  class="text-center"><?php echo e($venta->cantidad); ?></td>
+                           <td  class="text-center"><?php echo e($venta->subVenta); ?></td>
                            <td class="text-right"><?php echo e($venta->descuento); ?> %</td>
                             
                           <tr>
-                            <td colspan="2" class="text-right">
+                            <td colspan="3" class="text-right">
                               <h5>Total a pagar </h5>
                           </td>   
                             <td  class="text-right">

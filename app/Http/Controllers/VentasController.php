@@ -161,6 +161,7 @@ class VentasController extends Controller
            //$venta->impuesto = $item->attributes->iva;
            $venta->descuento = $item->attributes->descuento;
            $venta->fecha = now();
+           $venta->subVenta = Cart::getTotal();
            $venta->totalVenta = $item->attributes->total_pay; 
            $detalle = new DetalleVenta();
            $detalle->idProducto = $venta->idProducto;
@@ -198,8 +199,8 @@ class VentasController extends Controller
     }
     public function ticket_download($idVenta){
 
-        $ventas = DB::table('ventas')->where('idVenta', '=',$idVenta)
-        ->where('idVenta', "=",$idVenta)   
+        $ventas = DB::table('ventas')->join('detalle_ventas as DV','DV.idVenta','ventas.idVenta')
+        ->where('ventas.idVenta', '=',$idVenta)
         ->get();
        
         // share data to view

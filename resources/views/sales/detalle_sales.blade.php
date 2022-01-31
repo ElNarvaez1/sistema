@@ -17,8 +17,8 @@
                     @csrf
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> VER DATOS CLIENTE <i class="fas fa-eye"></i> </h1>
-                    <p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> VER DATOS DE LA VENTA <i class="fas fa-eye"></i> </h1>
+                    <!--<p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>-->
 
 
                     {{-- mensajes --}}
@@ -27,7 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">ID Cliente: {{$venta->idCliente}}</h6>
+                            <h6 class="m-0 font-weight-bold ">ID de la venta: {{$venta->idVenta}}</h6>
                         </div>
 
                         {{-- Formulario -> vista de productos --}}
@@ -40,7 +40,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del cliente</label>
+                                            <label class="text-black h4">ID del cliente</label>
                                             <input type="text" name="idCliente" value="{{ old('idCliente',$venta->idCliente) }}"
                                                 placeholder="ID del cliente" disabled
                                                 class="form-control text-upper">
@@ -76,6 +76,20 @@
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
                                             @error('fecha')
+                                                <div class="message-error">*{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">Sub total</label>
+                                            <input type="text" name="subTotal" value="{{ old('subTotal',$venta->subVenta) }}"
+                                                placeholder="sub venta" disabled
+                                                class="form-control text-upper">
+
+                                            {{-- validaciones --}}
+                                            @error('subTotal')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
