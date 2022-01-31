@@ -112,46 +112,59 @@
                                                 <th scope="col">ID</th>
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">DESCRIPCIÓN</th>
-                                                <th scope="col">MODELO</th>
-                                                <th scope="col">TIPO</th>
                                                 <th scope="col">PRECIO COMPRA</th>
                                                 <th scope="col">PRECIO VENTA</th>
                                                 <th scope="col">EXISTENCIA</th>
+                                                <th scope="col" colspan="2">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                                <tr class="table-hover">
-                                                    <th scope="row"><?php echo e($producto->id); ?></th>
-
-                                                    <td>
-                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
-                                                        <a class="text-center"
-                                                            href="<?php echo e(route('productos.show', [$producto])); ?>">
-
-                                                            <?php echo e($producto->nombre); ?>
-
-                                                        </a>
-                                                        <?php endif; ?>
-                                                    </td>
-
-                                                    <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
-                                                    <td class="text-center"><?php echo e($producto->modelo); ?></td>
-                                                    <td class="text-center"><?php echo e($producto->tipo); ?></td>
-                                                    <td class="text-center">$ <?php echo e($producto->precio_c); ?></td>
-                                                    <td class="text-center">$ <?php echo e($producto->precio_v); ?></td>
-                                                            <?php if($producto->stock>5): ?>
-                                                            <h5><td class="badge badge-success"><?php echo e($producto->stock); ?></td></h5>
-                                                            <?php elseif($producto->stock == 0): ?>
-                                                            <h5><td class="badge badge-danger"><?php echo e($producto->stock); ?></td></h5>
-                                                                <?php else: ?>
-                                                                <h5><td class="badge badge-warning"><?php echo e($producto->stock); ?></td></h5>
-                                                            <?php endif; ?>
-
-                                                </tr>
+                                            <tr class="table-hover">
+                                                <th scope="row"><?php echo e($producto->idProducto); ?></th>
+        
+                                                <td class="text-center"><?php echo e($producto->nombre); ?></td>
+        
+                                                <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
+                                                
+                                                <td class="text-center">$ <?php echo e($producto->precioCompra); ?></td>
+                                                <td class="text-center">$ <?php echo e($producto->PrecioVenta); ?></td>
+                                                <?php if($producto->existencia>5): ?>
+                                                <h5>
+                                                    <td class="badge badge-success"><?php echo e($producto->existencia); ?></td>
+                                                </h5>
+                                                <?php elseif($producto->existencia == 0): ?>
+                                                <h5>
+                                                    <td class="badge badge-danger"><?php echo e($producto->existencia); ?></td>
+                                                </h5>
+                                                <?php else: ?>
+                                                <h5>
+                                                    <td class="badge badge-warning"><?php echo e($producto->existencia); ?></td>
+                                                </h5>
+                                                <?php endif; ?>
+        
+        
+                                                <td>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.edit')): ?>
+                                                    <a title="editar producto" href="<?php echo e(route('productos.edit', $producto->idProducto)); ?>" class="btn btn-outline-primary btn-circle">
+                                                        <i class="fa fa-edit"></i></a>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.destroy')): ?>
+                                                    <form action="<?php echo e(route('productos.destroy', $producto->idProducto)); ?>" method="post">
+                                                        <?php echo method_field("delete"); ?>
+                                                        <?php echo csrf_field(); ?>
+                                                        <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                             <h3 class="text-black text-center"> ¡No hay registros!</h3>
-                                     <?php endif; ?>
+                                            <?php endif; ?>
                                         </tbody>
                                     </table>
 

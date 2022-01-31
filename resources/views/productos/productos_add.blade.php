@@ -179,7 +179,7 @@ idProveedor
                                                         <select title="" class="form-control text-upper" name="rin">
                                                             <option value="0">Seleccione Rin</option>
                                                             @foreach ($rines as $rin)
-                                                            <option value="{{$rin->idRin}}">{{$rin->idRin.'-'.$rin->numero}}</option>
+                                                            <option value="{{$rin->idRin}}">{{$rin->numero}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>

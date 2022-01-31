@@ -52,7 +52,7 @@ class ProveedorController extends Controller
                 'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
                 'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
                 'nombreEmpresa' => 'required|regex:/^[\pL\s\-]+$/u',
-                'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
+                'direccion' => 'required|regex:/[\pL\s\-"+\#0-9]+.$/u', // regex Solo: incluye algunos carcateres
                 'correo' => 'required|email',
                 'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
                

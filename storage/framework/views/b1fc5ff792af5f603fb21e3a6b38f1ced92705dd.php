@@ -60,8 +60,6 @@
                         <?php $__currentLoopData = $ventas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr class="table-bordered">
                             
-                        <!--<td  class="text-center"><?php echo e($venta->articulo); ?></td>
-                           <td  class="text-center"><?php echo e($venta->cantidad); ?></td>-->
                            <td class="text-right"><?php echo e($venta->descuento); ?> %</td>
                             
                           <tr>

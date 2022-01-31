@@ -105,7 +105,7 @@ class ProductosController extends Controller
         'largo' => 'required|numeric',
         'amperes' => 'required|numeric',
         'peso' => 'required|numeric',
-        'modelo' => 'required|alpha_num',
+        'modelo' => 'required|alpha_dash',
         'voltaje' => 'required|numeric'
     ];
 
@@ -212,13 +212,13 @@ class ProductosController extends Controller
                     $request->validate($this->rulesRin);
 
                     //Validamos que la informacion del productos sea valida.    
-                    $request->validate($this->rulesToProdcuto);
+                    //$request->validate($this->rulesToProdcuto);
 
                     $newRin = new RinModel();
                     $newRin->idRin =  $producto->idProducto;
                     $newRin->numero = $request->numeroRin;
                     $newRin->save();
-                    $producto->saveOrFail();
+                    //$producto->saveOrFail();
                 }
                 break;
         }

@@ -59,8 +59,6 @@
                         @foreach ($ventas as $venta)
                         <tr class="table-bordered">
                             
-                        <!--<td  class="text-center">{{ $venta->articulo }}</td>
-                           <td  class="text-center">{{ $venta->cantidad }}</td>-->
                            <td class="text-right">{{ $venta->descuento }} %</td>
                             
                           <tr>
