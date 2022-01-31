@@ -109,7 +109,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <div class="form-group">
                                                     <label class="text-black h4">Teléfono*</label>
                                                     <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>"
-                                                        placeholder="telefono "
+                                                        placeholder="teléfono "
                                                         class="form-control text-upper">
 
                                                     

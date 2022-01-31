@@ -88,7 +88,7 @@
                                                 <div class="form-group">
                                                     <label class="text-black h4">Teléfono*</label>
                                                     <input type="text" name="telefono" value="{{ old('telefono') }}"
-                                                        placeholder="telefono "
+                                                        placeholder="teléfono "
                                                         class="form-control text-upper">
 
                                                     {{-- validaciones --}}

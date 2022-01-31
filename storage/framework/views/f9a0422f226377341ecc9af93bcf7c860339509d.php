@@ -529,7 +529,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre los rines</h3>
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Numero de rin*</label>
+                                                        <label class="fs-5 text-body">Número de Rin*</label>
                                                         <input type="number" name="numeroRin" value="<?php echo e(old('numeroRin')); ?>" placeholder="" class="form-control text-upper" min="1">
                                                         <?php $__errorArgs = ['numeroRin'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

@@ -73,7 +73,7 @@
                                     <div class="form-group">
                                     <label class="text-black h4">Artículo*</label>
                                         <select title="" class="form-control text-upper" name="articulo" id="idP">
-                                            <option value="0">Seleccione el articulo</option>
+                                            <option value="0">Seleccione el artículo</option>
                                             @foreach ($productos as $Producto)
                                             <option value="{{$Producto->idProducto}}">{{$Producto->nombre}}</option>
                                             @endforeach
