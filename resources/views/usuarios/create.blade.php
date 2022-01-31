@@ -93,8 +93,8 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Telefono*</label>
-                                        <input type="text" name="telefono" value="{{ old('telefono') }}" placeholder="telefono " class="form-control text-upper">
+                                        <label class="text-black h4">Teléfono*</label>
+                                        <input type="text" name="telefono" value="{{ old('telefono') }}" placeholder="Teléfono " class="form-control text-upper">
 
                                         {{-- validaciones --}}
                                         @error('telefono')

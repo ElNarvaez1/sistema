@@ -200,7 +200,7 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   Seecion de sub formulario   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
-                                <h2 class="col-12 text-dark h5 my-3">Informacion individual</h2>
+                                <h2 class="col-12 text-dark h5 my-3">Información individual</h2>
                                 <input type="hidden" name="checkProducto" id="checkValue" value="llantas">
                                 <div class="container-fluid">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -217,7 +217,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="llantas-seccion" role="tabpanel" aria-labelledby="tipo-llantas">
                                             <div class="row pt-3">
-                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre las llantas</h3>
                                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   SECCION DEL ID DEL RIN   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                                 <?php (
                                                 $rines = DB::table('rin')->get()
@@ -256,7 +256,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">velocidad Maxima*</label>
+                                                        <label class="fs-5 text-body">Velocidad Maxima*</label>
                                                         <input type="number" name="velocidadMaxima" value="<?php echo e(old('velocidadMaxima')); ?>" class="form-control text-upper" min="1">
                                                         <?php $__errorArgs = ['velocidadMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -343,7 +343,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <!----------------------- CAJA DE TEXTO *Año fabricacnion* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Año fabricante*</label>
+                                                        <label class="fs-5 text-body">Año Fabricante*</label>
                                                         <input type="text" name="aniofabricante" value="<?php echo e(old('aniofabricante')); ?>" class="form-control text-upper" min="1">
                                                         <?php $__errorArgs = ['aniofabricante'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -360,7 +360,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <!----------------------- CAJA DE TEXTO *Tipo carrp* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Tipo carro*</label>
+                                                        <label class="fs-5 text-body">Tipo Carro*</label>
                                                         <input type="text" name="tipoCarro" value="<?php echo e(old('tipoCarro')); ?>" class="form-control text-upper" min="1">
                                                         <?php $__errorArgs = ['tipoCarro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -377,7 +377,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <!----------------------- CAJA DE TEXTO *marca carrp* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Marca carro*</label>
+                                                        <label class="fs-5 text-body">Marca Carro*</label>
                                                         <input type="text" name="marcaCarro" value="<?php echo e(old('marcaCarro')); ?>" class="form-control text-upper" min="1">
                                                         <?php $__errorArgs = ['marcaCarro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -397,7 +397,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="tab-pane fade" id="baterias-seccion" role="tabpanel" aria-labelledby="tipo-baterias">
                                             <div class="row">
-                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre baterias</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre baterias</h3>
                                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
@@ -526,7 +526,7 @@ unset($__errorArgs, $__bag); ?>
                                                     numero
                                                 ---->
                                             <div class="row">
-                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre los rines</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre los rines</h3>
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Numero de rin*</label>

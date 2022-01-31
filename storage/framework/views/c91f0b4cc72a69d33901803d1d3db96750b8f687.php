@@ -29,7 +29,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold">Búsqueda de usuarios por tipo y agregar roles</h6>
+                            <h6 class="m-0 font-weight-bold">Búsqueda de usuarios</h6>
                         </div>
 
 
@@ -151,7 +151,7 @@
                                     
                                     
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="<?php echo e(route('user.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('user.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="<?php echo e($users->previousPageUrl()); ?>">Anterior</a></li>

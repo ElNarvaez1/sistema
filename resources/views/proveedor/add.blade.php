@@ -95,7 +95,7 @@
                                         <div class="form-group">
                                             <label class="text-black h4">Dirección*</label>
                                             <textarea class="form-control text-upper"
-                                                placeholder="Direccion del proveedor..."
+                                                placeholder="Dirección del proveedor..."
                                                 name="direccion">{{ old('direccion') }}</textarea>
 
                                             {{-- validaciones --}}
@@ -124,9 +124,9 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono*</label>
+                                                    <label class="text-black h4">Teléfono*</label>
                                                     <input type="text" name="telefono" value="{{ old('telefono') }}"
-                                                        placeholder="telefono "
+                                                        placeholder="teléfono "
                                                         class="form-control text-upper">
 
                                                     {{-- validaciones --}}

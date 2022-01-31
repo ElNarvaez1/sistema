@@ -123,7 +123,7 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="form-group">
                                             <label class="text-black h4">Dirección*</label>
                                             <textarea class="form-control text-upper"
-                                                placeholder="Direccion del proveedor..."
+                                                placeholder="Dirección del proveedor..."
                                                 name="direccion"><?php echo e(old('direccion')); ?></textarea>
 
                                             
@@ -166,9 +166,9 @@ unset($__errorArgs, $__bag); ?>
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono*</label>
+                                                    <label class="text-black h4">Teléfono*</label>
                                                     <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>"
-                                                        placeholder="telefono "
+                                                        placeholder="teléfono "
                                                         class="form-control text-upper">
 
                                                     
