@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('titulo', 'Agregar Proveedor'); ?>
+<?php $__env->startSection('titulo', 'Editar Proveedor'); ?>
 <?php $__env->startSection('contenido'); ?>
 
  <!-- Page Wrapper -->
@@ -17,32 +17,31 @@
                     <?php echo csrf_field(); ?>
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> Nueva Proveedor<i class="fas fa-cart-arrow-down"></i> </h1>
-                    <p class="mb-4 text-dark">Registre una nuevo proveedor  aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> Editar Proveedor<i class="fas fa-cart-arrow-down"></i> </h1>
+                    <p class="mb-4 text-dark">Editar un proveedor.</p>
                     
                     <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4 rounded card-color">
+                    <<div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">Agregar Proveedor </h6>
+                            <h6 class="m-0 font-weight-bold "> ID PROVEEDOR:  <br>  <?php echo e($proveedor->idProveedor); ?> </h6>
                         </div>
+
 
                         
 
                         
                         <div class="container">
                            
-                            <form method="POST" action="<?php echo e(route('proveedor.store')); ?>" enctype="multipart/form-data">
-
+                            <form method="POST" action="<?php echo e(route('proveedor.update', $proveedor->idProveedor)); ?>" enctype="multipart/form-data">
+                                <?php echo method_field("PUT"); ?>
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
-                                
-
-                                    <div class="col-md-4 mt-4">
+                                 <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del Proveedor</label>
-                                            <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>"
+                                            <input type="text" name="nombre" value="<?php echo e(old('nombre',$proveedor->nombre)); ?>"
                                                 placeholder="Nombre del Proveedor"
                                                 class="form-control text-upper">
                                             
@@ -64,7 +63,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
-                                            <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno')); ?>"
+                                            <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno',$proveedor->apellidoPaterno)); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             
@@ -86,7 +85,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
-                                            <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno')); ?>"
+                                            <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno',$proveedor->apellidoMaterno)); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             
@@ -105,7 +104,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre de la empresa</label>
-                                            <input type="text" name="nombreEmpresa" value="<?php echo e(old('nombreEmpresa')); ?>"
+                                            <input type="text" name="nombreEmpresa" value="<?php echo e(old('nombreEmpresa',$proveedor->nombreEmpresa)); ?>"
                                                 placeholder="Nombre de la empresa"
                                                 class="form-control text-upper">
                                              
@@ -126,7 +125,7 @@ unset($__errorArgs, $__bag); ?>
                                             <label class="text-black h4">Dirección</label>
                                             <textarea class="form-control text-upper"
                                                 placeholder="Direccion del cliente..."
-                                                name="direccion"><?php echo e(old('direccion')); ?></textarea>
+                                                name="direccion"><?php echo e(old('direccion', $proveedor->direccion)); ?></textarea>
 
                                             
                                             <?php $__errorArgs = ['direccion'];
@@ -148,7 +147,7 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>
-                                                    <input type="text" name="correo" value="<?php echo e(old('correo')); ?>"
+                                                    <input type="text" name="correo" value="<?php echo e(old('correo', $proveedor->correo)); ?>"
                                                         placeholder="CORREO ELECTRONICO"
                                                         class="form-control">
 
@@ -169,7 +168,7 @@ unset($__errorArgs, $__bag); ?>
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Telefono</label>
-                                                    <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>"
+                                                    <input type="text" name="telefono" value="<?php echo e(old('telefono', $proveedor->telefono)); ?>"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">
 
@@ -233,4 +232,4 @@ unset($__errorArgs, $__bag); ?>
 
         <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/proveedor/add.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/proveedor/edit.blade.php ENDPATH**/ ?>

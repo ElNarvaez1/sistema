@@ -51,8 +51,6 @@
                                         </div>
 
                                     </div>
-
-
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Paterno</label>
@@ -66,8 +64,6 @@
                                         </div>
 
                                     </div>
-
-
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Apellido Materno</label>
@@ -98,7 +94,6 @@
                                             <textarea class="form-control text-upper"
                                                 placeholder="Direccion del cliente..."
                                                 name="direccion">{{ old('direccion', $proveedor->direccion) }}</textarea>
-
                                             {{-- validaciones --}}
                                             @error('direccion')
                                                 <div class="message-error">*{{ $message }}</div>
@@ -106,9 +101,6 @@
 
                                         </div>
                                     </div>
-
-                                   
-
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail</label>
@@ -122,34 +114,26 @@
                                                     @enderror
                                                 </div>
                                             </div>
-
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Telefono</label>
                                                     <input type="text" name="telefono" value="{{ old('telefono', $proveedor->telefono) }}"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">
-
                                                     {{-- validaciones --}}
                                                     @error('telefono')
                                                         <div class="message-error">*{{ $message }}</div>
                                                     @enderror
                                                 </div>
-                                            </div>
-
-
-
-                                            
+                                            </div>   
                                         </div>
-
                                         {{-- PARTE BOTONES --}}
-                                        
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-auto">
                                                 <button title="guardar datos" type="submit" class="btn btn-primary btn-ms">
                                                     Guardar <i class="fas fa-save"></i></button>
                                             </div>
-                                            
+                
                                             <div class="col-auto">
                                                 <a title="cancelar producto" href="{{route('proveedor.index')}}" class="btn btn-danger btn-ms">cancelar
                                                     <i class="fas fa-strikethrough"></i></a>

@@ -83,6 +83,9 @@ Route::post('/Ventas/pago-tiket', [VentasController::class, 'payCart'])->name('v
 Route::get('/Ventas/detalleventa/{id}', [VentasController::class, 'detalle_venta'])->name('venta.detalle_venta');
 Route::delete('/Ventas/remove/{id}', [VentasController::class, 'delete'])->name('venta.delete');
 Route::get('/Ventas/download/ticket/{id}', [VentasController::class, 'ticket_download'])->name('venta.ticket');
+//agregado por ever
+Route::post('/Ventas/index/create/{id}', [VentasController::class,'Producto'])->name('ajax');
+
 
 // PROMOCIONES -API TELEGRAM
 //Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
