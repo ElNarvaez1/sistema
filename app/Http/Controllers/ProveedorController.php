@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Session;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProveedorCreateRequest;
 use App\Models\Proveedor;
 use DB;
 class ProveedorController extends Controller
@@ -41,26 +42,21 @@ class ProveedorController extends Controller
      * @return \Illuminate\Http\Response
      */
     //  crear nuevo provedor 
- public function store(Request $request)
+ public function store(ProveedorCreateRequest $request)
     {
-        //VALIDACION
-        $request->validate(
-            [
-                'idProveedor' => 'required|regex:/^[ña-z]{3,4}[0-9]{6}[0-9a-z]{3}$/i', // regex solo letras
-                'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
-                'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
-                'nombreEmpresa' => 'required|regex:/^[\pL\s\-]+$/u',
-                'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
-                'correo' => 'required|email',
-                'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
-               
-            ]
-        );
+
        Session::flash('message_save', '¡Proveedor guardado con éxito!');
 
+       $llavePrimaria7 = "CLI-".
+        strtoupper($request->apellidoPaterno[0]).
+        strtoupper($request->apellidoPaterno[1]).
+        strtoupper("-".$request->apellidoMaterno[0]).
+        strtoupper($request->apellidoMaterno[1]).
+        strtoupper($request->telefono[4]).
+        strtoupper($request->telefono[5]);
+
         $proveedor = new Proveedor($request->input());
-        $proveedor  ->idProveedor =Str::upper($request->input('idProveedor'));
+        $proveedor  ->idProveedor =$llavePrimaria7;
         
         $proveedor  ->nombre =Str::upper($request->input('nombre'));
         $proveedor  ->apellidoPaterno =Str::upper($request->input('apellidoPaterno'));

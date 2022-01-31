@@ -37,26 +37,7 @@
 
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
-                                <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">RFC del Proveedor</label>
-                                            <input type="text" name="idProveedor" value="<?php echo e(old('idProveedor')); ?>"
-                                                placeholder="id del Proveedor"
-                                                class="form-control text-upper">
-                                            
-                                            <?php $__errorArgs = ['idProveedor'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <div class="message-error">*<?php echo e($message); ?></div>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                        </div>
 
-                                    </div>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
@@ -251,5 +232,4 @@ unset($__errorArgs, $__bag); ?>
             <!-- End of Page Wrapper -->
 
         <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/proveedor/add.blade.php ENDPATH**/ ?>
