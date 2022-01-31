@@ -92,7 +92,7 @@
                                         <label class="fs-5 text-body">Precio compra $</label>
                                         <input type="text" name=" precioCompra" value="{{ old(' precioCompra', $producto-> precioCompra) }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper" name="precio">
                                         {{-- validaciones --}}
-                                        @error(' precioCompra')
+                                        @error('precioCompra')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -153,6 +153,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Alto</label>
                                         <input type="number" name="alto" value="{{ $bateria->alto }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('alto')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion ancho -------------------------->
@@ -160,6 +163,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Ancho</label>
                                         <input type="number" name="ancho" value="{{ $bateria->ancho }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('ancho')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion LARGO -------------------------->
@@ -167,6 +173,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Largo</label>
                                         <input type="number" name="largo" value="{{ $bateria->largo }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('largo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion Amperes -------------------------->
@@ -174,6 +183,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Amperes</label>
                                         <input type="number" name="amperes" value="{{ $bateria->amperes }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('amperes')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion PERO -------------------------->
@@ -181,6 +193,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Peso</label>
                                         <input type="number" name="peso" value="{{ $bateria->peso }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('peso')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion MARCA -------------------------->
@@ -200,6 +215,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Voltaje</label>
                                         <input type="number" name="voltaje" value="{{ $bateria->voltaje }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('voltaje')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -328,6 +346,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Numero de rin</label>
                                         <input type="number" name="numeroRin" value="{{ $rin->numero }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('numeroRin')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>    

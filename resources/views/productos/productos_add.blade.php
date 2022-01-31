@@ -42,9 +42,6 @@
                                 <!--
                                 idProducto
 idProveedor
-
-
-
                                 -->
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  NOMBRE     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                 <div class="col-md-4 mt-4">
@@ -159,13 +156,13 @@ idProveedor
                                 <div class="container-fluid">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item col-md-4" role="presentation">
-                                            <label  id="tipo-llantas" class="nav-link text-dark w-100 active" data-name="llantas" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</label>
+                                            <label id="tipo-llantas" class="nav-link text-dark w-100 active" data-name="llantas" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</label>
                                         </li>
                                         <li class="nav-item col-md-4" role="presentation">
-                                            <label  id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</label>
+                                            <label id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</label>
                                         </li>
                                         <li class="nav-item col-md-4" role="presentation">
-                                            <label  id="tipo-rin" class="nav-link text-dark w-100" data-name="rin" data-bs-toggle="tab" data-bs-target="#rin-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Rin</label>
+                                            <label id="tipo-rin" class="nav-link text-dark w-100" data-name="rin" data-bs-toggle="tab" data-bs-target="#rin-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Rin</label>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
@@ -186,7 +183,7 @@ idProveedor
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                </div>        
+                                                </div>
 
                                                 <!----------------------- CAJA DE TEXTO *carga Maxima* ---------------------------------------------->
 
@@ -289,11 +286,14 @@ idProveedor
                                         <div class="tab-pane fade" id="baterias-seccion" role="tabpanel" aria-labelledby="tipo-baterias">
                                             <div class="row">
                                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre baterias</h3>
-                                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
+                                                <!--------------------------Inputs de la informacion ALTO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Alto</label>
                                                         <input type="number" name="alto" value="{{ old('alto') }}" placeholder="" class="form-control text-upper" min="1">
+                                                        @error('alto')
+                                                            <div class="message-error">*{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion ancho -------------------------->
@@ -301,6 +301,9 @@ idProveedor
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Ancho</label>
                                                         <input type="number" name="ancho" value="{{ old('ancho') }}" placeholder="" class="form-control text-upper" min="1">
+                                                        @error('ancho')
+                                                            <div class="message-error">*{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion LARGO -------------------------->
@@ -308,6 +311,9 @@ idProveedor
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Largo</label>
                                                         <input type="number" name="largo" value="{{ old('largo') }}" placeholder="" class="form-control text-upper" min="1">
+                                                        @error('largo')
+                                                            <div class="message-error">*{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion Amperes -------------------------->
@@ -315,6 +321,9 @@ idProveedor
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Amperes</label>
                                                         <input type="number" name="amperes" value="{{ old('amperes') }}" placeholder="" class="form-control text-upper" min="1">
+                                                        @error('amperes')
+                                                            <div class="message-error">*{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion PERO -------------------------->
@@ -322,6 +331,9 @@ idProveedor
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Peso</label>
                                                         <input type="number" name="peso" value="{{ old('peso') }}" placeholder="" class="form-control text-upper" min="1">
+                                                        @error('peso')
+                                                            <div class="message-error">*{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion MARCA -------------------------->
@@ -341,6 +353,9 @@ idProveedor
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Voltaje</label>
                                                         <input type="number" name="voltaje" value="{{ old('stock') }}" placeholder="" class="form-control text-upper" min="1">
+                                                        @error('voltaje')
+                                                            <div class="message-error">*{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div>
 
@@ -348,19 +363,22 @@ idProveedor
                                             </div>
                                         </div>
                                         <div class="tab-pane fad" id="rin-seccion" role="tabpanel" aria-labelledby="tipo-rin">
-                                                <!--- 
+                                            <!--- 
                                                     idRin
                                                     numero
-                                                ---->   
-                                                <div class="row">
-                                                    <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre los rines</h3>
-                                                    <div class="col-md-4 mt-2">
+                                                ---->
+                                            <div class="row">
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre los rines</h3>
+                                                <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Numero de rin</label>
                                                         <input type="number" name="numeroRin" value="{{ old('numeroRin') }}" placeholder="" class="form-control text-upper" min="1">
+                                                        @error('numeroRin')
+                                                            <div class="message-error">*{{ $message }}</div>
+                                                         @enderror
                                                     </div>
                                                 </div>
-                                                </div>    
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -405,16 +423,16 @@ idProveedor
 
 </div>
 <script>
-    const putValue= (e) =>{
+    const putValue = (e) => {
         let inputHiden = document.getElementById('checkValue');
         inputHiden.value = e.target.dataset.name;
     }
-    let botonLlantas = document.getElementById('tipo-llantas'); 
-    let botonBateria = document.getElementById('tipo-baterias'); 
-    let botonRin = document.getElementById('tipo-rin'); 
-    botonLlantas.addEventListener('click',putValue);
-    botonBateria.addEventListener('click',putValue);
-    botonRin.addEventListener('click',putValue);
+    let botonLlantas = document.getElementById('tipo-llantas');
+    let botonBateria = document.getElementById('tipo-baterias');
+    let botonRin = document.getElementById('tipo-rin');
+    botonLlantas.addEventListener('click', putValue);
+    botonBateria.addEventListener('click', putValue);
+    botonRin.addEventListener('click', putValue);
 </script>
 <!-- End of Page Wrapper -->
 
