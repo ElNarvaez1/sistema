@@ -44,7 +44,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del cliente</label>
+                                            <label class="text-black h4">Nombre del cliente*</label>
                                             <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>"
                                                 placeholder="Nombre del cliente"
                                                 class="form-control text-upper">
@@ -66,7 +66,7 @@ unset($__errorArgs, $__bag); ?>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Paterno</label>
+                                            <label class="text-black h4">Apellido Paterno*</label>
                                             <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno')); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
@@ -88,7 +88,7 @@ unset($__errorArgs, $__bag); ?>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Materno</label>
+                                            <label class="text-black h4">Apellido Materno*</label>
                                             <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno')); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
@@ -107,7 +107,7 @@ unset($__errorArgs, $__bag); ?>
                                     </div>                            
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono</label>
+                                                    <label class="text-black h4">Telefono*</label>
                                                     <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">
