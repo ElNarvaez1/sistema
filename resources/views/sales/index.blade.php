@@ -21,18 +21,14 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Ventas  <i class="fas fa-cart-arrow-down"></i></h1>
                     <p class="mb-4 text-dark">Consulte los datos de sus ventas aquí.</p>
-
-
                     {{-- mensajes --}}
                     @include('plantilla.notification')
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold">Búsqueda de ventas</h6>
                         </div>
-                        
-
+    
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 
@@ -53,16 +49,13 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 @php($arrayB = [
-                                                    'nombre',
-                                                    'articulo',
-                                                    'telefono',
-                                                    'cantidad',
-                                                    'descuento'
+                                                    ['idCliente','ID CLIENTE'],
+                                                    ['fecha','FECHA'],
                                                     // 'PRECIO COMPRA','PRECIO VENTA'
                                                     ])
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         @foreach ($arrayB as $buscar)
-                                                            <option>{{ $buscar }}</option>
+                                                            <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                         @endforeach
                                                     </select>
 
@@ -95,9 +88,6 @@
                             
                             @if ($sales->count()))
                             <div class="card-body ">
-                              
-                               
-                                
                                <div class="table-responsive">
                                     {{-- id="dataTable" --}}
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
@@ -127,7 +117,7 @@
                                                         @endcan --}}
                                                     </td>
 
-                                                    <td class="text-center">{{ $venta->produ }}</td>
+                                                    <td class="text-center">{{ $venta->idProducto }}</td>
                                                     <td class="text-center">{{ $venta->fecha }}</td>
                                                     <td class="text-center">{{ $venta->descuento }} %</td>
                                                     <td class="text-center"> $ {{ $venta->totalVenta }}</td>

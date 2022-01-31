@@ -8,10 +8,10 @@
         @include('plantilla.sidebar')
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            
             <!-- Main Content -->
             <div id="content">
                 @include('layouts.nav-log')
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid rounded color">
                     @csrf
@@ -37,23 +37,9 @@
 
                                 @csrf
                                 <div class="row">
-                                <div class="col-md-4 mt-4">
-                                        <div class="form-group">
-                                            <label class="text-black h4">RFC del Proveedor</label>
-                                            <input type="text" name="idProveedor" value="{{ old('idProveedor') }}"
-                                                placeholder="id del Proveedor"
-                                                class="form-control text-upper">
-                                            {{-- validaciones --}}
-                                            @error('idProveedor')
-                                                <div class="message-error">*{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                    </div>
-
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del Proveedor</label>
+                                            <label class="text-black h4">Nombre del Proveedor*</label>
                                             <input type="text" name="nombre" value="{{ old('nombre') }}"
                                                 placeholder="Nombre del Proveedor"
                                                 class="form-control text-upper">
@@ -68,7 +54,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Paterno</label>
+                                            <label class="text-black h4">Apellido Paterno*</label>
                                             <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno') }}"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
@@ -83,7 +69,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Materno</label>
+                                            <label class="text-black h4">Apellido Materno*</label>
                                             <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno') }}"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
@@ -95,7 +81,7 @@
                                     </div>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre de la empresa</label>
+                                            <label class="text-black h4">Nombre de la empresa*</label>
                                             <input type="text" name="nombreEmpresa" value="{{ old('nombreEmpresa') }}"
                                                 placeholder="Nombre de la empresa"
                                                 class="form-control text-upper">
@@ -107,9 +93,9 @@
                                     </div>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Dirección</label>
+                                            <label class="text-black h4">Dirección*</label>
                                             <textarea class="form-control text-upper"
-                                                placeholder="Direccion del cliente..."
+                                                placeholder="Direccion del proveedor..."
                                                 name="direccion">{{ old('direccion') }}</textarea>
 
                                             {{-- validaciones --}}
@@ -124,7 +110,7 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">E-mail</label>
+                                                    <label class="text-black h4">E-mail*</label>
                                                     <input type="text" name="correo" value="{{ old('correo') }}"
                                                         placeholder="CORREO ELECTRONICO"
                                                         class="form-control">
@@ -138,7 +124,7 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono</label>
+                                                    <label class="text-black h4">Telefono*</label>
                                                     <input type="text" name="telefono" value="{{ old('telefono') }}"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">

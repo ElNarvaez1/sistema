@@ -27,7 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">ID Cliente: {{$ventas->id}}</h6>
+                            <h6 class="m-0 font-weight-bold ">ID Cliente: {{$venta->idCliente}}</h6>
                         </div>
 
                         {{-- Formulario -> vista de productos --}}
@@ -41,11 +41,11 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Nombre del cliente</label>
-                                            <input type="text" name="nombre" value="{{ old('nombre',$ventas->nombre) }}"
-                                                placeholder="Nombre del cliente" disabled
+                                            <input type="text" name="idCliente" value="{{ old('idCliente',$venta->idCliente) }}"
+                                                placeholder="ID del cliente" disabled
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('nombre')
+                                            @error('idCliente')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -56,11 +56,11 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Articulo</label>
-                                            <input type="text" name="articulo" value="{{ old('articulo',$ventas->articulo) }}"
+                                            <input type="text" name="idProducto" value="{{ old('idProducto',$venta->idProducto) }}"
                                                 placeholder="articulo" disabled
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('articulo')
+                                            @error('idProducto')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -71,7 +71,7 @@
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Fecha</label>
-                                            <input type="text" name="fecha" value="{{ old('fecha',$ventas->fecha) }}"
+                                            <input type="text" name="fecha" value="{{ old('fecha',$venta->fecha) }}"
                                                 placeholder="Fecha" disabled
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
@@ -85,7 +85,7 @@
                                         <div class="form-group">
                                             <label class="text-black h4">Descuento</label>
                                             <input type="text" name="descuento" class="form-control text-upper"
-                                                placeholder="descuento" disabled value="{{ old('direccion',$ventas->descuento) }}"
+                                                placeholder="descuento" disabled value="{{ old('direccion',$venta->descuento) }}"
                                                 name="descuento">
 
                                             {{-- validaciones --}}
@@ -101,12 +101,12 @@
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
                                                     <label class="text-black h4">Total</label>
-                                                    <input type="text" name="correo" value="{{ old('total_venta',$ventas->total_venta) }}"
+                                                    <input type="text" name="totalVenta" value="{{ old('totalVenta',$venta->totalVenta) }}"
                                                         placeholder="Total venta" disabled
                                                         class="form-control text-upper">
 
                                                     {{-- validaciones --}}
-                                                    @error('total_venta')
+                                                    @error('totalVenta')
                                                         <div class="message-error">*{{ $message }}</div>
                                                     @enderror
                                                 </div>

@@ -21,18 +21,14 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Ventas  <i class="fas fa-cart-arrow-down"></i></h1>
                     <p class="mb-4 text-dark">Consulte los datos de sus ventas aquí.</p>
-
-
                     
                     <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold">Búsqueda de ventas</h6>
                         </div>
-                        
-
+    
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 
@@ -53,16 +49,13 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'nombre',
-                                                    'articulo',
-                                                    'telefono',
-                                                    'cantidad',
-                                                    'descuento'
+                                                    ['idCliente','ID CLIENTE'],
+                                                    ['fecha','FECHA'],
                                                     // 'PRECIO COMPRA','PRECIO VENTA'
                                                     ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option><?php echo e($buscar); ?></option>
+                                                            <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 
@@ -95,9 +88,6 @@
                             
                             <?php if($sales->count()): ?>)
                             <div class="card-body ">
-                              
-                               
-                                
                                <div class="table-responsive">
                                     
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
@@ -125,7 +115,7 @@
                                                         
                                                     </td>
 
-                                                    <td class="text-center"><?php echo e($venta->produ); ?></td>
+                                                    <td class="text-center"><?php echo e($venta->idProducto); ?></td>
                                                     <td class="text-center"><?php echo e($venta->fecha); ?></td>
                                                     <td class="text-center"><?php echo e($venta->descuento); ?> %</td>
                                                     <td class="text-center"> $ <?php echo e($venta->totalVenta); ?></td>
@@ -145,8 +135,8 @@
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>
-                                                            <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
-                                                                <i class="fa fa-trash"></i>
+                                                            <button title="Devolver" type="submit" class="btn btn-outline-danger btn-circle">
+                                                                <i class="fa fa-reply-all"></i>
                                                             </button>
                                                         </form> 
                                                         

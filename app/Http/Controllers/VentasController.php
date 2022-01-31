@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Venta;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Producto;
 use App\Models\DetalleVenta;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ class VentasController extends Controller
 
         return view('sales.index', compact('sales'));
     }
-
+//crea el cliente
     public function create(Request $request){
         // ver clientes
         
@@ -141,7 +142,7 @@ class VentasController extends Controller
         )   
         ->get();
        
-      
+      //guarda la venta 
         foreach (Cart::getContent() as $item) {
             
             $venta = new Venta();
@@ -152,13 +153,14 @@ class VentasController extends Controller
                 }
            //$venta ->idVenta = 'VEN-'.$venta->totalVenta.'-'.date('dmy');
            $venta ->idVenta = "VEN-".date('Y-m-d H:i:s');
-           $venta->idUser = 'Admin';
+           $venta->idUser =  Auth::user()->name;
            $venta->idProducto = $item->name;
            //$venta->nombre = $item->attributes->cliente;
            //$venta->articulo = $item->name;
            //$venta->cantidad = $item->quantity;
            //$venta->impuesto = $item->attributes->iva;
-           $venta->descuento = $item->attributes->descuento; 
+           $venta->descuento = $item->attributes->descuento;
+           $venta->fecha = now();
            $venta->totalVenta = $item->attributes->total_pay; 
            $detalle = new DetalleVenta();
            $detalle->idProducto = $venta->idProducto;
@@ -178,11 +180,11 @@ class VentasController extends Controller
         //$ventas = Venta::findOrFail($idVenta);
         // dd($ventas);
         $ventas = Venta::WHERE('idVenta',$idVenta)->get();
-        $Venta;
+        $venta;
         foreach($ventas as $vente){
-            $Venta=$vente;
+            $venta=$vente;
         }
-        return view('sales.detalle_sales',compact('ventas'));
+        return view('sales.detalle_sales',compact('venta'));
     }
 
     public function delete($idVenta){
@@ -209,4 +211,13 @@ class VentasController extends Controller
     // download PDF file with download method
     return $pdf->stream("ticket.pdf",array('Attachment'=>false));
     }
+    //agregado por ever
+    public function Producto($id)
+    {
+        $sql='SELECT * FROM productos WHERE idProducto=?';
+        $productos=DB::select($sql,[$id]);
+         return $productos;
+    }
+   
+
 }

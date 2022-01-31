@@ -58,7 +58,6 @@ class RoleSeeder extends Seeder
         //Permission::create(['nombre'=>'role.update','descripcion'=>''])->syncRoles($role1);
         Permission::create(['name'=>'role.destroy','descripcion'=>'Eliminar rol'])->syncRoles($role1);
         Permission::create(['name'=>'role.edit','descripcion'=>'Editar rol'])->syncRoles($role1);
-
         // Cart
         Permission::create(['name'=>'cart.cart','descripcion'=>'Ver catálogo'])->syncRoles($role2);
         Permission::create(['name'=>'cart.checkout','descripcion'=>'Ver carrito'])->syncRoles($role2);
@@ -75,6 +74,7 @@ class RoleSeeder extends Seeder
         // CLIENTES CRUD
         Permission::create(['name'=>'client.index','descripcion'=>'ver clientes'])->syncRoles([$role1,$role2,$role3]);
         Permission::create(['name'=>'client.create','descripcion'=>'agregar cliente'])->syncRoles([$role1,$role2,$role3]);
+        
         //Proveedor
         Permission::create(['name'=>'proveedor.index','descripcion'=>'ver provedor'])->syncRoles([$role1,$role2,$role3]);
         Permission::create(['name'=>'proveedor.create','descripcion'=>'crear provedor'])->syncRoles([$role1,$role2,$role3]);
@@ -96,5 +96,6 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'inventario.edit','descripcion'=>'editar inventario'])->syncRoles([$role1,$role2,$role3]);
         Permission::create(['name'=>'inventario.show','descripcion'=>'mostrar inventario'])->syncRoles([$role1,$role2,$role3]);
         Permission::create(['name'=>'inventario.destroy','descripcion'=>'eliminar inventario'])->assignRole($role1);
+
     }
 }

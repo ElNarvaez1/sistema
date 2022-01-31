@@ -22,7 +22,7 @@
         <hr>
         <div class="row">
             <div class="col-xs-10">
-                <h1 class="h6">nombre del empleado</h1>
+                <h1 class="h6">Nombre del empleado: {{ Auth::user()->name }}</h1>
                
             </div>
             <div class="col-xs-2 text-center">
@@ -40,7 +40,7 @@
             <div class="col-xs-6">
                 <h1 class="h2"> Ticket</h1>
                
-                <!--<strong>CLiente: </strong> {{ $ventas[0]->nombre}} -->
+                <strong>Cliente: </strong> {{ $ventas[0]->idCliente}}
                
             </div>
         </div>
@@ -59,8 +59,8 @@
                         @foreach ($ventas as $venta)
                         <tr class="table-bordered">
                             
-                        <!--<td  class="text-center">{{ $venta->articulo }}</td>
-                           <td  class="text-center">{{ $venta->cantidad }}</td>-->
+                        <td  class="text-center">{{ $venta->idProducto }}</td>
+                           <td  class="text-center">{{ $ventas[0]->fecha }}</td>
                            <td class="text-right">{{ $venta->descuento }} %</td>
                             
                           <tr>

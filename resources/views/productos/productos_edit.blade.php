@@ -92,7 +92,7 @@
                                         <label class="fs-5 text-body">Precio compra $</label>
                                         <input type="text" name=" precioCompra" value="{{ old(' precioCompra', $producto-> precioCompra) }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper" name="precio">
                                         {{-- validaciones --}}
-                                        @error(' precioCompra')
+                                        @error('precioCompra')
                                         <div class="message-error">*{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Proveedor     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-                                @php($proveedores = DB::table('proveedores')->get()    )
+                                @php($proveedores = DB::table('proveedores')->get() )
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Proveedor</label>
@@ -138,7 +138,7 @@
                             <div class="row">
 
                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre la bateria</h3>
-                                                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Modelo</label>
@@ -153,6 +153,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Alto</label>
                                         <input type="number" name="alto" value="{{ $bateria->alto }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('alto')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion ancho -------------------------->
@@ -160,6 +163,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Ancho</label>
                                         <input type="number" name="ancho" value="{{ $bateria->ancho }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('ancho')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion LARGO -------------------------->
@@ -167,6 +173,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Largo</label>
                                         <input type="number" name="largo" value="{{ $bateria->largo }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('largo')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion Amperes -------------------------->
@@ -174,6 +183,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Amperes</label>
                                         <input type="number" name="amperes" value="{{ $bateria->amperes }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('amperes')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion PERO -------------------------->
@@ -181,6 +193,9 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Peso</label>
                                         <input type="number" name="peso" value="{{ $bateria->peso }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('peso')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion MARCA -------------------------->
@@ -200,10 +215,13 @@
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Voltaje</label>
                                         <input type="number" name="voltaje" value="{{ $bateria->voltaje }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('voltaje')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
-                            @else
+                            @elseif($llanta != null)
                             <!-- ################################################################# Seccion de las llantas ############################################################################################ -->
                             <div class="row pt-3">
                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
@@ -320,24 +338,38 @@
                                 </div>
 
                             </div>
-                            @endif
-
-
-
-                            {{-- PARTE BOTONES --}}
-                            <div class="row justify-content-center mt-4">
-                                <div class="col-auto">
-                                    <button title="guardar producto" type="submit" class="btn btn-primary btn-ms">
-                                        Guardar <i class="fas fa-save"></i></button>
+                            @else
+                            <!-- Infomracion de los rines --->
+                            <div class="row pt-3">
+                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre los rines</h3>
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <label class="fs-5 text-body">Numero de rin</label>
+                                        <input type="number" name="numeroRin" value="{{ $rin->numero }}" placeholder="" class="form-control text-upper" min="1">
+                                        @error('numeroRin')
+                                        <div class="message-error">*{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="col-auto">
-                                    @can('productos.index')
-                                    <a title="cancelar" href={{ route('productos.index') }} class="btn btn-danger btn-ms">cancelar
-                                        <i class="fas fa-strikethrough"></i></a>
-                                    @endcan
+                            </div>    
+                                @endif
+
+
+
+                                {{-- PARTE BOTONES --}}
+                                <div class="row justify-content-center mt-4">
+                                    <div class="col-auto">
+                                        <button title="guardar producto" type="submit" class="btn btn-primary btn-ms">
+                                            Guardar <i class="fas fa-save"></i></button>
+                                    </div>
+                                    <div class="col-auto">
+                                        @can('productos.index')
+                                        <a title="cancelar" href={{ route('productos.index') }} class="btn btn-danger btn-ms">cancelar
+                                            <i class="fas fa-strikethrough"></i></a>
+                                        @endcan
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
+                                <br>
                         </form>
 
                     </div>

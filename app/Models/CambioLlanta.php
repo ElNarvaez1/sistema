@@ -13,6 +13,14 @@ class CambioLlanta extends Model
     public $incrementing = false;
     public $timestamps = false;
 
+    protected $fillable = [
+        'idCambio',
+        'idUser',
+        'fecha',
+        'descripcion',
+        'monto'
+    ];
+
     // función para la búsqueda deCambio de llanta
     public function scopeBuscarpor($query, $tipo, $buscar) {
     	if ( ($tipo) && ($buscar) ) {

@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\ClientCreateRequest;
+use App\Http\Requests\ClientEditRequest;
+use Illuminate\Validation\Rule;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -43,20 +46,9 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientCreateRequest $request)
     {
-        $request->validate(
-            [
-                //'idCliente' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
-                'apellidoPaterno' => 'required|regex:/^[\pL\s\-]+$/u',
-                'apellidoMaterno' => 'required|regex:/^[\pL\s\-]+$/u',
-                //'direccion' => 'required|regex:/[\pL\s\-"+0-9]+.$/u', // regex Solo: incluye algunos carcateres
-                //'correo' => 'required|email',
-                'telefono' => 'required|regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/u',
-               
-            ]
-        );
+
         Session::flash('message_save', '¡Cliente guardado con éxito!');
 
         $llavePrimaria = "CLI-".
@@ -65,7 +57,7 @@ class ClienteController extends Controller
         strtoupper("-".$request->apellidoMaterno[0]).
         strtoupper($request->apellidoMaterno[1]).
         strtoupper($request->telefono[4]).
-        strtoupper($request->telefono[5]);
+        strtoupper($request->telefono[5]).date('Y-m-d H:i:s');
 
         $cliente = new Cliente($request->input());
         $cliente ->idCliente = $llavePrimaria;
@@ -89,7 +81,7 @@ class ClienteController extends Controller
     public function show(Cliente $cliente)
     {
         
-        if($cliente->id == null){
+        if($cliente->idCliente == null){
           
             return view('errors.404');
         }
@@ -117,7 +109,7 @@ class ClienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $idCliente
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$idCliente)

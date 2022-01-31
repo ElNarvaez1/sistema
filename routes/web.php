@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\batertiaController;
 use App\Http\Controllers\ProductosController;
@@ -39,7 +38,9 @@ Route::group(['middleware' =>'auth'], function(){
     // Rutas Dashboard admin
     Route::resource('productos', ProductosController::class);
     Route::resource('inventario', InventarioController::class);
+
     Route::resource('permission', PermissionController::class);
+
     Route::resource('role', RolesController::class);
 
     Route::resource('user', UserController::class)->only(['index','create', 'store']);
@@ -84,6 +85,9 @@ Route::post('/Ventas/pago-tiket', [VentasController::class, 'payCart'])->name('v
 Route::get('/Ventas/detalleventa/{id}', [VentasController::class, 'detalle_venta'])->name('venta.detalle_venta');
 Route::delete('/Ventas/remove/{id}', [VentasController::class, 'delete'])->name('venta.delete');
 Route::get('/Ventas/download/ticket/{id}', [VentasController::class, 'ticket_download'])->name('venta.ticket');
+//agregado por ever
+Route::post('/Ventas/index/create/{id}', [VentasController::class,'Producto'])->name('ajax');
+
 
 // PROMOCIONES -API TELEGRAM
 //Route::get('/Promociones/index', [PromocionesController::class,'index'])->name('promocion.index');
@@ -106,6 +110,18 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::get('/user/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user/profile/{id}',[UserController::class,'show'])->name('user.show');
     Route::put('/user/profile/update/{id}',[UserController::class,'userUpdate'])->name('user.editar');
+//Proveedor
+    Route::get('Proveedor',[ProveedorController::Class,'index'])->name('proveedor.index');
+    Route::get('Proveedor/index',[ProveedorController::Class,'create'])->name('proveedor.create');
+    Route::post('Proveedor/index/add',[ProveedorController::Class,'store'])->name('proveedor.store');
+    Route::get('Proveedor/index/{idProveedor}/edit',[ProveedorController::Class,'edit'])->name('proveedor.edit');
+    Route::delete('Proveedor/index/{idProveedor}',[ProveedorController::Class,'destroy'])->name('proveedor.destroy');
+    Route::put('Proveedor/index/{idProveedor}',[ProveedorController::Class,'update'])->name('proveedor.update');
+    
+    
+
+  
+    
 
     Route::get('user/index/{id}/edit',[UserController::class,'edit'])->name('user.edit');
     Route::delete('user/index/{id}',[UserController::class,'destroy'])->name('user.destroy');
@@ -121,7 +137,7 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
 
 //Cambio de llantas
     Route::get('/cambiollantas/index/create', [CambioLLantasController::class,'create'])->name('cambiollantas.create');
-    //Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
+    Route::get('/cambiollantas/index', [CambioLLantasController::class,'index'])->name('cambiollantas.index');
     Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
     Route::get('/cambiollantas/index/show/{idCambio}',[CambioLLantasController::class,'show'])->name('cambio.show');
     Route::resource('cambiollantas', CambioLLantasController::class);

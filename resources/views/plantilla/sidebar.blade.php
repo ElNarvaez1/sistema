@@ -20,6 +20,7 @@
 </li>
 
 <!-- Divider -->
+
 <!--
  @can('reporte.index')
  <hr class="sidebar-divider my-0">
@@ -77,11 +78,13 @@
             </li>
         @endcan
 -->
+
 @can('productos.index')
 <hr class="sidebar-divider my-0">
     <li class="nav-item  {{ request()->routeIs('productos.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('productos.index') }}">
-            <i class="fas fa-car-battery"></i>
+      <i class="fas fa-car-battery"></i>
+
             <span>Productos</span></a>
     </li>
 @endcan
@@ -97,17 +100,6 @@
             <span>Inventario</span></a>
     </li>
 @endcan
-
- @can('cart.cart')
-    <hr class="sidebar-divider my-0">
-    <li class="nav-item {{ !Route::is('cart.cart') ?: 'active' }}">
-        <a class="nav-link" href="{{ url('/Cart/Carrito') }}">
-            <i class="fas fa-store"></i>
-            <span>Catálogo</span></a>
-    </li>
-@endcan
-
-
 
  @can('cita.create')
     <hr class="sidebar-divider my-0">
@@ -130,7 +122,7 @@
     </li>
 @endcan
 --}}        
-
+{{--
 @can('role.index')
     <hr class="sidebar-divider my-0">
 
@@ -141,7 +133,7 @@
         </a>
     </li>
 @endcan
-
+--}}
 
 @can('user.index')
     <hr class="sidebar-divider my-0">
@@ -153,6 +145,7 @@
         </a>
     </li>
 @endcan
+
 
 {{--
  @can('pedido.index') 
@@ -184,14 +177,6 @@
         <span>Devoluciones</span>
     </a>
 </li>
-
-
-
-
-
-
-
-
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

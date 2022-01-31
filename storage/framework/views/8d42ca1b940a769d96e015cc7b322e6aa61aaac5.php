@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- ever agrego esto-->
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title> <?php echo $__env->yieldContent('titulo','main'); ?> </title>
     <!-- Custom fonts for this template-->
@@ -22,6 +24,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <link rel="stylesheet" href="<?php echo asset('css/main.css'); ?>">
+    <script scr="https://code.jquery.com/jquery-3.6.0.js" type="text/javascript"></script>
+    
 
 </head>
 
@@ -35,6 +39,7 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo e(asset('vendor/jquery/jquery.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('js/Ever.js')); ?>"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 
 
@@ -51,6 +56,7 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo e(asset('js/demo/datatables-demo.js')); ?>"></script>
     <script src="<?php echo e(asset('js/main.js')); ?>"></script>
+    
 
 
 

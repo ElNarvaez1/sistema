@@ -20,4 +20,11 @@ class rolEmpleado extends Model
     public function user(){
         return $this->belongTO('App\Models\User');
     }
+
+    // función para la búsqueda de roles
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+    	if ( ($tipo) && ($buscar) ) {
+    		return $query->where($tipo,'like',"%$buscar%");
+    	}
+    }
 }

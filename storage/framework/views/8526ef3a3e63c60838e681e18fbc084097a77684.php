@@ -36,15 +36,13 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             <?php ($arrayB = [
-                                                        'idCambio',
-                                                        'fecha',
-                                                        'descripcion',
-                                                        'monto'                                                        
-                                                        // 'PRECIO COMPRA','PRECIO VENTA'
+                                                        ['idCambio','ID CAMBIO'],
+                                                        ['fecha','FECHA'],
+                                                        ['monto','MONTO']
                                                         ]); ?>
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option><?php echo e($buscar); ?></option>
+                                                    <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
@@ -97,11 +95,18 @@
                                         </thead>
                                     </table>
                                         <nav aria-label="Page navigation example float-right">
-                                            <a class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                            <a class="btn btn-outline-primary mx-3 mt-3" href="<?php echo e(route('cambiollantas.index')); ?>" >refrescar</a>
                                             <ul class="pagination float-right mt-3">
-                                                <li class="page-item"><a class="page-link">Anterior</a></li>
-                                                <li class="page-item"><a class="page-link">1</a></li>                                                
-                                                <li class="page-item"><a class="page-link">Siguiente</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="<?php echo e($listaCambioLlantas->previousPageUrl()); ?>">Anterior</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(1)); ?>">1</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(2)); ?>">2</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(3)); ?>">3</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="<?php echo e($listaCambioLlantas->nextPageUrl()); ?>">Siguiente</a></li>
                                             </ul>
                                         </nav>
                                 </div>
@@ -111,7 +116,7 @@
                                <div class=" row">
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <a href="" class="btn btn-outline-primary" >regresar</a>
+                                            <a href="<?php echo e(route('cambiollantas.index')); ?>" class="btn btn-outline-primary" >regresar</a>
                                         </div>
                                     </div>                                    
                                     <div class="col-md-8 mt-4">

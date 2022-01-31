@@ -37,15 +37,13 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                                        'idCambio',
-                                                        'fecha',
-                                                        'descripcion',
-                                                        'monto'                                                        
-                                                        // 'PRECIO COMPRA','PRECIO VENTA'
+                                                        ['idCambio','ID CAMBIO'],
+                                                        ['fecha','FECHA'],
+                                                        ['monto','MONTO']
                                                         ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 @foreach ($arrayB as $buscar)
-                                                    <option>{{ $buscar }}</option>
+                                                    <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -98,11 +96,18 @@
                                         </thead>
                                     </table>
                                         <nav aria-label="Page navigation example float-right">
-                                            <a class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                            <a class="btn btn-outline-primary mx-3 mt-3" href="{{route('cambiollantas.index')}}" >refrescar</a>
                                             <ul class="pagination float-right mt-3">
-                                                <li class="page-item"><a class="page-link">Anterior</a></li>
-                                                <li class="page-item"><a class="page-link">1</a></li>                                                
-                                                <li class="page-item"><a class="page-link">Siguiente</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="{{ $listaCambioLlantas->previousPageUrl() }}">Anterior</a></li>
+                                            <li class="page-item"><a class="page-link" href="{{$listaCambioLlantas->url(1) }}">1</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="{{ $listaCambioLlantas->url(2) }}">2</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="{{ $listaCambioLlantas->url(3) }}">3</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="{{ $listaCambioLlantas->nextPageUrl() }}">Siguiente</a></li>
                                             </ul>
                                         </nav>
                                 </div>
@@ -112,7 +117,7 @@
                                <div class=" row">
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <a href="" class="btn btn-outline-primary" >regresar</a>
+                                            <a href="{{route('cambiollantas.index')}}" class="btn btn-outline-primary" >regresar</a>
                                         </div>
                                     </div>                                    
                                     <div class="col-md-8 mt-4">
