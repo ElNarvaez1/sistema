@@ -50,15 +50,12 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                            'nombre',
-                                            'descripcion',
-                                            'modelo',
-                                            'tipo',
-                                            // 'PRECIO COMPRA','PRECIO VENTA'
+                                            ['nombre','NOMBRE'],
+                                            ['descripcion','DESCRIPCIÓN']
                                             ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 @foreach ($arrayB as $buscar)
-                                                <option>{{ $buscar }}</option>
+                                                    <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                 @endforeach
                                             </select>
 
@@ -99,7 +96,6 @@
                                         <th scope="col">NOMBRE</th>
                                         <th scope="col">DESCRIPCIÓN</th>
                                         <!-- <th scope="col">MODELO</th> -->
-                                        <th scope="col">TIPO</th>
                                         <th scope="col">PRECIO COMPRA</th>
                                         <th scope="col">PRECIO VENTA</th>
                                         <th scope="col">EXISTENCIA</th>
@@ -111,11 +107,9 @@
                                     <tr class="table-hover">
                                         <th scope="row">{{ $producto->idProducto }}</th>
 
-                                        <td class="text-center">{{ $producto->nombre }}</td>
+                                        <td class="text-center">{{  $producto->nombre }}</td>
 
                                         <td class="text-justify">{{ $producto->descripcion }}</td>
-                                        {{--<td class="text-center">{{ $producto->modelo }}</td> --}}
-                                        <td class="text-center">{{ $producto->tipo }}</td>
                                         <td class="text-center">$ {{ $producto->precioCompra }}</td>
                                         <td class="text-center">$ {{ $producto->PrecioVenta }}</td>
                                         @if ($producto->existencia>5)

@@ -169,6 +169,7 @@ class ProductosController extends Controller
 
                     //Validamos que la informacion del productos sea valida.    
                     $request->validate($this->rulesToProdcuto);
+                    $producto->nombre = 'Llanta - '.$producto->nombre;
 
                     $newLlanta = new llantaModel();
                     $newLlanta->idLlanta = $producto->idProducto;
@@ -193,6 +194,8 @@ class ProductosController extends Controller
 
                     //Validamos que la informacion del productos sea valida.    
                     $request->validate($this->rulesToProdcuto);
+                    $producto->nombre = 'Bateria - '.$producto->nombre;
+
                     $newBateria = new batertiaModel();
                     $newBateria->idBateria = $producto->idProducto;
                     $newBateria->idMarca = $request->idMarca;

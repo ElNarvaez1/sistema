@@ -50,15 +50,12 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             <?php ($arrayB = [
-                                            'nombre',
-                                            'descripcion',
-                                            'modelo',
-                                            'tipo',
-                                            // 'PRECIO COMPRA','PRECIO VENTA'
+                                            ['nombre','NOMBRE'],
+                                            ['descripcion','DESCRIPCIÓN']
                                             ]); ?>
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option><?php echo e($buscar); ?></option>
+                                                    <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
 
@@ -99,7 +96,6 @@
                                         <th scope="col">NOMBRE</th>
                                         <th scope="col">DESCRIPCIÓN</th>
                                         <!-- <th scope="col">MODELO</th> -->
-                                        <th scope="col">TIPO</th>
                                         <th scope="col">PRECIO COMPRA</th>
                                         <th scope="col">PRECIO VENTA</th>
                                         <th scope="col">EXISTENCIA</th>
@@ -114,8 +110,6 @@
                                         <td class="text-center"><?php echo e($producto->nombre); ?></td>
 
                                         <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
-                                        
-                                        <td class="text-center"><?php echo e($producto->tipo); ?></td>
                                         <td class="text-center">$ <?php echo e($producto->precioCompra); ?></td>
                                         <td class="text-center">$ <?php echo e($producto->PrecioVenta); ?></td>
                                         <?php if($producto->existencia>5): ?>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Venta;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Producto;
 use App\Models\DetalleVenta;
 use Illuminate\Http\Request;
@@ -152,13 +153,14 @@ class VentasController extends Controller
                 }
            //$venta ->idVenta = 'VEN-'.$venta->totalVenta.'-'.date('dmy');
            $venta ->idVenta = "VEN-".date('Y-m-d H:i:s');
-           $venta->idUser = 'Admin';
+           $venta->idUser =  Auth::user()->name;
            $venta->idProducto = $item->name;
            //$venta->nombre = $item->attributes->cliente;
            //$venta->articulo = $item->name;
            //$venta->cantidad = $item->quantity;
            //$venta->impuesto = $item->attributes->iva;
-           $venta->descuento = $item->attributes->descuento; 
+           $venta->descuento = $item->attributes->descuento;
+           $venta->fecha = now();
            $venta->totalVenta = $item->attributes->total_pay; 
            $detalle = new DetalleVenta();
            $detalle->idProducto = $venta->idProducto;

@@ -38,7 +38,6 @@
                                             @php($arrayB = [
                                                         'idCambioDeLlanta',
                                                         'fecha',
-                                                        'descripcion',
                                                         'total',
                                                         'empleado'
                                                         // 'PRECIO COMPRA','PRECIO VENTA'

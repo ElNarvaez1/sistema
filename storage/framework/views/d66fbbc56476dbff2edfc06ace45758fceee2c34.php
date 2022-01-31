@@ -49,16 +49,13 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'nombre',
-                                                    'articulo',
-                                                    'telefono',
-                                                    'cantidad',
-                                                    'descuento'
+                                                    ['idCliente','ID CLIENTE'],
+                                                    ['fecha','FECHA'],
                                                     // 'PRECIO COMPRA','PRECIO VENTA'
                                                     ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option><?php echo e($buscar); ?></option>
+                                                            <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 

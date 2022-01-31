@@ -36,7 +36,7 @@
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 
-                                <form action="{{ route('productos.index', [$productos]) }}" method="GET">
+                                <form action="{{ route('inventario.index', [$productos]) }}" method="GET">
                                     <div class="row">
 
                                         {{-- add product --}}
@@ -49,16 +49,13 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 @php($arrayB = [
-                                                    'nombre',
-                                                    'descripcion',
-                                                    'modelo',
-                                                    'tipo',
-                                                    // 'PRECIO COMPRA','PRECIO VENTA'
-                                                    ])
-                                                    <select title="buscar por" class="form-control text-upper" name="type">
-                                                        @foreach ($arrayB as $buscar)
-                                                            <option>{{ $buscar }}</option>
-                                                        @endforeach
+                                                    ['nombre','NOMBRE'],
+                                                    ['descripcion','DESCRIPCIÓN']
+                                                ])
+                                                <select title="buscar por" class="form-control text-upper" name="type">
+                                                    @foreach ($arrayB as $buscar)
+                                                        <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
+                                                    @endforeach
                                                     </select>
 
                                                 </div>

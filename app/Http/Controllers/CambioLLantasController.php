@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\CambioLlanta;
 use DateTime;
 use Session;
@@ -24,7 +25,7 @@ class CambioLLantasController extends Controller
         $cambiollanta = new CambioLlanta();
         $fecha = date('Y-m-d');
         $cambiollanta->idCambio = 'CAMB-'.date('Y-m-d H:i:s');
-        $cambiollanta->idUser = 'Admin';
+        $cambiollanta->idUser = Auth::user()->name;
         $cambiollanta->fecha = $fecha;
         $cambiollanta->descripcion = $request->input('descripcion');
         $cambiollanta->monto = $request->input('totalcambio');

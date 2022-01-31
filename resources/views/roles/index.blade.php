@@ -50,40 +50,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2 mt-4">
-                                            <div class="form-group">
-                                                @php($arrayB = [
-                                                    'NOMBRE',
-                                                    'FECHA'
-                                                    ])
-                                                    <select title="buscar por" class="form-control" name="type">
-                                                        @foreach ($arrayB as $buscar)
-                                                       
-                                                            <option>{{ $buscar }}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4 mt-4">
-                                                <div class="form-group">
-                                                    <input class="form-control" name="buscarpor" type="search"
-                                                        placeholder="Buscar">
-
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-md-3 mt-4">
-                                                <div class="form-group">
-                                                    <button title="buscar" class="btn btn-outline-primary text-black2"
-                                                        type="submit">Buscar</button>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
                                     </form>
                                     @endcan
                                 </div>

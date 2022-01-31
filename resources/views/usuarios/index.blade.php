@@ -53,14 +53,14 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 @php($arrayB = [
-                                                    'NOMBRE',
-                                                    'NOMBRE DE USUARIO',
-                                                    'CORREO ELECTRÓNICO'
+                                                    ['name','NOMBRE'],
+                                                    ['username','NOMBRE DE USUARIO'],
+                                                    ['email','CORREO ELECTRÓNICO']
                                                     ])
                                                     <select  title="buscar por" class="form-control" name="type">
                                                         @foreach ($arrayB as $buscar)
                                                        
-                                                            <option>{{ $buscar }}</option>
+                                                            <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                         @endforeach
                                                     </select>
 
