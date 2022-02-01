@@ -25,7 +25,7 @@ $(document).ready(function() {
      })
      jQuery("#btn").on("click",function(){
          var Disponible =jQuery("#s").val();
-         var cantidad=jQuery("#s").val();
+         var cantidad=jQuery("#ca").val();
          if(Disponible<=cantidad)alert('Los productos se agotaron');
  
      })
