@@ -352,8 +352,8 @@ class ProductosController extends Controller
             $newLlanta->ancho = $request->anchoLlanta;
             $newLlanta->diametro = $request->diametro;
             $newLlanta->Fabricante = $request->fabricante;
-            $tempYear = Carbon::create($request->aniofabricante, 0, 0);
-            $newLlanta->anioFabricacion = $tempYear;
+            //$tempYear = Carbon::create($request->aniofabricante, 0, 0);
+            $newLlanta->anioFabricacion =  date('Y-m-d H:i:s',$request->aniofabricante);
             $newLlanta->tipoDeCarro = $request->tipoCarro;
             $newLlanta->marcasDeCarro = $request->marcaCarro;
             $newLlanta->save();

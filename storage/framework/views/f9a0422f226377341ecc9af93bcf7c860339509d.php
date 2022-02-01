@@ -590,7 +590,7 @@ unset($__errorArgs, $__bag); ?>
     });
 
     precioVentaInput.addEventListener('blur',e=>{
-        if(e.target.value<precioCompraInput.value){
+        if(Number(e.target.value)<Number(precioCompraInput.value)){
             alert('No pueder ser menor que el precio de compra, no tiene sentido');
         }
     });
