@@ -435,6 +435,11 @@ idProveedor
         precioVentaInput.value = e.target.value;
     });
 
+    precioVentaInput.addEventListener('blur',e=>{
+        if(e.target.value<precioCompraInput.value){
+            alert('No pueder ser menor que el precio de compra, no tiene sentido')
+        }
+    });
 
     let anioFab = document.getElementById('anioFab');
     anioFab.addEventListener('keyup',e=>{
