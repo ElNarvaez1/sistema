@@ -15,7 +15,7 @@
                     <br>
                     <!--encabezado-->                    
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Cambios de llantas  <i class="fas fa-tools"></i></h1>
-                    <p class="mb-4 text-dark">Consulte la información historica sobre el cambio de llantas</p>
+                    <p class="mb-4 text-dark">Consulte la información histórica sobre el cambio de llantas</p>
                     {{-- mensajes --}}
                     @include('plantilla.notification')
                     <div class="card shadow mb-4 rounded card-color">
@@ -24,6 +24,7 @@
                         </div>
                         <div class="card shadow  rounded card-color">
                             <div class="container">
+                            <form action="{{ route('cambiollantas.index', [$listaCambioLlantas]) }}" method="GET">
                                 <div class="row">
                                 {{-- cambiar llantas --}}
                                     <div class="col-md-3 mt-4">
@@ -36,16 +37,13 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                                        'idCambioDeLlanta',
-                                                        'fecha',
-                                                        'descripcion',
-                                                        'total',
-                                                        'empleado'
-                                                        // 'PRECIO COMPRA','PRECIO VENTA'
+                                                        ['idCambio','ID CAMBIO'],
+                                                        ['fecha','FECHA'],
+                                                        ['monto','MONTO']
                                                         ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 @foreach ($arrayB as $buscar)
-                                                    <option>{{ $buscar }}</option>
+                                                    <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -62,7 +60,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            </form>
                             </div>
                             @if ($listaCambioLlantas->count()))
                             <div class="card-body "> 
@@ -71,18 +69,18 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">IDCambioLlanta</th>
-                                                <th scope="col">fecha</th>                                               
-                                                <th scope="col">total</th>
-                                                <th scope="col">Empleado</th>                                                
-                                                <th scope="col" colspan="2">ACCIONES</th>                                                
+                                                <th scope="col">ID</th>
+                                                <th scope="col">FECHA DE CAMBIO</th>                                               
+                                                <th scope="col">TOTAL ($)</th>
+                                                <th scope="col">EMPLEADO</th>                                                
+                                                <th scope="col" colspan="2">ACCIÓN</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
                                             @forelse ($listaCambioLlantas as $cambio)
                                                 <tr class="table-hover">
                                                     <th class="text-center" scope="row">{{$cambio->idCambio}}</th>
                                                     <th class="text-center" scope="row">{{$cambio->fecha}}</th>                                                    
-                                                    <th class="text-center" scope="row">${{$cambio->monto}}</th>
+                                                    <th class="text-center" scope="row">${{number_format($cambio->monto,2,'.','')}} MXN</th>
                                                     <th class="text-center" scope="row">{{$cambio->idUser}}</th>
                                                     <th class="text-center" scope="row">
                                                     {{-- @can('cambiollantas.index') --}}
@@ -98,11 +96,18 @@
                                         </thead>
                                     </table>
                                         <nav aria-label="Page navigation example float-right">
-                                            <a class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                            <a class="btn btn-outline-primary mx-3 mt-3" href="{{route('cambiollantas.index')}}" >Refrescar</a>
                                             <ul class="pagination float-right mt-3">
-                                                <li class="page-item"><a class="page-link">Anterior</a></li>
-                                                <li class="page-item"><a class="page-link">1</a></li>                                                
-                                                <li class="page-item"><a class="page-link">Siguiente</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="{{ $listaCambioLlantas->previousPageUrl() }}">Anterior</a></li>
+                                            <li class="page-item"><a class="page-link" href="{{$listaCambioLlantas->url(1) }}">1</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="{{ $listaCambioLlantas->url(2) }}">2</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="{{ $listaCambioLlantas->url(3) }}">3</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="{{ $listaCambioLlantas->nextPageUrl() }}">Siguiente</a></li>
                                             </ul>
                                         </nav>
                                 </div>
@@ -112,7 +117,7 @@
                                <div class=" row">
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <a href="" class="btn btn-outline-primary" >regresar</a>
+                                            <a href="{{route('cambiollantas.index')}}" class="btn btn-outline-primary" >regresar</a>
                                         </div>
                                     </div>                                    
                                     <div class="col-md-8 mt-4">

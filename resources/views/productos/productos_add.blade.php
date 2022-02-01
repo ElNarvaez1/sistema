@@ -82,19 +82,6 @@ idProveedor
                                         @enderror
                                     </div>
                                 </div>
-                                <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Imagen     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="fs-5 text-body">Agregar imagen*</label>
-                                        <!-- Upload image input-->
-                                        <input type="file" name="imagen" accept="image/*" placeholder="Inserte una imagen" class="form-control text-upper">
-                                        {{-- validaciones --}}
-                                        @error('imagen')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Precio compra     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
                                 <div class="col-md-4 mt-4">
@@ -151,7 +138,7 @@ idProveedor
                                 </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   Seecion de sub formulario   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
 
-                                <h2 class="col-12 text-dark h5 my-3">Informacion individual</h2>
+                                <h2 class="col-12 text-dark h5 my-3">Información individual</h2>
                                 <input type="hidden" name="checkProducto" id="checkValue" value="llantas">
                                 <div class="container-fluid">
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -159,7 +146,7 @@ idProveedor
                                             <label id="tipo-llantas" class="nav-link text-dark w-100 active" data-name="llantas" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</label>
                                         </li>
                                         <li class="nav-item col-md-4" role="presentation">
-                                            <label id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</label>
+                                            <label id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterías</label>
                                         </li>
                                         <li class="nav-item col-md-4" role="presentation">
                                             <label id="tipo-rin" class="nav-link text-dark w-100" data-name="rin" data-bs-toggle="tab" data-bs-target="#rin-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Rin</label>
@@ -168,7 +155,7 @@ idProveedor
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="llantas-seccion" role="tabpanel" aria-labelledby="tipo-llantas">
                                             <div class="row pt-3">
-                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre las llantas</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre las llantas</h3>
                                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   SECCION DEL ID DEL RIN   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                                 @php(
                                                 $rines = DB::table('rin')->get()
@@ -200,7 +187,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">velocidad Maxima*</label>
+                                                        <label class="fs-5 text-body">Velocidad Maxima*</label>
                                                         <input type="number" name="velocidadMaxima" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
                                                         @error('velocidadMaxima')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -211,7 +198,7 @@ idProveedor
                                                 <!----------------------- CAJA DE Presion ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Presion*</label>
+                                                        <label class="fs-5 text-body">Presión*</label>
                                                         <input type="number" name="presion" value="{{ old('presion') }}" class="form-control text-upper" min="1">
                                                         @error('presion')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -232,7 +219,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Diametro*</label>
+                                                        <label class="fs-5 text-body">Diámetro*</label>
                                                         <input type="number" name="diametro" value="{{ old('diametro') }}" class="form-control text-upper" min="1">
                                                         @error('diametro')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -252,7 +239,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *Año fabricacnion* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Año fabricante*</label>
+                                                        <label class="fs-5 text-body">Año Fabricante*</label>
                                                         <input type="text" name="aniofabricante" value="{{ old('aniofabricante') }}" class="form-control text-upper" min="1">
                                                         @error('aniofabricante')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -262,7 +249,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *Tipo carrp* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Tipo carro*</label>
+                                                        <label class="fs-5 text-body">Tipo Carro*</label>
                                                         <input type="text" name="tipoCarro" value="{{ old('tipoCarro') }}" class="form-control text-upper" min="1">
                                                         @error('tipoCarro')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -272,7 +259,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *marca carrp* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Marca carro*</label>
+                                                        <label class="fs-5 text-body">Marca Carro*</label>
                                                         <input type="text" name="marcaCarro" value="{{ old('marcaCarro') }}" class="form-control text-upper" min="1">
                                                         @error('marcaCarro')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -285,7 +272,7 @@ idProveedor
                                         </div>
                                         <div class="tab-pane fade" id="baterias-seccion" role="tabpanel" aria-labelledby="tipo-baterias">
                                             <div class="row">
-                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre baterias</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre baterías</h3>
                                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
@@ -372,10 +359,10 @@ idProveedor
                                                     numero
                                                 ---->
                                             <div class="row">
-                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre los rines</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre los rines</h3>
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Numero de rin*</label>
+                                                        <label class="fs-5 text-body">Número de Rin*</label>
                                                         <input type="number" name="numeroRin" value="{{ old('numeroRin') }}" placeholder="" class="form-control text-upper" min="1">
                                                         @error('numeroRin')
                                                             <div class="message-error">*{{ $message }}</div>

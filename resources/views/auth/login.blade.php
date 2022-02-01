@@ -53,16 +53,6 @@
                             {{ __('Ingresar') }}
                         </button>
                     </form>
-                    <div class="text-center">
-                        @if (Route::has('password.request'))
-                        <a class="small" href="{{ route('password.request') }}">
-                            ¿Has olvidado tu contraseña?
-                        </a>
-                        @endif
-                    </div>
-                    <div class="text-center">
-                        <a class="small" href="{{ route('register') }}">¡Crea una cuenta!</a>
-                    </div>
                 </div>
             </div>
         </div>

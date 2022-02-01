@@ -41,7 +41,7 @@
                                             <div class="form-group">
                                                 <a title="agregar nuevo cliente" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
                                                     href="{{ route('venta.create') }}"> 
-                                                     nueva venta <i class="fas fa-cart-arrow-down"></i>
+                                                     Nueva venta <i class="fas fa-cart-arrow-down"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -49,16 +49,13 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 @php($arrayB = [
-                                                    'nombre',
-                                                    'articulo',
-                                                    'telefono',
-                                                    'cantidad',
-                                                    'descuento'
+                                                    ['idCliente','ID CLIENTE'],
+                                                    ['fecha','FECHA'],
                                                     // 'PRECIO COMPRA','PRECIO VENTA'
                                                     ])
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         @foreach ($arrayB as $buscar)
-                                                            <option>{{ $buscar }}</option>
+                                                            <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                         @endforeach
                                                     </select>
 
@@ -96,13 +93,13 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">NUMERO</th>
+                                                <th scope="col">ID</th>
                                                 <th scope="col">NOMBRE</th>
-                                                <th scope="col">ARTICULO</th>
+                                                <th scope="col">ARTÍCULO</th>
                                                 <th scope="col">FECHA</th>
-                                                <th scope="col">DESCUENTO</th>
-                                                <th scope="col">TOTAL</th>
-                                                <th scope="col" colspan="3">ACCIONES</th>
+                                                <th scope="col">% DE DESCUENTO</th>
+                                                <th scope="col">TOTAL $</th>
+                                                <th scope="col" colspan="3">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
@@ -123,7 +120,7 @@
                                                     <td class="text-center">{{ $venta->idProducto }}</td>
                                                     <td class="text-center">{{ $venta->fecha }}</td>
                                                     <td class="text-center">{{ $venta->descuento }} %</td>
-                                                    <td class="text-center"> $ {{ $venta->totalVenta }}</td>
+                                                    <td class="text-center"> $ {{ number_format($venta->totalVenta,2,'.','') }} MXN</td>
                                                            
 
                                                     
@@ -168,7 +165,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="{{ $sales->previousPageUrl() }}">Anterior</a></li>
@@ -189,7 +186,7 @@
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="{{ route('venta.index')}}" class="btn btn-outline-primary" >Regresar</a>
                                     </div>
                                 </div>
                                 

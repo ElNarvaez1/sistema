@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Venta;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Producto;
 use App\Models\DetalleVenta;
 use Illuminate\Http\Request;
@@ -127,7 +128,7 @@ class VentasController extends Controller
     public function clear(Request $request)
     {
         Cart::clear();
-        Session::flash('message_delete', " ¡se a borrado el carrito correctamente!");
+        Session::flash('message_delete', " ¡se ha borrado el carrito correctamente!");
 
         return back();
     }
@@ -152,19 +153,34 @@ class VentasController extends Controller
                 }
            //$venta ->idVenta = 'VEN-'.$venta->totalVenta.'-'.date('dmy');
            $venta ->idVenta = "VEN-".date('Y-m-d H:i:s');
-           $venta->idUser = 'Admin';
+           $venta->idUser =  Auth::user()->name;
            $venta->idProducto = $item->name;
            //$venta->nombre = $item->attributes->cliente;
            //$venta->articulo = $item->name;
            //$venta->cantidad = $item->quantity;
            //$venta->impuesto = $item->attributes->iva;
-           $venta->descuento = $item->attributes->descuento; 
+           $venta->descuento = $item->attributes->descuento;
+           $venta->fecha = now();
+           $venta->subVenta = Cart::getTotal();
            $venta->totalVenta = $item->attributes->total_pay; 
            $detalle = new DetalleVenta();
            $detalle->idProducto = $venta->idProducto;
            $detalle->idVenta = $venta->idVenta;
            $detalle->cantidad = $item->quantity;
            $detalle->save();
+           //cogigo EVER
+           $sql='SELECT * FROM productos WHERE idProducto=?';
+           $producto=DB::select($sql,[$venta->idProducto]);
+           $Stock="";
+           foreach($producto as $p){
+            $e=$p->existencia;
+            $c=$item->quantity;
+            $Stock=$e-$c;
+            
+           }
+           $sql='UPDATE  productos SET existencia=?  WHERE idProducto=?';
+            DB::update($sql,[$Stock,$venta->idProducto]);
+            //termina
         }
         $venta->saveOrFail();
         Cart::clear();
@@ -178,11 +194,11 @@ class VentasController extends Controller
         //$ventas = Venta::findOrFail($idVenta);
         // dd($ventas);
         $ventas = Venta::WHERE('idVenta',$idVenta)->get();
-        $Venta;
+        $venta;
         foreach($ventas as $vente){
-            $Venta=$vente;
+            $venta=$vente;
         }
-        return view('sales.detalle_sales',compact('ventas'));
+        return view('sales.detalle_sales',compact('venta'));
     }
 
     public function delete($idVenta){
@@ -196,8 +212,8 @@ class VentasController extends Controller
     }
     public function ticket_download($idVenta){
 
-        $ventas = DB::table('ventas')->where('idVenta', '=',$idVenta)
-        ->where('idVenta', "=",$idVenta)   
+        $ventas = DB::table('ventas')->join('detalle_ventas as DV','DV.idVenta','ventas.idVenta')
+        ->where('ventas.idVenta', '=',$idVenta)
         ->get();
        
         // share data to view

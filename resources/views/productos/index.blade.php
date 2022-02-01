@@ -50,15 +50,12 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             @php($arrayB = [
-                                            'nombre',
-                                            'descripcion',
-                                            'modelo',
-                                            'tipo',
-                                            // 'PRECIO COMPRA','PRECIO VENTA'
+                                            ['nombre','NOMBRE'],
+                                            ['descripcion','DESCRIPCIÓN']
                                             ])
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 @foreach ($arrayB as $buscar)
-                                                <option>{{ $buscar }}</option>
+                                                    <option value={{$buscar[0]}}>{{ $buscar[1] }}</option>
                                                 @endforeach
                                             </select>
 
@@ -99,11 +96,10 @@
                                         <th scope="col">NOMBRE</th>
                                         <th scope="col">DESCRIPCIÓN</th>
                                         <!-- <th scope="col">MODELO</th> -->
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">PRECIO COMPRA</th>
-                                        <th scope="col">PRECIO VENTA</th>
+                                        <th scope="col">PRECIO COMPRA ($)</th>
+                                        <th scope="col">PRECIO VENTA ($)</th>
                                         <th scope="col">EXISTENCIA</th>
-                                        <th scope="col" colspan="2">ACCIONES</th>
+                                        <th scope="col" colspan="2">ACCIÓN</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-black2">
@@ -111,13 +107,11 @@
                                     <tr class="table-hover">
                                         <th scope="row">{{ $producto->idProducto }}</th>
 
-                                        <td class="text-center">{{ $producto->nombre }}</td>
+                                        <td class="text-center">{{  $producto->nombre }}</td>
 
                                         <td class="text-justify">{{ $producto->descripcion }}</td>
-                                        {{--<td class="text-center">{{ $producto->modelo }}</td> --}}
-                                        <td class="text-center">{{ $producto->tipo }}</td>
-                                        <td class="text-center">$ {{ $producto->precioCompra }}</td>
-                                        <td class="text-center">$ {{ $producto->PrecioVenta }}</td>
+                                        <td class="text-center">$ {{ number_format($producto->precioCompra,2,'.','') }} MXN</td>
+                                        <td class="text-center">$ {{ number_format($producto->PrecioVenta,2,'.','') }} MXN</td>
                                         @if ($producto->existencia>5)
                                         <h5>
                                             <td class="badge badge-success">{{ $producto->existencia }}</td>
@@ -158,7 +152,7 @@
                             </table>
 
                             <nav aria-label="Page navigation example float-right">
-                                <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
+                                <a href="{{ route('productos.index')}}" class="btn btn-outline-primary mx-3 mt-3 ">Refrescar</a>
                                 <ul class="pagination float-right mt-3">
                                     <li class="page-item"><a class="page-link" href="{{ $productos->previousPageUrl() }}">Anterior</a></li>
                                     <li class="page-item"><a class="page-link" href="{{ $productos->url(1) }}">1</a>
@@ -177,7 +171,7 @@
                         <div class=" row">
                             <div class="col-md-4 mt-4">
                                 <div class="form-group">
-                                    <a href="{{ route('productos.index')}}" class="btn btn-outline-primary">regresar</a>
+                                    <a href="{{ route('productos.index')}}" class="btn btn-outline-primary">Regresar</a>
                                 </div>
                             </div>
 

@@ -39,7 +39,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Cliente</label>
+                                            <label class="text-black h4">Cliente*</label>
                                      
                                         <select class="form-control" name="nombre" value="{{ old('nombre') }}">
                                                     <option value="" disabled selected>SELECCIONE UNA OPCIÓN</option>
@@ -71,9 +71,9 @@
                                 )
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                    <label class="text-black h4">Articulo</label>
+                                    <label class="text-black h4">Artículo*</label>
                                         <select title="" class="form-control text-upper" name="articulo" id="idP">
-                                            <option value="0">Seleccione el articulo</option>
+                                            <option value="0">Seleccione el artículo</option>
                                             @foreach ($productos as $Producto)
                                             <option value="{{$Producto->idProducto}}">{{$Producto->nombre}}</option>
                                             @endforeach
@@ -86,7 +86,7 @@
                                 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Cantidad</label>
+                                            <label class="text-black h4">Cantidad*</label>
                                             <input type="number" name="cantidad" value="{{ old('cantidad') }}"
                                                min="1" max="40" placeholder="Cantidad"
                                                 class="form-control text-upper" id="ca">
@@ -99,11 +99,11 @@
                                    
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Stock</label>
+                                            <label class="text-black h4">Disponibles*</label>
                                             <input type="number" name="stock"  value="30"
                                             {{-- value="{{ old('stock') }}" --}}
-                                               min="1" max="40" placeholder="Stock"
-                                                class="form-control text-upper" id="s">
+                                               min="0" placeholder="Stock"
+                                                class="form-control text-upper" id="s" readonly>
                                             {{-- validaciones --}}
                                             @error('stock')
                                                 <div class="message-error">*{{ $message }}</div>
@@ -113,7 +113,7 @@
                                    
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Descuento</label>
+                                            <label class="text-black h4">Descuento*</label>
                                             <input type="number" name="descuento" value="0"
                                             {{-- value="{{ old('descuento') }}" --}}
                                                min="0" max="100" placeholder="descuento"
@@ -129,14 +129,27 @@
                                     <div class="col-md-4 mt-4">
                                          
                                         <div class="form-group">
-                                            <label class="text-black h4">Precio venta</label>
+                                            <label class="text-black h4">Precio venta*</label>
                                             <input type="text" name="pecio_venta" value="{{ old('pecio_venta') }}"
                                                min="1" max="40" placeholder="Precio de venta"
-                                                class="form-control text-upper" id="p">
+                                                class="form-control text-upper" id="p" readonly>
 
                                             {{-- validaciones --}}
                                         
                                             @error('pecio_venta')
+                                                <div class="message-error">*{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4"> Stock</label>
+                                            <input type="number" name="stock"  value="2"
+                                            {{-- value="{{ old('stock') }}" --}}
+                                               min="1" max="40" placeholder="Stock"
+                                                class="form-control text-upper"  readonly>
+                                            {{-- validaciones --}}
+                                            @error('stock')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -147,8 +160,8 @@
                                         
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-md-6">
-                                                <button title="guardar datos" type="submit" class="btn btn-primary btn-lg btn-block">
-                                                    agregar <i class="fas fa-plus-circle"></i></button>
+                                                <button title="guardar datos" type="submit" class="btn btn-primary btn-lg btn-block" id="btn">
+                                                    Agregar <i class="fas fa-plus-circle"></i></button>
                                             </div>
                                             
                                           
@@ -168,8 +181,6 @@
                                             <thead class="bg-color ">
                                                 <tr class="text-blank text-center">
                                                     {{-- <th scope="col">NO</th> --}}
-                                                    <th scope="col">NO</th>
-                                                    <th scope="col">ID</th>
                                                     <th scope="col">PRODUCTO</th>
                                                     <th scope="col">PRECIO</th>
                                                     <th scope="col">CANTIDAD</th>
@@ -198,9 +209,6 @@
 
                                                 
                                                <tr class="table-hover">
-                                                <td class="text-center">{{ $i }}</td>
-                                               
-                                                <td class="text-center">{{ $item->id }}</td>
                                                 <td class="text-center">{{ $item->name }}</td>
                                                 <td class="text-center">$ {{ number_format($item->price, 2, '.', '') }} MXN</td>
                                                 <td class="text-center">{{ ($item->quantity)}}</td>
@@ -242,7 +250,7 @@
                                             @csrf
                                             <td class="text-center">
                                               <input title="limpiar todo el carrito" 
-                                              class="btn btn-outline-danger btn-lg btn-block" type="submit" name="Limpiar" value="limpiar Carrito">
+                                              class="btn btn-outline-danger btn-lg btn-block" type="submit" name="Limpiar" value="Limpiar Carrito">
                                       </form>
                                       
                                         <td colspan="5" class="text-right">
@@ -273,7 +281,7 @@
                                   <h6>TOTAL A PAGAR: </h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
-                                   {{$item->attributes->total_pay}} MXN
+                                   {{number_format($item->attributes->total_pay,2,'.','')}} MXN
                                         
                                     
                               </td>

@@ -31,12 +31,6 @@
 
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-4 mt-4">
-                                    <div class="text-center">
-                                        <img class="img-responsive rounded-circle" src="{{$user->photo}}" width="50%" alt="">
-
-                                    </div>
-                            </div>
 
                                 <div class="col-md-4 mt-auto ">
                                     <div class="form-group">
@@ -66,23 +60,6 @@
 
 
 
-                            </div>
-
-                            {{-- PARTE BOTONES --}}
-                            <div class="row justify-content-center">
-                                <div class="col-auto mt-4">
-                                    {{-- @can('productos.edit') --}}
-                                        <a title="Edita tus datos" 
-                                        href="{{ route('user.show',$user->id) }}"
-                                            class="btn btn-primary">
-                                            Editar  <i class="fas fa-pen-square"></i> </a>
-                                    {{-- @endcan --}}
-                                </div>
-                                <div class="col-auto mt-4">
-                                    <a title="cancelar" href={{url('/')}}
-                                        class="btn btn-danger ">cancelar
-                                        <i class="fas fa-strikethrough"></i></a>
-                                </div>
                             </div>
                             <br>
 
