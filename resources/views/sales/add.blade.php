@@ -84,6 +84,7 @@
                                     </div>
                                 </div>
                                 
+                                   
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             <label class="text-black h4">Cantidad</label>
@@ -99,11 +100,11 @@
                                    
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Stock</label>
+                                            <label class="text-black h4"> Disponibles </label>
                                             <input type="number" name="stock"  value="30"
                                             {{-- value="{{ old('stock') }}" --}}
                                                min="1" max="40" placeholder="Stock"
-                                                class="form-control text-upper" id="s">
+                                                class="form-control text-upper" id="s" readonly>
                                             {{-- validaciones --}}
                                             @error('stock')
                                                 <div class="message-error">*{{ $message }}</div>
@@ -132,11 +133,24 @@
                                             <label class="text-black h4">Precio venta</label>
                                             <input type="text" name="pecio_venta" value="{{ old('pecio_venta') }}"
                                                min="1" max="40" placeholder="Precio de venta"
-                                                class="form-control text-upper" id="p">
+                                                class="form-control text-upper" id="p" readonly >
 
                                             {{-- validaciones --}}
                                         
                                             @error('pecio_venta')
+                                                <div class="message-error">*{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                     <div class="col-md-2 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4"> Stock </label>
+                                            <input type="number" name="stock"  value="2"
+                                            {{-- value="{{ old('stock') }}" --}}
+                                               min="1" max="40" placeholder="Stock"
+                                                class="form-control text-upper"  readonly>
+                                            {{-- validaciones --}}
+                                            @error('stock')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -147,7 +161,7 @@
                                         
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-md-6">
-                                                <button title="guardar datos" type="submit" class="btn btn-primary btn-lg btn-block">
+                                                <button title="guardar datos" type="submit" class="btn btn-primary btn-lg btn-block" id="btn">
                                                     agregar <i class="fas fa-plus-circle"></i></button>
                                             </div>
                                             
@@ -194,9 +208,6 @@
                                             ?>
 
                                                @foreach (Cart::getContent() as $item)
-                                
-
-                                                
                                                <tr class="table-hover">
                                                 <td class="text-center">{{ $i }}</td>
                                                

@@ -64,7 +64,7 @@ class VentasController extends Controller
         return view('sales.add', compact('data'));
     }
     public function add(Request $request){
-
+        
         $request->validate(
             [
                 'nombre' => 'required|regex:/^[\pL\s\-]+$/u', // regex solo letras
@@ -165,6 +165,20 @@ class VentasController extends Controller
            $detalle->idVenta = $venta->idVenta;
            $detalle->cantidad = $item->quantity;
            $detalle->save();
+           //cogigo EVER
+           $sql='SELECT * FROM productos WHERE idProducto=?';
+           $producto=DB::select($sql,[$venta->idProducto]);
+           $Stock="";
+           foreach($producto as $p){
+            $e=$p->existencia;
+            $c=$item->quantity;
+            $Stock=$e-$c;
+            
+           }
+           $sql='UPDATE  productos SET existencia=?  WHERE idProducto=?';
+            DB::update($sql,[$Stock,$venta->idProducto]);
+            //termina
+          
         }
         $venta->saveOrFail();
         Cart::clear();

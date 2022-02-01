@@ -17,11 +17,16 @@ $(document).ready(function() {
                 var Stock=respuesta[0].existencia;
                 jQuery("#p").val(preciVenta);
                 jQuery("#s").val(Stock);
-                if(Stock<=1)alert('pide mas productos')
+                if(Stock<=2)alert('pide mas productos')
                 console.log(respuesta[0]);
                
         }
     })
     })
+    jQuery("#btn").on("click",function(){
+        var Disponible =jQuery("#s").val();
+        var cantidad=jQuery("#s").val();
+        if(Disponible<=cantidad)alert('Los productos se agotaron');
 
+    })
 });
