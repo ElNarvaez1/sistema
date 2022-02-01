@@ -29,7 +29,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold">Búsqueda de usuarios por tipo y agregar roles</h6>
+                            <h6 class="m-0 font-weight-bold">Búsqueda de usuarios</h6>
                         </div>
 
 
@@ -53,14 +53,14 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'NOMBRE',
-                                                    'NOMBRE DE USUARIO',
-                                                    'CORREO ELECTRÓNICO'
+                                                    ['name','NOMBRE'],
+                                                    ['username','NOMBRE DE USUARIO'],
+                                                    ['email','CORREO ELECTRÓNICO']
                                                     ]); ?>
                                                     <select  title="buscar por" class="form-control" name="type">
                                                         <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                        
-                                                            <option><?php echo e($buscar); ?></option>
+                                                            <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 
@@ -100,11 +100,11 @@
                                                 <th scope="col">ID</th>
                                                 <th scope="col">NOMBRE DE USUARIO</th>
                                                 <th scope="col">CORREO ELECTRÓNICO</th>
-                                                <th scope="col">NÚMERO DE CONTACTO</th>
+                                                <th scope="col">TELÉFONO</th>
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">FECHA DE CREACIÓN</th>
-                                                <th scope="col">OPERACIONES</th>
+                                                <th scope="col">ACCIÓN</th>
                                                 
                                             </tr>
                                         </thead>
@@ -151,7 +151,7 @@
                                     
                                     
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="<?php echo e(route('user.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('user.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="<?php echo e($users->previousPageUrl()); ?>">Anterior</a></li>

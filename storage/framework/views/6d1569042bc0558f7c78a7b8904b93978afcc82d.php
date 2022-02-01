@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('titulo', 'Cambio de llantas'); ?>
 <?php $__env->startSection('contenido'); ?>
 
@@ -15,7 +14,7 @@
                     <br>
                     <!--encabezado-->                    
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Cambios de llantas  <i class="fas fa-tools"></i></h1>
-                    <p class="mb-4 text-dark">Consulte la información historica sobre el cambio de llantas</p>
+                    <p class="mb-4 text-dark">Consulte la información histórica sobre el cambio de llantas</p>
                     
                     <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <div class="card shadow mb-4 rounded card-color">
@@ -24,6 +23,7 @@
                         </div>
                         <div class="card shadow  rounded card-color">
                             <div class="container">
+                            <form action="<?php echo e(route('cambiollantas.index', [$listaCambioLlantas])); ?>" method="GET">
                                 <div class="row">
                                 
                                     <div class="col-md-3 mt-4">
@@ -36,16 +36,13 @@
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             <?php ($arrayB = [
-                                                        'idCambioDeLlanta',
-                                                        'fecha',
-                                                        'descripcion',
-                                                        'total',
-                                                        'empleado'
-                                                        // 'PRECIO COMPRA','PRECIO VENTA'
+                                                        ['idCambio','ID CAMBIO'],
+                                                        ['fecha','FECHA'],
+                                                        ['monto','MONTO']
                                                         ]); ?>
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option><?php echo e($buscar); ?></option>
+                                                    <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
@@ -62,7 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                            </form>
                             </div>
                             <?php if($listaCambioLlantas->count()): ?>)
                             <div class="card-body "> 
@@ -71,18 +68,18 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">IDCambioLlanta</th>
-                                                <th scope="col">fecha</th>                                               
-                                                <th scope="col">total</th>
-                                                <th scope="col">Empleado</th>                                                
-                                                <th scope="col" colspan="2">ACCIONES</th>                                                
+                                                <th scope="col">ID</th>
+                                                <th scope="col">FECHA DE CAMBIO</th>                                               
+                                                <th scope="col">TOTAL ($)</th>
+                                                <th scope="col">EMPLEADO</th>                                                
+                                                <th scope="col" colspan="2">ACCIÓN</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $listaCambioLlantas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cambio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
                                                     <th class="text-center" scope="row"><?php echo e($cambio->idCambio); ?></th>
                                                     <th class="text-center" scope="row"><?php echo e($cambio->fecha); ?></th>                                                    
-                                                    <th class="text-center" scope="row">$<?php echo e($cambio->monto); ?></th>
+                                                    <th class="text-center" scope="row">$<?php echo e(number_format($cambio->monto,2,'.','')); ?> MXN</th>
                                                     <th class="text-center" scope="row"><?php echo e($cambio->idUser); ?></th>
                                                     <th class="text-center" scope="row">
                                                     
@@ -98,11 +95,18 @@
                                         </thead>
                                     </table>
                                         <nav aria-label="Page navigation example float-right">
-                                            <a class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                            <a class="btn btn-outline-primary mx-3 mt-3" href="<?php echo e(route('cambiollantas.index')); ?>" >Refrescar</a>
                                             <ul class="pagination float-right mt-3">
-                                                <li class="page-item"><a class="page-link">Anterior</a></li>
-                                                <li class="page-item"><a class="page-link">1</a></li>                                                
-                                                <li class="page-item"><a class="page-link">Siguiente</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="<?php echo e($listaCambioLlantas->previousPageUrl()); ?>">Anterior</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(1)); ?>">1</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(2)); ?>">2</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo e($listaCambioLlantas->url(3)); ?>">3</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="<?php echo e($listaCambioLlantas->nextPageUrl()); ?>">Siguiente</a></li>
                                             </ul>
                                         </nav>
                                 </div>
@@ -112,7 +116,7 @@
                                <div class=" row">
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <a href="" class="btn btn-outline-primary" >regresar</a>
+                                            <a href="<?php echo e(route('cambiollantas.index')); ?>" class="btn btn-outline-primary" >regresar</a>
                                         </div>
                                     </div>                                    
                                     <div class="col-md-8 mt-4">

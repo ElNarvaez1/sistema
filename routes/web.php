@@ -15,6 +15,7 @@ use App\Http\Controllers\VentasController;
 use App\Http\Controllers\PromocionesController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CambioLLantasController;
+use App\Http\Controllers\DevolucionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +141,11 @@ Route::post('/Promociones/send_promotion', [PromocionesController::class,'toTele
     Route::post('/cambiollantas/nuevocambio', [CambioLLantasController::class,'add'])->name('cambiollantas.add');
     Route::get('/cambiollantas/index/show/{idCambio}',[CambioLLantasController::class,'show'])->name('cambio.show');
     Route::resource('cambiollantas', CambioLLantasController::class);
+
+//Devoluciones
+Route::get('/devolucion/index', [DevolucionesController::class,'index'])->name('devoluciones.index');
+Route::delete('/devolucion/remove', [DevolucionesController::class,'delete'])->name('devolucion.delete');
+
 });
 
 

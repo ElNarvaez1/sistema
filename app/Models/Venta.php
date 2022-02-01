@@ -18,7 +18,7 @@ class Venta extends Model
         'nombre',
         'articulo',
         'cantidad',
-        'impuesto',
+        'fecha',
         'descuento',
         'totalVenta'
     ];

@@ -103,7 +103,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="text-black h4">E-mail*</label>
-                                        <input type="text" name="email" value="<?php echo e(old('email')); ?>" placeholder="CORREO ELECTRONICO" class="form-control">
+                                        <input type="text" name="email" value="<?php echo e(old('email')); ?>" placeholder="CORREO ELECTRÓNICO" class="form-control">
 
                                         
                                         <?php $__errorArgs = ['email'];
@@ -121,8 +121,8 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Telefono*</label>
-                                        <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>" placeholder="telefono " class="form-control text-upper">
+                                        <label class="text-black h4">Teléfono*</label>
+                                        <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>" placeholder="Teléfono " class="form-control text-upper">
 
                                         
                                         <?php $__errorArgs = ['telefono'];

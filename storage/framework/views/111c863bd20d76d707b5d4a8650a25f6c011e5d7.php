@@ -45,7 +45,7 @@
                                             <div class="form-group">
                                                 <a title="agregar nuevo cliente" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
                                                     href="<?php echo e(route('clientes.create')); ?>"> 
-                                                     nuevo cliente <i class="fas fa-plus-circle"></i>
+                                                     Nuevo cliente <i class="fas fa-plus-circle"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -53,16 +53,14 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'nombre',
-                                                    'telefono',
-                                                    'fecha',
-                                                    'Descripcion',
-                                                    'total servicio',
-                                                    'correo'                                                    
+                                                    ['nombre','NOMBRE'],
+                                                    ['apellidoPaterno','APELLIDO PATERNO'],
+                                                    ['apellidoMaterno','APELLIDO MATERNO'],
+                                                    ['telefono','TELEFONO']
                                                     ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option><?php echo e($buscar); ?></option>
+                                                            <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 
@@ -107,8 +105,8 @@
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">APELLIDO MATERNO</th>
                                                 <th scope="col">FECHA</th>
-                                                <th scope="col">TELEFONO</th>
-                                                <th scope="col" colspan="2">ACCIONES</th>
+                                                <th scope="col">TELÉFONO</th>
+                                                <th scope="col" colspan="2">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
@@ -151,7 +149,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="<?php echo e(route('clientes.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('clientes.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="<?php echo e($clientes->previousPageUrl()); ?>">Anterior</a></li>
@@ -172,7 +170,7 @@
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="<?php echo e(route('clientes.index')); ?>" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="<?php echo e(route('clientes.index')); ?>" class="btn btn-outline-primary" >Regresar</a>
                                     </div>
                                 </div>
                                 

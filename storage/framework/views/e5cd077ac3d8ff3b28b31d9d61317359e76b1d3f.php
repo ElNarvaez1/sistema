@@ -42,7 +42,7 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Nombre del empleado</label>
+                                        <label class="text-black h4">Nombre del empleado*</label>
                                         <input type="text" name="name" value="<?php echo e(old('name',$user->name)); ?>" placeholder="Nombre del empleado" class="form-control text-upper">
                                         
                                         <?php $__errorArgs = ['name'];
@@ -62,7 +62,7 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Apellido Paterno</label>
+                                        <label class="text-black h4">Apellido Paterno*</label>
                                         <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno',$user->apellidoPaterno)); ?>" placeholder="Apellido paterno" class="form-control text-upper">
                                         
                                         <?php $__errorArgs = ['apellidoPaterno'];
@@ -82,7 +82,7 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Apellido Materno</label>
+                                        <label class="text-black h4">Apellido Materno*</label>
                                         <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno',$user->apellidoMaterno)); ?>" placeholder="Apellido materno" class="form-control text-upper">
                                         
                                         <?php $__errorArgs = ['apellidoMaterno'];
@@ -101,7 +101,7 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">E-mail</label>
+                                        <label class="text-black h4">E-mail*</label>
                                         <input type="text" name="email" value="<?php echo e(old('email',$user->email)); ?>" placeholder="CORREO ELECTRONICO" class="form-control">
 
                                         
@@ -120,8 +120,8 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Telefono</label>
-                                        <input type="text" name="telefono" value="<?php echo e(old('telefono',$user->telefono)); ?>" placeholder="telefono " class="form-control text-upper">
+                                        <label class="text-black h4">Teléfono*</label>
+                                        <input type="text" name="telefono" value="<?php echo e(old('telefono',$user->telefono)); ?>" placeholder="teléfono " class="form-control text-upper">
 
                                         
                                         <?php $__errorArgs = ['telefono'];
@@ -139,40 +139,7 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Lista de roles*</label>
-
-
-
-
-                                        <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <div class="text-black h4">
-                                            <?php echo Form::radio('roles[]', $role->id, null, ['class' => 'mr-1'],'name','roles'); ?>
-
-                                            <label>
-                                                <?php echo e($role->name); ?>
-
-                                            </label>
-                                        </div>
-
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                                        
-                                        <?php $__errorArgs = ['idRol'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <div class="message-error">*<?php echo e($message); ?></div>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Nombre de usuario</label>
+                                        <label class="text-black h4">Nombre de usuario*</label>
                                         <input type="text" name="username" value="<?php echo e(old('username',$user->username)); ?>" placeholder="Nombre del usuario" class="form-control text-upper">
                                         
                                         <?php $__errorArgs = ['username'];
@@ -191,7 +158,7 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Contraseña</label>
+                                        <label class="text-black h4">Contraseña*</label>
                                         <input type="password" name="password" value="<?php echo e(old('password')); ?>" placeholder="Ingrese la contraseña solo en caso de modificarla" class="form-control text-upper">
                                         
                                         <?php $__errorArgs = ['password'];

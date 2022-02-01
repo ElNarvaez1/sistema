@@ -39,7 +39,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Cliente</label>
+                                            <label class="text-black h4">Cliente*</label>
                                      
                                         <select class="form-control" name="nombre" value="<?php echo e(old('nombre')); ?>">
                                                     <option value="" disabled selected>SELECCIONE UNA OPCIÓN</option>
@@ -78,9 +78,9 @@ unset($__errorArgs, $__bag); ?>
                                 ); ?>
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                    <label class="text-black h4">Articulo</label>
+                                    <label class="text-black h4">Artículo*</label>
                                         <select title="" class="form-control text-upper" name="articulo" id="idP">
-                                            <option value="0">Seleccione el articulo</option>
+                                            <option value="0">Seleccione el artículo</option>
                                             <?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($Producto->idProducto); ?>"><?php echo e($Producto->nombre); ?></option>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -101,7 +101,7 @@ unset($__errorArgs, $__bag); ?>
                                    
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Cantidad</label>
+                                            <label class="text-black h4">Cantidad*</label>
                                             <input type="number" name="cantidad" value="<?php echo e(old('cantidad')); ?>"
                                                min="1" max="40" placeholder="Cantidad"
                                                 class="form-control text-upper" id="ca">
@@ -121,7 +121,7 @@ unset($__errorArgs, $__bag); ?>
                                    
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4"> Disponibles </label>
+                                            <label class="text-black h4"> Disponibles*</label>
                                             <input type="number" name="stock"  value="30"
                                             
                                                min="1" max="40" placeholder="Stock"
@@ -142,11 +142,11 @@ unset($__errorArgs, $__bag); ?>
                                    
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Descuento</label>
+                                            <label class="text-black h4">Descuento*</label>
                                             <input type="number" name="descuento" value="0"
                                             
-                                               min="0" max="40" placeholder="descuento"
-                                                class="form-control text-upper">
+                                               min="0" max="100" placeholder="descuento"
+                                                class="form-control text-upper" maxlength="2">
                                             
                                             <?php $__errorArgs = ['descuento'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -165,10 +165,10 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-md-4 mt-4">
                                          
                                         <div class="form-group">
-                                            <label class="text-black h4">Precio venta</label>
+                                            <label class="text-black h4">Precio venta*</label>
                                             <input type="text" name="pecio_venta" value="<?php echo e(old('pecio_venta')); ?>"
                                                min="1" max="40" placeholder="Precio de venta"
-                                                class="form-control text-upper" id="p" readonly >
+                                                class="form-control text-upper" id="p" readonly>
 
                                             
                                         
@@ -230,9 +230,7 @@ unset($__errorArgs, $__bag); ?>
                                         <table class="table  table-light" width="100%" cellspacing="0">
                                             <thead class="bg-color ">
                                                 <tr class="text-blank text-center">
-                                                    
-                                                    <th scope="col">NO</th>
-                                                    <th scope="col">ID</th>
+                                                                                                      
                                                     <th scope="col">PRODUCTO</th>
                                                     <th scope="col">PRECIO</th>
                                                     <th scope="col">CANTIDAD</th>
@@ -257,10 +255,7 @@ unset($__errorArgs, $__bag); ?>
                                             ?>
 
                                                <?php $__currentLoopData = Cart::getContent(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                               <tr class="table-hover">
-                                                <td class="text-center"><?php echo e($i); ?></td>
-                                               
-                                                <td class="text-center"><?php echo e($item->id); ?></td>
+                                               <tr class="table-hover">                                               
                                                 <td class="text-center"><?php echo e($item->name); ?></td>
                                                 <td class="text-center">$ <?php echo e(number_format($item->price, 2, '.', '')); ?> MXN</td>
                                                 <td class="text-center"><?php echo e(($item->quantity)); ?></td>
@@ -272,8 +267,6 @@ unset($__errorArgs, $__bag); ?>
                                                 <?php if($item->attributes->descuento==0): ?>
                                                 <td class="text-center">$<?php echo e(number_format(Cart::get($item->id)->getPriceSum(),2, '.', '')); ?> MXN</td>
                                                 <?php endif; ?>
-                                               
-                                                
                                                 <td class="text-center">
                                                     <form action="<?php echo e(route('venta.removeitem')); ?>"
                                                     method="POST">
@@ -304,11 +297,11 @@ unset($__errorArgs, $__bag); ?>
                                             <?php echo csrf_field(); ?>
                                             <td class="text-center">
                                               <input title="limpiar todo el carrito" 
-                                              class="btn btn-outline-danger btn-lg btn-block" type="submit" name="Limpiar" value="limpiar Carrito">
+                                              class="btn btn-outline-danger btn-lg btn-block" type="submit" name="Limpiar" value="Limpiar Carrito">
                                       </form>
                                       
                                         <td colspan="5" class="text-right">
-                                          <h6>TOTAL</h6>
+                                          <h6>SUBTOTAL</h6>
                                       </td>   
                                         <td  class="text-right">
                                          
@@ -335,8 +328,7 @@ unset($__errorArgs, $__bag); ?>
                                   <h6>TOTAL A PAGAR: </h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
-                                   <?php echo e($item->attributes->total_pay); ?>
-
+                                <?php echo e(number_format($item->attributes->total_pay,2,'.','')); ?> MXN
                                         
                                     
                               </td>

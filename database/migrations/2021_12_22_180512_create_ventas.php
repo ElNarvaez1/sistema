@@ -18,10 +18,11 @@ class CreateVentas extends Migration
             $table->string('idCliente')->refences('idCliente')->on('clientes');
             $table->string('idUser')->references('id')->on('users');
             $table->string('idProducto')->references('idProducto')->on('productos');
-            $table->timestamp('fecha');
+            $table->date('fecha');
+            $table->float('subVenta',10,2);
             $table->float('totalVenta',10,2);
             $table->float('descuento',5,2)->default(0);
-
+            $table->boolean('estado_devolucion')->default(0);
             $table->primary('idVenta');
             $table->rememberToken();
             $table->softDeletes(); 

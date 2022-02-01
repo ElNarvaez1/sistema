@@ -54,7 +54,7 @@
             @component('plantilla.infoLDP')
             @slot('iconoInfo','fas fa-shopping-bag')
             <!--Por mientras no lleva nada-->
-            @slot('texto1','Venta de neumaticos')
+            @slot('texto1','Venta de neumáticos')
             <!---->
             @slot('texto2','¡Adquiere tus productos al mejor precio!')
             <!---->
@@ -148,7 +148,7 @@
             <!-- Begin Page Content -->
             <div class="container-fluid rounded">
                 <!-- Page Heading -->
-                <h1 class="h4 mb-2">SISTEMAS DE VENTA DE NEUMATICOS</h1>
+                <h1 class="h4 mb-2">SISTEMAS DE VENTA DE NEUMÁTICOS</h1>
                 <!-- <p class="mb-4 text-dark">“la innovación al servicio de la movilidad”</p> -->
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4 rounded card-color mt-4">

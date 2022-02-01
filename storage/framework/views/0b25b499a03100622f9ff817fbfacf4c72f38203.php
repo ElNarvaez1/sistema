@@ -84,16 +84,6 @@ unset($__errorArgs, $__bag); ?>
 
                         </button>
                     </form>
-                    <div class="text-center">
-                        <?php if(Route::has('password.request')): ?>
-                        <a class="small" href="<?php echo e(route('password.request')); ?>">
-                            ¿Has olvidado tu contraseña?
-                        </a>
-                        <?php endif; ?>
-                    </div>
-                    <div class="text-center">
-                        <a class="small" href="<?php echo e(route('register')); ?>">¡Crea una cuenta!</a>
-                    </div>
                 </div>
             </div>
         </div>

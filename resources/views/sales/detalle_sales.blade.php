@@ -17,8 +17,8 @@
                     @csrf
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title"> VER DATOS CLIENTE <i class="fas fa-eye"></i> </h1>
-                    <p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>
+                    <h1 class="h3 mb-2 bold-title"> VER DATOS DE LA VENTA <i class="fas fa-eye"></i> </h1>
+                    <!--<p class="mb-4 text-dark">Actualice los datos de los clientes aquí.</p>-->
 
 
                     {{-- mensajes --}}
@@ -27,7 +27,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold ">ID Cliente: {{$ventas->id}}</h6>
+                            <h6 class="m-0 font-weight-bold ">ID de la venta: {{$venta->idVenta}}</h6>
                         </div>
 
                         {{-- Formulario -> vista de productos --}}
@@ -40,12 +40,12 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del cliente</label>
-                                            <input type="text" name="nombre" value="{{ old('nombre',$ventas->nombre) }}"
-                                                placeholder="Nombre del cliente" disabled
+                                            <label class="text-black h4">ID del cliente*</label>
+                                            <input type="text" name="idCliente" value="{{ old('idCliente',$venta->idCliente) }}"
+                                                placeholder="ID del cliente" disabled
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('nombre')
+                                            @error('idCliente')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -55,12 +55,12 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Articulo</label>
-                                            <input type="text" name="articulo" value="{{ old('articulo',$ventas->articulo) }}"
+                                            <label class="text-black h4">ID del artículo*</label>
+                                            <input type="text" name="idProducto" value="{{ old('idProducto',$venta->idProducto) }}"
                                                 placeholder="articulo" disabled
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
-                                            @error('articulo')
+                                            @error('idProducto')
                                                 <div class="message-error">*{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -70,8 +70,8 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Fecha</label>
-                                            <input type="text" name="fecha" value="{{ old('fecha',$ventas->fecha) }}"
+                                            <label class="text-black h4">Fecha*</label>
+                                            <input type="text" name="fecha" value="{{ old('fecha',$venta->fecha) }}"
                                                 placeholder="Fecha" disabled
                                                 class="form-control text-upper">
                                             {{-- validaciones --}}
@@ -83,9 +83,23 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Descuento</label>
+                                            <label class="text-black h4">Subtotal* ($)</label>
+                                            <input type="text" name="subTotal" value="${{ number_format(old('subTotal',$venta->subVenta),2,'.','') }} MXN"
+                                                placeholder="sub venta" disabled
+                                                class="form-control text-upper">
+
+                                            {{-- validaciones --}}
+                                            @error('subTotal')
+                                                <div class="message-error">*{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4">Descuento* (%)</label>
                                             <input type="text" name="descuento" class="form-control text-upper"
-                                                placeholder="descuento" disabled value="{{ old('direccion',$ventas->descuento) }}"
+                                                placeholder="descuento" disabled value="{{ old('direccion',$venta->descuento) }} %"
                                                 name="descuento">
 
                                             {{-- validaciones --}}
@@ -100,13 +114,13 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Total</label>
-                                                    <input type="text" name="correo" value="{{ old('total_venta',$ventas->total_venta) }}"
+                                                    <label class="text-black h4">Total* ($)</label>
+                                                    <input type="text" name="totalVenta" value="${{ number_format(old('totalVenta',$venta->totalVenta),2,'.','') }} MXN"
                                                         placeholder="Total venta" disabled
                                                         class="form-control text-upper">
 
                                                     {{-- validaciones --}}
-                                                    @error('total_venta')
+                                                    @error('totalVenta')
                                                         <div class="message-error">*{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -128,7 +142,7 @@
                                             </div> --}}
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href={{ route('venta.index') }} class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href={{ route('venta.index') }} class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

@@ -40,9 +40,11 @@
                                 <?php echo csrf_field(); ?>
                                 <div class="row">
 
+
+
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del cliente</label>
+                                            <label class="text-black h4">Nombre del cliente*</label>
                                             <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>"
                                                 placeholder="Nombre del cliente"
                                                 class="form-control text-upper">
@@ -64,14 +66,13 @@ unset($__errorArgs, $__bag); ?>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Paterno</label>
-
+                                            <label class="text-black h4">Apellido Paterno*</label>
                                             <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno')); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
                                             
                                             <?php $__errorArgs = ['apellidoPaterno'];
-                                                $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
@@ -87,14 +88,12 @@ unset($__errorArgs, $__bag); ?>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Materno</label>
-
+                                            <label class="text-black h4">Apellido Materno*</label>
                                             <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno')); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
                                             
                                             <?php $__errorArgs = ['apellidoMaterno'];
-
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -106,12 +105,11 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>                            
-
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono</label>
+                                                    <label class="text-black h4">Teléfono*</label>
                                                     <input type="text" name="telefono" value="<?php echo e(old('telefono')); ?>"
-                                                        placeholder="telefono "
+                                                        placeholder="teléfono "
                                                         class="form-control text-upper">
 
                                                     
@@ -142,7 +140,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href=<?php echo e(route('clientes.index')); ?> class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href=<?php echo e(route('clientes.index')); ?> class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

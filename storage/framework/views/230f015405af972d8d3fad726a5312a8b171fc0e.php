@@ -101,17 +101,6 @@
     </li>
 <?php endif; ?>
 
- <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cart.cart')): ?>
-    <hr class="sidebar-divider my-0">
-    <li class="nav-item <?php echo e(!Route::is('cart.cart') ?: 'active'); ?>">
-        <a class="nav-link" href="<?php echo e(url('/Cart/Carrito')); ?>">
-            <i class="fas fa-store"></i>
-            <span>Catálogo</span></a>
-    </li>
-<?php endif; ?>
-
-
-
  <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cita.create')): ?>
     <hr class="sidebar-divider my-0">
     <li class="nav-item <?php echo e(!Route::is('cita.create') ?: 'active'); ?>">
@@ -122,17 +111,6 @@
     </li>
 <?php endif; ?> 
         
-
-<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role.index')): ?>
-    <hr class="sidebar-divider my-0">
-
-    <li class="nav-item <?php echo e(!Route::is('role.index') ?: 'active'); ?>">
-        <a class="nav-link" href="<?php echo e(route('role.index')); ?>">
-            <i class="fas fa-dice-d20"></i>
-            <span>Lista de roles</span>
-        </a>
-    </li>
-<?php endif; ?>
 
 
 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user.index')): ?>
@@ -158,6 +136,14 @@
     </a>
 </li>
 
+<hr class="sidebar-divider my-0">
+
+<li class="nav-item   <?php echo e(!Route::is('devoluciones.index') ?: 'active'); ?>">
+    <a class="nav-link" href="<?php echo e(route('devoluciones.index')); ?>">
+        <i class="fas fa-qrcode"></i>
+        <span>Devoluciones</span>
+    </a>
+</li>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

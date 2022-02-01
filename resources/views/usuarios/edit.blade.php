@@ -42,7 +42,7 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Nombre del empleado</label>
+                                        <label class="text-black h4">Nombre del empleado*</label>
                                         <input type="text" name="name" value="{{ old('name',$user->name) }}" placeholder="Nombre del empleado" class="form-control text-upper">
                                         {{-- validaciones --}}
                                         @error('name')
@@ -55,7 +55,7 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Apellido Paterno</label>
+                                        <label class="text-black h4">Apellido Paterno*</label>
                                         <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno',$user->apellidoPaterno) }}" placeholder="Apellido paterno" class="form-control text-upper">
                                         {{-- validaciones --}}
                                         @error('apellidoPaterno')
@@ -68,7 +68,7 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Apellido Materno</label>
+                                        <label class="text-black h4">Apellido Materno*</label>
                                         <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno',$user->apellidoMaterno) }}" placeholder="Apellido materno" class="form-control text-upper">
                                         {{-- validaciones --}}
                                         @error('apellidoMaterno')
@@ -80,8 +80,8 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">E-mail</label>
-                                        <input type="text" name="email" value="{{ old('email',$user->email) }}" placeholder="CORREO ELECTRONICO" class="form-control">
+                                        <label class="text-black h4">E-mail*</label>
+                                        <input type="text" name="email" value="{{ old('email',$user->email) }}" placeholder="CORREO ELECTRÓNICO" class="form-control">
 
                                         {{-- validaciones --}}
                                         @error('email')
@@ -92,8 +92,8 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Telefono</label>
-                                        <input type="text" name="telefono" value="{{ old('telefono',$user->telefono) }}" placeholder="telefono " class="form-control text-upper">
+                                        <label class="text-black h4">Teléfono*</label>
+                                        <input type="text" name="telefono" value="{{ old('telefono',$user->telefono) }}" placeholder="teléfono " class="form-control text-upper">
 
                                         {{-- validaciones --}}
                                         @error('telefono')
@@ -104,31 +104,7 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Lista de roles*</label>
-
-
-
-
-                                        @foreach( $roles as $role)
-                                        <div class="text-black h4">
-                                            {!! Form::radio('roles[]', $role->id, null, ['class' => 'mr-1'],'name','roles') !!}
-                                            <label>
-                                                {{$role->name}}
-                                            </label>
-                                        </div>
-
-                                        @endforeach
-
-                                        {{-- validaciones --}}
-                                        @error('idRol')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-group">
-                                        <label class="text-black h4">Nombre de usuario</label>
+                                        <label class="text-black h4">Nombre de usuario*</label>
                                         <input type="text" name="username" value="{{ old('username',$user->username) }}" placeholder="Nombre del usuario" class="form-control text-upper">
                                         {{-- validaciones --}}
                                         @error('username')
@@ -140,7 +116,7 @@
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="text-black h4">Contraseña</label>
+                                        <label class="text-black h4">Contraseña*</label>
                                         <input type="password" name="password" value="{{ old('password')}}" placeholder="Ingrese la contraseña solo en caso de modificarla" class="form-control text-upper">
                                         {{-- validaciones --}}
                                         @error('password')

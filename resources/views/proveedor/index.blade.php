@@ -30,7 +30,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
-                            <h6 class="m-0 font-weight-bold">Búsqueda de proveedores por tipo</h6>
+                            <h6 class="m-0 font-weight-bold">Búsqueda de proveedores</h6>
                         </div>
                         
                         
@@ -39,6 +39,10 @@
                                 
                                 {{-- <form action="{{route('proveedor.index',[$proveedor])}}" method="GET"> --}}
                                     <form action="{{ route('proveedor.index') }}" method="GET">
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
                                     <div class="row">
 
                                         {{-- add product --}}
@@ -46,7 +50,7 @@
                                             <div class="form-group">
                                                 <a title="agregar nuevo cliente" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
                                                     href="{{route('proveedor.create')}}"> 
-                                                     Nuevo Proveedor  <i class="fas fa-clipboard-list"></i>
+                                                     Nuevo proveedor  <i class="fas fa-clipboard-list"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -111,11 +115,11 @@
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">APELLIDO MATERNO</th>
                                                 <th scope="col">EMPRESA</th>
-                                                <th scope="col">DIRECCION</th>
+                                                <th scope="col">DIRECCIÓN</th>
                                                 <th scope="col">E-MAIL</th>
-                                                <th scope="col">TELEFONO</th>
+                                                <th scope="col">TELÉFONO</th>
                                                 
-                                                <th scope="col" colspan="2">ACCIONES</th>
+                                                <th scope="col" colspan="2">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">

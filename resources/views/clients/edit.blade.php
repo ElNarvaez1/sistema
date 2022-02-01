@@ -42,7 +42,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del cliente</label>
+                                            <label class="text-black h4">Nombre del cliente*</label>
                                             <input type="text" name="nombre" value="{{ old('nombre',$cliente->nombre) }}"
                                                 placeholder="Nombre del cliente"
                                                 class="form-control text-upper">
@@ -57,7 +57,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Paterno</label>
+                                            <label class="text-black h4">Apellido Paterno*</label>
                                             <input type="text" name="apellidoPaterno" value="{{ old('apellidoPaterno',$cliente->apellidoPaterno) }}"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
@@ -72,7 +72,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Materno</label>
+                                            <label class="text-black h4">Apellido Materno*</label>
                                             <input type="text" name="apellidoMaterno" value="{{ old('apellidoMaterno',$cliente->apellidoMaterno) }}"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
@@ -85,7 +85,7 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono</label>
+                                                    <label class="text-black h4">Teléfono*</label>
                                                     <input type="text" name="telefono" value="{{ old('telefono',$cliente->telefono) }}"
                                                         placeholder="telefono "
                                                         class="form-control text-upper">
@@ -111,7 +111,7 @@
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href={{ route('clientes.index') }} class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href={{ route('clientes.index') }} class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

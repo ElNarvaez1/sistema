@@ -23,7 +23,7 @@
                     <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                     <!-- DataTales Example -->
-                    <<div class="card shadow mb-4 rounded card-color">
+                    <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold "> ID PROVEEDOR:  <br>  <?php echo e($proveedor->idProveedor); ?> </h6>
                         </div>
@@ -40,7 +40,7 @@
                                 <div class="row">
                                  <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre del Proveedor</label>
+                                            <label class="text-black h4">Nombre del Proveedor*</label>
                                             <input type="text" name="nombre" value="<?php echo e(old('nombre',$proveedor->nombre)); ?>"
                                                 placeholder="Nombre del Proveedor"
                                                 class="form-control text-upper">
@@ -62,7 +62,7 @@ unset($__errorArgs, $__bag); ?>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Paterno</label>
+                                            <label class="text-black h4">Apellido Paterno*</label>
                                             <input type="text" name="apellidoPaterno" value="<?php echo e(old('apellidoPaterno',$proveedor->apellidoPaterno)); ?>"
                                                 placeholder="Apellido paterno"
                                                 class="form-control text-upper">
@@ -84,7 +84,7 @@ unset($__errorArgs, $__bag); ?>
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Apellido Materno</label>
+                                            <label class="text-black h4">Apellido Materno*</label>
                                             <input type="text" name="apellidoMaterno" value="<?php echo e(old('apellidoMaterno',$proveedor->apellidoMaterno)); ?>"
                                                 placeholder="Apellido materno"
                                                 class="form-control text-upper">
@@ -103,7 +103,7 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Nombre de la empresa</label>
+                                            <label class="text-black h4">Nombre de la empresa*</label>
                                             <input type="text" name="nombreEmpresa" value="<?php echo e(old('nombreEmpresa',$proveedor->nombreEmpresa)); ?>"
                                                 placeholder="Nombre de la empresa"
                                                 class="form-control text-upper">
@@ -122,9 +122,9 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Dirección</label>
+                                            <label class="text-black h4">Dirección*</label>
                                             <textarea class="form-control text-upper"
-                                                placeholder="Direccion del cliente..."
+                                                placeholder="Dirección del proveedor..."
                                                 name="direccion"><?php echo e(old('direccion', $proveedor->direccion)); ?></textarea>
                                             
                                             <?php $__errorArgs = ['direccion'];
@@ -143,9 +143,9 @@ unset($__errorArgs, $__bag); ?>
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">E-mail</label>
+                                                    <label class="text-black h4">E-mail*</label>
                                                     <input type="text" name="correo" value="<?php echo e(old('correo', $proveedor->correo)); ?>"
-                                                        placeholder="CORREO ELECTRONICO"
+                                                        placeholder="CORREO ELECTRÓNICO"
                                                         class="form-control">
 
                                                     
@@ -164,9 +164,9 @@ unset($__errorArgs, $__bag); ?>
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Telefono</label>
+                                                    <label class="text-black h4">Teléfono*</label>
                                                     <input type="text" name="telefono" value="<?php echo e(old('telefono', $proveedor->telefono)); ?>"
-                                                        placeholder="telefono "
+                                                        placeholder="teléfono "
                                                         class="form-control text-upper">
 
                                                     
@@ -192,7 +192,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
 
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href="<?php echo e(route('proveedor.index')); ?>" class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href="<?php echo e(route('proveedor.index')); ?>" class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

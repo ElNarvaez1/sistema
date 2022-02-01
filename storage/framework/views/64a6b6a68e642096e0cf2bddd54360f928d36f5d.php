@@ -43,21 +43,19 @@
                                             <a title="agregar producto" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2" href="<?php echo e(route('productos.create')); ?>">
                                                 Agregar producto <i class="fas fa-plus-circle"></i>
                                             </a>
+                                            <>
                                         </div>
                                     </div>
 
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
                                             <?php ($arrayB = [
-                                            'nombre',
-                                            'descripcion',
-                                            'modelo',
-                                            'tipo',
-                                            // 'PRECIO COMPRA','PRECIO VENTA'
+                                            ['nombre','NOMBRE'],
+                                            ['descripcion','DESCRIPCIÓN']
                                             ]); ?>
                                             <select title="buscar por" class="form-control text-upper" name="type">
                                                 <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option><?php echo e($buscar); ?></option>
+                                                    <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
 
@@ -98,11 +96,10 @@
                                         <th scope="col">NOMBRE</th>
                                         <th scope="col">DESCRIPCIÓN</th>
                                         <!-- <th scope="col">MODELO</th> -->
-                                        <th scope="col">TIPO</th>
-                                        <th scope="col">PRECIO COMPRA</th>
-                                        <th scope="col">PRECIO VENTA</th>
+                                        <th scope="col">PRECIO COMPRA ($)</th>
+                                        <th scope="col">PRECIO VENTA ($)</th>
                                         <th scope="col">EXISTENCIA</th>
-                                        <th scope="col" colspan="2">ACCIONES</th>
+                                        <th scope="col" colspan="2">ACCIÓN</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-black2">
@@ -113,10 +110,8 @@
                                         <td class="text-center"><?php echo e($producto->nombre); ?></td>
 
                                         <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
-                                        
-                                        <td class="text-center"><?php echo e($producto->tipo); ?></td>
-                                        <td class="text-center">$ <?php echo e($producto->precioCompra); ?></td>
-                                        <td class="text-center">$ <?php echo e($producto->PrecioVenta); ?></td>
+                                        <td class="text-center">$ <?php echo e(number_format($producto->precioCompra,2,'.','')); ?> MXN</td>
+                                        <td class="text-center">$ <?php echo e(number_format($producto->PrecioVenta,2,'.','')); ?> MXN</td>
                                         <?php if($producto->existencia>5): ?>
                                         <h5>
                                             <td class="badge badge-success"><?php echo e($producto->existencia); ?></td>
@@ -157,7 +152,7 @@
                             </table>
 
                             <nav aria-label="Page navigation example float-right">
-                                <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 ">refrescar</a>
+                                <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 ">Refrescar</a>
                                 <ul class="pagination float-right mt-3">
                                     <li class="page-item"><a class="page-link" href="<?php echo e($productos->previousPageUrl()); ?>">Anterior</a></li>
                                     <li class="page-item"><a class="page-link" href="<?php echo e($productos->url(1)); ?>">1</a>
@@ -176,7 +171,7 @@
                         <div class=" row">
                             <div class="col-md-4 mt-4">
                                 <div class="form-group">
-                                    <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary">regresar</a>
+                                    <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-outline-primary">Regresar</a>
                                 </div>
                             </div>
 

@@ -21,16 +21,14 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Ventas  <i class="fas fa-cart-arrow-down"></i></h1>
                     <p class="mb-4 text-dark">Consulte los datos de sus ventas aquí.</p>
-
                     
                     <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4 rounded card-color">
                         <div class="card-header py-3 bg-color">
                             <h6 class="m-0 font-weight-bold">Búsqueda de ventas</h6>
                         </div>
-
+    
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 
@@ -43,7 +41,7 @@
                                             <div class="form-group">
                                                 <a title="agregar nuevo cliente" type="button" class="btn btn-outline-primary btn-auto mx-3 text-black2"
                                                     href="<?php echo e(route('venta.create')); ?>"> 
-                                                     nueva venta <i class="fas fa-cart-arrow-down"></i>
+                                                     Nueva venta <i class="fas fa-cart-arrow-down"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -51,16 +49,13 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'nombre',
-                                                    'articulo',
-                                                    'telefono',
-                                                    'cantidad',
-                                                    'descuento'
+                                                    ['idCliente','ID CLIENTE'],
+                                                    ['fecha','FECHA'],
                                                     // 'PRECIO COMPRA','PRECIO VENTA'
                                                     ]); ?>
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option><?php echo e($buscar); ?></option>
+                                                            <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 
@@ -93,28 +88,24 @@
                             
                             <?php if($sales->count()): ?>)
                             <div class="card-body ">
-
                                <div class="table-responsive">
                                     
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-
                                                 <th scope="col">ID</th>
-                                                <th scope="col">NUMERO</th>
                                                 <th scope="col">NOMBRE</th>
-                                                <th scope="col">ARTICULO</th>
+                                                <th scope="col">ARTÍCULO</th>
                                                 <th scope="col">FECHA</th>
-                                                <th scope="col">DESCUENTO</th>
-                                                <th scope="col">TOTAL</th>
-                                                <th scope="col" colspan="3">ACCIONES</th>
+                                                <th scope="col">% DE DESCUENTO</th>
+                                                <th scope="col">TOTAL $</th>
+                                                <th scope="col" colspan="3">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $sales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $venta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-
+                                                <tr class="table-hover">
                                                     <th scope="row"><?php echo e($venta->idVenta); ?></th>
-
 
                                                     <td>
                                                         
@@ -124,30 +115,28 @@
                                                         
                                                     </td>
 
-
                                                     <td class="text-center"><?php echo e($venta->idProducto); ?></td>
                                                     <td class="text-center"><?php echo e($venta->fecha); ?></td>
                                                     <td class="text-center"><?php echo e($venta->descuento); ?> %</td>
- 
+                                                    <td class="text-center"> $ <?php echo e(number_format($venta->totalVenta,2,'.','')); ?> MXN</td>
+                                                           
+
                                                     
                                                     <td>
                                                         
                                                         <a title="detalle venta" href="<?php echo e(route('venta.detalle_venta',$venta->idVenta)); ?>"
-
                                                             class="btn btn-outline-primary btn-circle">
                                                             <i class="fa fa-info-circle"></i></a>
                                                         
                                                     </td>
                                                     <td>
                                                         
-
                                                         <form action="<?php echo e(route('venta.delete', [$venta->idVenta])); ?>" 
-
                                                             method="post">
                                                             <?php echo method_field("delete"); ?>
                                                             <?php echo csrf_field(); ?>
-                                                            <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
-                                                                <i class="fa fa-trash"></i>
+                                                            <button title="Devolver" type="submit" class="btn btn-outline-danger btn-circle">
+                                                                <i class="fa fa-reply-all"></i>
                                                             </button>
                                                         </form> 
                                                         
@@ -157,9 +146,7 @@
                                                     <td>
                                                         
                                                         
-
                                                             <a href="<?php echo e(route('venta.ticket', [$venta->idVenta])); ?>" target="_blank"
-
                                                             class="btn btn-outline-success btn-circle btn-download">
                                                                
                                                                 <i class="fa fa-download"></i>
@@ -176,7 +163,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="<?php echo e(route('venta.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('venta.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="<?php echo e($sales->previousPageUrl()); ?>">Anterior</a></li>
@@ -197,7 +184,7 @@
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="<?php echo e(route('venta.index')); ?>" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="<?php echo e(route('venta.index')); ?>" class="btn btn-outline-primary" >Regresar</a>
                                     </div>
                                 </div>
                                 

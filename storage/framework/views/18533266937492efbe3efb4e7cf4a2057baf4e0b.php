@@ -36,7 +36,7 @@
                         <div class="card shadow  rounded card-color">
                             <div class="container">
                                 
-                                <form action="<?php echo e(route('productos.index', [$productos])); ?>" method="GET">
+                                <form action="<?php echo e(route('inventario.index', [$productos])); ?>" method="GET">
                                     <div class="row">
 
                                         
@@ -49,16 +49,13 @@
                                         <div class="col-md-2 mt-4">
                                             <div class="form-group">
                                                 <?php ($arrayB = [
-                                                    'nombre',
-                                                    'descripcion',
-                                                    'modelo',
-                                                    'tipo',
-                                                    // 'PRECIO COMPRA','PRECIO VENTA'
-                                                    ]); ?>
-                                                    <select title="buscar por" class="form-control text-upper" name="type">
-                                                        <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option><?php echo e($buscar); ?></option>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    ['nombre','NOMBRE'],
+                                                    ['descripcion','DESCRIPCIÓN']
+                                                ]); ?>
+                                                <select title="buscar por" class="form-control text-upper" name="type">
+                                                    <?php $__currentLoopData = $arrayB; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $buscar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value=<?php echo e($buscar[0]); ?>><?php echo e($buscar[1]); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
 
                                                 </div>
@@ -92,13 +89,10 @@
                                 <div class="container">
                                     <div class="row justify-content-md-center">
                                       <div class="col col-lg-3">
-                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Suficientes.</h5>
+                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Existencia</h5>
                                       </div>
                                       <div class="col-lg-3">
-                                        <h5 class="text-dark  mx-3"> <span class="badge badge-warning">2</span> Pocas</h5>
-                                      </div>
-                                      <div class="col-lg-3">
-                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">3</span> Agotado.</h5>
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">2</span> Agotado.</h5>
                                       </div>
                                     </div>
                                 </div>
@@ -112,51 +106,60 @@
                                                 <th scope="col">ID</th>
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">DESCRIPCIÓN</th>
-                                                <th scope="col">MODELO</th>
-                                                <th scope="col">TIPO</th>
-                                                <th scope="col">PRECIO COMPRA</th>
-                                                <th scope="col">PRECIO VENTA</th>
+                                                <th scope="col">PRECIO COMPRA ($)</th>
+                                                <th scope="col">PRECIO VENTA ($)</th>
                                                 <th scope="col">EXISTENCIA</th>
+                                                <th scope="col" colspan="2">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                                                <tr class="table-hover">
-                                                    <th scope="row"><?php echo e($producto->id); ?></th>
-
-                                                    <td>
-                                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.show')): ?>
-                                                        <a class="text-center"
-                                                            href="<?php echo e(route('productos.show', [$producto])); ?>">
-
-                                                            <?php echo e($producto->nombre); ?>
-
-                                                        </a>
-                                                        <?php endif; ?>
-                                                    </td>
-
-                                                    <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
-                                                    <td class="text-center"><?php echo e($producto->modelo); ?></td>
-                                                    <td class="text-center"><?php echo e($producto->tipo); ?></td>
-                                                    <td class="text-center">$ <?php echo e($producto->precio_c); ?></td>
-                                                    <td class="text-center">$ <?php echo e($producto->precio_v); ?></td>
-                                                            <?php if($producto->stock>5): ?>
-                                                            <h5><td class="badge badge-success"><?php echo e($producto->stock); ?></td></h5>
-                                                            <?php elseif($producto->stock == 0): ?>
-                                                            <h5><td class="badge badge-danger"><?php echo e($producto->stock); ?></td></h5>
-                                                                <?php else: ?>
-                                                                <h5><td class="badge badge-warning"><?php echo e($producto->stock); ?></td></h5>
-                                                            <?php endif; ?>
-
-                                                </tr>
+                                            <tr class="table-hover">
+                                                <th scope="row"><?php echo e($producto->idProducto); ?></th>
+        
+                                                <td class="text-center"><?php echo e($producto->nombre); ?></td>
+        
+                                                <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
+                                                
+                                                <td class="text-center">$ <?php echo e($producto->precioCompra); ?> MXN</td>
+                                                <td class="text-center">$ <?php echo e($producto->PrecioVenta); ?> MXN</td>
+                                                <?php if($producto->existencia>0): ?>
+                                                <h5>
+                                                    <td class="badge badge-success"><?php echo e($producto->existencia); ?></td>
+                                                </h5>
+                                                <?php elseif($producto->existencia == 0): ?>
+                                                <h5>
+                                                    <td class="badge badge-danger"><?php echo e($producto->existencia); ?></td>
+                                                </h5>
+                                                <?php endif; ?>
+        
+        
+                                                <td>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.edit')): ?>
+                                                    <a title="editar producto" href="<?php echo e(route('productos.edit', $producto->idProducto)); ?>" class="btn btn-outline-primary btn-circle">
+                                                        <i class="fa fa-edit"></i></a>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.destroy')): ?>
+                                                    <form action="<?php echo e(route('productos.destroy', $producto->idProducto)); ?>" method="post">
+                                                        <?php echo method_field("delete"); ?>
+                                                        <?php echo csrf_field(); ?>
+                                                        <button title="borrar producto" type="submit" class="btn btn-outline-danger btn-circle btn-delete">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                             <h3 class="text-black text-center"> ¡No hay registros!</h3>
-                                     <?php endif; ?>
+                                            <?php endif; ?>
                                         </tbody>
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="<?php echo e(route('inventario.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="<?php echo e(route('inventario.index')); ?>" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="<?php echo e($productos->previousPageUrl()); ?>">Anterior</a></li>
