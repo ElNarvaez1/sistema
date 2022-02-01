@@ -45,6 +45,5 @@ class CambioLLantasController extends Controller
         return view('errors.404')->with('info','Ocurrio un error');
        }
         return view('cambiollantas.show', ['cambio' => CambioLlanta::findOrFail($idCambio)]);
-
    }
 }

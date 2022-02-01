@@ -87,7 +87,7 @@ idProveedor
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Precio compra* $</label>
-                                        <input type="number" min="0" name="precio_c" value="{{ old('precio_c') }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
+                                        <input type="number" min="0" id="precioCompra" name="precio_c" value="{{ old('precio_c') }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
 
                                         {{-- validaciones --}}
                                         @error('precio_c')
@@ -100,7 +100,7 @@ idProveedor
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Precio venta* $</label>
-                                        <input type="number" min="0" name="precio_v" value="{{ old('precio_v') }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
+                                        <input type="number" min="0"  id="precioVenta"name="precio_v" value="{{ old('precio_v') }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
                                         {{-- validaciones --}}
                                         @error('precio_v')
                                         <div class="message-error">*{{ $message }}</div>
@@ -176,7 +176,7 @@ idProveedor
 
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Indice de Carga* (Carga Maxima)</label>
+                                                        <label class="fs-5 text-body">Indice de Carga* (Carga Maxima en Kg)</label>
                                                         <input type="number" min="0" name="cargaMaxima" id="idcargaMaxima" value="{{old('cargaMaxima')}}" class="form-control text-upper">
                                                         @error('cargaMaxima')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -187,7 +187,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Velocidad Maxima*</label>
+                                                        <label class="fs-5 text-body">Velocidad Maxima* (Km/h)</label>
                                                         <input type="number" name="velocidadMaxima" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
                                                         @error('velocidadMaxima')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -198,7 +198,7 @@ idProveedor
                                                 <!----------------------- CAJA DE Presion ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Presión*</label>
+                                                        <label class="fs-5 text-body">Presión* (psi)</label>
                                                         <input type="number" name="presion" value="{{ old('presion') }}" class="form-control text-upper" min="1">
                                                         @error('presion')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -209,7 +209,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *Anvcho* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Ancho*</label>
+                                                        <label class="fs-5 text-body">Ancho* (mm)</label>
                                                         <input type="number" name="anchoLlanta" value="{{ old('anchoLlanta') }}" class="form-control text-upper" min="1">
                                                         @error('anchoLlanta')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -219,7 +219,7 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Diámetro*</label>
+                                                        <label class="fs-5 text-body">Diámetro* (in)</label>
                                                         <input type="number" name="diametro" value="{{ old('diametro') }}" class="form-control text-upper" min="1">
                                                         @error('diametro')
                                                         <div class="message-error">*{{ $message }}</div>
@@ -239,8 +239,8 @@ idProveedor
                                                 <!----------------------- CAJA DE TEXTO *Año fabricacnion* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Año Fabricante*</label>
-                                                        <input type="text" name="aniofabricante" value="{{ old('aniofabricante') }}" class="form-control text-upper" min="1">
+                                                        <label class="fs-5 text-body">Año de fabricación*</label>
+                                                        <input type="number" name="aniofabricante" id="anioFab" value="{{ old('aniofabricante') }}" min="1970" max="2050" class="form-control text-upper" min="1">
                                                         @error('aniofabricante')
                                                         <div class="message-error">*{{ $message }}</div>
                                                         @enderror
@@ -276,7 +276,7 @@ idProveedor
                                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Alto*</label>
+                                                        <label class="fs-5 text-body">Alto* (mm)</label>
                                                         <input type="number" name="alto" value="{{ old('alto') }}" placeholder="" class="form-control text-upper" min="1">
                                                         @error('alto')
                                                             <div class="message-error">*{{ $message }}</div>
@@ -286,7 +286,7 @@ idProveedor
                                                 <!--------------------------Inputs de la informacion ancho -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Ancho*</label>
+                                                        <label class="fs-5 text-body">Ancho* (mm)</label>
                                                         <input type="number" name="ancho" value="{{ old('ancho') }}" placeholder="" class="form-control text-upper" min="1">
                                                         @error('ancho')
                                                             <div class="message-error">*{{ $message }}</div>
@@ -296,7 +296,7 @@ idProveedor
                                                 <!--------------------------Inputs de la informacion LARGO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Largo*</label>
+                                                        <label class="fs-5 text-body">Largo* (mm)</label>
                                                         <input type="number" name="largo" value="{{ old('largo') }}" placeholder="" class="form-control text-upper" min="1">
                                                         @error('largo')
                                                             <div class="message-error">*{{ $message }}</div>
@@ -316,7 +316,7 @@ idProveedor
                                                 <!--------------------------Inputs de la informacion PERO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Peso*</label>
+                                                        <label class="fs-5 text-body">Peso (KG)*</label>
                                                         <input type="number" name="peso" value="{{ old('peso') }}" placeholder="" class="form-control text-upper" min="1">
                                                         @error('peso')
                                                             <div class="message-error">*{{ $message }}</div>
@@ -362,7 +362,7 @@ idProveedor
                                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre los rines</h3>
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Número de Rin*</label>
+                                                        <label class="fs-5 text-body">Número de Rin*(in)</label>
                                                         <input type="number" name="numeroRin" value="{{ old('numeroRin') }}" placeholder="" class="form-control text-upper" min="1">
                                                         @error('numeroRin')
                                                             <div class="message-error">*{{ $message }}</div>
@@ -425,6 +425,30 @@ idProveedor
     botonBateria.addEventListener('click', putValue);
     botonRin.addEventListener('click', putValue);
 </script>
+<script>
+    let precioCompraInput = document.getElementById('precioCompra');
+    let precioVentaInput = document.getElementById('precioVenta');
+
+    //console.log(precioCompraInput);
+    precioCompraInput.addEventListener('change',e=>{
+        precioVentaInput.min = e.target.value;
+        precioVentaInput.value = e.target.value;
+    });
+
+
+    let anioFab = document.getElementById('anioFab');
+    anioFab.addEventListener('keyup',e=>{
+        if(e.target.value.length > 3 ){
+            if(e.target.value<1970 || e.target.value>2050){
+                alert('Este valor no es valido en este campo');
+                console.log(e.target.value);
+                console.log(e.target.value.length);
+            }else{}
+        }
+    })
+</script>
+
+
 <!-- End of Page Wrapper -->
 
 @endsection
