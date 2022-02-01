@@ -1,28 +1,28 @@
-@extends('layouts.main')
-@section('titulo', 'Agregar Producto')
-@section('contenido')
+
+<?php $__env->startSection('titulo', 'Agregar Producto'); ?>
+<?php $__env->startSection('contenido'); ?>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-    {{-- incluimos sildebar color: azul :) --}}
-    @include('plantilla.sidebar')
+    
+    <?php echo $__env->make('plantilla.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-            @include('layouts.nav-log')
+            <?php echo $__env->make('layouts.nav-log', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <!-- Begin Page Content -->
             <div class="container-fluid rounded color">
-                @csrf
+                <?php echo csrf_field(); ?>
                 <br>
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 bold-title"> REGISTRAR PRODUCTO <i class="fas fa-plus-circle mx-3"></i> </h1>
                 <p class="mb-4 text-dark">Registre su producto aquí.</p>
 
 
-                {{-- mensajes --}}
-                @include('plantilla.notification')
+                
+                <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4 rounded card-color">
@@ -30,14 +30,14 @@
                         <h6 class="m-0 font-weight-bold ">Agregar producto</h6>
                     </div>
 
-                    {{-- Formulario -> vista de productos --}}
+                    
 
 
                     <div class="container">
 
-                        <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="<?php echo e(route('productos.store')); ?>" enctype="multipart/form-data">
 
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="row">
                                 <!--
                                 idProducto
@@ -47,11 +47,18 @@ idProveedor
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Nombre del producto*</label>
-                                        <input type="text" name="nombre" value="{{ old('nombre') }}" placeholder="Introduce el nombre del producto" class="form-control text-upper">
-                                        {{-- validaciones --}}
-                                        @error('nombre')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
+                                        <input type="text" name="nombre" value="<?php echo e(old('nombre')); ?>" placeholder="Introduce el nombre del producto" class="form-control text-upper">
+                                        
+                                        <?php $__errorArgs = ['nombre'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
 
@@ -62,12 +69,19 @@ idProveedor
                                 <div class="col-md-8 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Descripción*</label>
-                                        <textarea class="form-control text-upper" placeholder="Descripción del producto..." name="descripcion">{{ old('descripcion') }}</textarea>
+                                        <textarea class="form-control text-upper" placeholder="Descripción del producto..." name="descripcion"><?php echo e(old('descripcion')); ?></textarea>
 
-                                        {{-- validaciones --}}
-                                        @error('descripcion')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
+                                        
+                                        <?php $__errorArgs = ['descripcion'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
 
                                     </div>
                                 </div>
@@ -76,10 +90,17 @@ idProveedor
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Modelo*</label>
-                                        <input type="text" name="modelo" value="{{ old('modelo') }}" placeholder="Introduce el modelo del producto" class="form-control text-upper">
-                                        @error('modelo')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
+                                        <input type="text" name="modelo" value="<?php echo e(old('modelo')); ?>" placeholder="Introduce el modelo del producto" class="form-control text-upper">
+                                        <?php $__errorArgs = ['modelo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Precio compra     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
@@ -87,12 +108,19 @@ idProveedor
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Precio compra* $</label>
-                                        <input type="number" min="0" id="precioCompra" name="precio_c" value="{{ old('precio_c') }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
+                                        <input type="number" min="0" id="precioCompra" name="precio_c" value="<?php echo e(old('precio_c')); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
 
-                                        {{-- validaciones --}}
-                                        @error('precio_c')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
+                                        
+                                        <?php $__errorArgs = ['precio_c'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Precio venta     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
@@ -100,11 +128,18 @@ idProveedor
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Precio venta* $</label>
-                                        <input type="number" min="0"  id="precioVenta"name="precio_v" value="{{ old('precio_v') }}" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
-                                        {{-- validaciones --}}
-                                        @error('precio_v')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
+                                        <input type="number" min="0"  id="precioVenta"name="precio_v" value="<?php echo e(old('precio_v')); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper">
+                                        
+                                        <?php $__errorArgs = ['precio_v'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
 
                                     </div>
                                 </div>
@@ -114,25 +149,32 @@ idProveedor
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Existencia*</label>
-                                        <input type="number" name="stock" value="{{ old('stock') }}" placeholder="En existencia" class="form-control text-upper" min="1">
-                                        {{-- validaciones --}}
-                                        @error('stock')
-                                        <div class="message-error">*{{ $message }}</div>
-                                        @enderror
+                                        <input type="number" name="stock" value="<?php echo e(old('stock')); ?>" placeholder="En existencia" class="form-control text-upper" min="1">
+                                        
+                                        <?php $__errorArgs = ['stock'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Proveedor     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-                                @php(
+                                <?php (
                                 $proveedores = DB::table('proveedores')->get()
-                                )
+                                ); ?>
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
                                         <label class="fs-5 text-body">Proveedor*</label>
                                         <select title="" class="form-control text-upper" name="proveedor">
                                             <option value="0">Seleccione el proveedor</option>
-                                            @foreach ($proveedores as $proveedor)
-                                            <option value="{{$proveedor->idProveedor}}">{{$proveedor->nombre}}</option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $proveedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proveedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($proveedor->idProveedor); ?>"><?php echo e($proveedor->nombre); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div>
@@ -157,17 +199,17 @@ idProveedor
                                             <div class="row pt-3">
                                                 <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre las llantas</h3>
                                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   SECCION DEL ID DEL RIN   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
-                                                @php(
+                                                <?php (
                                                 $rines = DB::table('rin')->get()
-                                                )
+                                                ); ?>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Rines*</label>
                                                         <select title="" class="form-control text-upper" name="rin">
                                                             <option value="0">Seleccione Rin</option>
-                                                            @foreach ($rines as $rin)
-                                                            <option value="{{$rin->idRin}}">{{$rin->numero}}</option>
-                                                            @endforeach
+                                                            <?php $__currentLoopData = $rines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($rin->idRin); ?>"><?php echo e($rin->numero); ?></option>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -177,10 +219,17 @@ idProveedor
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Indice de Carga* (Carga Maxima en Kg)</label>
-                                                        <input type="number" min="0" name="cargaMaxima" id="idcargaMaxima" value="{{old('cargaMaxima')}}" class="form-control text-upper">
-                                                        @error('cargaMaxima')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="number" min="0" name="cargaMaxima" id="idcargaMaxima" value="<?php echo e(old('cargaMaxima')); ?>" class="form-control text-upper">
+                                                        <?php $__errorArgs = ['cargaMaxima'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
 
@@ -188,10 +237,17 @@ idProveedor
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Velocidad Maxima* (Km/h)</label>
-                                                        <input type="number" name="velocidadMaxima" value="{{ old('velocidadMaxima') }}" class="form-control text-upper" min="1">
-                                                        @error('velocidadMaxima')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="number" name="velocidadMaxima" value="<?php echo e(old('velocidadMaxima')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['velocidadMaxima'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
 
@@ -199,10 +255,17 @@ idProveedor
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Presión* (psi)</label>
-                                                        <input type="number" name="presion" value="{{ old('presion') }}" class="form-control text-upper" min="1">
-                                                        @error('presion')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="number" name="presion" value="<?php echo e(old('presion')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['presion'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
 
@@ -210,60 +273,102 @@ idProveedor
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Ancho* (mm)</label>
-                                                        <input type="number" name="anchoLlanta" value="{{ old('anchoLlanta') }}" class="form-control text-upper" min="1">
-                                                        @error('anchoLlanta')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="number" name="anchoLlanta" value="<?php echo e(old('anchoLlanta')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['anchoLlanta'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Diámetro* (in)</label>
-                                                        <input type="number" name="diametro" value="{{ old('diametro') }}" class="form-control text-upper" min="1">
-                                                        @error('diametro')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="number" name="diametro" value="<?php echo e(old('diametro')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['diametro'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Fabricante*</label>
-                                                        <input type="text" name="fabricante" value="{{ old('fabricante') }}" class="form-control text-upper" min="1">
-                                                        @error('fabricante')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="text" name="fabricante" value="<?php echo e(old('fabricante')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['fabricante'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!----------------------- CAJA DE TEXTO *Año fabricacnion* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Año de fabricación*</label>
-                                                        <input type="number" name="aniofabricante" id="anioFab" value="{{ old('aniofabricante') }}" min="1970" max="2050" class="form-control text-upper" min="1">
-                                                        @error('aniofabricante')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="number" name="aniofabricante" id="anioFab" value="<?php echo e(old('aniofabricante')); ?>" min="1970" max="2050" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['aniofabricante'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!----------------------- CAJA DE TEXTO *Tipo carrp* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Tipo Carro*</label>
-                                                        <input type="text" name="tipoCarro" value="{{ old('tipoCarro') }}" class="form-control text-upper" min="1">
-                                                        @error('tipoCarro')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="text" name="tipoCarro" value="<?php echo e(old('tipoCarro')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['tipoCarro'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!----------------------- CAJA DE TEXTO *marca carrp* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Marca Carro*</label>
-                                                        <input type="text" name="marcaCarro" value="{{ old('marcaCarro') }}" class="form-control text-upper" min="1">
-                                                        @error('marcaCarro')
-                                                        <div class="message-error">*{{ $message }}</div>
-                                                        @enderror
+                                                        <input type="text" name="marcaCarro" value="<?php echo e(old('marcaCarro')); ?>" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['marcaCarro'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <div class="message-error">*<?php echo e($message); ?></div>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
 
@@ -277,50 +382,85 @@ idProveedor
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Alto* (mm)</label>
-                                                        <input type="number" name="alto" value="{{ old('alto') }}" placeholder="" class="form-control text-upper" min="1">
-                                                        @error('alto')
-                                                            <div class="message-error">*{{ $message }}</div>
-                                                         @enderror
+                                                        <input type="number" name="alto" value="<?php echo e(old('alto')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['alto'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <div class="message-error">*<?php echo e($message); ?></div>
+                                                         <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion ancho -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Ancho* (mm)</label>
-                                                        <input type="number" name="ancho" value="{{ old('ancho') }}" placeholder="" class="form-control text-upper" min="1">
-                                                        @error('ancho')
-                                                            <div class="message-error">*{{ $message }}</div>
-                                                         @enderror
+                                                        <input type="number" name="ancho" value="<?php echo e(old('ancho')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['ancho'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <div class="message-error">*<?php echo e($message); ?></div>
+                                                         <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion LARGO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Largo* (mm)</label>
-                                                        <input type="number" name="largo" value="{{ old('largo') }}" placeholder="" class="form-control text-upper" min="1">
-                                                        @error('largo')
-                                                            <div class="message-error">*{{ $message }}</div>
-                                                         @enderror
+                                                        <input type="number" name="largo" value="<?php echo e(old('largo')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['largo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <div class="message-error">*<?php echo e($message); ?></div>
+                                                         <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion Amperes -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Amperes*</label>
-                                                        <input type="number" name="amperes" value="{{ old('amperes') }}" placeholder="" class="form-control text-upper" min="1">
-                                                        @error('amperes')
-                                                            <div class="message-error">*{{ $message }}</div>
-                                                         @enderror
+                                                        <input type="number" name="amperes" value="<?php echo e(old('amperes')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['amperes'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <div class="message-error">*<?php echo e($message); ?></div>
+                                                         <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion PERO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Peso (KG)*</label>
-                                                        <input type="number" name="peso" value="{{ old('peso') }}" placeholder="" class="form-control text-upper" min="1">
-                                                        @error('peso')
-                                                            <div class="message-error">*{{ $message }}</div>
-                                                         @enderror
+                                                        <input type="number" name="peso" value="<?php echo e(old('peso')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['peso'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <div class="message-error">*<?php echo e($message); ?></div>
+                                                         <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!--------------------------Inputs de la informacion MARCA -------------------------->
@@ -343,10 +483,17 @@ idProveedor
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Voltaje*</label>
-                                                        <input type="number" name="voltaje" value="{{ old('stock') }}" placeholder="" class="form-control text-upper" min="1">
-                                                        @error('voltaje')
-                                                            <div class="message-error">*{{ $message }}</div>
-                                                         @enderror
+                                                        <input type="number" name="voltaje" value="<?php echo e(old('stock')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['voltaje'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <div class="message-error">*<?php echo e($message); ?></div>
+                                                         <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
 
@@ -363,10 +510,17 @@ idProveedor
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">
                                                         <label class="fs-5 text-body">Número de Rin*(in)</label>
-                                                        <input type="number" name="numeroRin" value="{{ old('numeroRin') }}" placeholder="" class="form-control text-upper" min="1">
-                                                        @error('numeroRin')
-                                                            <div class="message-error">*{{ $message }}</div>
-                                                         @enderror
+                                                        <input type="number" name="numeroRin" value="<?php echo e(old('numeroRin')); ?>" placeholder="" class="form-control text-upper" min="1">
+                                                        <?php $__errorArgs = ['numeroRin'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <div class="message-error">*<?php echo e($message); ?></div>
+                                                         <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -376,19 +530,19 @@ idProveedor
 
                             </div>
 
-                            {{-- PARTE BOTONES --}}
+                            
 
                             <div class="row justify-content-center mt-4">
                                 <div class="col-auto">
                                     <button title="guardar producto" type="submit" class="btn btn-success btn-ms">
                                         Guardar <i class="fas fa-save"></i></button>
                                 </div>
-                                @can('productos.index')
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('productos.index')): ?>
                                 <div class="col-auto">
-                                    <a title="cancelar producto" href={{ route('productos.index') }} class="btn btn-primary btn-ms">Regresar
+                                    <a title="cancelar producto" href=<?php echo e(route('productos.index')); ?> class="btn btn-primary btn-ms">Regresar
                                         <i class="fas fa-strikethrough"></i></a>
                                 </div>
-                                @endcan
+                                <?php endif; ?>
                             </div>
                             <br>
 
@@ -407,7 +561,7 @@ idProveedor
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        @include('plantilla.footer')
+        <?php echo $__env->make('plantilla.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->
@@ -456,4 +610,5 @@ idProveedor
 
 <!-- End of Page Wrapper -->
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sistema\resources\views/productos/productos_add.blade.php ENDPATH**/ ?>
