@@ -100,11 +100,11 @@
                                                 <th scope="col">ID</th>
                                                 <th scope="col">NOMBRE DE USUARIO</th>
                                                 <th scope="col">CORREO ELECTRÓNICO</th>
-                                                <th scope="col">NÚMERO DE CONTACTO</th>
+                                                <th scope="col">TELÉFONO</th>
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">APELLIDO PATERNO</th>
                                                 <th scope="col">FECHA DE CREACIÓN</th>
-                                                <th scope="col">OPERACIONES</th>
+                                                <th scope="col">ACCIÓN</th>
                                                 {{-- <th scope="col">ELIMINAR</th> --}}
                                             </tr>
                                         </thead>

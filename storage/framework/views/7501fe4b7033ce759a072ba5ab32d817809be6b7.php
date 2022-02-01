@@ -117,7 +117,7 @@
                                                 <th scope="col">E-MAIL</th>
                                                 <th scope="col">TELÉFONO</th>
                                                 
-                                                <th scope="col" colspan="2">ACCIONES</th>
+                                                <th scope="col" colspan="2">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">

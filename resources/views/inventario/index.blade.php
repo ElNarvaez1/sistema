@@ -89,13 +89,10 @@
                                 <div class="container">
                                     <div class="row justify-content-md-center">
                                       <div class="col col-lg-3">
-                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Suficientes.</h5>
+                                         <h5 class="text-dark  mx-3"> <span class="badge badge-success">1</span> Existencia</h5>
                                       </div>
                                       <div class="col-lg-3">
-                                        <h5 class="text-dark  mx-3"> <span class="badge badge-warning">2</span> Pocas</h5>
-                                      </div>
-                                      <div class="col-lg-3">
-                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">3</span> Agotado.</h5>
+                                        <h5 class="text-dark  mx-3"> <span class="badge badge-danger">2</span> Agotado.</h5>
                                       </div>
                                     </div>
                                 </div>
@@ -109,10 +106,10 @@
                                                 <th scope="col">ID</th>
                                                 <th scope="col">NOMBRE</th>
                                                 <th scope="col">DESCRIPCIÓN</th>
-                                                <th scope="col">PRECIO COMPRA</th>
-                                                <th scope="col">PRECIO VENTA</th>
+                                                <th scope="col">PRECIO COMPRA ($)</th>
+                                                <th scope="col">PRECIO VENTA ($)</th>
                                                 <th scope="col">EXISTENCIA</th>
-                                                <th scope="col" colspan="2">ACCIONES</th>
+                                                <th scope="col" colspan="2">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
@@ -124,19 +121,15 @@
         
                                                 <td class="text-justify">{{ $producto->descripcion }}</td>
                                                 {{--<td class="text-center">{{ $producto->modelo }}</td> --}}
-                                                <td class="text-center">$ {{ $producto->precioCompra }}</td>
-                                                <td class="text-center">$ {{ $producto->PrecioVenta }}</td>
-                                                @if ($producto->existencia>5)
+                                                <td class="text-center">$ {{ $producto->precioCompra }} MXN</td>
+                                                <td class="text-center">$ {{ $producto->PrecioVenta }} MXN</td>
+                                                @if ($producto->existencia>0)
                                                 <h5>
                                                     <td class="badge badge-success">{{ $producto->existencia }}</td>
                                                 </h5>
                                                 @elseif ($producto->existencia == 0)
                                                 <h5>
                                                     <td class="badge badge-danger">{{ $producto->existencia }}</td>
-                                                </h5>
-                                                @else
-                                                <h5>
-                                                    <td class="badge badge-warning">{{ $producto->existencia }}</td>
                                                 </h5>
                                                 @endif
         
@@ -166,7 +159,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="{{ route('inventario.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="{{ route('inventario.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="{{ $productos->previousPageUrl() }}">Anterior</a></li>

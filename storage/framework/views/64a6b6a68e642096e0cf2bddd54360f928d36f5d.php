@@ -96,10 +96,10 @@
                                         <th scope="col">NOMBRE</th>
                                         <th scope="col">DESCRIPCIÓN</th>
                                         <!-- <th scope="col">MODELO</th> -->
-                                        <th scope="col">PRECIO COMPRA</th>
-                                        <th scope="col">PRECIO VENTA</th>
+                                        <th scope="col">PRECIO COMPRA ($)</th>
+                                        <th scope="col">PRECIO VENTA ($)</th>
                                         <th scope="col">EXISTENCIA</th>
-                                        <th scope="col" colspan="2">ACCIONES</th>
+                                        <th scope="col" colspan="2">ACCIÓN</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-black2">
@@ -110,8 +110,8 @@
                                         <td class="text-center"><?php echo e($producto->nombre); ?></td>
 
                                         <td class="text-justify"><?php echo e($producto->descripcion); ?></td>
-                                        <td class="text-center">$ <?php echo e($producto->precioCompra); ?></td>
-                                        <td class="text-center">$ <?php echo e($producto->PrecioVenta); ?></td>
+                                        <td class="text-center">$ <?php echo e(number_format($producto->precioCompra,2,'.','')); ?> MXN</td>
+                                        <td class="text-center">$ <?php echo e(number_format($producto->PrecioVenta,2,'.','')); ?> MXN</td>
                                         <?php if($producto->existencia>5): ?>
                                         <h5>
                                             <td class="badge badge-success"><?php echo e($producto->existencia); ?></td>

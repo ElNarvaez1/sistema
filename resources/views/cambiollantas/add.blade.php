@@ -15,7 +15,7 @@
                 <div class="container-fluid rounded color">
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 bold-title">Cambio de neumaticos<i class="fas fa-percentage mx-3"></i></h1>
+                    <h1 class="h3 mb-2 bold-title">Cambio de neumáticos<i class="fas fa-percentage mx-3"></i></h1>
                     <p class="mb-4 text-dark"></p>
 
                     @include('plantilla.notification')
@@ -41,7 +41,7 @@
                                                                             {{ csrf_field() }}
                                                                             <div class="row">
                                                                                 <div class="col-md-12" style="text-align: center">
-                                                                                    <label class="text-black"><FONT SIZE =4><b>Solo se registra el cambio de neumáticos para registros historicos.</b></FONT></label>
+                                                                                    <label class="text-black"><FONT SIZE =4><b>Solo se registra el cambio de neumáticos para registros históricos.</b></FONT></label>
                                                                                     <br>
                                                                                 </div>
                                                                                 <div class="col-md-12">
@@ -49,9 +49,9 @@
                                                                                 </div>                                                                               
                                                                             <div class="col-md-12 mt-4">
                                                                                     <div class="form-group">
-                                                                                    <label class="text-black"><FONT SIZE =3>Fecha en la que se esta realizando el servicio:</FONT></label>
+                                                                                    <label class="text-black"><FONT SIZE =3>Fecha de realización del servicio:</FONT></label>
                                                                                         <input disabled="true"id="fecha" type="text" value="<?php echo date("Y-n-j")?>" required> <!--el codigo en php es para obtener la fecha actual-->
-                                                                                        <label class="text-black"><FONT SIZE =3>Descripción sobre el cambio de neumáticos:</FONT></label>
+                                                                                        <label class="text-black"><FONT SIZE =3>Descripción: servicio de cambio de neumáticos</FONT></label>
                                                                                         <textarea class="form-control" value="{{old('message')}}" name="descripcion" placeholder="Descripción" required></textarea>
                                                                                         <br>
                                                                                         <label class="text-black h5"><FONT SIZE =3>Total del servicio $:</FONT></label>

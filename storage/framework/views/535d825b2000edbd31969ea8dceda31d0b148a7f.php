@@ -147,7 +147,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail*</label>
                                                     <input type="text" name="correo" value="<?php echo e(old('correo')); ?>"
-                                                        placeholder="CORREO ELECTRONICO"
+                                                        placeholder="CORREO ELECTRÓNICO"
                                                         class="form-control">
 
                                                     
@@ -199,7 +199,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href="<?php echo e(route('proveedor.index')); ?>" class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href="<?php echo e(route('proveedor.index')); ?>" class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

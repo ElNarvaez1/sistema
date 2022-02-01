@@ -120,11 +120,11 @@ unset($__errorArgs, $__bag); ?>
                                    
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Stock</label>
+                                            <label class="text-black h4">Disponibles*</label>
                                             <input type="number" name="stock"  value="30"
                                             
                                                min="0" placeholder="Stock"
-                                                class="form-control text-upper" id="s">
+                                                class="form-control text-upper" id="s" readonly>
                                             
                                             <?php $__errorArgs = ['stock'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -141,7 +141,7 @@ unset($__errorArgs, $__bag); ?>
                                    
                                     <div class="col-md-2 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Descuento</label>
+                                            <label class="text-black h4">Descuento*</label>
                                             <input type="number" name="descuento" value="0"
                                             
                                                min="0" max="100" placeholder="descuento"
@@ -167,11 +167,31 @@ unset($__errorArgs, $__bag); ?>
                                             <label class="text-black h4">Precio venta*</label>
                                             <input type="text" name="pecio_venta" value="<?php echo e(old('pecio_venta')); ?>"
                                                min="1" max="40" placeholder="Precio de venta"
-                                                class="form-control text-upper" id="p">
+                                                class="form-control text-upper" id="p" readonly>
 
                                             
                                         
                                             <?php $__errorArgs = ['pecio_venta'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <div class="message-error">*<?php echo e($message); ?></div>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 mt-4">
+                                        <div class="form-group">
+                                            <label class="text-black h4"> Stock</label>
+                                            <input type="number" name="stock"  value="2"
+                                            
+                                               min="1" max="40" placeholder="Stock"
+                                                class="form-control text-upper"  readonly>
+                                            
+                                            <?php $__errorArgs = ['stock'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -189,7 +209,7 @@ unset($__errorArgs, $__bag); ?>
                                         
                                         <div class="row justify-content-center mt-4">
                                             <div class="col-md-6">
-                                                <button title="guardar datos" type="submit" class="btn btn-primary btn-lg btn-block">
+                                                <button title="guardar datos" type="submit" class="btn btn-primary btn-lg btn-block" id="btn">
                                                     Agregar <i class="fas fa-plus-circle"></i></button>
                                             </div>
                                             
@@ -310,7 +330,7 @@ unset($__errorArgs, $__bag); ?>
                                   <h6>TOTAL A PAGAR: </h6>                                               </h5>
                               </td>   
                                 <td  class="text-right">
-                                   <?php echo e($item->attributes->total_pay); ?> MXN
+                                   <?php echo e(number_format($item->attributes->total_pay,2,'.','')); ?> MXN
                                         
                                     
                               </td>

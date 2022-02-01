@@ -93,13 +93,13 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">NUMERO</th>
+                                                <th scope="col">ID</th>
                                                 <th scope="col">NOMBRE</th>
-                                                <th scope="col">ARTICULO</th>
+                                                <th scope="col">ARTÍCULO</th>
                                                 <th scope="col">FECHA</th>
-                                                <th scope="col">DESCUENTO</th>
-                                                <th scope="col">TOTAL</th>
-                                                <th scope="col" colspan="3">ACCIONES</th>
+                                                <th scope="col">% DE DESCUENTO</th>
+                                                <th scope="col">TOTAL $</th>
+                                                <th scope="col" colspan="3">ACCIÓN</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
@@ -118,7 +118,7 @@
                                                     <td class="text-center"><?php echo e($venta->idProducto); ?></td>
                                                     <td class="text-center"><?php echo e($venta->fecha); ?></td>
                                                     <td class="text-center"><?php echo e($venta->descuento); ?> %</td>
-                                                    <td class="text-center"> $ <?php echo e($venta->totalVenta); ?></td>
+                                                    <td class="text-center"> $ <?php echo e(number_format($venta->totalVenta,2,'.','')); ?> MXN</td>
                                                            
 
                                                     

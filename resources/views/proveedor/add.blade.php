@@ -112,7 +112,7 @@
                                                 <div class="form-group">
                                                     <label class="text-black h4">E-mail*</label>
                                                     <input type="text" name="correo" value="{{ old('correo') }}"
-                                                        placeholder="CORREO ELECTRONICO"
+                                                        placeholder="CORREO ELECTRÓNICO"
                                                         class="form-control">
 
                                                     {{-- validaciones --}}
@@ -150,7 +150,7 @@
                                             </div>
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href="{{route('proveedor.index')}}" class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href="{{route('proveedor.index')}}" class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

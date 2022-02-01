@@ -40,7 +40,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">ID del cliente</label>
+                                            <label class="text-black h4">ID del cliente*</label>
                                             <input type="text" name="idCliente" value="{{ old('idCliente',$venta->idCliente) }}"
                                                 placeholder="ID del cliente" disabled
                                                 class="form-control text-upper">
@@ -55,7 +55,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Articulo</label>
+                                            <label class="text-black h4">ID del artículo*</label>
                                             <input type="text" name="idProducto" value="{{ old('idProducto',$venta->idProducto) }}"
                                                 placeholder="articulo" disabled
                                                 class="form-control text-upper">
@@ -70,7 +70,7 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Fecha</label>
+                                            <label class="text-black h4">Fecha*</label>
                                             <input type="text" name="fecha" value="{{ old('fecha',$venta->fecha) }}"
                                                 placeholder="Fecha" disabled
                                                 class="form-control text-upper">
@@ -83,8 +83,8 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Sub total</label>
-                                            <input type="text" name="subTotal" value="{{ old('subTotal',$venta->subVenta) }}"
+                                            <label class="text-black h4">Subtotal* ($)</label>
+                                            <input type="text" name="subTotal" value="${{ number_format(old('subTotal',$venta->subVenta),2,'.','') }} MXN"
                                                 placeholder="sub venta" disabled
                                                 class="form-control text-upper">
 
@@ -97,9 +97,9 @@
 
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
-                                            <label class="text-black h4">Descuento</label>
+                                            <label class="text-black h4">Descuento* (%)</label>
                                             <input type="text" name="descuento" class="form-control text-upper"
-                                                placeholder="descuento" disabled value="{{ old('direccion',$venta->descuento) }}"
+                                                placeholder="descuento" disabled value="{{ old('direccion',$venta->descuento) }} %"
                                                 name="descuento">
 
                                             {{-- validaciones --}}
@@ -114,8 +114,8 @@
 
                                             <div class="col-md-4 mt-4">
                                                 <div class="form-group">
-                                                    <label class="text-black h4">Total</label>
-                                                    <input type="text" name="totalVenta" value="{{ old('totalVenta',$venta->totalVenta) }}"
+                                                    <label class="text-black h4">Total* ($)</label>
+                                                    <input type="text" name="totalVenta" value="${{ number_format(old('totalVenta',$venta->totalVenta),2,'.','') }} MXN"
                                                         placeholder="Total venta" disabled
                                                         class="form-control text-upper">
 
@@ -142,7 +142,7 @@
                                             </div> --}}
                                             
                                             <div class="col-auto">
-                                                <a title="cancelar producto" href={{ route('venta.index') }} class="btn btn-danger btn-ms">cancelar
+                                                <a title="cancelar producto" href={{ route('venta.index') }} class="btn btn-danger btn-ms">Cancelar
                                                     <i class="fas fa-strikethrough"></i></a>
                                             </div>
                                        

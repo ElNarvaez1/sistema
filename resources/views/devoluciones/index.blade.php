@@ -44,7 +44,7 @@
                                             <div class="form-group">
                                                 @php($arrayB = [
                                                     ['idVenta','ID VENTA'],
-                                                    ['observacion','MOTIVO DEVOLUCION']
+                                                    ['observacion','MOTIVO DEVOLUCIÓN']
                                                     ])
                                                     <select title="buscar por" class="form-control text-upper" name="type">
                                                         @foreach ($arrayB as $buscar)
@@ -88,8 +88,8 @@
                                     <table class="table  table-light mt-2" width="100%" cellspacing="0">
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
-                                                <th scope="col">IDVENTA</th>
-                                                <th scope="col">MOTIVO DEVOLUCION</th>                                                
+                                                <th scope="col">ID</th>
+                                                <th scope="col">MOTIVO DE DEVOLUCIÓN</th>                                                
                                             </tr>
                                         </thead>
                                         <tbody class="text-black2">
@@ -110,7 +110,7 @@
                                     </table>
 
                                     <nav aria-label="Page navigation example float-right">
-                                        <a href="{{ route('devoluciones.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >refrescar</a>
+                                        <a href="{{ route('devoluciones.index')}}" class="btn btn-outline-primary mx-3 mt-3 " >Refrescar</a>
                                         <ul class="pagination float-right mt-3">
                                             <li class="page-item"><a class="page-link"
                                                     href="{{ $devoluciones->previousPageUrl() }}">Anterior</a></li>
@@ -131,7 +131,7 @@
                                <div class=" row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <a href="{{ route('devoluciones.index')}}" class="btn btn-outline-primary" >regresar</a>
+                                        <a href="{{ route('devoluciones.index')}}" class="btn btn-outline-primary" >Regresar</a>
                                     </div>
                                 </div>
                                 

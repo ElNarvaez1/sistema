@@ -39,7 +39,7 @@
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Nombre  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4 ">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Nombre del producto</label>
+                                        <label class="fs-5 text-body">Nombre del producto*</label>
                                         <input type="text" name="nombre" value="<?php echo e(old('nombre', $producto->nombre)); ?>" placeholder="Introduce el ombre del producto" class="form-control text-upper" name="nombre">
                                         
                                         <?php $__errorArgs = ['nombre'];
@@ -58,7 +58,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Descripcion  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-8 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Descripción</label>
+                                        <label class="fs-5 text-body">Descripción*</label>
                                         <textarea class="form-control text-upper" name="descripcion"><?php echo e(old('descripcion', $producto->descripcion)); ?></textarea>
                                         
                                         <?php $__errorArgs = ['descripcion'];
@@ -77,7 +77,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& TIPO PRODUCTO  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Tipo</label>
+                                        <label class="fs-5 text-body">Tipo*</label>
                                         
 
                                         <input type="text" value="<?php echo e(old('tipo', $producto->tipo)); ?>" placeholder="Modelo" class="form-control text-upper" name="tipo" disabled>
@@ -97,7 +97,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& PRECIO COMPRA  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Precio compra $</label>
+                                        <label class="fs-5 text-body">Precio compra* ($)</label>
                                         <input type="text" name=" precioCompra" value="<?php echo e(old(' precioCompra', $producto-> precioCompra)); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper" name="precio">
                                         
                                         <?php $__errorArgs = ['precioCompra'];
@@ -115,7 +115,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& PRECIO VENTA  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Precio venta $</label>
+                                        <label class="fs-5 text-body">Precio venta* ($)</label>
                                         <input type="text" name="PrecioVenta" value="<?php echo e(old('PrecioVenta', $producto->PrecioVenta)); ?>" placeholder="Introduce precio del producto 0.0 $" class="form-control text-upper" name="precio">
 
                                         
@@ -134,7 +134,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Existencia  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
                                 <div class="col-md-4 mt-auto">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Existencia</label>
+                                        <label class="fs-5 text-body">Existencia*</label>
                                         <input type="number" name="existencia" value="<?php echo e(old('stock', $producto->existencia)); ?>" placeholder="En existencia" class="form-control text-upper" min="1" name="existencia">
                                         
                                         <?php $__errorArgs = ['existencia'];
@@ -153,7 +153,7 @@ unset($__errorArgs, $__bag); ?>
                                 <?php ($proveedores = DB::table('proveedores')->get() ); ?>
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <label class="fs-5 text-body">Proveedor*</label>
                                         <select title="" class="form-control text-upper" name="proveedor">
                                             <option value="0">Seleccione el proveedor</option>
                                             <?php $__currentLoopData = $proveedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proveedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -166,11 +166,11 @@ unset($__errorArgs, $__bag); ?>
                             <?php if($bateria != null): ?>
                             <div class="row">
 
-                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre la bateria</h3>
+                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Informacion individual sobre la batería</h3>
                                 <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     INPUT  Modelo     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Modelo</label>
+                                        <label class="fs-5 text-body">Modelo*</label>
                                         <input type="text" name="modelo" value="<?php echo e($bateria->modelo); ?>" placeholder="Introduce el modelo del producto" class="form-control text-upper">
                                         <?php $__errorArgs = ['modelo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -187,7 +187,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Alto</label>
+                                        <label class="fs-5 text-body">Alto*</label>
                                         <input type="number" name="alto" value="<?php echo e($bateria->alto); ?>" placeholder="" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['alto'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -204,7 +204,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--------------------------Inputs de la informacion ancho -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Ancho</label>
+                                        <label class="fs-5 text-body">Ancho*</label>
                                         <input type="number" name="ancho" value="<?php echo e($bateria->ancho); ?>" placeholder="" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['ancho'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -221,7 +221,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--------------------------Inputs de la informacion LARGO -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Largo</label>
+                                        <label class="fs-5 text-body">Largo*</label>
                                         <input type="number" name="largo" value="<?php echo e($bateria->largo); ?>" placeholder="" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['largo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -238,7 +238,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--------------------------Inputs de la informacion Amperes -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Amperes</label>
+                                        <label class="fs-5 text-body">Amperes*</label>
                                         <input type="number" name="amperes" value="<?php echo e($bateria->amperes); ?>" placeholder="" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['amperes'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -255,7 +255,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!--------------------------Inputs de la informacion PERO -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Peso</label>
+                                        <label class="fs-5 text-body">Peso*</label>
                                         <input type="number" name="peso" value="<?php echo e($bateria->peso); ?>" placeholder="" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['peso'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -272,19 +272,23 @@ unset($__errorArgs, $__bag); ?>
                                 <!--------------------------Inputs de la informacion MARCA -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Marca</label>
+                                        <label class="fs-5 text-body">Marca*</label>
                                         <select name="idMarca" id="selectorMarca" value="<?php echo e($bateria->marca); ?>" class="form-control form-select">
                                             <option value="0">Seleccionar</option>
-                                            <option value="1">Marca 1</option>
-                                            <option value="2">Marca 2</option>
-                                            <option value="3">Marca 3</option>
+                                                <option value="1">Gonher</option>
+                                                <option value="2">LTH</option>
+                                                <option value="3">Duralast</option>
+                                                <option value="4">América racing</option>
+                                                <option value="5">Energizer</option>
+                                                <option value="6">Voltar ultra</option>
+                                                <option value="7">XS power</option>
                                         </select>
                                     </div>
                                 </div>
                                 <!--------------------------Inputs de la informacion VOLTAJE -------------------------->
                                 <div class="col-md-4 mt-2">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Voltaje</label>
+                                        <label class="fs-5 text-body">Voltaje*</label>
                                         <input type="number" name="voltaje" value="<?php echo e($bateria->voltaje); ?>" placeholder="" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['voltaje'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -309,7 +313,7 @@ unset($__errorArgs, $__bag); ?>
                                 ); ?>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Proveedor</label>
+                                        <label class="fs-5 text-body">Rines*</label>
                                         <select title="" class="form-control text-upper" name="rin" value="<?php echo e($llanta->idRin); ?>">
                                             <option value="0">Seleccione Rin</option>
                                             <?php $__currentLoopData = $rines; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -324,7 +328,7 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Indice de Carga (Carga Maxima)</label>
+                                        <label class="fs-5 text-body">Índice de Carga* (Carga Máxima)</label>
                                         <input type="number" name="cargaMaxima" id="idcargaMaxima" value="<?php echo e($llanta->indiceCarga); ?>" class="form-control text-upper">
                                         <?php $__errorArgs = ['cargaMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -342,7 +346,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE TEXTO *velocidad Maxima* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">velocidad Maxima</label>
+                                        <label class="fs-5 text-body">Velocidad Máxima*</label>
                                         <input type="number" name="velocidadMaxima" value="<?php echo e($llanta->velocidadMaxima); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['velocidadMaxima'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -360,7 +364,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE Presion ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Presion</label>
+                                        <label class="fs-5 text-body">Presion*</label>
                                         <input type="number" name="presion" value="<?php echo e($llanta->presion); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['presion'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -378,7 +382,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE TEXTO *Anvcho* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Ancho</label>
+                                        <label class="fs-5 text-body">Ancho*</label>
                                         <input type="number" name="anchoLlanta" value="<?php echo e($llanta->ancho); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['anchoLlanta'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -395,7 +399,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Diametro</label>
+                                        <label class="fs-5 text-body">Diámetro*</label>
                                         <input type="number" name="diametro" value="<?php echo e($llanta->diametro); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['diametro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -412,7 +416,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Fabricante</label>
+                                        <label class="fs-5 text-body">Fabricante*</label>
                                         <input type="text" name="fabricante" value="<?php echo e($llanta->Fabricante); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['fabricante'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -429,7 +433,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE TEXTO *Año fabricacnion* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Año fabricante</label>
+                                        <label class="fs-5 text-body">Año fabricante*</label>
                                         <input type="text" name="aniofabricante" value="<?php echo e($llanta->anioFabricacion); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['aniofabricante'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -446,7 +450,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE TEXTO *Tipo carrp* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Tipo carro</label>
+                                        <label class="fs-5 text-body">Tipo carro*</label>
                                         <input type="text" name="tipoCarro" value="<?php echo e($llanta->tipoDeCarro); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['tipoCarro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -463,7 +467,7 @@ unset($__errorArgs, $__bag); ?>
                                 <!----------------------- CAJA DE TEXTO *marca carrp* ---------------------------------------------->
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
-                                        <label class="fs-5 text-body">Marca carro</label>
+                                        <label class="fs-5 text-body">Marca carro*</label>
                                         <input type="text" name="marcaCarro" value="<?php echo e($llanta->marcasDeCarro); ?>" class="form-control text-upper" min="1">
                                         <?php $__errorArgs = ['marcaCarro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

@@ -48,10 +48,10 @@
                 <table class="table table-condensed table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th>ARTICULO</th>
+                            <th>ARTÍCULO</th>
                             <th>CANTIDAD</th>
-                            <th>SUB TOTAL</th>
-                            <th>DESCUENTO</th>
+                            <th>SUBTOTAL ($)</th>
+                            <th>DESCUENTO (%)</th>
                         </tr>
                     </thead>
                     <tbody><tfoot>
@@ -60,7 +60,7 @@
                             
                         <td  class="text-center">{{ $venta->idProducto }}</td>
                            <td  class="text-center">{{ $venta->cantidad }}</td>
-                           <td  class="text-center">{{ $venta->subVenta }}</td>
+                           <td  class="text-center">${{ $venta->subVenta }} MXN</td>
                            <td class="text-right">{{ $venta->descuento }} %</td>
                             
                           <tr>

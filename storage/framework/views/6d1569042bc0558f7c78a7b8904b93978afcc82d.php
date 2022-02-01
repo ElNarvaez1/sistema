@@ -14,7 +14,7 @@
                     <br>
                     <!--encabezado-->                    
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Cambios de llantas  <i class="fas fa-tools"></i></h1>
-                    <p class="mb-4 text-dark">Consulte la información historica sobre el cambio de llantas</p>
+                    <p class="mb-4 text-dark">Consulte la información histórica sobre el cambio de llantas</p>
                     
                     <?php echo $__env->make('plantilla.notification', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <div class="card shadow mb-4 rounded card-color">
@@ -69,17 +69,17 @@
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
                                                 <th scope="col">ID</th>
-                                                <th scope="col">FECHA</th>                                               
-                                                <th scope="col">TOTAL</th>
+                                                <th scope="col">FECHA DE CAMBIO</th>                                               
+                                                <th scope="col">TOTAL ($)</th>
                                                 <th scope="col">EMPLEADO</th>                                                
-                                                <th scope="col" colspan="2">ACCIONES</th>                                                
+                                                <th scope="col" colspan="2">ACCIÓN</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
                                             <?php $__empty_1 = true; $__currentLoopData = $listaCambioLlantas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cambio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                                 <tr class="table-hover">
                                                     <th class="text-center" scope="row"><?php echo e($cambio->idCambio); ?></th>
                                                     <th class="text-center" scope="row"><?php echo e($cambio->fecha); ?></th>                                                    
-                                                    <th class="text-center" scope="row">$<?php echo e($cambio->monto); ?></th>
+                                                    <th class="text-center" scope="row">$<?php echo e(number_format($cambio->monto,2,'.','')); ?> MXN</th>
                                                     <th class="text-center" scope="row"><?php echo e($cambio->idUser); ?></th>
                                                     <th class="text-center" scope="row">
                                                     

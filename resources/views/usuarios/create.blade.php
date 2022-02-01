@@ -82,7 +82,7 @@
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         <label class="text-black h4">E-mail*</label>
-                                        <input type="text" name="email" value="{{ old('email') }}" placeholder="CORREO ELECTRONICO" class="form-control">
+                                        <input type="text" name="email" value="{{ old('email') }}" placeholder="CORREO ELECTRÓNICO" class="form-control">
 
                                         {{-- validaciones --}}
                                         @error('email')

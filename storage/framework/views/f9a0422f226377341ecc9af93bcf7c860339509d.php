@@ -188,7 +188,7 @@ unset($__errorArgs, $__bag); ?>
                                             <label id="tipo-llantas" class="nav-link text-dark w-100 active" data-name="llantas" data-bs-toggle="tab" data-bs-target="#llantas-seccion" type="button" role="tab" aria-controls="home" aria-selected="true">Llantas</label>
                                         </li>
                                         <li class="nav-item col-md-4" role="presentation">
-                                            <label id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterias</label>
+                                            <label id="tipo-baterias" class="nav-link text-dark w-100" data-name="baterias" data-bs-toggle="tab" data-bs-target="#baterias-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Baterías</label>
                                         </li>
                                         <li class="nav-item col-md-4" role="presentation">
                                             <label id="tipo-rin" class="nav-link text-dark w-100" data-name="rin" data-bs-toggle="tab" data-bs-target="#rin-seccion" type="button" role="tab" aria-controls="profile" aria-selected="false">Rin</label>
@@ -254,7 +254,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <!----------------------- CAJA DE Presion ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Presion*</label>
+                                                        <label class="fs-5 text-body">Presión*</label>
                                                         <input type="number" name="presion" value="<?php echo e(old('presion')); ?>" class="form-control text-upper" min="1">
                                                         <?php $__errorArgs = ['presion'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -289,7 +289,7 @@ unset($__errorArgs, $__bag); ?>
                                                 <!----------------------- CAJA DE TEXTO *Diamrtro* ---------------------------------------------->
                                                 <div class="col-md-4 mt-4">
                                                     <div class="form-group">
-                                                        <label class="fs-5 text-body">Diametro*</label>
+                                                        <label class="fs-5 text-body">Diámetro*</label>
                                                         <input type="number" name="diametro" value="<?php echo e(old('diametro')); ?>" class="form-control text-upper" min="1">
                                                         <?php $__errorArgs = ['diametro'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -377,7 +377,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="tab-pane fade" id="baterias-seccion" role="tabpanel" aria-labelledby="tipo-baterias">
                                             <div class="row">
-                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre baterias</h3>
+                                                <h3 class="col-12 text-dark h5 my-3 fw-bold" style="font-weight: bold;">Información individual sobre baterías</h3>
                                                 <!--------------------------Inputs de la informacion ALTO -------------------------->
                                                 <div class="col-md-4 mt-2">
                                                     <div class="form-group">

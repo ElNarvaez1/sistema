@@ -15,7 +15,7 @@
                     <br>
                     <!--encabezado-->                    
                     <h1 class="h3 mb-2 bold-title text-upper"> Listado de Cambios de llantas  <i class="fas fa-tools"></i></h1>
-                    <p class="mb-4 text-dark">Consulte la información historica sobre el cambio de llantas</p>
+                    <p class="mb-4 text-dark">Consulte la información histórica sobre el cambio de llantas</p>
                     {{-- mensajes --}}
                     @include('plantilla.notification')
                     <div class="card shadow mb-4 rounded card-color">
@@ -70,17 +70,17 @@
                                         <thead class="bg-color ">
                                             <tr class="text-blank text-center">
                                                 <th scope="col">ID</th>
-                                                <th scope="col">FECHA</th>                                               
-                                                <th scope="col">TOTAL</th>
+                                                <th scope="col">FECHA DE CAMBIO</th>                                               
+                                                <th scope="col">TOTAL ($)</th>
                                                 <th scope="col">EMPLEADO</th>                                                
-                                                <th scope="col" colspan="2">ACCIONES</th>                                                
+                                                <th scope="col" colspan="2">ACCIÓN</th>                                                
                                             </tr>
                                             <tbody class="text-black2">
                                             @forelse ($listaCambioLlantas as $cambio)
                                                 <tr class="table-hover">
                                                     <th class="text-center" scope="row">{{$cambio->idCambio}}</th>
                                                     <th class="text-center" scope="row">{{$cambio->fecha}}</th>                                                    
-                                                    <th class="text-center" scope="row">${{$cambio->monto}}</th>
+                                                    <th class="text-center" scope="row">${{number_format($cambio->monto,2,'.','')}} MXN</th>
                                                     <th class="text-center" scope="row">{{$cambio->idUser}}</th>
                                                     <th class="text-center" scope="row">
                                                     {{-- @can('cambiollantas.index') --}}
